@@ -17,4 +17,20 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('admin')->group(function(){
+    Route::get('/login', function(){
+        return view('auth.login');
+    });
+
+    Route::get('/logout', 'Auth\LoginController@logout');
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    //Homes Routes
+    Route::resource('homes', 'Admin\HomesController');
+    Route::get('homes/create', 'Admin\HomesController@create');
+    Route::get('homes/edit/{id}', 'Admin\HomesController@edit');
+    Route::post('homes/save', 'Admin\HomesController@save');
+    Route::post('homes/delete', 'Admin\HomesController@delete');
+});
