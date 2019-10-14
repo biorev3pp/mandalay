@@ -51,6 +51,7 @@
                       <td>{{$i}}.</td>
                         <td>{{$record->title}}</td>
                         <td>
+                          <a href="floor/create/{{$record->id}}"><i class="fas fa-edit"></i> Add Floor</a>
                           <a href="{{url('admin/homes/edit/'.Crypt::encrypt($record->id))}}"><i class="fas fa-edit"></i> Edit</a>
                           <a href="#" class="delete_record_btn" id="{{Crypt::encrypt($record->id)}}" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt"></i> Delete</a>
                         </td>

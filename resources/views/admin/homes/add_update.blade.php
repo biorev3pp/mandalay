@@ -47,7 +47,6 @@
                   {{Form::text('title',null,['class'=>'form-control','id'=>'title','placeholder'=>'Enter Title'])}}
                 </div>
 
-
                 <div class=" form-group col-md-6">
                   <label for="subtitle">Sub Title</label>
                   {{Form::text('subtitle',null,['class'=>'form-control','id'=>'subtitle','placeholder'=>'Enter Sub Title'])}}
@@ -77,41 +76,28 @@
                   <label for="garage">Garage</label>
                   {{Form::text('garage',null,['class'=>'form-control','id'=>'garage','placeholder'=>'Enter Garage'])}} 
                 </div>
-  {{-- 
-                  <div class="form-group col-md-6">
-                    <label for="pageheading">Title</label>
-                    {{Form::text('title',null,['class'=>'form-control','id'=>'pageheading','placeholder'=>'Enter Title'])}}
-                  </div> --}}
 
-                  <div class="form-group col-md-6">
-                    <label for="portfolioimage">Select Image</label>
-                    @if(isset($data->image))
-                      @if($data->image!='' || $data->image!=null)
-                      <div class="py-2 image-preview">
-                        <img width="130" height="150" src="{{asset('images/homes/'.$data->image)}}">
-                      </div>
-                      @endif
-                    @endif
-                    <div class="custom-file">
-                      {{Form::file('image',['class'=>'custom-file-input image-file','id'=>'portfolioimage'])}}
-                      <label class="custom-file-label" for="portfolioimage">@if(!isset($data->image)) Choose file @else {{$data->image}} @endif</label>
+                <div class="form-group col-md-6">
+                  <label for="portfolioimage">Select Image</label>
+                  @if(isset($data->image))
+                    @if($data->image!='' || $data->image!=null)
+                    <div class="py-2 image-preview">
+                      <img width="130" height="150" src="{{asset('images/homes/'.$data->image)}}">
                     </div>
+                    @endif
+                  @endif
+                  <div class="custom-file">
+                    {{Form::file('image',['class'=>'custom-file-input image-file','id'=>'portfolioimage'])}}
+                    <label class="custom-file-label" for="portfolioimage">@if(!isset($data->image)) Choose file @else {{$data->image}} @endif</label>
                   </div>
+                </div>
 
-                  {{-- <div class=" form-group col-md-12">
-                    <label for="pagedesc">Page Description</label>
-                    {!! Form::textarea('description', null, ['id' => 'pagedesc', 'class'=>'textarea', 'rows' => 4, 'cols' => 54, 'style' => 'resize:none']) !!}
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="status">Status</label>
-                      {{Form::select('status',$statusArray,null,['class'=>'form-control'])}}
-                  </div> --}}
+              </div>
+              <div class="form-group col-md-12">
+                <div class="bg-white">
+                  <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
-                <div class="form-group col-md-12">
-                  <div class="bg-white">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
-                </div>
+              </div>
               {{Form::close()}}
             </div>
         </div>
