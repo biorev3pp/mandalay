@@ -13,36 +13,18 @@
               <p>Dashboard</p>
             </a>
           </li>
-          {{-- <li class="nav-item">
-            <a href="{{url('admin/webpages')}}" class="nav-link">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>Webpages</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{url('admin/seo')}}" class="nav-link">
-              <i class="nav-icon fas fa-chart-line"></i>
-              <p>SEO</p>
-            </a>
-          </li> --}}
-          {{-- <li class="nav-item">
-            <a href="{{url('admin/menu')}}" class="nav-link">
-              <i class="nav-icon fas fa-bars"></i>
-              <p>Menu Builder</p>
-            </a>
-          </li> --}}
           <li class="nav-item">
             <a href="{{url('admin/homes')}}" class="nav-link">
-              <i class="nav-icon fas fa-briefcase"></i>
+              <i class="nav-icon fas fa-home"></i>
               <p>Homes</p>
             </a>
           </li>
-          {{-- <li class="nav-item">
-            <a href="{{url('admin/settings')}}" class="nav-link">
+          <!-- <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cog"></i>
               <p>Settings</p>
             </a>
-          </li> --}}
+          </li> -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

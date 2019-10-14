@@ -15,9 +15,9 @@ class CreateFloorsTable extends Migration
     {
         Schema::create('floors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('home_id');
+            $table->integer('home_id');
             $table->string('title');
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->tinyInteger('status')->default(1)->comment('0:Inactive,1:Active');
             $table->timestamps();
         });

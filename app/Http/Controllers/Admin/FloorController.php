@@ -9,48 +9,78 @@ use App\Admin\Homes;
 use App\Admin\Floor;
 use Validator;
 use App\Validators\FloorValidator;
-use App\Validators\HomesValidator;
 USE DB;
 use File;
+use Crypt;
 
 class FloorController extends Controller
 {
 
-    public function create($id)
-    {
-        $data = Homes::find($id);
-        return view('admin.floor.index')->with("data", $data);
+    use HelperTrait, FloorValidator;
+    public $title;
+    public $data;
+
+    public function __construct(){
+        $this->title = 'Floors';
+        $this->data['page_title'] = $this->title;
+        $this->data['statusArray'] = $this->getStatusArray();
     }
 
-    public function save(Request $request){
+    public function index($id){
+        $homeid = Crypt::decrypt($id);
+        $home = Homes::where('id',$homeid)->first();
+        $floors = Floor::where('home_id',$homeid)->get();
+        $this->data['home'] = $home;
+        $this->data['floors'] = $floors;
+        return view('admin.floors.index')->with($this->data);
+    }
+
+    public function create($id)
+    {
+        $homeid = Crypt::decrypt($id);
+        $home = Homes::find($homeid);
+        $this->data['data'] = '';
+        $this->data['home'] = $home;
+        return view('admin.floors.add_update')->with($this->data);
+    }
+
+    public function edit(Request $request, $id){
+        $id = $this->decrypt($id);
+        $data = Floor::with('home')->whereId($id)->first();
+        $this->data['data'] = $data;
+
+        return view('admin.floors.add_update')->with($this->data);
+    }
+
+    public function save(Request $request){        
         try{
             $validation = $this->addFloorValidations($request);
             if($validation['status']==false){
                 return response($this->getValidationsErrors($validation));
             }
-            if(isset($request->home_id) && $request->home_id!=''){
-                $id = $this->decrypt($request->home_id);
-                $portfolio = Homes::whereId($id)->first();
+            if(isset($request->record_id) && $request->record_id!=''){
+                $id = $this->decrypt($request->record_id);
+                $floor = Floor::whereId($id)->first();
                 DB::beginTransaction();
-                $input = $request->except(['_token','home_id']);
+                $input = $request->except(['_token','record_id']);
                 if($request->image){
                     // Delete old image file
-                    if($portfolio->image!='' || $portfolio->image!=null || !empty($portfolio->image)){
-                        $oldFilePath = public_path().'/images/homes/'.$portfolio->image;
+                    if($floor->image!='' || $floor->image!=null || !empty($floor->image)){
+                        $oldFilePath = public_path().'/images/floors/'.$floor->image;
                         File::delete($oldFilePath);
                     }
                     //Upload image to local
                     $image = $request->file('image');   
                     $imageName = time().'.'.$image->getClientOriginalExtension();
-                    $destinationImagePath = public_path('images/homes');
+                    $destinationImagePath = public_path('images/floors');
                     $uploadStatus = $image->move($destinationImagePath,$imageName);
                     $input['image'] = $imageName;
                 }
-                $result = Floors::whereId($id)->update($input);
+                $result = Floor::whereId($id)->update($input);
                 if($result){
                     DB::commit();
                     $response = [
-                        'url' => url('admin/homes'),
+                        'url' => url('admin/floors/list/'.Crypt::encrypt($request->home_id)),
                         'message' => trans('response.updated'),
                         'delayTime' => 2000
                     ];
@@ -66,15 +96,15 @@ class FloorController extends Controller
                     //Upload image to local
                     $image = $request->file('image');   
                     $imageName = time().'.'.$image->getClientOriginalExtension();
-                    $destinationImagePath = public_path('images/homes');
+                    $destinationImagePath = public_path('images/floors');
                     $uploadStatus = $image->move($destinationImagePath,$imageName);
                     $input['image'] = $imageName;
                 }
-                $result = Floors::insert($input);
+                $result = Floor::insert($input);
                 if($result){
                     DB::commit();
                     $response = [
-                        'url' => url('admin/homes'),
+                        'url' => url('admin/floors/list/'.Crypt::encrypt($request->home_id)),
                         'message' => trans('response.inserted'),
                         'delayTime' => 1000
                     ];
@@ -83,6 +113,33 @@ class FloorController extends Controller
                     DB::rollBack();
                     return response($this->getErrorResponse(trans('response.failure')));
                 }
+            }
+        }catch(\Exception $e){
+            return response($this->getErrorResponse($e->getMessage()));
+        }
+    }
+
+    public function delete(Request $request){
+        try{
+            $id = $this->decrypt($request->delete_id);
+            $floor = Floor::whereId($id)->first();
+            // Delete image file
+            if($floor->image!='' || $floor->image!=null || !empty($floor->image)){
+                $filePath = public_path().'/images/floors/'.$floor->image;
+                File::delete($filePath);
+            }
+            $result = Floor::whereId($id)->delete();
+            if($result){
+                DB::commit();
+                $response = [
+                    'url' => url('admin/floors/list/'.Crypt::encrypt($floor->home_id)),
+                    'message' => trans('response.removed'),
+                    'delayTime' => 1000
+                ];
+                return response($this->getSuccessResponse($response));
+            }else{
+                DB::rollBack();
+                return response($this->getErrorResponse(trans('response.failure')));
             }
         }catch(\Exception $e){
             return response($this->getErrorResponse($e->getMessage()));

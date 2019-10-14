@@ -35,9 +35,9 @@ Route::prefix('admin')->group(function(){
     Route::post('homes/delete', 'Admin\HomesController@delete');
 
     //Floor Routes
-    Route::resource('floor', 'Admin\FloorController');
-    Route::get('floor/create/{id}', 'Admin\FloorController@create');
-    Route::get('floor/edit/{id}', 'Admin\FloorController@edit');
-    Route::post('floor/save', 'Admin\FloorController@save');
-    Route::post('floor/delete', 'Admin\FloorController@delete');
+    Route::get('floors/list/{id}', 'Admin\FloorController@index');
+    Route::get('floors/create/{id}', 'Admin\FloorController@create');
+    Route::get('floors/edit/{id}', 'Admin\FloorController@edit');
+    Route::post('floors/save', 'Admin\FloorController@save');
+    Route::post('floors/delete', 'Admin\FloorController@delete');
 });

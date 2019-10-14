@@ -43,19 +43,19 @@ class HomesController extends Controller
 
     public function save(Request $request){
         try{
-            $validation = $this->addPortfolioValidations($request);
-            // if($validation['status']==false){
-            //     return response($this->getValidationsErrors($validation));
-            // }
+            $validation = $this->addHomeValidations($request);
+            if($validation['status']==false){
+                return response($this->getValidationsErrors($validation));
+            }
             if(isset($request->record_id) && $request->record_id!=''){
                 $id = $this->decrypt($request->record_id);
-                $portfolio = Homes::whereId($id)->first();
+                $home = Homes::whereId($id)->first();
                 DB::beginTransaction();
                 $input = $request->except(['_token','record_id']);
                 if($request->image){
                     // Delete old image file
-                    if($portfolio->image!='' || $portfolio->image!=null || !empty($portfolio->image)){
-                        $oldFilePath = public_path().'/images/homes/'.$portfolio->image;
+                    if($home->image!='' || $home->image!=null || !empty($home->image)){
+                        $oldFilePath = public_path().'/images/homes/'.$home->image;
                         File::delete($oldFilePath);
                     }
                     //Upload image to local
@@ -111,10 +111,10 @@ class HomesController extends Controller
     public function delete(Request $request){
         try{
             $id = $this->decrypt($request->delete_id);
-            $portfolio = Homes::whereId($id)->first();
+            $home = Homes::whereId($id)->first();
             // Delete image file
-            if($portfolio->image!='' || $portfolio->image!=null || !empty($portfolio->image)){
-                $filePath = public_path().'/images/homes/'.$portfolio->image;
+            if($home->image!='' || $home->image!=null || !empty($home->image)){
+                $filePath = public_path().'/images/homes/'.$home->image;
                 File::delete($filePath);
             }
             $result = Homes::whereId($id)->delete();

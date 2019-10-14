@@ -18,12 +18,19 @@ trait HomesValidator
      * @method  : addMusicFileValidations
      * @purpose : Validation rule for add page
      */
-    public function addPortfolioValidations(Request $request){
+    public function addHomeValidations(Request $request){
         try{
-            $validator = Validator::make($request->all(), [
-                'title'         => 'required',
-                'image'         => 'mimes:jpeg,jpg,png'
-            ]);
+            $validator = Validator::make($request->all(), 
+                [
+                    'title'        => 'required',
+                    'area'         => 'required',
+                    'bedrooms'     => 'required',
+                    'bathrooms'    => 'required',
+                    'cost'         => 'required',
+                    'garage'       => 'required',
+                    'image'        => 'mimes:jpeg,jpg,png'
+                ]
+            );
             $this->response = $this->validateData($validator);
         }catch(\Exception $e){
             $this->response = $e->getMessage();

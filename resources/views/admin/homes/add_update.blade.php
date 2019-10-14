@@ -52,52 +52,51 @@
                   {{Form::text('subtitle',null,['class'=>'form-control','id'=>'subtitle','placeholder'=>'Enter Sub Title'])}}
                 </div>
 
-                <div class=" form-group col-md-6">
-                  <label for="area">Area</label>
-                  {{Form::text('area',null,['class'=>'form-control','id'=>'area','placeholder'=>'Enter Area'])}}
-                </div>
-
-                <div class=" form-group col-md-6">
-                  <label for="bedrooms">Bedrooms</label>
-                  {{Form::text('bedrooms',null,['class'=>'form-control','id'=>'bedrooms','placeholder'=>'Enter Bedrooms'])}}              
-                </div>
-
-                <div class=" form-group col-md-6">
-                  <label for="bathrooms">Bathrooms</label>
-                  {{Form::text('bathrooms',null,['class'=>'form-control','id'=>'bathrooms','placeholder'=>'Enter Bathrooms'])}} 
-                </div>
-
-                <div class=" form-group col-md-6">
-                  <label for="cost">Cost</label>
-                  {{Form::text('cost',null,['class'=>'form-control','id'=>'cost','placeholder'=>'Enter Cost'])}} 
-                </div>
-
-                <div class=" form-group col-md-6">
-                  <label for="garage">Garage</label>
-                  {{Form::text('garage',null,['class'=>'form-control','id'=>'garage','placeholder'=>'Enter Garage'])}} 
-                </div>
-
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
                   <label for="portfolioimage">Select Image</label>
                   @if(isset($data->image))
                     @if($data->image!='' || $data->image!=null)
-                    <div class="py-2 image-preview">
-                      <img width="130" height="150" src="{{asset('images/homes/'.$data->image)}}">
+                    <div class="py-2 image-preview" style="width: 600px;">
+                      <img width="100%" height="auto" src="{{asset('images/homes/'.$data->image)}}">
                     </div>
                     @endif
                   @endif
+                  <div class="clearfix"></div>
                   <div class="custom-file">
                     {{Form::file('image',['class'=>'custom-file-input image-file','id'=>'portfolioimage'])}}
                     <label class="custom-file-label" for="portfolioimage">@if(!isset($data->image)) Choose file @else {{$data->image}} @endif</label>
                   </div>
                 </div>
 
-              </div>
-              <div class="form-group col-md-12">
-                <div class="bg-white">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                <div class=" form-group col-md-4">
+                  <label for="area">Area</label>
+                  {{Form::text('area',null,['class'=>'form-control','id'=>'area','placeholder'=>'Enter Area'])}}
                 </div>
-              </div>
+
+                <div class=" form-group col-md-4">
+                  <label for="bedrooms">Bedrooms</label>
+                  {{Form::text('bedrooms',null,['class'=>'form-control','id'=>'bedrooms','placeholder'=>'Enter Bedrooms'])}}              
+                </div>
+
+                <div class=" form-group col-md-4">
+                  <label for="bathrooms">Bathrooms</label>
+                  {{Form::text('bathrooms',null,['class'=>'form-control','id'=>'bathrooms','placeholder'=>'Enter Bathrooms'])}} 
+                </div>
+
+                <div class=" form-group col-md-4">
+                  <label for="cost">Cost</label>
+                  {{Form::text('cost',null,['class'=>'form-control','id'=>'cost','placeholder'=>'Enter Cost'])}} 
+                </div>
+
+                <div class=" form-group col-md-4">
+                  <label for="garage">Garage</label>
+                  {{Form::text('garage',null,['class'=>'form-control','id'=>'garage','placeholder'=>'Enter Garage'])}} 
+                </div>
+                <div class="form-group col-md-12">
+                  <div class="bg-white">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
               {{Form::close()}}
             </div>
         </div>

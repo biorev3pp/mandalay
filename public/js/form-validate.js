@@ -109,7 +109,7 @@ $(document).ready(function ()
     /**
      * Webpages Form Validations
      */
-    $("#webpage_form").validate({
+    $("#floors_form").validate({
         errorClass   : "has-error",
         highlight    : function(element, errorClass) {
             $(element).parents('.form-group').addClass(errorClass);
