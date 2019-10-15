@@ -7,10 +7,18 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+
+          
           <li class="nav-item">
             <a href="{{url('admin/home')}}" class="nav-link">
               <i class="nav-icon fas fa-list-alt"></i>
-              <p>Dashboard</p>
+              <p>Mandalay Dashboard</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{url('/')}}" class="nav-link" target="_blank">
+              <i class="nav-icon fas fa-list-alt"></i>
+              <p>Visit site</p>
             </a>
           </li>
           <li class="nav-item">
@@ -19,12 +27,12 @@
               <p>Homes</p>
             </a>
           </li>
-          <!-- <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item">
+          <a href="{{url('admin/settings')}}" class="nav-link">
               <i class="nav-icon fas fa-cog"></i>
               <p>Settings</p>
             </a>
-          </li> -->
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

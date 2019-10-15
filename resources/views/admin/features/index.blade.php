@@ -30,10 +30,11 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-md-6 pt-2">
-                  Home Name: <b>{{$home->title}}</b>
+                  Home Name: <b>{{$floor->title}}</b>
                 </div>
                 <div class="col-md-6 pb-3">
-                  <a href="{{url('admin/floors/create/'.Crypt::encrypt($home->id))}}" class="col-md-3 float-right d-inline btn btn-block btn-primary text-white">Add Floor</a>
+                    <a href="{{url('admin/features/create/'.Crypt::encrypt($floor->id))}}" class="col-md-3 float-right d-inline btn btn-block btn-primary text-white">Add Features</a>
+                    {{-- <a href="{{url()->previous()}}" class="col-md-3 float-right d-inline btn btn-block btn-dark text-white">Cancel</a> --}}
                 </div>
               </div>
               <div class="row">
@@ -48,20 +49,19 @@
                     </thead>
                     <tbody>
                       @php $i=0; @endphp
-                      @forelse($floors as $record)
+                      @forelse($features as $record)
                       @php $i++; @endphp
                       <tr>
                       <td>{{$i}}.</td>
                         <td>{{$record->title}}</td>
                         <td>
-                          <a href="{{url('admin/floors/edit/'.Crypt::encrypt($record->id))}}"><i class="fas fa-edit"></i> Edit</a>
+                          <a href="{{url('admin/features/edit/'.Crypt::encrypt($record->id))}}"><i class="fas fa-edit"></i> Edit</a>
                           <a href="#" class="delete_record_btn" id="{{Crypt::encrypt($record->id)}}" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt"></i> Delete</a>
-                          <a href="{{url('admin/features/list/'.Crypt::encrypt($record->id))}}"><i class="fas fa-map"></i> Add Features</a>
                         </td>
                       </tr>
                       @empty
                       <tr>
-                        <td colspan="3">No floors added yet</td>
+                        <td colspan="3">No Features added yet</td>
                       </tr>
                       @endforelse
                     </tbody>
@@ -92,7 +92,7 @@
           <p>Are you sure, you want to delete this record ?</p>
         </div>
         <div class="modal-footer ">
-          {{Form::open(array('id'=>'delete_form','url'=>url('admin/floors/delete')))}}
+          {{Form::open(array('id'=>'delete_form','url'=>url('admin/features/delete')))}}
           {{Form::hidden('delete_id',null,['id'=>'delete_id'])}}
           <button type="submit" class="btn btn-danger">Yes</button>
           {{Form::close()}}

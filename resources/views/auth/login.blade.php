@@ -22,7 +22,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{url('/')}}"><b>Home</b></a>
+    <a href="{{url('/')}}"><b>Mandalay Admin Login</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">

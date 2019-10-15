@@ -35,12 +35,12 @@
                 </div>
               </div>
               @if($data)
-                {{Form::model($data,array('id'=>'floors_form','url'=>url('admin/floors/save')))}}
+                {{Form::model($data,array('id'=>'floors_form','url'=>url('admin/features/save')))}}
                 {{Form::hidden('record_id',Crypt::encrypt($data->id))}}
-                {{Form::hidden('home_id',$data->floor->id)}}
+                {{Form::hidden('floor_id',$data->home->id)}}
               @else
-                {{Form::open(array('id'=>'floors_form','url'=>url('admin/floors/save')))}}
-                {{Form::hidden('home_id',$home->id)}}
+                {{Form::open(array('id'=>'floors_form','url'=>url('admin/features/save')))}}
+                {{Form::hidden('floor_id',$floor->id)}}
               @endif
               <div class="row">
                 <div class=" form-group col-md-6">

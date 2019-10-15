@@ -40,4 +40,15 @@ Route::prefix('admin')->group(function(){
     Route::get('floors/edit/{id}', 'Admin\FloorController@edit');
     Route::post('floors/save', 'Admin\FloorController@save');
     Route::post('floors/delete', 'Admin\FloorController@delete');
+
+    //Features Routes
+    Route::get('features/list/{id}', 'Admin\FeaturesController@index');
+    Route::get('features/create/{id}', 'Admin\FeaturesController@create');
+    Route::get('features/edit/{id}', 'Admin\FeaturesController@edit');
+    Route::post('features/save', 'Admin\FeaturesController@save');
+    Route::post('features/delete', 'Admin\FeaturesController@delete');
+
+    //Settings Routes
+    Route::resource('settings', 'Admin\SettingController');
+    Route::post('settings/save', 'Admin\SettingController@save');
 });
