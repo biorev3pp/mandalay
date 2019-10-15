@@ -40,6 +40,7 @@
                       <tr>
                         <th style="width: 10px">#</th>
                         <th>Title</th>
+                        <th style="width: 150px">Status</th>
                         <th style="width: 300px">Action</th>
                       </tr>
                     </thead>
@@ -50,6 +51,7 @@
                       <tr>
                       <td>{{$i}}.</td>
                         <td>{{$record->title}}</td>
+                        <td>{{$statusArray[$record->status]}}</td>
                         <td>
                           <a href="{{url('admin/floors/list/'.Crypt::encrypt($record->id))}}"><i class="fas fa-map"></i> Floors</a>
                           <a href="{{url('admin/homes/edit/'.Crypt::encrypt($record->id))}}"><i class="fas fa-edit"></i> Edit</a>

@@ -20,6 +20,8 @@ class Controller extends BaseController
         return array('1'=>'Active','0'=>'Inactive');
     }
 
+    
+
     // function for debugging
     public function print($data){
         echo '<pre>';

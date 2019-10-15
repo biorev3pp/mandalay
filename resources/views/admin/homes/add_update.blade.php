@@ -87,10 +87,13 @@
                   <label for="cost">Cost</label>
                   {{Form::text('cost',null,['class'=>'form-control','id'=>'cost','placeholder'=>'Enter Cost'])}} 
                 </div>
-
                 <div class=" form-group col-md-4">
                   <label for="garage">Garage</label>
                   {{Form::text('garage',null,['class'=>'form-control','id'=>'garage','placeholder'=>'Enter Garage'])}} 
+                </div>
+                <div class=" form-group col-md-4">
+                  <label for="status">Status</label>
+                  {{Form::select('status',$statusArray,null,['class'=>'form-control','id'=>'status'])}} 
                 </div>
                 <div class="form-group col-md-12">
                   <div class="bg-white">
