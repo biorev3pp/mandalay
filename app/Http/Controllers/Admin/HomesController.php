@@ -51,7 +51,7 @@ class HomesController extends Controller
                 $id = $this->decrypt($request->record_id);
                 $home = Homes::whereId($id)->first();
                 DB::beginTransaction();
-                $input = $request->except(['_token','record_id']);
+                $input = $request->except(['_token','record_id','image_update']);
                 if($request->image){
                     // Delete old image file
                     if($home->image!='' || $home->image!=null || !empty($home->image)){

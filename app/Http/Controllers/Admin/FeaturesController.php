@@ -45,6 +45,15 @@ class FeaturesController extends Controller
         return view('admin.features.add_update')->with($this->data);
     }
 
+    public function edit(Request $request, $id){
+        $id = $this->decrypt($id);
+        $data = Features::with('floor')->whereId($id)->first();
+        $floor = Floor::where('id',$data->floor_id)->first();
+        $this->data['floor'] = $floor;
+        $this->data['data'] = $data;
+        return view('admin.features.add_update')->with($this->data);
+    }
+
     public function save(Request $request){        
         try{
             $validation = $this->addFeatureValidations($request);
@@ -55,7 +64,7 @@ class FeaturesController extends Controller
                 $id = $this->decrypt($request->record_id);
                 $floor = Features::whereId($id)->first();
                 DB::beginTransaction();
-                $input = $request->except(['_token','record_id']);
+                $input = $request->except(['_token','record_id','image_update']);
                 if($request->image){
                     // Delete old image file
                     if($floor->image!='' || $floor->image!=null || !empty($floor->image)){
@@ -97,7 +106,7 @@ class FeaturesController extends Controller
                 if($result){
                     DB::commit();
                     $response = [
-                        'url' => url('admin/features/list/'.Crypt::encrypt($request->home_id)),
+                        'url' => url('admin/features/list/'.Crypt::encrypt($request->floor_id)),
                         'message' => trans('response.inserted'),
                         'delayTime' => 1000
                     ];
@@ -112,13 +121,7 @@ class FeaturesController extends Controller
         }
     }
 
-    public function edit(Request $request, $id){
-        $id = $this->decrypt($id);
-        $data = Features::with('floor')->whereId($id)->first();
-        $this->data['data'] = $data;
-
-        return view('admin.features.add_update')->with($this->data);
-    }
+    
 
     public function delete(Request $request){
         try{

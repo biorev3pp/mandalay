@@ -27,20 +27,8 @@ class SettingController extends Controller
 
     public function save(Request $request){
         try{
-            // $validation = $this->seoPageValidations($request);
-            // if($validation['status']==false){
-            //     return response($this->getValidationsErrors($validation));
-            // }
             DB::beginTransaction();
             $input = $request->except(['_token','record_id']);
-            if($request->logo){
-                //Upload image to local
-                $image = $request->file('logo');   
-                $imageName = 'logo-img.'.$image->getClientOriginalExtension();
-                $destinationImagePath = public_path('images');
-                $uploadStatus = $image->move($destinationImagePath,$imageName);
-                $input['logo'] = $imageName;
-            }
             $rc = Setting::whereId(1)->count();
             if($rc > 0){
             	$result = Setting::whereId(1)->update($input);
@@ -50,7 +38,7 @@ class SettingController extends Controller
             if($result){
                 DB::commit();
                 $response = [
-                    'url' => url('admin/settings'),
+                    'url' => url('admin/homes'),
                     'message' => trans('response.updated'),
                     'delayTime' => 2000
                 ];

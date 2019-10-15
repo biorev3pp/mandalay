@@ -30,14 +30,18 @@
             <!-- /.card-header -->
             <div class="card-body pad">
               <div class="row">
-                <div class="col-md-12">
-                  <a href="{{url()->previous()}}" class="col-md-1 float-right d-inline btn btn-block btn-primary text-white">Back</a>
+                <div class="col-md-6">
+                  Home: <b>{{$floor->home->title}}</b> Floor: <b>{{$floor->title}}</b>
+                </div>
+                <div class="col-md-6">
+                  <a href="{{url()->previous()}}" class="col-md-2 float-right d-inline btn btn-block btn-primary text-white">Back</a>
                 </div>
               </div>
               @if($data)
                 {{Form::model($data,array('id'=>'floors_form','url'=>url('admin/features/save')))}}
                 {{Form::hidden('record_id',Crypt::encrypt($data->id))}}
-                {{Form::hidden('floor_id',$data->home->id)}}
+                {{Form::hidden('floor_id',$data->floor->id)}}
+                {{Form::hidden('image_update',$data->image,['id'=>'image_update'])}}
               @else
                 {{Form::open(array('id'=>'floors_form','url'=>url('admin/features/save')))}}
                 {{Form::hidden('floor_id',$floor->id)}}
@@ -50,18 +54,18 @@
               </div>
               <div class="row">
                 <div class="form-group col-md-6">
-                  <label for="portfolioimage">Select Floor Plan Image</label>
+                  <label for="featureimage">Select Floor Plan Image</label>
                   @if(isset($data->image))
                     @if($data->image!='' || $data->image!=null)
-                    <div class="py-2 image-preview" style="width: 600px;">
-                      <img width="100%" height="auto" src="{{asset('images/floors/'.$data->image)}}">
+                    <div class="py-2 image-preview" style="max-width: 600px;">
+                      <img width="100%" height="auto" src="{{asset('images/features/'.$data->image)}}">
                     </div>
                     @endif
                   @endif
                   <div class="clearfix"></div>
                   <div class="custom-file">
-                    {{Form::file('image',['class'=>'custom-file-input image-file','id'=>'portfolioimage'])}}
-                    <label class="custom-file-label" for="portfolioimage">@if(!isset($data->image)) Choose file @else {{$data->image}} @endif</label>
+                    {{Form::file('image',['class'=>'custom-file-input image-file','id'=>'featureimage'])}}
+                    <label class="custom-file-label" for="featureimage">@if(!isset($data->image)) Choose file @else {{$data->image}} @endif</label>
                   </div>
                 </div>
 
@@ -80,11 +84,4 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-<script>
-  $(function () {
-    // Summernote
-    $('.textarea').summernote()
-  })
-</script>
-
 @endsection

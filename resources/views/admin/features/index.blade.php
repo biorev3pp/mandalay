@@ -29,15 +29,17 @@
           <div class="card card-outline card-info">
             <div class="card-body">
               <div class="row">
-                <div class="col-md-6 pt-2">
-                  Home Name: <b>{{$floor->title}}</b>
+                <div class="col-md-6 pb-3">
+                    <a href="{{url('admin/floors/list/'.Crypt::encrypt($floor->home->id))}}" class="col-md-3 float-left d-inline btn btn-block btn-primary text-white">Back</a>
                 </div>
                 <div class="col-md-6 pb-3">
                     <a href="{{url('admin/features/create/'.Crypt::encrypt($floor->id))}}" class="col-md-3 float-right d-inline btn btn-block btn-primary text-white">Add Features</a>
-                    {{-- <a href="{{url()->previous()}}" class="col-md-3 float-right d-inline btn btn-block btn-dark text-white">Cancel</a> --}}
                 </div>
               </div>
               <div class="row">
+                <div class="col-md-6 pt-2">
+                  Home: <b>{{$floor->home->title}}</b> Floor: <b>{{$floor->title}}</b>
+                </div>
                 <div class="col-md-12">
                   <table class="table table-bordered">
                     <thead>                  

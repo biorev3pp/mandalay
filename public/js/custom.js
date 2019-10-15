@@ -10,6 +10,12 @@ $(document).ready(function (){
         var fileName = e.target.files[0].name;
         $(this).next().text(fileName);
         $(document).find('.image-preview').hide();
+        $(document).find('#image_update').val('');
+    });
+
+    //To remove error class from form elements
+    $(document).on('focus','input,select', function(e){
+        $(this).removeClass('is-invalid');
     });
 
 });

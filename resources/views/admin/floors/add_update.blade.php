@@ -37,7 +37,8 @@
               @if($data)
                 {{Form::model($data,array('id'=>'floors_form','url'=>url('admin/floors/save')))}}
                 {{Form::hidden('record_id',Crypt::encrypt($data->id))}}
-                {{Form::hidden('home_id',$data->floor->id)}}
+                {{Form::hidden('home_id',$data->home->id)}}
+                {{Form::hidden('image_update',$data->image,['id'=>'image_update'])}}
               @else
                 {{Form::open(array('id'=>'floors_form','url'=>url('admin/floors/save')))}}
                 {{Form::hidden('home_id',$home->id)}}

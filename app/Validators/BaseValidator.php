@@ -18,7 +18,7 @@ trait BaseValidator
         if($validator->fails()){
             $errors = $validator->errors();
             foreach ($errors->messages() as $key => $message) {
-                $error[] = $message[0];
+                $error[$key] = $message[0];
             }
             $this->response['status'] = false;
             $this->response['errors'] = $error;

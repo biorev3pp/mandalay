@@ -129,30 +129,6 @@ $(document).ready(function ()
         }
     });
 
-
-    /**
-     * Seo Form Validations
-     */
-    $("#seo_form").validate({
-        errorClass   : "has-error",
-        highlight    : function(element, errorClass) {
-            $(element).parents('.form-group').addClass(errorClass);
-        },
-        unhighlight  : function(element, errorClass, validClass) {
-            $(element).parents('.form-group').removeClass(errorClass);
-        },
-        rules:{ },
-        // errorPlacement: function (error, element) {
-        //     if (element.attr("id") == "music_file") {
-        //         error.insertAfter($(element).next());
-        //     }
-        // },
-        submitHandler: function (form)
-        {
-            formSubmit(form);
-        }
-    });
-
     /**
      * Seo Form Validations
      */
@@ -409,11 +385,18 @@ function formSubmit(form)
                     }
                 }else if(response.validation===false){
                     jQuery.each(response.message,function(index,value){
+                        // $("input[name='"+index+"']").addClass('is-invalid');
+                        // $("input[name='"+index+"']").after('<label id="'+index+'-error" class="has-error" for="'+index+'">'+value+'</label>');
+
+                        // $("select[name='"+index+"']").addClass('is-invalid');
+                        // $("select[name='"+index+"']").after('<label id="'+index+'-error" class="has-error" for="'+index+'">'+value+'</label>');
+
                         toastr.error(value)
                     });
                 }
                 else
                 {
+
                     toastr.error(response.message)
                 }
             }

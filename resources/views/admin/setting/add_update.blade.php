@@ -38,18 +38,6 @@
             <div class="tab-content" id="website-setting">
               <div class="tab-pane active" id="custom-content-below-home" role="tabpanel" aria-labelledby="custom-content-below-home-tab">
                 {{Form::model($setting,array('id'=>'setting_form','url'=>url('admin/settings/save')))}}
-                <div class="form-group col-md-6">
-                  <label for="portfolioimage">Website Logo Image</label>
-                  @if(isset($setting))
-                  <div class="py-2 image-preview">
-                    <img width="130" height="150" src="{{asset('images/'.$setting->logo)}}">
-                  </div>
-                  @endif
-                  <div class="custom-file">
-                    {{Form::file('logo',['class'=>'custom-file-input image-file', 'id'=>'logoimage'])}}
-                    <label class="custom-file-label" for="logoimage">@if(isset($setting)) {{$setting->logo}} @else Choose file @endif</label>
-                  </div>
-                </div>
                 <div class=" form-group col-md-12">
                   <div><label for="address">Address</label></div>
                   {!! Form::textarea('address', null, ['id' => 'address', 'rows' => 4, 'cols' => 54, 'style'=>'width:100%']) !!}
@@ -60,15 +48,7 @@
                 </div>
                 <div class="form-group col-md-12">
                   <label for="phonenumbers">Phone Numbers</label>
-                  {{Form::text('phone1',null,['class'=>'form-control','id'=>'phonenumbers','placeholder'=>'Enter Phone Number'])}}
-                </div>
-                <div class="form-group col-md-12">
-                  <label for="phonenumbers2">Quick Call Phone Number</label>
-                  {{Form::text('phone2',null,['class'=>'form-control','id'=>'phonenumbers2','placeholder'=>'Enter Quick Call Phone Number'])}}
-                </div>
-                <div class=" form-group col-md-12">
-                  <div><label for="googlemap">Google Map</label></div>
-                  {!! Form::textarea('map', null, ['id' => 'googlemap', 'rows' => 4, 'cols' => 100, 'style'=>'width:100%']) !!}
+                  {{Form::text('phone',null,['class'=>'form-control','id'=>'phonenumbers','placeholder'=>'Enter Phone Number'])}}
                 </div>
                 <div class="form-group col-md-12">
                   <div class="bg-white">

@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'Frontend\HomeController@index');
+Route::get('/get-floors/{id}', 'Frontend\HomeController@getFloorsData');
 
 Auth::routes();
 

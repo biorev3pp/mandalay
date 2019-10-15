@@ -20,17 +20,18 @@ trait HomesValidator
      */
     public function addHomeValidations(Request $request){
         try{
-            $validator = Validator::make($request->all(), 
-                [
-                    'title'        => 'required',
-                    'area'         => 'required',
-                    'bedrooms'     => 'required',
-                    'bathrooms'    => 'required',
-                    'cost'         => 'required',
-                    'garage'       => 'required',
-                    'image'        => 'mimes:jpeg,jpg,png'
-                ]
+            $validations = array(
+                'title'        => 'required',
+                'area'         => 'required',
+                'bedrooms'     => 'required',
+                'bathrooms'    => 'required',
+                'cost'         => 'required',
+                'garage'       => 'required'
             );
+            if(!isset($request->image_update) || $request->image_update==""){
+                $validations['image'] = 'required|mimes:jpeg,jpg,png';                         
+            }
+            $validator = Validator::make($request->all(),$validations);
             $this->response = $this->validateData($validator);
         }catch(\Exception $e){
             $this->response = $e->getMessage();

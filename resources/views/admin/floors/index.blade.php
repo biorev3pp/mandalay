@@ -29,14 +29,17 @@
           <div class="card card-outline card-info">
             <div class="card-body">
               <div class="row">
-                <div class="col-md-6 pt-2">
-                  Home Name: <b>{{$home->title}}</b>
+                <div class="col-md-6 pb-3">
+                    <a href="{{url('admin/homes')}}" class="col-md-3 float-left d-inline btn btn-block btn-primary text-white">Back</a>
                 </div>
                 <div class="col-md-6 pb-3">
                   <a href="{{url('admin/floors/create/'.Crypt::encrypt($home->id))}}" class="col-md-3 float-right d-inline btn btn-block btn-primary text-white">Add Floor</a>
                 </div>
               </div>
               <div class="row">
+                <div class="col-md-6 pt-2">
+                  Home Name: <b>{{$home->title}}</b>
+                </div>
                 <div class="col-md-12">
                   <table class="table table-bordered">
                     <thead>                  
@@ -54,9 +57,9 @@
                       <td>{{$i}}.</td>
                         <td>{{$record->title}}</td>
                         <td>
-                          <a href="{{url('admin/floors/edit/'.Crypt::encrypt($record->id))}}"><i class="fas fa-edit"></i> Edit</a>
-                          <a href="#" class="delete_record_btn" id="{{Crypt::encrypt($record->id)}}" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt"></i> Delete</a>
-                          <a href="{{url('admin/features/list/'.Crypt::encrypt($record->id))}}"><i class="fas fa-map"></i> Add Features</a>
+                          <a href="{{url('admin/floors/edit/'.Crypt::encrypt($record->id))}}"><i class="fas fa-edit"></i> Edit</a> 
+                          <a href="#" class="delete_record_btn" id="{{Crypt::encrypt($record->id)}}" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt"></i> Delete</a> 
+                          <a href="{{url('admin/features/list/'.Crypt::encrypt($record->id))}}"><i class="fas fa-check-square"></i> Features</a>
                         </td>
                       </tr>
                       @empty

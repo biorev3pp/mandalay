@@ -11,4 +11,8 @@ class Floor extends Model
     public function home(){
         return $this->belongsTo('App\Admin\Homes', 'home_id','id');
     }
+
+    public function features(){
+        return $this->hasMany('App\Admin\Features', 'floor_id');
+    }
 }

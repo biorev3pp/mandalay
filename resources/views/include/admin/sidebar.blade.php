@@ -12,13 +12,7 @@
           <li class="nav-item">
             <a href="{{url('admin/home')}}" class="nav-link">
               <i class="nav-icon fas fa-list-alt"></i>
-              <p>Mandalay Dashboard</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{url('/')}}" class="nav-link" target="_blank">
-              <i class="nav-icon fas fa-list-alt"></i>
-              <p>Visit site</p>
+              <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item">

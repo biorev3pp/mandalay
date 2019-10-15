@@ -37,6 +37,7 @@
               @if($data)
                 {{Form::model($data,array('id'=>'portfolio_form','url'=>url('admin/homes/save')))}}
                 {{Form::hidden('record_id',Crypt::encrypt($data->id))}}
+                {{Form::hidden('image_update',$data->image,['id'=>'image_update'])}}
               @else
                 {{Form::open(array('id'=>'portfolio_form','url'=>url('admin/homes/save')))}}
               @endif

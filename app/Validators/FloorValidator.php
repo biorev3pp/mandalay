@@ -20,10 +20,13 @@ trait FloorValidator
      */
     public function addFloorValidations(Request $request){
         try{
-            $validator = Validator::make($request->all(), [
+            $validations = array(
                 'title'         => 'required',
-                'image'         => 'mimes:jpeg,jpg,png'
-            ]);
+            );
+            if(!isset($request->image_update) || $request->image_update==""){
+                $validations['image'] = 'required|mimes:jpeg,jpg,png';                         
+            }
+            $validator = Validator::make($request->all(),$validations);
             $this->response = $this->validateData($validator);
         }catch(\Exception $e){
             $this->response = $e->getMessage();

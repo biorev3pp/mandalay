@@ -4,12 +4,12 @@
       <div class="header sticky-top">
           <div class="header-left">
               <ul class="nav nav-tabs">
-                <li class="nav-item">
+                <li class="nav-item hometab">
                   <a class="nav-link active" data-toggle="tab" href="#floorplan">
                       <img src="{{asset('frontend/images/fp-icon.png')}}"/><br>
                       Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item floortab">
                   <a class="nav-link" data-toggle="tab" href="#Exteriors">
                       <img src="{{asset('frontend/images/ext-icon.png')}}"/><br>
                       Floor</a>
@@ -33,8 +33,10 @@
                 <div id="floorplan" class="tab-pane active">
                     <div class="gallery">
                         <ul>
+                            @php $i=0; @endphp 
                             @forelse($homeList as $home)
-                            <li>
+                            @php $i++; @endphp
+                            <li id="{{$i}}" data-home-id="{{Crypt::encrypt($home->id)}}" class="home_list">
                                 <img src="{{asset('images/homes/'.$home->image)}}"/>
                                 <h4>{{$home->title}}</h4>
                             </li>
@@ -44,100 +46,51 @@
                     </div>
                 </div>
                 <div id="Exteriors" class="container tab-pane fade">
-                    <div id="accordion">
-                        @php $i=0; @endphp 
-                        @forelse($defaultHome->floors as $floor)
-                          @php $i++; @endphp
-                          <div class="card-panel">
-                            <a class="collapsed card-link" data-toggle="collapse" href="#collapse{{$i}}">
-                              {{$floor->title}}
-                            </a>
-                            <!-- <div id="collapse{{$i}}" class="collapse show" data-parent="#accordion">
-                              <h2>FlexDesign</h2>
-                                <ul>
-                                  <li>Den Office
-                                      <label class="switch">
-                                          <input type="checkbox">
-                                          <span class="slider round"></span>
-                                      </label>
-                                  </li>
-                                  <li>Door
-                                      <label class="switch">
-                                          <input type="checkbox">
-                                          <span class="slider round"></span>
-                                      </label>
-                                  </li>
-                                  <li>Fire place
-                                      <label class="switch">
-                                          <input type="checkbox">
-                                          <span class="slider round"></span>
-                                      </label>
-                                  </li>
-                                  <li>Gas
-                                      <label class="switch">
-                                          <input type="checkbox">
-                                          <span class="slider round"></span>
-                                      </label>
-                                  </li>
-                                  <li>Great room
-                                      <label class="switch">
-                                          <input type="checkbox">
-                                          <span class="slider round"></span>
-                                      </label>
-                                  </li>
-                                  <li>Kitchen
-                                      <label class="switch">
-                                          <input type="checkbox">
-                                          <span class="slider round"></span>
-                                      </label>
-                                  </li>
-                                  <li>Shower
-                                      <label class="switch">
-                                          <input type="checkbox">
-                                          <span class="slider round"></span>
-                                      </label>
-                                  </li>
-                                  <li>Sliding door
-                                      <label class="switch">
-                                          <input type="checkbox">
-                                          <span class="slider round"></span>
-                                      </label>
-                                  </li>
-                                  <li>Toilet
-                                      <label class="switch">
-                                          <input type="checkbox">
-                                          <span class="slider round"></span>
-                                      </label>
-                                  </li>
-                                  <li>Lorem
-                                      <label class="switch">
-                                          <input type="checkbox">
-                                          <span class="slider round"></span>
-                                      </label>
-                                  </li>
-                                  <li>Lorem Ipsum
-                                      <label class="switch">
-                                          <input type="checkbox">
-                                          <span class="slider round"></span>
-                                      </label>
-                                  </li>
-                              </ul>
-                            </div> -->
-                          </div>
-                        @empty
-                        @endforelse
+                  @php $i=0; @endphp 
+                  @forelse($homeList as $home)
+                  @php $i++; @endphp
+                  <div id="accordion" class="home_floors @if($i!=1) d-none @endif" data-floor-home-id="{{$i}}">
+                    @php $j=0; @endphp 
+                    @forelse($home->floors as $floor)
+                    @php $j++; @endphp
+                    <div class="card-panel" id="{{$j}}">
+                      <a class="collapsed card-link" data-toggle="collapse" href="#collapse{{$j}}">
+                        {{$floor->title}}
+                      </a>
+                      <div id="collapse{{$j}}" class="collapse show" data-parent="#accordion">
+                        <ul>
+                          @forelse($floor->features as $feature)
+                            <li>{{$feature->title}}
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </li>
+                          @empty
+                          @endforelse
+                        </ul>
                       </div>
-                    
-                    <div class="floor-plan-btn">
-                        <button type="button" class="btn btn-finish">Finish & Print</button>
-                    </div>                    
+                    </div>
+                    @empty
+                    @endforelse  
+                  </div>  
+                  @empty
+                  @endforelse  
+                  <div class="floor-plan-btn">
+                      <button type="button" class="btn btn-finish">Finish & Print</button>
+                  </div>                    
                 </div>
               </div>
           </div>
           <div class="right-cont">
-              <div class="plan-container text-center">
-                  <img src="{{asset('images/homes/'.$defaultHome->image)}}"/>
-              </div>
+            @php $i=0; @endphp 
+            @forelse($homeList as $home)
+            @php $i++; @endphp
+            <div id="{{$i}}" class="plan-container home_image_full text-center @if($i!=1) d-none @endif">
+              <img src="{{asset('images/homes/'.$home->image)}}"/>
+            </div>
+            @empty
+            @endforelse  
           </div>
       </div>
 @endsection

@@ -33,6 +33,7 @@ class FloorController extends Controller
         $floors = Floor::where('home_id',$homeid)->get();
         $this->data['home'] = $home;
         $this->data['floors'] = $floors;
+
         return view('admin.floors.index')->with($this->data);
     }
 
@@ -53,17 +54,18 @@ class FloorController extends Controller
         return view('admin.floors.add_update')->with($this->data);
     }
 
-    public function save(Request $request){        
+    public function save(Request $request){ 
         try{
             $validation = $this->addFloorValidations($request);
             if($validation['status']==false){
                 return response($this->getValidationsErrors($validation));
-            }
+            }     
+
             if(isset($request->record_id) && $request->record_id!=''){
                 $id = $this->decrypt($request->record_id);
                 $floor = Floor::whereId($id)->first();
                 DB::beginTransaction();
-                $input = $request->except(['_token','record_id']);
+                $input = $request->except(['_token','record_id','image_update']);
                 if($request->image){
                     // Delete old image file
                     if($floor->image!='' || $floor->image!=null || !empty($floor->image)){
