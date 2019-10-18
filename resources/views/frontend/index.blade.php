@@ -53,11 +53,11 @@
                     @php $j=0; @endphp 
                     @forelse($home->floors as $floor)
                     @php $j++; @endphp
-                    <div class="card-panel" id="{{$j}}">
-                      <a class="collapsed card-link" data-toggle="collapse" href="#collapse{{$j}}">
+                    <div class="card-panel">
+                      <a class="collapsed card-link floorList" id="{{$floor->id}}" data-toggle="collapse" href="#collapse{{$i}}{{$j}}">
                         {{$floor->title}}
                       </a>
-                      <div id="collapse{{$j}}" class="collapse show" data-parent="#accordion">
+                      <div id="collapse{{$i}}{{$j}}" class="collapse" data-parent="#accordion">
                         <ul>
                           @forelse($floor->features as $feature)
                             <li>{{$feature->title}}
@@ -91,6 +91,9 @@
             </div>
             @empty
             @endforelse  
+            <div class="plan-container floor_image_view text-center d-none">
+                <img src=""/>
+            </div>
           </div>
       </div>
 @endsection

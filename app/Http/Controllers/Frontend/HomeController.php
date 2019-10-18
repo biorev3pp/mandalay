@@ -20,11 +20,11 @@ class HomeController extends Controller
     	return view('frontend.index')->with($this->data);
     }
 
-    public function getFloorsData(Request $request, $id){
+    public function getFloorsData(Request $request){
     	if($request->ajax()){
-    		return 'AJAX';
-        	// $homeId = Crypt::decrypt($id);    
-        	// Floor::where('home_id',$homeId)->get();	
+        	$data = Floor::where('id',$request->floorid)->first();	
+            $data->image =  asset('/images/floors/'.$data->image);
+            return response()->json($data);
         }
         return "Unauthorised Access !!!";
     }
