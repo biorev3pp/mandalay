@@ -1,388 +1,55 @@
-body{
-    color: #353535;
-    font-family: 'Comfortaa', cursive;
-}
-a{
-    color: #8dc63f;
-}
-a:hover{
-    color: #009fc3;
-}
-img{
-    max-width: 100%;
-    height: auto;
-}
-h1,h2,h3,h4,h5,h6{
-    font-family: 'HighTowerText-Reg';
-}
-.wrapper{
-    padding-bottom: 40px;
-}
-.switch {
-  position: relative;
-  float: right;
-  width: 42px;
-  height: 18px;
-    margin: 2px 0 0 0;
-    cursor: pointer;
-}
 
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #bec6cb;
-  -webkit-transition: .4s;
-  transition: .4s;
+.sidebar .nav-tabs .nav-item {
+    padding: 0 !important;
 }
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 10px;
-  width: 10px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #8dc63f;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #8dc63f;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(24px);
-  -ms-transform: translateX(24px);
-  transform: translateX(24px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-.header{
-    background: #009fc3;
-    max-height: 100px;
-}
-.logo {
-    display: inline-block;
-    margin: 25px 0;
-}
-.logo img{
-    max-height: 50px;
-}
-.header-left {
-    float: left;
-    border-right: 1px solid #b7c5cb;
-    width: 350px;
-}
-.header-right{
-    background: url(../images/header-bg.png) no-repeat 100% 0;
-    text-align: center;
-}
-.print-page .header{
-    background: #009fc3 url(../images/header-bg.png) no-repeat 100% 0;
-}
-.header-left .nav-tabs{
-    border:none;
-}
-.header-left .nav li {
-    text-align: center;
-    float: left;
-    width: 50%;
-}
-.header-left .nav li a {
-    color: #fff;
-    font-size: 20px;
-    border:none;
-    padding: 18px 20px;
-    border-radius: 0;
-    font-family: 'HighTowerText-Reg';
-}
-.header-left .nav li a img {
-    max-height: 29px;
-    margin-bottom: 5px;
-}
-.header-left .nav li a.nav-link.active {
-    background: #0069aa;
-    color: #fff;
-    position: relative;
-}
-.header-left .nav li a.nav-link.active:after{
-    background: #fff;
-    content: "";
-    width: 48px;
-    height: 2px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-}
-.plan-name {
-    position: absolute;
-    right: 20px;
-    bottom: 10px;
-    color: #fff;
-    font-size: 20px;
-    font-family: 'HighTowerText-Reg';
-}
-.left-cont {
-    position: fixed;
-    left: 0;
-    padding-bottom: 250px;
-    width: 350px;
-    height: 100%;
-    top: 100px;
-    background: #373737;
-    border-right: 1px solid #bec6cb;
-    transition: all ease 0.5s;
-}
-.close-menu .left-cont {
-    left: -350px;
-}
-.right-cont {
-    padding-left: 350px;
-    transition: all ease 0.5s;
-    width: 100%;
-    display: inline-block;
-}
-.close-menu .right-cont {
-    padding-left: 0;
-}
-.tab-title {
-    font-size: 24px;
-    color: #fff;
-    padding: 10px 20px;
-}
-.card-link {
-    background: #dbdbdb;
+.sidebar .nav-tabs .nav-link.active {
+    background: none;
     border: none;
-    width: 100%;
-    text-align: left;
-    padding: 8px 20px;
-    font-size: 18px;
-    color: #353535;
-    border-bottom: 1px solid #c0c8cd;
-    font-family: 'HighTowerText-Reg';
-    display: block;
-    width: 100%;
-}
-div#accordion {
-    background: #fff;
-    overflow-y: auto;
-    max-height: calc(96vh - 15rem);
-    width: 100%;
-    position: absolute;
-    left: 0;
-}
-#accordion h2 {
-    font-size: 16px;
-    color: #353535;
-    padding: 16px 20px;
-    font-weight: normal;
-}
-#accordion ul{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-#accordion ul li {
-    padding: 14px 20px 15px 45px;
-    display: inline-block;
-    width: 100%;
-    border-bottom: 1px solid #bec6cb;
-    background: url(../images/li-bg.png) no-repeat 20px 17px / 15px auto;
-    font-size: 14px;
-    color: #737373;
-}
-.floor-plan-btn{
-    position: fixed;
-    bottom: 40px;
-    width: 350px;
-    text-align: center;
-    padding: 25px 0;
-}
-.btn-finish{
-    background: #009fc3;
-    font-size: 18px;
-    color: #fff;
-    text-align: center;
-    width: 100%;
-    max-width: 200px;
-    border-radius: 2px;
-}
-button.nav-toggle {
-    background:#009fc3 url(../images/arrow-left.png) no-repeat center center;
-    border: none;
-    width: 32px;
-    height: 70px;
-    right: -32px;
-    position: absolute;
-    top: 40%;
-    transform: translate(0, -60%);
-    font-size: 0px;
-    cursor: pointer;
-}
-.close-menu button.nav-toggle{
-    background:#009fc3 url(../images/arrow-right.png) no-repeat center center;
-}
-.info-area{
-    margin: 0 -15px;
-    border-right: 1px solid #c0c8cd;
-}
-.status-box {
-    background: #373737;
-    color: #fff;
-    padding: 10px 20px 15px 20px;
-}
-.status-box h2 {
-    font-size: 28px;
-    color: #8dc63f;
-    margin-bottom: 5px;
-}
-.status-box p{
-    font-size: 14px;
-    font-style: italic;
-    color: #fff;
-    margin: 0;
-}
-ul.share-options {
-    float: right;
-    margin: 10px 0 0 0;
-    list-style: none;
-    padding: 0;
-}
-ul.share-options li {
-    display: inline-block;
-    margin: 0 5px;
-}
-ul.share-options li a {
-    background: #fff;
-    border-radius: 50%;
-    padding: 6px 0 0 0;
-    width: 40px;
-    height: 40px;
-    display: block;
-    text-align: center;
-}
-.custom-heading {
-    margin: 0 0 20px 0px;
-    background: #dbdbdb;
-    font-size: 20px;
-    padding: 10px 20px;
-    border-bottom: 1px solid #c0c8cd;
-    font-family: 'HighTowerText-Reg';
-}
-.info-table{
-    padding: 0 20px;
-}
-.info-table th {
-    background: #373737;
-    color: #fff;
-    font-size: 18px;
-    border-color: #c5c5c5;
-}
-.info-table td {
-    border-color: #c5c5c5;
-    font-size: 14px;
-    color: #353535;
-}
-.note-txt {
-    background: #373737;
-    font-size: 14px;
-    color: #fff;
-    padding: 20px;
-}
-.cont-box {
-    padding: 0 20px;
-    margin-bottom: 20px;
-}
-.cont-box label {
-    font-weight: 700;
-}
-ul.contact-info {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-ul.contact-info li {
-    display: inline-block;
     vertical-align: top;
-    margin-right: 40px;
-    font-size: 14px;
 }
-ul.contact-info li img{
-    margin:4px 10px 0 0;
-}
-ul.contact-info li span {
+.sidebar .nav-item ul li {
+    width: auto;
+    padding: 0 !important;
     display: inline-block;
+    margin: 0 !important;
 }
-.data-area {
-    margin-top: 20px;
-    padding-left: 70px;
-}
-.house-img {
-    margin-bottom: 35px;
-    text-align: center;
-}
-.gallery ul{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-.gallery ul li{
-    display: block;
-    width: 100%;
-    border-bottom: 1px solid #ccc;
-    position: relative;
-}
-.gallery ul li h4 {
-    color: #fff;
-    text-align: center;
-    font-size: 18px;
-    position: absolute;
-    bottom: 0;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    z-index: 9;
-    background: rgba(0,0,0,0.5);
-    padding: 10px;
-}
-
-footer{
-    background: #313131;
-    color: #fff;
-    font-size: 14px;
+.sidebar li.nav-item ul {
+    border: none;
     padding: 10px 0;
 }
-.floor_image_view {
+.sidebar .nav-item {
     position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
 }
-
-.floor_image_view img{
-    position: absolute;
-    top: 0;
-    left: 0;
+.sidebar .nav-item ul li {
+    width: auto;
+}
+.sidebar .nav-item .nav-link {
+    width: auto !important;padding: 0 10px;
+}
+ul#accordionSidebar {
+    display: block;
+}
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    border: 1px solid transparent;
+}
+.card-panel a.card-link.floorList {
+    color: #fff;
+    /* border: 1px solid #ccc; */
+    width: 100%;
+    display: block;
+    padding: 10px;
+    margin: 10px 0;
+}
+.text-center.d-none.d-md-inline {
+    display: block !important;
+}
+button.btn.btn-finish {
+    color: rgba(255,255,255,.4);
+}
+.card-panel ul li {
+    color: rgba(255,255,255,.4);
 }
