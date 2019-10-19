@@ -377,3 +377,12 @@ footer{
     font-size: 14px;
     padding: 10px 0;
 }
+.floor_image_view {
+    position: relative;
+}
+
+.floor_image_view img{
+    position: absolute;
+    top: 0;
+    left: 0;
+}

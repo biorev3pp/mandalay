@@ -13,6 +13,7 @@
 
 Route::get('/', 'Frontend\HomeController@index');
 Route::post('/get-floor-data', 'Frontend\HomeController@getFloorsData');
+Route::post('/get-feature-data', 'Frontend\HomeController@getFeatureData');
 
 Auth::routes();
 
@@ -46,6 +47,7 @@ Route::prefix('admin')->group(function(){
     Route::get('features/edit/{id}', 'Admin\FeaturesController@edit');
     Route::post('features/save', 'Admin\FeaturesController@save');
     Route::post('features/delete', 'Admin\FeaturesController@delete');
+    Route::get('set-features/{id}', 'Admin\FeaturesController@setFeatureOption');
 
     //Settings Routes
     Route::resource('settings', 'Admin\SettingController');

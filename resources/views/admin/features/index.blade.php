@@ -35,6 +35,9 @@
                 <div class="col-md-6 pb-3">
                     <a href="{{url('admin/features/create/'.Crypt::encrypt($floor->id))}}" class="col-md-3 float-right d-inline btn btn-block btn-primary text-white">Add Features</a>
                 </div>
+                <!-- <div class="col-md-3 pb-3">
+                    <a href="{{url('admin/set-features/'.Crypt::encrypt($floor->id))}}" class="col-md-12 float-right d-inline btn btn-block btn-primary text-white">Set Features</a>
+                </div> -->
               </div>
               <div class="row">
                 <div class="col-md-6 pt-2">

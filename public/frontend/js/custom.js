@@ -37,13 +37,17 @@ $(document).ready(function (){
             }
         });
         $(document).find('.floor_image_view').addClass('d-none');
-
     });
 
     $(document).on('click','.floorList', function(e){
         let floorid = $(this).attr('id');
         localStorage.setItem('floor_id',floorid);
         let homeid = localStorage.getItem('home_id');
+        $(document).find('.featureBtn').each(function(i,obj){
+            if($(obj).is(':checked')){
+                $(obj).trigger("click");
+            }        
+        });
         $.ajax({
             url         : app_base_url+'/get-floor-data',
             type        : "post",
@@ -63,6 +67,36 @@ $(document).ready(function (){
                 $(document).find('.floor_image_view img').attr('src',response.image);
             }
         });
+    });
+
+    $(document).on('click','.featureBtn', function(e){
+        let featureId = $(this).attr('id');
+        if($(this).is(':checked')){
+            $.ajax({
+            url         : app_base_url+'/get-feature-data',
+            type        : "post",
+            data        : {'featureid':featureId},
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            beforeSend  : function () {
+                $("#preloader").show();
+            },
+            complete: function () {
+                $("#preloader").hide();
+            },
+            success: function (response) {
+                let featureImage = '<img src="'+response.image+'" id="'+featureId+'">'
+                $(document).find('.floor_image_view').append(featureImage);
+            }
+        });    
+        }else{
+            $(document).find('.floor_image_view img').each(function(i,obj){
+                if($(obj).attr('id')===featureId){
+                    $(obj).remove();
+                }
+            });
+        }
     });
 });
 

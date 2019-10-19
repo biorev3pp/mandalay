@@ -149,4 +149,14 @@ class FeaturesController extends Controller
             return response($this->getErrorResponse($e->getMessage()));
         }
     }
+
+    public function setFeatureOption($id){
+        $floorid = Crypt::decrypt($id);
+        $floor = Floor::find($floorid);
+        $features = Features::where('floor_id',$floorid)->pluck('title','id');
+        $this->data['data'] = '';
+        $this->data['floor'] = $floor;
+        $this->data['features'] = $features;
+        return view('admin.features.set_features_option')->with($this->data);
+    }
 }

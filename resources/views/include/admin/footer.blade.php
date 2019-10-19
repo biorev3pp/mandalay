@@ -33,6 +33,7 @@
 <!-- daterangepicker -->
 <script src="{{asset('asset/plugins/moment/moment.min.js')}}"></script>
 <script src="{{asset('asset/plugins/daterangepicker/daterangepicker.js')}}"></script>
+<script src="{{asset('asset/plugins/select2/js/select2.full.min.js')}}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{asset('asset/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
 <!-- Summernote -->
@@ -47,5 +48,13 @@
 <script src="{{asset('js/form-validate.js')}}"></script>
 <script src="{{asset('js/jquery.validate.js')}}"></script>
 <script src="{{asset('js/custom.js')}}"></script>
+<script>
+	 //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    });
+	//Initialize Select2 Elements
+    $('.select2').select2();
+</script>
 </body>
 </html>

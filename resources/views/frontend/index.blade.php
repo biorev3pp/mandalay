@@ -62,7 +62,7 @@
                           @forelse($floor->features as $feature)
                             <li>{{$feature->title}}
                                 <label class="switch">
-                                    <input type="checkbox">
+                                    <input type="checkbox" id="{{$feature->id}}" class="featureBtn">
                                     <span class="slider round"></span>
                                 </label>
                             </li>
