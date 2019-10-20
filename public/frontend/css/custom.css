@@ -53,3 +53,11 @@ button.btn.btn-finish {
 .card-panel ul li {
     color: rgba(255,255,255,.4);
 }
+.plan-container {
+    position: relative;
+}
+.feature-content {
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+}
