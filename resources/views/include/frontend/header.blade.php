@@ -1,18 +1,65 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      
-      <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,500&display=swap" rel="stylesheet">
-      
-      <link rel="stylesheet" href="{{asset('frontend/css/custom.css')}}">
-      <link rel="stylesheet" href="{{asset('frontend/css/fonts.css')}}">
 
-    <title>Mandalay</title>
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
+  <title>Mandalay Homes</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{{asset('frontend/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="{{asset('frontend/css/sb-admin-2.css')}}" rel="stylesheet">
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light topbar static-top shadow bg-primary sidebar-dark">
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item text-nowrap">
+              <a class="nav-link" href="#"><img src="{{asset('frontend/img/logoRev.png')}}" width="300"></a>
+            </li>
+          </ul>
+
+          <!-- Topbar Search -->
+
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item no-arrow d-flex align-items-center justify-content-center">
+                    <a href="{{url('admin/login')}}" class="btn btn-success btn-icon-split ">
+                <span class="icon text-white-50">
+                  <i class="fas fa-sign-out-alt"></i>
+                </span>
+                <span class="text px-4">Login</span>
+              </a>
+            </li>
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->

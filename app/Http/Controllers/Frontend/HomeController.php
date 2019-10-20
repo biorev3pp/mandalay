@@ -21,6 +21,18 @@ class HomeController extends Controller
     	return view('frontend.index')->with($this->data);
     }
 
+    public function finalHomePage(Request $request){
+        $features = $request->feature_id;
+        $home = Homes::with(['floors'=>function($q) use ($features){
+            $q->with('features')->whereHas('features',function($w) use ($features){
+                $w->whereIn('id',$features);
+            });
+        }])->where('id',$request->home_id)->first();
+        $this->data['home'] = $home;
+        $this->data['features'] = $features;
+        return view('frontend.final')->with($this->data);
+    }
+
     public function getFloorsData(Request $request){
     	if($request->ajax()){
         	$data = Floor::where('id',$request->floorid)->first();	
