@@ -54,6 +54,7 @@
   <script src="{{asset('asset/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
   <!-- Page level custom scripts -->
   <script src="{{asset('asset/js/demo/datatables-demo.js')}}"></script>
+  <script src="{{asset('js/jquery.toast.js')}}"></script>
   <script src="{{asset('js/form-validate.js')}}"></script>
   <script src="{{asset('js/jquery.validate.js')}}"></script>
   <script src="{{asset('js/custom.js')}}"></script>
