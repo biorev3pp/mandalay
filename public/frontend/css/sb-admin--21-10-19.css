@@ -9962,7 +9962,7 @@ a:focus {
 
 .topbar .topbar-divider {
   width: 0;
-  /*border-right: 1px solid #e3e6f0;*/
+  border-right: 1px solid #e3e6f0;
   height: calc(4.375rem - 2rem);
   margin: auto 1rem;
 }
@@ -10481,7 +10481,7 @@ a:focus {
 .btn-icon-split {
   padding: 0;
   overflow: hidden;
-  /*display: inline-flex;*/
+  display: inline-flex;
   align-items: stretch;
   justify-content: center;
 }
@@ -11194,25 +11194,14 @@ body.sidebar-toggled footer.sticky-footer {
 
 .custom-scroll {
   float: left;
-  height: 63vh;
+  height: 450px;
   overflow-y: scroll;
   max-width: 100%;
   overflow-x: hidden;
   transition: all 0.5s ease;
   background: #069;
 }
-.bg-white.pt-4.mb-4{margin-bottom:0 !important;}
-.home_image_footer h5 {
-	font-size: 1rem;
-	margin-left: 0.5rem;
-	position: relative;
-	top: 10px;
-}
-.customNav h5 {
-	font-size: 16px;
-	font-weight: 400;
-	margin-top: 10px;
-}
+
 .custom-scroll::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
@@ -11379,5 +11368,5 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 .fixed-bottom.bottom-up-40 {
-  bottom: 70px;
+  bottom: 41px;
 }
