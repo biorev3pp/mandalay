@@ -10,7 +10,9 @@
                <h6 class="m-0 font-weight-bold text-primary">Home <span class="text-success">{{$floor->home->title}} </span> | Floor <span class="text-success">{{$floor->title}}</span>
                </h6>
                <div class="two_btn_DIV">
-                  <a href="{{url('admin/features/create/'.Crypt::encrypt($floor->id))}}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-map fa-sm text-white-50 pr-2"></i>Add Features</a>
+                  <a href="{{url('admin/features/create/'.Crypt::encrypt($floor->id))}}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-check fa-sm text-white-50 pr-2"></i>Add Features</a>
+
+                  <a href="{{url('admin/features/set-acl/'.Crypt::encrypt($floor->id))}}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-map fa-sm text-white-50 pr-2"></i>ACL Settings</a>
 
                   <a href="{{url('admin/floors/list/'.Crypt::encrypt($floor->home->id))}}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-arrow-left fa-sm text-white-50 pr-2"></i>Back</a>
                </div>

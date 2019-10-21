@@ -48,7 +48,7 @@ Route::prefix('admin')->group(function(){
     Route::get('features/edit/{id}', 'Admin\FeaturesController@edit');
     Route::post('features/save', 'Admin\FeaturesController@save');
     Route::post('features/delete', 'Admin\FeaturesController@delete');
-    Route::get('set-features/{id}', 'Admin\FeaturesController@setFeatureOption');
+    Route::get('features/set-acl/{id}', 'Admin\FeaturesController@setACLOptions');
 
     //Settings Routes
     Route::resource('settings', 'Admin\SettingController');
