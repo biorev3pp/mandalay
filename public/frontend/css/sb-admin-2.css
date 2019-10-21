@@ -11381,3 +11381,68 @@ body.sidebar-toggled footer.sticky-footer {
 .fixed-bottom.bottom-up-40 {
   bottom: 70px;
 }
+
+
+/* GHanshyam */
+.hide{
+  display: none !important;
+}
+.show{
+  display: block !important;
+}
+#mortagC .form-group .overlay-text{
+  position:relative;
+  float: right;
+  top:-28px;
+  right:8px;
+}
+.mc_field{
+  border-right:#cacaca solid 1px;
+}
+#mortagC .form-group .row .ot_prt1{
+  position: absolute;
+  left: 70%;
+  margin-top: 8px; 
+}
+.mortage-details{
+  padding:0 1.5em;
+}
+.mortage-details .circle-div{
+  text-align: -webkit-center;
+  border-bottom:#cacaca solid 1px;
+  padding: 2em 0;
+}
+.mortage-details .circle-div .estimate
+{
+  position: relative;
+  top:40%;
+  font-size: 28px;
+  font-weight: bold;
+}
+.mortage-details .circle-div .circle{
+  height:175px;
+  width: 175px;
+  text-align: center;
+  border-radius: 50%;
+  border:#0079e1 solid 8px;
+}
+.mortage-result .price-header{
+  margin:8px 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.mortage-result .price-text-big{
+    margin: 8px 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+    color: #7cc035;
+}
+.mortage-result .price-text {
+  font-size:14px;
+}
+.mortage-result .price-text  .price_ds,
+.mortage-result .price-text  .price_bp {
+  float:right;
+}

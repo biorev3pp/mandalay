@@ -20,7 +20,8 @@
       top: 0;
     }
   </style>
-        <!-- Begin Page Content -->
+        <!-- Begin Page Co    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">    
+ntent -->
         <div class="container-fluid bg-white pt-4 mb-4">
 
           <!-- Page Heading -->
@@ -166,15 +167,16 @@
                   {{$home->cost}}</span>
               </div>
             </div>
-            <a href="#" class="btn btn-success btn-icon-split btn-lg mr-auto ml-3">
+            <button type="button" class="btn btn-success btn-icon-split btn-lg mr-auto ml-3" data-toggle="modal" data-target="#mortageModal">
               <span class="icon text-white-50">
                 <i class="fas fa-car-alt"></i>
               </span>
-              <span class="text">Mortrage </span>
-            </a>
+              <span class="text">Mortrage </span> 
+            </button>
+
             {{Form::open(array('url'=>url('home-final')))}}  
             {{Form::hidden('home_id',$defaultHome->id)}}
-            <button type="submit" href="#" class="btn btn-primary btn-icon-split btn-lg ml-auto">
+            <button type="submit" href="#" class="btn btn-primary btn-icon-split btn-lg ml-auto" >
               <span class="icon text-white-50">
                 <i class="fas fa-chevron-right"></i>
               </span>
@@ -185,5 +187,93 @@
           @empty
           @endforelse
         </footer>
+        <!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="mortageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-white" style="background:#2a2c30;">
+        <h5 class="modal-title">Mortgage Calculator</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="mortagC">
+        <div class="row">
+          <div class="col-md-6 mc_field">
+              <div class="form-group">
+                <label for="">Home price</label>
+                <input type="text" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label class="d-block">Down payment</label>
+                <div class="row" style="padding:0 0.8em;">
+                  <input type="text" class="form-control col-sm-10">
+                  <input type="text"  class="form-control col-sm-2">
+                </div>
+                <div class="overlay-text">%</div>
+              </div>
+              <div class="form-group">
+                <label for="">Loan program</label>
+                <input type="text" class="form-control">
+                <div class="overlay-text">%</div>
+              </div>
+              <div class="form-group">
+                <label for="">Interest rate <a href="Javascript:void(0)" id="adv_calc" class=" text-success">Advanced</a></label>
+                <input type="text" class="form-control">
+                <div class="overlay-text">%</div>
+              </div>
+             
+              <div class="advance_calc hide">
+                  <div class="form-group">
+                      <label class="ui-switch ui-switch-success ui-switch-sm mb-0">
+                        <input type="checkbox" id="1" class="featureBtn"><i></i>
+                        Include PMI <span class="fa fa-question-circle"></span>
+                      </label>
+                    </div>
+                    <div class="form-group">
+                      <label class="ui-switch ui-switch-success ui-switch-sm mb-0">
+                        <input type="checkbox" id="1" class="featureBtn"><i></i>
+                        Include taxes/insurance
+                      </label>
+                    </div>
+                <div class="form-group">
+                  <label for="">Property tax <i class="fa fa-question-circle"></i></label>
+                  <div class="row" style="padding:0 0.8em;">
+                    <input type="text" class="form-control col-sm-10">
+                    <div class="ot_prt1">/year</div>
+                    <input type="text"  class="form-control col-sm-2">
+                  </div>
+                  <div class="overlay-text">%</div>
+                </div>
+                <div class="form-group">
+                  <label for="">Home insurance <i class="fa fa-question-circle"></i></label>
+                  <input type="text" class="form-control">
+                  <div class="overlay-text">/Year</div>
+                </div>
+                <div class="form-group">
+                  <label for="">HOA dues <i class="fa fa-question-circle"></i></label>
+                  <input type="text" class="form-control">
+                  <div class="overlay-text">/Month</div>
+                </div>
+              </div>
+          </div>
+          <div class="col-md-6 mortage-details">
+              <div class="circle-div"><div class="circle"><span class="estimate">$ 1,280</span></div></div>
+              <div class="mortage-result">
+                <div class="price-header">TOTAL PRICE OF HOME</div>
+                <div class="price-text-big">$ 300000</div>
+                <div class="price-text">Base Price        <span class='price_bp'>$ 300000</span></div>
+                <div class="price-text">Designs Selected  <span class='price_ds'>$ 1,519</span></div>
+                <div class="price-header">MONTHLY ESTIMATED PAYMENT</div>
+                <div class="price-text-big">$ 1280</div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
         
