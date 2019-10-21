@@ -1,3 +1,29 @@
+var toastr = {
+  success : function(success_message,delayTime = 3000) {
+    $.toast({
+          heading             : 'Success',
+          text                : success_message,
+          loader              : true,
+          loaderBg            : '#fff',
+          showHideTransition  : 'fade',
+          icon                : 'success',
+          hideAfter           : delayTime,
+          position            : 'top-right'
+      });
+  },
+  error : function(error_message,delayTime = 3000) {
+    $.toast({
+          heading             : 'Error',
+          text                : error_message,
+          loader              : true,
+          loaderBg            : '#fff',
+          showHideTransition  : 'fade',
+          icon                : 'error',
+          hideAfter           : delayTime,
+          position            : 'top-right'
+      });
+  }
+}
 $(document).ready(function ()
 {
     var minPhoneLen = 10;
@@ -18,7 +44,7 @@ $(document).ready(function ()
     $.validator.addMethod("notEqual", function(value, element, param) {
       return this.optional(element) || value != param;
     }, "This field is required"),
-    $.validator.addMethod("lettersonly", function(value, element) 
+    $.validator.addMethod("lettersonly", function(value, element)
     {
       return this.optional(element) || /^[a-z," "]+$/i.test(value);
     }, "Numbers are not allowed in this field.");
@@ -314,13 +340,13 @@ function formSubmit(form)
             $("#preloader").hide();
             $("input[type=submit]").removeAttr("disabled");
             var delayTime=0;
-            toastr.clear();
+            $.toast().reset('all');
             if(response.delayTime){
                 delayTime = response.delayTime;
             }
             if (response.success)
             {
-                toastr.success(response.message)
+                toastr.success(response.message,delayTime)
                 if( response.updateRecord)
                 {
                     $.each(response.data, function( index, value )
@@ -391,13 +417,13 @@ function formSubmit(form)
                         // $("select[name='"+index+"']").addClass('is-invalid');
                         // $("select[name='"+index+"']").after('<label id="'+index+'-error" class="has-error" for="'+index+'">'+value+'</label>');
 
-                        toastr.error(value)
+                        toastr.error(value,delayTime)
                     });
                 }
                 else
                 {
 
-                    toastr.error(response.message)
+                    toastr.error(response.message,delayTime)
                 }
             }
 
@@ -451,4 +477,3 @@ function formSubmit(form)
         }
     });
 }
-
