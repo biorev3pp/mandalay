@@ -12,7 +12,7 @@
       <hr class="sidebar-divider my-0">
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{url('admin/homes')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -47,29 +47,13 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Manage your users easily</h6>
-            <a class="collapse-item" href="utilities-color.html"><i class="fas fa-users"></i> View your current
+            <a class="collapse-item" href="#"><i class="fas fa-users"></i> View your current
               Users</a>
-            <a class="collapse-item" href="utilities-border.html"><i class="fas fa-user-plus"></i> Add a new User</a>
+            <a class="collapse-item" href="#"><i class="fas fa-user-plus"></i> Add a new User</a>
             
           </div>
         </div>
       </li>
-      <!-- settings-->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesetting" aria-expanded="true"
-          aria-controls="collapsesetting">
-          <i class="fas fa-cog"></i>
-          <span>Settings</span>
-        </a>
-        <div id="collapsesetting" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Feature ACL</h6>
-            <a class="collapse-item" href="feature-acl.html"><i class="fa fa-map"></i> ACL</a>
-            
-          </div>
-        </div>
-      </li>
-      <!--settings-->
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
       <!-- Sidebar Toggler (Sidebar) -->
