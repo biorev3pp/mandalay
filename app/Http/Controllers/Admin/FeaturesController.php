@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Traits\HelperTrait;
 use App\Admin\Homes;
+use App\Admin\FloorAclSetting;
 use App\Admin\Floor;
 use App\Admin\Features;
 use Validator;
@@ -14,7 +15,7 @@ use App\Validators\FeatureValidator;
 USE DB;
 use File;
 use Crypt;
-
+use Auth;
 class FeaturesController extends Controller
 {
     use HelperTrait, FeatureValidator;
@@ -54,7 +55,7 @@ class FeaturesController extends Controller
         return view('admin.features.add_update')->with($this->data);
     }
 
-    public function save(Request $request){        
+    public function save(Request $request){
         try{
             $validation = $this->addFeatureValidations($request);
             if($validation['status']==false){
@@ -72,7 +73,7 @@ class FeaturesController extends Controller
                         File::delete($oldFilePath);
                     }
                     //Upload image to local
-                    $image = $request->file('image');   
+                    $image = $request->file('image');
                     $imageName = time().'.'.$image->getClientOriginalExtension();
                     $destinationImagePath = public_path('images/features');
                     $uploadStatus = $image->move($destinationImagePath,$imageName);
@@ -96,7 +97,7 @@ class FeaturesController extends Controller
                 $input = $request->except('_token');
                 if($request->image){
                     //Upload image to local
-                    $image = $request->file('image');   
+                    $image = $request->file('image');
                     $imageName = time().'.'.$image->getClientOriginalExtension();
                     $destinationImagePath = public_path('images/features');
                     $uploadStatus = $image->move($destinationImagePath,$imageName);
@@ -121,7 +122,7 @@ class FeaturesController extends Controller
         }
     }
 
-    
+
 
     public function delete(Request $request){
         try{
@@ -157,6 +158,51 @@ class FeaturesController extends Controller
         $this->data['data'] = '';
         $this->data['floor'] = $floor;
         $this->data['features'] = $features;
+        $this->data['acl_settings'] = FloorAclSetting::where('floor_id',$floorid)->get();
+        $this->data['selected_options'] = FloorAclSetting::where('floor_id',$floorid)->pluck('option_for')->toArray();
+        
         return view('admin.features.acl_settings')->with($this->data);
+    }
+
+    public function saveAclSettings(Request $request,$id)
+    {
+
+      $floorid = decrypt($id);
+      $post = \Arr::except($request->all(),['_token']);
+      $idx = 0;
+      $prepareData = [];
+      try{
+        DB::beginTransaction();
+        foreach ($post['main_option'] as $value) {
+          $prepareData[] = [
+            'user_id' => Auth::id(),
+            'option_for' => $value,
+            'floor_id' => $floorid,
+            'conflicts' => json_encode($post['conflict'][$idx]),
+            'dependency' => json_encode($post['dependency'][$idx]),
+            'togetherness' => json_encode($post['togetherness'][$idx]),
+          ];
+          $idx++;
+        }
+
+        FloorAclSetting::where('floor_id',$floorid)->delete();
+        $result = FloorAclSetting::insert($prepareData);
+          if($result){
+              DB::commit();
+              $response = [
+                  'alerady_options' => FloorAclSetting::where('floor_id',$floorid)->pluck('option_for'),
+                  'message' => trans('response.updated'),
+                  'delayTime' => 1000,
+                  'acl_settings' => true
+              ];
+              return response($this->getSuccessResponse($response));
+          }else{
+              DB::rollBack();
+              return response($this->getErrorResponse(trans('response.failure')));
+          }
+
+      }catch(\Exception $e){
+          return response($this->getErrorResponse($e->getMessage()));
+      }
     }
 }

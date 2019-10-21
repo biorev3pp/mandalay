@@ -44,6 +44,7 @@
 
   <!-- Bootstrap core JavaScript-->
   <script src="{{asset('asset/vendor/jquery/jquery.min.js')}}"></script>
+
   <script src="{{asset('asset/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <!-- Core plugin JavaScript-->
   <script src="{{asset('asset/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
@@ -58,5 +59,12 @@
   <script src="{{asset('js/form-validate.js')}}"></script>
   <script src="{{asset('js/jquery.validate.js')}}"></script>
   <script src="{{asset('js/custom.js')}}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.0.11/dist/js/select2.min.js"></script>
+  <script type="text/javascript">
+  // In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+  $(document).find('.js-example-basic-single').select2();
+});
+  </script>
 </body>
 </html>

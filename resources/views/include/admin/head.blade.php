@@ -24,6 +24,9 @@
   <!-- Custom styles for this page -->
   <link href="{{asset('asset/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
   <link href="{{asset('asset/css/toaster.css')}}" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.css" rel="stylesheet" />
+
+
 
 </head>
 

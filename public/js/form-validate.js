@@ -306,6 +306,23 @@ $(document).ready(function ()
             formSubmit(form);
         }
     });
+    /**
+     * Save acl settings Form Validations
+     */
+    $("#save-acl-settings-form").validate({
+        errorClass   : "has-error",
+        highlight    : function(element, errorClass) {
+            $(element).parents('.form-group').addClass(errorClass);
+        },
+        unhighlight  : function(element, errorClass, validClass) {
+            $(element).parents('.form-group').removeClass(errorClass);
+        },
+        rules:{ },
+        submitHandler: function (form)
+        {
+            formSubmit(form);
+        }
+    });
 });
 
 
@@ -383,6 +400,36 @@ function formSubmit(form)
                     $.each(hideIDs, function(i, val){ $(val).addClass('d-none'); });
                 }
 
+                if(response.acl_settings) {
+                  var j = $(document);
+                  if($('.tr_clone:last').find('.main_option option').length == response.alerady_options.length) {
+                    return;
+                  }
+                  var $tr =   $('.tr_clone:last');
+                  $tr.find(".js-example-basic-single").select2("destroy");
+                  var $clone = $tr.clone();
+                  $clone.find(':text').val('');
+                  $clone.find('select').val('');
+                  $clone.find('.conflict').attr('id','conflict'+parseInt(j.find('.tr_clone').length)+1);
+                  $clone.find('.togetherness').attr('id','togetherness'+parseInt(j.find('.tr_clone').length)+1);
+                  $clone.find('.dependency').attr('id','dependency'+parseInt(j.find('.tr_clone').length)+1);
+                  $clone.find('.main_option option').each(function() {
+                    let value = parseInt($(this).val());
+                    let valueExit = response.alerady_options.includes(value);
+                    console.log(value , valueExit);
+                    if(valueExit){
+                      $(this).prop('disabled',true);
+                    }
+                  })
+                  $tr.after($clone);
+                  $("select.js-example-basic-single").select2();
+                  j.find('.tr_clone').each(function(index) {
+                    $(this).find('.main_option').attr('name','main_option['+index+']');
+                    $(this).find('.conflict').attr('name','conflict['+index+'][]');
+                    $(this).find('.togetherness').attr('name','togetherness['+index+'][]');
+                    $(this).find('.dependency').attr('name','dependency['+index+'][]');
+                  });
+                }
             }
             else
             {
