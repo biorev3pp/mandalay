@@ -51,11 +51,28 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{asset('frontend/js/sb-admin-2.min.js')}}"></script>
+    <script src="{{asset('frontend/js/bs-popper.js')}}"></script>
     <script src="{{asset('frontend/js/custom.js')}}"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script>
       var app_base_url = "{{url('/')}}";
-    </script>
 
+      $("#adv_calc").click(function(){
+        if($(".advance_calc").hasClass('hide')){
+          $(".advance_calc").removeClass('hide');
+          $(".advance_calc").addClass('show');
+        }
+        else{
+          $(".advance_calc").removeClass('show');
+          $(".advance_calc").addClass('hide');
+        }
+      });
+      $(function() {
+        $('#toggle-event').change(function() {
+          $('#console-event').html('Toggle: ' + $(this).prop('checked'))
+        })
+      });
+    </script>
 </body>
 
 </html>
