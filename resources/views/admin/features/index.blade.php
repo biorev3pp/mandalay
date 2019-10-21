@@ -7,7 +7,7 @@
          <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-               <h6 class="m-0 font-weight-bold text-primary">Home <span class="text-success">{{$floor->home->title}}</span>
+               <h6 class="m-0 font-weight-bold text-primary">Home <span class="text-success">{{$floor->home->title}} </span> | Floor <span class="text-success">{{$floor->title}}</span>
                </h6>
                <div class="two_btn_DIV">
                   <a href="{{url('admin/features/create/'.Crypt::encrypt($floor->id))}}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-map fa-sm text-white-50 pr-2"></i>Add Features</a>
@@ -64,7 +64,7 @@
       </div>
       <div class="modal-body">Are you sure, you want to delete this record ?</div>
       <div class="modal-footer ">
-          {{Form::open(array('id'=>'delete_form','url'=>url('admin/floors/delete')))}}
+          {{Form::open(array('id'=>'delete_form','url'=>url('admin/features/delete')))}}
           {{Form::hidden('delete_id',null,['id'=>'delete_id'])}}
           <button type="submit" class="btn btn-secondary">Yes</button>
           {{Form::close()}}
