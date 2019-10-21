@@ -1,121 +1,84 @@
 @extends('layouts.app')
-
 @section('content')
-
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>{{$page_title}}</h1>
+<div class="container-fluid">
+    <div class="row">
+      <!-- Area Chart -->
+      <div class="col-xl-12">
+        <div class="card shadow mb-4">
+          <!-- Card Header - Dropdown -->
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">New <span class="text-success">Home</span>
+             </h6><a href="{{url()->previous()}}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-arrow-left fa-sm text-white-50 pr-2"></i>Back</a>
           </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('admin/home')}}">Home</a></li>
-              <li class="breadcrumb-item active">Homes</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">  
-        <div class="col-md-12">
-          <div class="card card-outline card-info">
-            <!-- /.card-header -->
-            <div class="card-body pad">
-              <div class="row">
-                <div class="col-md-12">
-                  <a href="{{url()->previous()}}" class="col-md-1 float-right d-inline btn btn-block btn-primary text-white">Back</a>
+          <!-- Card Body -->
+          <div class="card-body" id="new_custom_table">
+            @if($data)
+              {{Form::model($data,array('id'=>'portfolio_form','url'=>url('admin/homes/save')))}}
+              {{Form::hidden('record_id',Crypt::encrypt($data->id))}}
+              {{Form::hidden('image_update',$data->image,['id'=>'image_update'])}}
+            @else
+              {{Form::open(array('id'=>'portfolio_form','url'=>url('admin/homes/save')))}}
+            @endif
+              <div class="form-row">
+                <div class="form-row col-md-8">
+                  <div class="form-group col-md-6">
+                      <label for="inputEmail4">Title</label>
+                      {{Form::text('title',null,['class'=>'form-control','id'=>'title','placeholder'=>'Enter Title'])}}
+                  </div>
+                  <div class="form-group col-md-6">
+                      <label for="inputEmail4">Sub Title</label>
+                      {{Form::text('subtitle',null,['class'=>'form-control','id'=>'subtitle','placeholder'=>'Enter Sub Title'])}}
+                  </div>
+                  <div class="form-group col-md-4">
+                      <label for="inputEmail4">Area</label>
+                      {{Form::text('area',null,['class'=>'form-control','id'=>'area','placeholder'=>'Enter Area'])}}
+                  </div>
+                  <div class="form-group col-md-4">
+                      <label for="inputPassword4">Bedrooms</label>
+                      {{Form::text('bedrooms',null,['class'=>'form-control','id'=>'bedrooms','placeholder'=>'Enter Bedrooms'])}}
+                  </div>
+                  <div class="form-group col-md-4">
+                      <label for="inputAddress">Bathrooms</label>
+                      {{Form::text('bathrooms',null,['class'=>'form-control','id'=>'bathrooms','placeholder'=>'Enter Bathrooms'])}}
+                  </div>
+                  <div class="form-group col-md-4">
+                      <label for="inputAddress2">Cost</label>
+                      {{Form::text('cost',null,['class'=>'form-control','id'=>'cost','placeholder'=>'Enter Cost'])}}
+                  </div>
+                  <div class="form-group col-md-4">
+                      <label for="inputAddress2">Garage</label>
+                      {{Form::text('garage',null,['class'=>'form-control','id'=>'garage','placeholder'=>'Enter Garage'])}}
+                  </div>
+                  <div class="form-group col-md-4">
+                      <label for="inputState">Status</label>
+                      {{Form::select('status',$statusArray,null,['class'=>'form-control','id'=>'status'])}}
+                  </div>
+                  <div class="col-lg-12">
+                    <button type="submit" class="btn btn-primary float-left"><i class="fas fa-save fa-sm text-white-50 pr-2"></i>Save</button>
+                  </div>
                 </div>
-              </div>
-              @if($data)
-                {{Form::model($data,array('id'=>'portfolio_form','url'=>url('admin/homes/save')))}}
-                {{Form::hidden('record_id',Crypt::encrypt($data->id))}}
-                {{Form::hidden('image_update',$data->image,['id'=>'image_update'])}}
-              @else
-                {{Form::open(array('id'=>'portfolio_form','url'=>url('admin/homes/save')))}}
-              @endif
-
-              <div class="row">
-                <div class=" form-group col-md-6">
-                  <label for="title">Title</label>
-                  {{Form::text('title',null,['class'=>'form-control','id'=>'title','placeholder'=>'Enter Title'])}}
-                </div>
-
-                <div class=" form-group col-md-6">
-                  <label for="subtitle">Sub Title</label>
-                  {{Form::text('subtitle',null,['class'=>'form-control','id'=>'subtitle','placeholder'=>'Enter Sub Title'])}}
-                </div>
-
-                <div class="form-group col-md-12">
-                  <label for="portfolioimage">Select Image</label>
-                  @if(isset($data->image))
-                    @if($data->image!='' || $data->image!=null)
-                    <div class="py-2 image-preview" style="width: 600px;">
-                      <img width="100%" height="auto" src="{{asset('images/homes/'.$data->image)}}">
+                <div class="form-row col-md-4">
+                    <div class="form-group">
+                        <label for="inputEmail4">Upload Picture</label>
+                        <div class="custom-file">
+                          {{Form::file('image',['class'=>'custom-file-input image-file','id'=>'portfolioimage'])}}
+                          <label class="custom-file-label" for="validatedCustomFile">@if(!isset($data->image)) Choose file @else {{$data->image}} @endif</label>
+                        </div>
+                        @if(isset($data->image))
+                          @if($data->image!='' || $data->image!=null)
+                          <div class="col-lg-12 mx-auto p-0 o-hidden">
+                            <img src="{{asset('images/homes/'.$data->image)}}" class="img-thumbnail">
+                          </div>
+                          @endif
+                        @endif
                     </div>
-                    @endif
-                  @endif
-                  <div class="clearfix"></div>
-                  <div class="custom-file">
-                    {{Form::file('image',['class'=>'custom-file-input image-file','id'=>'portfolioimage'])}}
-                    <label class="custom-file-label" for="portfolioimage">@if(!isset($data->image)) Choose file @else {{$data->image}} @endif</label>
-                  </div>
                 </div>
-
-                <div class=" form-group col-md-4">
-                  <label for="area">Area</label>
-                  {{Form::text('area',null,['class'=>'form-control','id'=>'area','placeholder'=>'Enter Area'])}}
-                </div>
-
-                <div class=" form-group col-md-4">
-                  <label for="bedrooms">Bedrooms</label>
-                  {{Form::text('bedrooms',null,['class'=>'form-control','id'=>'bedrooms','placeholder'=>'Enter Bedrooms'])}}              
-                </div>
-
-                <div class=" form-group col-md-4">
-                  <label for="bathrooms">Bathrooms</label>
-                  {{Form::text('bathrooms',null,['class'=>'form-control','id'=>'bathrooms','placeholder'=>'Enter Bathrooms'])}} 
-                </div>
-
-                <div class=" form-group col-md-4">
-                  <label for="cost">Cost</label>
-                  {{Form::text('cost',null,['class'=>'form-control','id'=>'cost','placeholder'=>'Enter Cost'])}} 
-                </div>
-                <div class=" form-group col-md-4">
-                  <label for="garage">Garage</label>
-                  {{Form::text('garage',null,['class'=>'form-control','id'=>'garage','placeholder'=>'Enter Garage'])}} 
-                </div>
-                <div class=" form-group col-md-4">
-                  <label for="status">Status</label>
-                  {{Form::select('status',$statusArray,null,['class'=>'form-control','id'=>'status'])}} 
-                </div>
-                <div class="form-group col-md-12">
-                  <div class="bg-white">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
-                </div>
-              {{Form::close()}}
-            </div>
+              </div>                      
+            {{Form::close()}}
+          </div>
         </div>
-        <!-- /.col-->
       </div>
-      <!-- ./row -->
-    </section>
-    <!-- /.content -->
+    </div>
   </div>
-  <!-- /.content-wrapper -->
-<script>
-  $(function () {
-    // Summernote
-    $('.textarea').summernote()
-  })
-</script>
-
+</div>
 @endsection

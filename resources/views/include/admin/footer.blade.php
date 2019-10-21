@@ -1,60 +1,61 @@
-<footer class="main-footer">
-    <strong>Copyright &copy; 2019.</strong>
-    All rights reserved.
-  </footer>
+<!-- Footer -->
+      <footer class="sticky-footer bg-dark shadow text-white py-2">
+        <div class="container-fluid my-auto d-flex justify-content-between align-items-center">
+          <div class="copyright text-left">
+            <span>&copy; 2018 Biorev All Right Reserved.</span>
+          </div>
+          <div class="text-right">
+            <span>Designed & Developed by <a href="javascript:void(0);" class="text-success px-2"> <img src="{{asset('asset/img/biorevRev.png')}}" width="100"></a></span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+    </div>
+    <!-- End of Content Wrapper -->
 
-<!-- jQuery -->
-<script src="{{asset('asset/plugins/jquery/jquery.min.js')}}"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="{{asset('asset/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="{{asset('asset/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- ChartJS -->
-<script src="{{asset('asset/plugins/chart.js/Chart.min.js')}}"></script>
-<!-- Sparkline -->
-<script src="{{asset('asset/plugins/sparklines/sparkline.js')}}"></script>
-<!-- JQVMap -->
-<script src="{{asset('asset/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
-<script src="{{asset('asset/plugins/jqvmap/maps/jquery.vmap.world.js')}}"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{asset('asset/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
-<!-- daterangepicker -->
-<script src="{{asset('asset/plugins/moment/moment.min.js')}}"></script>
-<script src="{{asset('asset/plugins/daterangepicker/daterangepicker.js')}}"></script>
-<script src="{{asset('asset/plugins/select2/js/select2.full.min.js')}}"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="{{asset('asset/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
-<!-- Summernote -->
-<script src="{{asset('asset/plugins/summernote/summernote-bs4.min.js')}}"></script>
-<!-- overlayScrollbars -->
-<script src="{{asset('asset/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('asset/dist/js/adminlte.js')}}"></script>
-<script src="{{asset('asset/plugins/toastr/toastr.min.js')}}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{asset('asset/dist/js/pages/dashboard.js')}}"></script>
-<script src="{{asset('js/form-validate.js')}}"></script>
-<script src="{{asset('js/jquery.validate.js')}}"></script>
-<script src="{{asset('js/custom.js')}}"></script>
-<script>
-	 //Initialize Select2 Elements
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
-    });
-	//Initialize Select2 Elements
-    $('.select2').select2();
-</script>
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{{asset('asset/vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{asset('asset/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="{{asset('asset/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="{{asset('asset/js/sb-admin-2.min.js')}}"></script>
+  <!-- Page level plugins -->
+  <script src="{{asset('asset/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+  <script src="{{asset('asset/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+  <!-- Page level custom scripts -->
+  <script src="{{asset('asset/js/demo/datatables-demo.js')}}"></script>
+  <script src="{{asset('js/form-validate.js')}}"></script>
+  <script src="{{asset('js/jquery.validate.js')}}"></script>
+  <script src="{{asset('js/custom.js')}}"></script>
 </body>
 </html>

@@ -23,6 +23,9 @@ class HomeController extends Controller
 
     public function finalHomePage(Request $request){
         $features = $request->feature_id;
+        if(!isset($features)){
+            $features = array();
+        }
         $home = Homes::with(['floors'=>function($q) use ($features){
             $q->with('features')->whereHas('features',function($w) use ($features){
                 $w->whereIn('id',$features);

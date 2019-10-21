@@ -1,112 +1,79 @@
 @extends('layouts.app')
-
 @section('content')
+<div class="container-fluid">
+   <div class="row">
+      <!-- Area Chart -->
+      <div class="col-xl-12">
+         <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+               <h6 class="m-0 font-weight-bold text-primary">Home <span class="text-success">{{$floor->home->title}}</span>
+               </h6>
+               <div class="two_btn_DIV">
+                  <a href="{{url('admin/features/create/'.Crypt::encrypt($floor->id))}}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-map fa-sm text-white-50 pr-2"></i>Add Features</a>
 
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>{{$page_title}}</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('admin/home')}}">Home</a></li>
-              <li class="breadcrumb-item active">Floors</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">  
-        <div class="col-md-12">
-          <div class="card card-outline card-info">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-6 pb-3">
-                    <a href="{{url('admin/floors/list/'.Crypt::encrypt($floor->home->id))}}" class="col-md-3 float-left d-inline btn btn-block btn-primary text-white">Back</a>
-                </div>
-                <div class="col-md-6 pb-3">
-                    <a href="{{url('admin/features/create/'.Crypt::encrypt($floor->id))}}" class="col-md-3 float-right d-inline btn btn-block btn-primary text-white">Add Features</a>
-                </div>
-                <!-- <div class="col-md-3 pb-3">
-                    <a href="{{url('admin/set-features/'.Crypt::encrypt($floor->id))}}" class="col-md-12 float-right d-inline btn btn-block btn-primary text-white">Set Features</a>
-                </div> -->
-              </div>
-              <div class="row">
-                <div class="col-md-6 pt-2">
-                  Home: <b>{{$floor->home->title}}</b> Floor: <b>{{$floor->title}}</b>
-                </div>
-                <div class="col-md-12">
-                  <table class="table table-bordered">
-                    <thead>                  
-                      <tr>
-                        <th style="width: 10px">#</th>
-                        <th>Title</th>
-                        <th style="width: 300px">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @php $i=0; @endphp
-                      @forelse($features as $record)
-                      @php $i++; @endphp
-                      <tr>
-                      <td>{{$i}}.</td>
-                        <td>{{$record->title}}</td>
-                        <td>
-                          <a href="{{url('admin/features/edit/'.Crypt::encrypt($record->id))}}"><i class="fas fa-edit"></i> Edit</a>
-                          <a href="#" class="delete_record_btn" id="{{Crypt::encrypt($record->id)}}" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt"></i> Delete</a>
-                        </td>
-                      </tr>
-                      @empty
-                      <tr>
-                        <td colspan="3">No Features added yet</td>
-                      </tr>
-                      @endforelse
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+                  <a href="{{url('admin/floors/list/'.Crypt::encrypt($floor->home->id))}}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-arrow-left fa-sm text-white-50 pr-2"></i>Back</a>
+               </div>
             </div>
-          </div>  
-        </div>
-        <!-- /.col-->
+            <!-- Card Body -->
+            <div class="card-body" id="custom_table">
+               <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                     <thead>
+                        <tr>
+                           <th>#</th>
+                           <th>Title</th>
+                           <th>Action</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        @php $i=0; @endphp
+                        @forelse($features as $record)
+                        @php $i++; @endphp
+                        <tr>
+                        <td>{{$i}}.</td>
+                          <td>{{$record->title}}</td>
+                          <td>
+                            <a href="{{url('admin/features/edit/'.Crypt::encrypt($record->id))}}"><i class="fas fa-edit"></i> Edit</a>
+                            <a href="#" class="delete_record_btn" id="{{Crypt::encrypt($record->id)}}" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt"></i> Delete</a>
+                          </td>
+                        </tr>
+                        @empty
+                        <tr>
+                          <td colspan="3">No Features added yet</td>
+                        </tr>
+                        @endforelse
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
       </div>
-      <!-- ./row -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <!-- Delete Modal -->
-  <div class="modal fade" id="modal-delete">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Confirm Action</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Are you sure, you want to delete this record ?</p>
-        </div>
-        <div class="modal-footer ">
-          {{Form::open(array('id'=>'delete_form','url'=>url('admin/features/delete')))}}
+   </div>
+</div>
+</div>
+<!-- Logout Modal-->
+<div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm Action</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Are you sure, you want to delete this record ?</div>
+      <div class="modal-footer ">
+          {{Form::open(array('id'=>'delete_form','url'=>url('admin/floors/delete')))}}
           {{Form::hidden('delete_id',null,['id'=>'delete_id'])}}
-          <button type="submit" class="btn btn-danger">Yes</button>
+          <button type="submit" class="btn btn-secondary">Yes</button>
           {{Form::close()}}
-          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
         </div>
-      </div>
-      <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
   </div>
-  <!-- /.modal -->
+</div>
+<!-- End of Main Content -->
 @endsection
+
+     

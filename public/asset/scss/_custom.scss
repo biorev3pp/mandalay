@@ -1,0 +1,170 @@
+.custom-scroll {
+  float: left;
+  height: 450px;
+  overflow-y: scroll;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  background: #069;
+}
+.custom-scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #069;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+  background-color: #069;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
+  background-color: rgb(0, 70, 105);
+}
+.bg-login-image {
+  background: url("../img/loginBg.png");
+  background-repeat: no-repeat;
+}
+.bg-image-login {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  .blur-bg {
+    height: 100vh;
+    width: 100vw;
+    background-position: center;
+    background-size: cover;
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+    transform: scale(1.1);
+  }
+}
+.bg-register-image {
+  background: url("../img/registerBg.png");
+  background-repeat: no-repeat;
+  background-position: -280px;
+  background-size: cover;
+}
+.bg-register-login {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  .blur-bg {
+    height: 100vh;
+    width: 100vw;
+    background-position: center;
+    background-size: cover;
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+    transform: scale(1.1);
+  }
+}
+
+.pricetag {
+  white-space: nowrap;
+  position: relative;
+  margin: 0;
+  display: inline-block;
+  height: 44px;
+  border-radius: 0 5px 5px 0;
+  padding: 0 15px;
+  background: #99cc00;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: right;
+}
+.pricetag:before {
+  position: absolute;
+  content: "\25CF";
+  color: #fff;
+  font-size: 12px;
+  line-height: 0px;
+  text-indent: 12px;
+  left: -20px;
+  width: 1px;
+  height: 0px;
+  border-right: 20px solid #99cc00;
+  border-top: 22px solid transparent;
+  border-bottom: 22px solid transparent;
+}
+.pricetag small {
+  display: block;
+  font-size: 10px;
+  padding: 7px 0 2px;
+}
+.hand {
+  cursor: pointer;
+}
+.noSelect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+.feature-content {
+  position: absolute;
+  top: -5px;
+  left: 8px;
+  z-index: 10;
+}
+
+.with-arrow {
+  position: relative;
+}
+
+.with-arrow::after {
+  content: "\f078";
+  color: #069;
+  right: 0;
+  position: absolute;
+  font-family: "Font Awesome 5 Free";
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  top: 0;
+}
+.with-arrow[aria-expanded="true"]::after {
+  content: "\f077";
+}
+.grad-row {
+  background: rgba(0, 102, 153, 1);
+  background: -moz-linear-gradient(left, rgba(0, 102, 153, 1) 0%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-gradient(
+    left top,
+    right top,
+    color-stop(0%, rgba(0, 102, 153, 1)),
+    color-stop(100%, rgba(255, 255, 255, 0))
+  );
+  background: -webkit-linear-gradient(left, rgba(0, 102, 153, 1) 0%, rgba(255, 255, 255, 0) 100%);
+  background: -o-linear-gradient(left, rgba(0, 102, 153, 1) 0%, rgba(255, 255, 255, 0) 100%);
+  background: -ms-linear-gradient(left, rgba(0, 102, 153, 1) 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(to right, rgba(0, 102, 153, 1) 0%, rgba(255, 255, 255, 0) 100%);
+}
+.customNav{
+  &:hover{
+    background: #03537b;
+  }
+  &.active{
+    background: #03537b;
+  }
+}
+.fixed-bottom.bottom-up-40 {
+  bottom: 41px;
+}
