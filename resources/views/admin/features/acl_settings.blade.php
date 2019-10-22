@@ -14,8 +14,13 @@
             <!-- Card Body -->
             <div class="card-body">
               <div class="table-responsive">
-               {{Form::open(['url'=>route('saveAclSettings',request()->route('id')),'method'=>'post','id'=>'save-acl-settings-form'])}}
-                <table class="table table-bordered" width="100%" cellspacing="0">
+                @if(isset($acl_settings))
+                  {{Form::model($acl_settings,array('url'=>url('admin/features/save-acl'), 'id'=>'acl_setting_form'))}}
+                @else
+                  {{Form::open(array('url'=>url('admin/features/save-acl'), 'id'=>'acl_setting_form'))}}
+                @endif  
+                  {{Form::hidden('floorid',$floor->id)}}  
+                <table class="table table-bordered aclTable" width="100%" cellspacing="0">
                    <thead>
                       <tr class="bg-dark text-white">
                          <th>Options</th>
@@ -25,53 +30,47 @@
                       </tr>
                    </thead>
                    <tbody>
-                     @php $index = 0; @endphp
-                     @forelse($acl_settings as $value)
-
-                     <tr class="tr_clone">
-
-                        <td class="w-25">
-                          <select class="form-control main_option" name='main_option['.$index.']'>
-                            <?php foreach ($features as $ky => $opt): ?>
-                              <option <?php if(in_array($ky,$selected_options) && $ky != $value->option_for) {?> disabled <?php } ?> <?php if($ky == $value->option_for ){ ?> selected <?php } ?> value="{{$ky}}">{{$opt}}</option>
-                            <?php endforeach; ?>
-                          </select>
-
-                        </td>
-                        <td class="w-25">
-                           {{Form::select('conflict['.$index.']',$features,json_decode($value->conflicts),['class'=>'form-control  conflict js-example-basic-single','id'=>'conflict'.$index.'', "multiple"=>"multiple"])}}
-                        </td>
-                        <td class="w-25">
-                           {{Form::select('togetherness['.$index.']',$features,json_decode($value->togetherness),['class'=>'form-control  togetherness js-example-basic-single','id'=>'togetherness'.$index.'', "multiple"=>"multiple"])}}
-                        </td>
-                        <td class="w-25">
-                           {{Form::select('dependency['.$index.']',$features,json_decode($value->dependency),['class'=>'form-control  dependency js-example-basic-single','id'=>'dependency'.$index.'', "multiple"=>"multiple"])}}
-                        </td>
-                     </tr>
-                      @php $index++; @endphp
-                       @empty
-                       <tr class="tr_clone">
-
+                      @php $i=0; @endphp
+                      @forelse($acl_settings as $acl)
+                        @php $i++; @endphp
+                        <tr class="tr_clone" id="tr_{{$i}}">
                           <td class="w-25">
-                             {{Form::select('main_option[]',$features,null,['class'=>'form-control main_option ','id'=>'status',])}}
+                            {{Form::select('feature_id['.$i.']',$features,null,['class'=>'form-control main_option','id'=>'main_option'.$i])}}
                           </td>
                           <td class="w-25">
-                             {{Form::select('conflict[]',$features,null,['class'=>'form-control  conflict js-example-basic-single','id'=>'conflict', "multiple"=>"multiple"])}}
+                             {{Form::select('conflict['.$i.'][]',$features,null,['class'=>'form-control  conflict js-example-basic-single','id'=>'conflict'.$i, "multiple"=>"multiple"])}}
                           </td>
                           <td class="w-25">
-                             {{Form::select('togetherness[]',$features,null,['class'=>'form-control  togetherness js-example-basic-single','id'=>'togetherness', "multiple"=>"multiple"])}}
+                             {{Form::select('dependency['.$i.'][]',$features,null,['class'=>'form-control  dependency js-example-basic-single','id'=>'togetherness'.$i, "multiple"=>"multiple"])}}
                           </td>
                           <td class="w-25">
-                             {{Form::select('dependency[]',$features,null,['class'=>'form-control  dependency js-example-basic-single','id'=>'dependency', "multiple"=>"multiple"])}}
+                             {{Form::select('togetherness['.$i.'][]',$features,null,['class'=>'form-control  togetherness js-example-basic-single','id'=>'dependency'.$i, "multiple"=>"multiple"])}}
                           </td>
-                       </tr>
-                     @endforelse
-
-                      <tr>
-                         <td colspan="4"><button type="submit" class="btn btn-primary float-right clonetr"><span class="fa fa-plus pr-2"></span>Add Row</button></td>
-                      </tr>
+                        </tr>
+                      @empty
+                        <tr class="tr_clone" id="tr_1">
+                          <td class="w-25">
+                            {{Form::select('feature_id[1]',$features,null,['class'=>'form-control main_option','id'=>'main_option1'])}}
+                          </td>
+                          <td class="w-25">
+                             {{Form::select('conflict[1][]',$features,null,['class'=>'form-control  conflict js-example-basic-single','id'=>'conflict1', "multiple"=>"multiple"])}}
+                          </td>
+                          <td class="w-25">
+                             {{Form::select('dependency[1][]',$features,null,['class'=>'form-control  dependency js-example-basic-single','id'=>'togetherness1', "multiple"=>"multiple"])}}
+                          </td>
+                          <td class="w-25">
+                             {{Form::select('togetherness[1][]',$features,null,['class'=>'form-control  togetherness js-example-basic-single','id'=>'dependency1', "multiple"=>"multiple"])}}
+                          </td>
+                        </tr>
+                      @endforelse
                    </tbody>
                 </table>
+                <div class="col-md-3 float-left">
+                  <button type="button" data-floor-id="{{$floor->id}}" class="btn btn-primary float-left clonetrBtn"><span class="fa fa-plus pr-2"></span>Add Row</button>
+                </div>
+                <div class="col-md-3 float-right">    
+                  <button type="submit" class="btn btn-primary float-right "><span class="fa fa-save pr-2"></span>Save</button>
+                </div>
                 {{Form::close()}}
              </div>
           </div>

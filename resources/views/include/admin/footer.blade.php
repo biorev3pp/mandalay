@@ -62,9 +62,10 @@
   <script src="https://cdn.jsdelivr.net/npm/select2@4.0.11/dist/js/select2.min.js"></script>
   <script type="text/javascript">
   // In your Javascript (external .js resource or <script> tag)
-$(document).ready(function() {
-  $(document).find('.js-example-basic-single').select2();
-});
+  $(document).ready(function() {
+    $(document).find('.js-example-basic-single').select2();
+  });
+  var app_base_url = "{{url('/')}}";
   </script>
 </body>
 </html>
