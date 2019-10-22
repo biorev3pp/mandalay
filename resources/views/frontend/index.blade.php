@@ -212,6 +212,7 @@ ntent -->
         </button>
       </div>
       <div class="modal-body" id="mortagC">
+        <div class="calculator"></div>
         <div class="row">
           <div class="col-md-6 mc_field">
               <div class="form-group">
@@ -288,5 +289,6 @@ ntent -->
     </div>
   </div>
 </div>
+
 @endsection
         
