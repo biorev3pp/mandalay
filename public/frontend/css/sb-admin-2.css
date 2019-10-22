@@ -11062,11 +11062,11 @@ body.sidebar-toggled footer.sticky-footer {
 .ui-switch.ui-switch-sm :checked + i {
   padding-right: 0;
   padding-left: 16px;
-  box-shadow: inset 0 0 5px 32px #006699;
+  box-shadow: inset 0 0 5px 32px #297fd5;
 }
 
 .ui-switch.ui-switch-sm.ui-switch-success :checked + i {
-  box-shadow: inset 0 0 5px 0px rgba(0, 0, 0, 0.5), inset 0 0 5px 32px #99cc00;
+ /* box-shadow: inset 0 0 5px 0px rgba(0, 0, 0, 0.5), inset 0 0 5px 32px #99cc00;*/
 }
 
 .ui-switch.ui-switch-sm.ui-switch-info :checked + i {
@@ -11466,6 +11466,14 @@ ul#left_togg {padding:0;}
 .mortage-result .price-text  .price_ds,
 .mortage-result .price-text  .price_bp {
   float:right;
+}
+
+/*==============================================
+======================custom css===========================*/
+
+
+#left_togg li {
+	border-bottom: 1px solid #bec6cb;
 }
 
 

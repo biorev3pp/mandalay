@@ -73,7 +73,7 @@ ntent -->
                     <div class="col-12">
                       <div class="collapse" id="floor{{$i}}{{$j}}" style="">
                         <div class="card card-body">
-                          <div class="sidebar-heading font-weight-bold">Options</div>
+                          <!--<div class="sidebar-heading font-weight-bold">Options</div>-->
                           <ul class="navbar-nav col-12 " id="left_togg">
                             @forelse($floor->features as $feature)
                             <li class="nav-link text-nowrap hand noSelect">
@@ -127,7 +127,7 @@ ntent -->
                 </div>
               </div>
 			   <!-- Footer -->
-        <footer class="sticky-footer shadow py-2 bg-white text-white bottom-up-40">
+        <footer class="sticky-footer">
           @php $i=0; @endphp 
           @forelse($homeList as $home)
           @php $i++; @endphp
