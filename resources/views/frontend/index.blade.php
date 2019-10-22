@@ -126,15 +126,7 @@ ntent -->
                   </div>
                 </div>
               </div>
-            </div>
-
-          </div>
-          <!-- /.container-fluid -->
-
-        </div>
-        <!-- End of Main Content -->
-
-        <!-- Footer -->
+			   <!-- Footer -->
         <footer class="sticky-footer shadow py-2 bg-white text-white fixed-bottom bottom-up-40">
           @php $i=0; @endphp 
           @forelse($homeList as $home)
@@ -188,6 +180,15 @@ ntent -->
           @empty
           @endforelse
         </footer>
+            </div>
+
+          </div>
+          <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+       
         <!-- Button trigger modal -->
 <!-- Modal -->
 <div class="modal fade" id="mortageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
