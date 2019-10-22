@@ -187,7 +187,7 @@ $(document).ready(function (){
         if(conficts.length == 0) 
         {
             // we need to match data-conficts attribute
-            document.querySelectorAll('[data-conflicts]').forEach(function (conflicts, index) { 
+            document.querySelectorAll('label[data-conflicts]').forEach(function (conflicts, index) { 
             if(conflicts.getAttribute('data-conflicts')) { 
             
             let conflictsProp = (conflicts.getAttribute('data-conflicts').trim() != "") ? JSON.parse(conflicts.getAttribute('data-conflicts')) : [];
