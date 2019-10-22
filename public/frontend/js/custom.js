@@ -131,7 +131,7 @@ $(document).ready(function (){
     });
 
     $(document).on('click','.featureBtn', function(e){
-        return;
+        
         let featureId = $(this).attr('id');
         if($(this).is(':checked')){
             let featureInput = '<input name="feature_id[]" type="hidden" value="'+featureId+'">';
@@ -189,9 +189,11 @@ $(document).ready(function (){
             // we need to match data-conficts attribute
             document.querySelectorAll('[data-conflicts]').forEach(function (conflicts, index) { 
             if(conflicts.getAttribute('data-conflicts')) { 
-            const conflictsProp = JSON.parse(conflicts.getAttribute('data-conflicts'));
-            const dependencyProp = JSON.parse(conflicts.getAttribute('data-dependency'));
-            const togethernessProp = JSON.parse(conflicts.getAttribute('data-togetherness'));
+            
+            let conflictsProp = (conflicts.getAttribute('data-conflicts').trim() != "") ? JSON.parse(conflicts.getAttribute('data-conflicts')) : [];
+            let dependencyProp = (conflicts.getAttribute('data-dependency').trim() != "") ? JSON.parse(conflicts.getAttribute('data-dependency')) : [];
+            let togethernessProp = (conflicts.getAttribute('data-togetherness').trim() != "" ) ? JSON.parse(conflicts.getAttribute('data-togetherness')) : [];
+
             const currentEle = conflicts.getAttribute('data-self');
             if(conflictsProp.indexOf(currentValue) > -1 ) {
                 if(checked) {
@@ -207,7 +209,7 @@ $(document).ready(function (){
                     
                 // }
               }
-              if(dependencyProp.indexOf(currentValue) > -1 ) {
+              else if (dependencyProp.indexOf(currentValue) > -1 ) {
                 if(checked) { 
                     postData.push(currentValue);
                 }
@@ -219,6 +221,19 @@ $(document).ready(function (){
                     }
                 });
               }
+              else {
+                if(checked) { 
+                    postData.push(currentValue);
+                }
+                $(container).find('.manageToggle').each(function($e) {
+                    const id = $(this).find('input:checked').attr('id');
+                    if(id){
+                        postData.push(id);
+                    }
+                });
+              }
+
+
             }
             });
         }
