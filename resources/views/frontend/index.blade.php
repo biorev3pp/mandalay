@@ -139,7 +139,7 @@ ntent -->
           @php $i++; @endphp
           <div id="{{$i}}" class="px-3 my-auto d-flex align-items-center home_image_footer @if($i!=1) disp_none @endif">
             <div class="col-2">
-              <img src="{{asset('frontend/img/footerHome.png')}}" width="100">
+              <img src="{{asset('frontend/img/footerHome.png')}}" width="100" class="f_left">
 			  <h5 class="text-primary">{{$home->title}} {{$home->subtitle}}</h5>
             </div>
            

@@ -11202,7 +11202,7 @@ body.sidebar-toggled footer.sticky-footer {
   background: #069;
 }
 .bg-white.pt-4.mb-4{margin-bottom:0 !important;}
-.home_image_footer img{float:left;}
+img.f_left{float:left;}
 .home_image_footer h5 {
 	font-size: 1rem;
 	margin-left: 0.5rem;
