@@ -6204,7 +6204,7 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #006699 !important;
+  background-color: #297FD5 !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
@@ -11217,7 +11217,8 @@ ul#left_togg li label {
 ul#left_togg {padding:0;}
 #top_tab ul li i {color:#fff; font-size:22px;margin:0.5rem 0;}
 #top_tab ul li.active{background:#03537b;color:#99cc00;}
-#top_tab ul li.active i{color:#99cc00;}
+#top_tab ul li.active i , #top_tab ul li.active h5{color:#99cc00;}
+
 #top_tab ul li i{color:#fff;}
 #top_tab h5 {color:#fff;margin-top:0.5rem;}
 /*#top_tab ul li#home i , #top_tab ul li#floor i{color:#99cc00;}*/
@@ -11466,3 +11467,9 @@ ul#left_togg {padding:0;}
 .mortage-result .price-text  .price_bp {
   float:right;
 }
+
+
+/*===================================================
+=================Custom media quaruies==========================*/
+
+@
