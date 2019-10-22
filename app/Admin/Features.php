@@ -11,4 +11,9 @@ class Features extends Model
     public function floor(){
         return $this->belongsTo('App\Admin\Floor', 'floor_id','id');
     }
+
+    public function features_acl()
+    {
+    	return $this->belongsTo('App\Admin\FloorAclSetting', 'id','feature_id')->withDefault();
+    }
 }

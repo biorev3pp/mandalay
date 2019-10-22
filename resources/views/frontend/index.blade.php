@@ -76,10 +76,14 @@ ntent -->
                           <!--<div class="sidebar-heading font-weight-bold">Options</div>-->
                           <ul class="navbar-nav col-12 " id="left_togg">
                             @forelse($floor->features as $feature)
-                            <li class="nav-link text-nowrap hand noSelect">
+                            <li class="nav-link text-nowrap hand noSelect_{{$feature->id}}">
                              <span> {{$feature->title}} </span>
-                              <label class="ui-switch ui-switch-success ui-switch-sm mb-0 float-right">
-                                <input type="checkbox" id="{{$feature->id}}" class="featureBtn"><i></i>
+                              <label  
+                                data-conflicts="{{$feature->features_acl->conflicts}}"  
+                                data-dependency="{{$feature->features_acl->dependency}}"  
+                                data-togetherness="{{$feature->features_acl->togetherness}}" 
+                                class="ui-switch ui-switch-success ui-switch-sm mb-0 float-right manageToggle">
+                                <input type="checkbox" class="featureBtn conflicts_{{$feature->id}} dependency_{{$feature->id}} togetherness_{{$feature->id}}" id="{{$feature->id}}"><i></i>
                               </label>
                             </li>
                             @empty

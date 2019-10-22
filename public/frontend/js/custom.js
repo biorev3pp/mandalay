@@ -105,6 +105,7 @@ $(document).ready(function (){
     });
 
     $(document).on('click','.featureBtn', function(e){
+        return;
         let featureId = $(this).attr('id');
         if($(this).is(':checked')){
             let featureInput = '<input name="feature_id[]" type="hidden" value="'+featureId+'">';
@@ -140,5 +141,78 @@ $(document).ready(function (){
             });
         }
     });
+
+    $(document).on('change','.manageToggle',function(event) {
+        let postData = [];
+        let conficts = ($(this).attr('data-conflicts').trim() != "") ? JSON.parse($(this).attr('data-conflicts')) : [];
+        let dependency = ($(this).attr('data-dependency').trim() != "") ? JSON.parse($(this).attr('data-dependency')) : [];
+        let togetherness = ($(this).attr('data-togetherness').trim() != "" ) ? JSON.parse($(this).attr('data-togetherness')) : [];
+        let checked = $(this).find('input').is(':checked');
+        let dependencyFlag = false;
+        let togethernessFlag = false;
+        if(checked) {
+            postData.push($(this).find('input').attr('id'));
+            for (var i = 0; i < conficts.length; i++) {
+                let values= conficts[i];
+                $('.conflicts_'+values).prop('checked',false);
+                console.log(values)
+            }
+            dependencyFlag = true;
+            togethernessFlag = true;
+
+        }
+        console.log(dependencyFlag)
+        console.log(togethernessFlag)
+
+        for (var i = 0; i < togetherness.length; i++) {
+            let togethernessValue= togetherness[i];
+            $('.togetherness_'+togethernessValue).prop('checked',togethernessFlag);
+            $('.togetherness_'+togethernessValue).prop('disabled',togethernessFlag);
+            postData.push(togethernessValue);
+        }
+
+        if(togethernessFlag) {
+            console.log(postData);
+            $.ajax({
+            url         : app_base_url+'/get-feature-data',
+            type        : "post",
+            data        : {'featureid':postData},
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            beforeSend  : function () {
+                $("#preloader").show();
+            },
+            complete: function () {
+                $("#preloader").hide();
+            },
+            success: function (response) {
+                $.each(response, function( index, value )
+                {
+                   let featureImage = '<img src="'+value.image+'" id="'+value.id+'" class="img-fluid feature-img">'
+                    $(document).find('.floor_image_view').append(featureImage);
+                });
+               
+            }
+        });
+        }else {
+            $(document).find('.floor_image_view img').each(function(i,obj){
+                console.log($(obj).attr('id'));
+                if($(obj).attr('id')){
+                    $(obj).remove();
+                }
+            });
+        }
+        
+        // for (var i = 0; i < dependency.length; i++) {
+        //     let dependencyValue= dependency[i];
+        //     $('.dependency_'+dependencyValue).prop('checked',true);
+        // }
+
+        
+        console.log(conficts);
+        console.log(dependency);
+        console.log(togetherness);
+    })
 });
 

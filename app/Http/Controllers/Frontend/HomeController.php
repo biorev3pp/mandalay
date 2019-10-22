@@ -14,10 +14,15 @@ class HomeController extends Controller
 	private $data;
 
     public function index(){
-    	$homes = Homes::where('status',1)->get();
+        \DB::enableQueryLog();
+    	$homes = Homes::with('floors.features.features_acl')->where('status',1)->get();
+        // dd(\DB::getQueryLog());
     	$defaultHome = Homes::where('status',1)->first();
+        // echo "<pre>";
+        // print_r($homes->toArray());
     	$this->data['homeList'] = $homes;
     	$this->data['defaultHome'] = $defaultHome;
+
     	return view('frontend.index')->with($this->data);
     }
 
@@ -47,8 +52,11 @@ class HomeController extends Controller
 
     public function getFeatureData(Request $request){
         if($request->ajax()){
-            $data = Features::where('id',$request->featureid)->first();  
-            $data->image =  asset('/images/features/'.$data->image);
+            $data = Features::whereIn('id',$request->featureid)->get();
+            foreach ($data as $key => $value) {
+                $data[$key]->image =  asset('/images/features/'.$value->image);
+            }  
+            
             return response()->json($data);
         }
         return "Unauthorised Access !!!";
