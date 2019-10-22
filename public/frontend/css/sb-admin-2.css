@@ -11219,7 +11219,7 @@ ul#left_togg {padding:0;}
 #top_tab ul li.active{background:#03537b;color:#99cc00;}
 #top_tab ul li.active i{color:#99cc00;}
 #top_tab ul li i{color:#fff;}
-ul#left_togg h5{margin-top:0;}
+#top_tab h5 {color:#fff;margin-top:0.5rem;}
 /*#top_tab ul li#home i , #top_tab ul li#floor i{color:#99cc00;}*/
 
 .home_image_footer h5 {

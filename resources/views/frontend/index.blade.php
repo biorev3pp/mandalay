@@ -37,7 +37,7 @@ ntent -->
                 <li class="p-2 col-6 text-center hand customNav tabDiv" id="floor">
                   <!--<img src="{{asset('frontend/img/floor-icon.png')}}" width="30">-->
 				  <i class="fa fa-map"></i>
-                  <h5 class="text-white-50 mb-0">Floor Plan</h5>
+                  <h5 class="mb-0">Floor Plan</h5>
                 </li>
               </ul>
               <div class="custom-scroll bg-primary col-12 tabDivSection" id="home">
