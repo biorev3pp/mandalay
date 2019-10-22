@@ -15,4 +15,5 @@ class Floor extends Model
     public function features(){
         return $this->hasMany('App\Admin\Features', 'floor_id');
     }
+    
 }

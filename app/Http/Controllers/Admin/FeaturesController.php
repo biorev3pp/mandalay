@@ -151,58 +151,66 @@ class FeaturesController extends Controller
         }
     }
 
+    public function getACLRow(Request $request){
+        if($request->ajax()){
+            $floorid = $request->floorid;
+            $features = Features::where('floor_id',$floorid)->pluck('title','id');
+            $this->data['features'] = $features;
+            $this->data['index'] = $request->index;
+            return view('admin.features.acl_row')->with($this->data)->render(); 
+        }
+        return "Unauthorised Access !!!";
+    }
+
     public function setACLOptions($id){
         $floorid = Crypt::decrypt($id);
         $floor = Floor::find($floorid);
         $features = Features::where('floor_id',$floorid)->pluck('title','id');
+        $aclSettings = FloorAclSetting::where('floor_id',$floorid)->get();
         $this->data['data'] = '';
         $this->data['floor'] = $floor;
         $this->data['features'] = $features;
-        $this->data['acl_settings'] = FloorAclSetting::where('floor_id',$floorid)->get();
-        $this->data['selected_options'] = FloorAclSetting::where('floor_id',$floorid)->pluck('option_for')->toArray();
-        
+        $this->data['acl_settings'] = $aclSettings->toArray();
         return view('admin.features.acl_settings')->with($this->data);
     }
 
-    public function saveAclSettings(Request $request,$id)
+    public function saveAclSettings(Request $request)
     {
-
-      $floorid = decrypt($id);
-      $post = \Arr::except($request->all(),['_token']);
-      $idx = 0;
-      $prepareData = [];
-      try{
-        DB::beginTransaction();
-        foreach ($post['main_option'] as $value) {
-          $prepareData[] = [
-            'user_id' => Auth::id(),
-            'option_for' => $value,
-            'floor_id' => $floorid,
-            'conflicts' => json_encode($post['conflict'][$idx]),
-            'dependency' => json_encode($post['dependency'][$idx]),
-            'togetherness' => json_encode($post['togetherness'][$idx]),
-          ];
-          $idx++;
+        $floorid = $request->floorid;
+        $post = \Arr::except($request->all(),['_token']);
+        $prepareData = [];
+        try{
+            DB::beginTransaction();
+            $i = 0;
+            foreach($post['feature_id'] as $featureid){
+                $i++;
+                $prepareData[] = [
+                    'user_id'       => Auth::id(),
+                    'feature_id'    => $featureid,
+                    'floor_id'      => $floorid,
+                    'conflicts'     => (isset($post['conflict'][$i])) ? json_encode($post['conflict'][$i]) : null,
+                    'dependency'    => (isset($post['dependency'][$i])) ? json_encode($post['dependency'][$i]) : null,
+                    'togetherness'  => (isset($post['togetherness'][$i])) ? json_encode($post['togetherness'][$i]) : null,
+                ];
+            }
+            //In case of update 
+            $result = FloorAclSetting::where('floor_id',$floorid)->delete();
+            $result = FloorAclSetting::insert($prepareData);
+            if($result){
+                DB::commit();
+                $response = [
+                    'message' => trans('response.updated'),
+                    'delayTime' => 1000,
+                    'acl_settings' => true,
+                    'url' => url('admin/features/set-acl/'.Crypt::encrypt($floorid))
+                ];
+                return response($this->getSuccessResponse($response));
+            }else{
+                DB::rollBack();
+                return response($this->getErrorResponse(trans('response.failure')));
+            }
+        }catch(\Exception $e){
+            return response($this->getErrorResponse($e->getMessage()));
         }
-
-        FloorAclSetting::where('floor_id',$floorid)->delete();
-        $result = FloorAclSetting::insert($prepareData);
-          if($result){
-              DB::commit();
-              $response = [
-                  'alerady_options' => FloorAclSetting::where('floor_id',$floorid)->pluck('option_for'),
-                  'message' => trans('response.updated'),
-                  'delayTime' => 1000,
-                  'acl_settings' => true
-              ];
-              return response($this->getSuccessResponse($response));
-          }else{
-              DB::rollBack();
-              return response($this->getErrorResponse(trans('response.failure')));
-          }
-
-      }catch(\Exception $e){
-          return response($this->getErrorResponse($e->getMessage()));
-      }
     }
 }
