@@ -170,7 +170,7 @@ class FeaturesController extends Controller
         $this->data['data'] = '';
         $this->data['floor'] = $floor;
         $this->data['features'] = $features;
-        $this->data['acl_settings'] = $aclSettings;
+        $this->data['acl_settings'] = $aclSettings->toArray();
         return view('admin.features.acl_settings')->with($this->data);
     }
 

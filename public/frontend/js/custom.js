@@ -83,6 +83,7 @@ $(document).ready(function (){
                 $(obj).trigger("click");
             }        
         });
+        let container = $('div[data-floor-home-id="'+floorid+'"]');
         $.ajax({
             url         : app_base_url+'/get-floor-data',
             type        : "post",
@@ -100,6 +101,31 @@ $(document).ready(function (){
                 $(document).find('.home_image_full ').addClass('disp_none');
                 $(document).find('.floor_image_view').removeClass('disp_none');
                 $(document).find('.floor_image_view img').attr('src',response.image);
+
+                $(container).find('.manageToggle').each(function($e) {
+                    let currentEle = $(this);
+                    let dependency = $(this).attr('data-dependency');
+                    let togetherness = $(this).attr('data-togetherness');
+                    
+
+                    if(dependency) {
+                        dependency =  JSON.parse(dependency);
+
+                        for (var i = 0; i < dependency.length; i++) {
+                            let value= dependency[i];
+                            $('.dependency_'+value).prop('disabled',true);
+                            $('.dependency_'+value).next('i').addClass('disabled');
+                        }
+                    }
+                    if(togetherness) {
+                        togetherness =  JSON.parse(togetherness);
+
+                        for (var i = 0; i < togetherness.length; i++) {
+                            let value= togetherness[i];
+                            $('.togetherness_'+value).prop('disabled',true);
+                        }
+                    }
+                })
             }
         });
     });
@@ -144,35 +170,120 @@ $(document).ready(function (){
 
     $(document).on('change','.manageToggle',function(event) {
         let postData = [];
+        let currentValue = $(this).find('input').attr('id');
+        let curretContainer = $(this).parents('ul');
         let conficts = ($(this).attr('data-conflicts').trim() != "") ? JSON.parse($(this).attr('data-conflicts')) : [];
         let dependency = ($(this).attr('data-dependency').trim() != "") ? JSON.parse($(this).attr('data-dependency')) : [];
         let togetherness = ($(this).attr('data-togetherness').trim() != "" ) ? JSON.parse($(this).attr('data-togetherness')) : [];
         let checked = $(this).find('input').is(':checked');
         let dependencyFlag = false;
         let togethernessFlag = false;
-        if(checked) {
-            postData.push($(this).find('input').attr('id'));
-            for (var i = 0; i < conficts.length; i++) {
-                let values= conficts[i];
-                $('.conflicts_'+values).prop('checked',false);
-                console.log(values)
+        let container = $(this).parents('ul');
+        $(document).find('.floor_image_view img').each(function(i,obj){
+            if($(obj).attr('id')){
+                $(obj).remove();
             }
-            dependencyFlag = true;
-            togethernessFlag = true;
-
+        });
+        if(conficts.length == 0) 
+        {
+            // we need to match data-conficts attribute
+            document.querySelectorAll('[data-conflicts]').forEach(function (conflicts, index) { 
+            if(conflicts.getAttribute('data-conflicts')) { 
+            const conflictsProp = JSON.parse(conflicts.getAttribute('data-conflicts'));
+            const dependencyProp = JSON.parse(conflicts.getAttribute('data-dependency'));
+            const togethernessProp = JSON.parse(conflicts.getAttribute('data-togetherness'));
+            const currentEle = conflicts.getAttribute('data-self');
+            if(conflictsProp.indexOf(currentValue) > -1 ) {
+                if(checked) {
+                    setupForTogetherness(togethernessProp,false);
+                    postData.push(currentValue);
+                    $('.self_'+currentEle).prop('checked',false);
+                }
+                // else {
+                //     let data = setupForTogetherness(togethernessProp,true);
+                //     $('.self_'+currentEle).prop('checked',true);
+                //     postData.push(data);
+                //     postData.push(currentEle);
+                    
+                // }
+              }
+              if(dependencyProp.indexOf(currentValue) > -1 ) {
+                if(checked) { 
+                    postData.push(currentValue);
+                }
+                // set values for selected options
+                $(container).find('.manageToggle').each(function($e) {
+                    const id = $(this).find('input:checked').attr('id');
+                    if(id){
+                        postData.push(id);
+                    }
+                });
+              }
+            }
+            });
         }
-        console.log(dependencyFlag)
-        console.log(togethernessFlag)
+        else
+        {
+            if(checked) {
+                postData.push(currentValue);
+                for (var i = 0; i < conficts.length; i++) {
+                    let values= conficts[i];
+                    $('.conflicts_'+values).prop('checked',false);
+                }
+                dependencyFlag = true;
+                togethernessFlag = true;
 
+            }else {
+                
+                $(curretContainer).find('.manageToggle').each(function($e) {
+                    let currentEle = $(this);
+                console.log(currentEle)
+
+                    let dependency = $(this).attr('data-dependency');
+                    let togetherness = $(this).attr('data-togetherness');
+                    if(dependency) {
+                        dependency =  JSON.parse(dependency);
+                        for (var i = 0; i < dependency.length; i++) {
+                            let value= dependency[i];
+                            $('.dependency_'+value).prop('disabled',true);
+                            $('.dependency_'+value).next('i').addClass('disabled');
+                        }
+                    }
+                    if(togetherness) {
+                        togetherness =  JSON.parse(togetherness);
+
+                        for (var i = 0; i < togetherness.length; i++) {
+                            let value= togetherness[i];
+                            $('.togetherness_'+value).prop('disabled',true);
+                        }
+                    }
+                });
+            }
+        }
+
+        if(dependencyFlag) {
+            for (var i = 0; i < dependency.length; i++) {
+                let value= dependency[i];
+                $('.dependency_'+value).prop('disabled',false);
+                $('.dependency_'+value).next('i').removeClass('disabled');
+            }    
+        }
+        
         for (var i = 0; i < togetherness.length; i++) {
             let togethernessValue= togetherness[i];
+            $('.togetherness_'+togethernessValue).prop('disabled',false);
             $('.togetherness_'+togethernessValue).prop('checked',togethernessFlag);
-            $('.togetherness_'+togethernessValue).prop('disabled',togethernessFlag);
-            postData.push(togethernessValue);
-        }
-
-        if(togethernessFlag) {
-            console.log(postData);
+            $('.togetherness_'+togethernessValue).prop('disabled',true);
+            
+            if(togethernessFlag){
+                postData.push(togethernessValue);
+                $('.togetherness_'+togethernessValue).next('i').removeClass('disabled');
+            }
+        }    
+        
+        if(postData.length) {
+            
+            postData = unique(postData);
             $.ajax({
             url         : app_base_url+'/get-feature-data',
             type        : "post",
@@ -195,24 +306,38 @@ $(document).ready(function (){
                
             }
         });
-        }else {
-            $(document).find('.floor_image_view img').each(function(i,obj){
-                console.log($(obj).attr('id'));
-                if($(obj).attr('id')){
-                    $(obj).remove();
-                }
-            });
         }
         
-        // for (var i = 0; i < dependency.length; i++) {
-        //     let dependencyValue= dependency[i];
-        //     $('.dependency_'+dependencyValue).prop('checked',true);
-        // }
-
         
-        console.log(conficts);
-        console.log(dependency);
-        console.log(togetherness);
     })
+    
+    function setupForTogetherness(togetherness,flag) {
+        var postData = [];
+        for (var i = 0; i < togetherness.length; i++) {
+            let togethernessValue= togetherness[i];
+            $('.togetherness_'+togethernessValue).prop('disabled',false);
+            $('.togetherness_'+togethernessValue).prop('checked',flag);
+            $('.togetherness_'+togethernessValue).prop('disabled',true);
+            postData.push(togethernessValue);
+        }
+        return postData;
+    }
+    function unique(list) {
+        var result = [];
+        $.each(list, function(i, e) {
+            if ($.inArray(e, result) == -1) result.push(e);
+        });
+        return result;
+    }
+    // function setupForTogetherness(togetherness,flag) {
+    //     for (var i = 0; i < togetherness.length; i++) {
+    //         let togethernessValue= togetherness[i];
+    //         $('.togetherness_'+togethernessValue).prop('checked',flag);
+    //         $('.togetherness_'+togethernessValue).prop('disabled',flag);
+    //         postData.push(togethernessValue);
+    //     }
+    // }
+
+
 });
 

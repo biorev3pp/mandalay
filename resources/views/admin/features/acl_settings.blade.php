@@ -35,16 +35,22 @@
                         @php $i++; @endphp
                         <tr class="tr_clone" id="tr_{{$i}}">
                           <td class="w-25">
-                            {{Form::select('feature_id['.$i.']',$features,null,['class'=>'form-control main_option','id'=>'main_option'.$i])}}
+                            {{Form::hidden('feature_id[]',$acl['feature_id'],['class'=>'form-control main_option','id'=>'main_option1'])}}
+                            <select class="form-control main_option" name="main_option[".$i."]">
+                            <?php foreach ($features as $ky => $opt): ?>
+                              <option <?php if(in_array($ky,$acl_settings) && $ky != $acl['feature_id']) {?> disabled <?php } ?> <?php if($ky == $acl['feature_id'] ){ ?> selected <?php } ?> value="{{$ky}}">{{$opt}}</option>
+                            <?php endforeach; ?>
+                          </select>
+
                           </td>
                           <td class="w-25">
-                             {{Form::select('conflict['.$i.'][]',$features,null,['class'=>'form-control  conflict js-example-basic-single','id'=>'conflict'.$i, "multiple"=>"multiple"])}}
+                             {{Form::select('conflict['.$i.'][]',$features,json_decode($acl['conflicts']),['class'=>'form-control  conflict js-example-basic-single','id'=>'conflict'.$i, "multiple"=>"multiple"])}}
                           </td>
                           <td class="w-25">
-                             {{Form::select('dependency['.$i.'][]',$features,null,['class'=>'form-control  dependency js-example-basic-single','id'=>'togetherness'.$i, "multiple"=>"multiple"])}}
+                             {{Form::select('dependency['.$i.'][]',$features,json_decode($acl['dependency']),['class'=>'form-control  dependency js-example-basic-single','id'=>'togetherness'.$i, "multiple"=>"multiple"])}}
                           </td>
                           <td class="w-25">
-                             {{Form::select('togetherness['.$i.'][]',$features,null,['class'=>'form-control  togetherness js-example-basic-single','id'=>'dependency'.$i, "multiple"=>"multiple"])}}
+                             {{Form::select('togetherness['.$i.'][]',$features,json_decode($acl['togetherness']),['class'=>'form-control  togetherness js-example-basic-single','id'=>'dependency'.$i, "multiple"=>"multiple"])}}
                           </td>
                         </tr>
                       @empty
