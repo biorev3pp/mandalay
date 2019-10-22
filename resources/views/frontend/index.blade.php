@@ -26,15 +26,17 @@ ntent -->
 
           <!-- Page Heading -->
           <div class="row">
-            <div class="col-xl-3 col-lg-5 col-md-6">
+            <div class="col-xl-3 col-lg-5 col-md-6" id="top_tab">
               <ul
                 class="nav bg-primary d-flex d-block align-items-center justify-content-center border-bottom border-bottom-success">
-                <li class="p-2 col-6 text-center hand customNav active tabDiv" id="home">
-                  <img src="{{asset('frontend/img/home-hover.png')}}" width="30">
+                <li class="p-2 col-6 text-center hand customNav  tabDiv" id="home">
+                  <!--<img src="{{asset('frontend/img/home-hover.png')}}" width="30">-->
+				  <i class="fa fa-home"></i>
                   <h5 class="text-success mb-0">Home</h5>
                 </li>
                 <li class="p-2 col-6 text-center hand customNav tabDiv" id="floor">
-                  <img src="{{asset('frontend/img/floor-icon.png')}}" width="30">
+                  <!--<img src="{{asset('frontend/img/floor-icon.png')}}" width="30">-->
+				  <i class="fa fa-map"></i>
                   <h5 class="text-white-50 mb-0">Floor Plan</h5>
                 </li>
               </ul>
@@ -72,7 +74,7 @@ ntent -->
                       <div class="collapse" id="floor{{$i}}{{$j}}" style="">
                         <div class="card card-body">
                           <div class="sidebar-heading font-weight-bold">Options</div>
-                          <ul class="navbar-nav col-12 pl-2" id="left_togg">
+                          <ul class="navbar-nav col-12 " id="left_togg">
                             @forelse($floor->features as $feature)
                             <li class="nav-link text-nowrap hand noSelect">
                              <span> {{$feature->title}} </span>
