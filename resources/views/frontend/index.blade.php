@@ -29,7 +29,7 @@ ntent -->
             <div class="col-xl-3 col-lg-5 col-md-6" id="top_tab">
               <ul
                 class="nav bg-primary d-flex d-block align-items-center justify-content-center border-bottom border-bottom-success">
-                <li class="p-2 col-6 text-center hand customNav  tabDiv" id="home">
+                <li class="p-2 col-6 text-center hand customNav active tabDiv" id="home">
                   <!--<img src="{{asset('frontend/img/home-hover.png')}}" width="30">-->
 				  <i class="fa fa-home"></i>
                   <h5 class="text-success mb-0">Home</h5>
