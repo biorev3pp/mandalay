@@ -138,29 +138,28 @@ ntent -->
           @forelse($homeList as $home)
           @php $i++; @endphp
           <div id="{{$i}}" class="px-3 my-auto d-flex align-items-center home_image_footer @if($i!=1) disp_none @endif">
-            <div class="col-1">
+            <div class="col-2">
               <img src="{{asset('frontend/img/footerHome.png')}}" width="100">
+			  <h5 class="text-primary">{{$home->title}} {{$home->subtitle}}</h5>
             </div>
-            <div class="col-2 border-right border-primary">
-              <h5 class="text-primary">{{$home->title}} {{$home->subtitle}}</h5>
-            </div>
-            <span class="text-center mx-2">
+           
+            <span class="text-center mx-3">
               <img src="{{asset('frontend/img/squar-feet-icon.png')}}" width="40">
               <span class="d-block text-black-50">{{$home->area}}</span>
             </span>
-            <span class="text-center mx-2">
+            <span class="text-center mx-3">
               <img src="{{asset('frontend/img/bedroom-icon2.png')}}" width="40">
               <span class="d-block text-black-50">{{$home->bedrooms}}</span>
             </span>
-            <span class="text-center mx-2">
+            <span class="text-center mx-3">
               <img src="{{asset('frontend/img/bedroom-icon.png')}}" width="40">
               <span class="d-block text-black-50">{{$home->bathrooms}}</span>
             </span>
-            <span class="text-center mx-2 ">
+            <span class="text-center mx-3 ">
               <img src="{{asset('frontend/img/car-icon.png')}}" width="40">
               <span class="d-block text-black-50">{{$home->garage}}</span>
             </span>
-            <div class="border-left ml-3 pl-5 border-primary">
+            <div class="ml-3 pl-5 border-primary">
               <div class="fp-price">
                 <span class="pricetag">
                   <small>Starts From</small>
