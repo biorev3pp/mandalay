@@ -1,4 +1,4 @@
-@extends('layouts.web')
+  @extends('layouts.web')
 @section('content')
   <style>
     .disp_none{
@@ -205,25 +205,27 @@ ntent -->
           <div class="col-md-6 mc_field">
               <div class="form-group">
                 <label for="">Home price</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control home_price" value="300000" readonly placeholder="3000000">
               </div>
-
               <div class="form-group">
                 <label class="d-block">Down payment</label>
                 <div class="row" style="padding:0 0.8em;">
-                  <input type="text" class="form-control col-sm-10">
-                  <input type="text"  class="form-control col-sm-2">
+                  <input type="text" class="form-control col-sm-9 downpay_amt">
+                  <input type="text" value="" class="form-control col-sm-3 downpay_rate">
                 </div>
                 <div class="overlay-text">%</div>
               </div>
               <div class="form-group">
                 <label for="">Loan program</label>
-                <input type="text" class="form-control">
-                <div class="overlay-text">%</div>
+                <select class="form-control duration">
+                    <option value="30" selected="selected">30 - Year Fixed</option>
+                    <option value="15">15 - Year Fixed</option>
+                    <option value="5">5/1 ARM</option>
+                </select>
               </div>
               <div class="form-group">
                 <label for="">Interest rate <a href="Javascript:void(0)" id="adv_calc" class=" text-success">Advanced</a></label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control intrst">
                 <div class="overlay-text">%</div>
               </div>
              
@@ -243,20 +245,20 @@ ntent -->
                 <div class="form-group">
                   <label for="">Property tax <i class="fa fa-question-circle"></i></label>
                   <div class="row" style="padding:0 0.8em;">
-                    <input type="text" class="form-control col-sm-10">
+                    <input type="text" class="form-control col-sm-10 property_tx">
                     <div class="ot_prt1">/year</div>
-                    <input type="text"  class="form-control col-sm-2">
+                    <input type="text"  class="form-control col-sm-2 property_tx_rate">
                   </div>
                   <div class="overlay-text">%</div>
                 </div>
                 <div class="form-group">
                   <label for="">Home insurance <i class="fa fa-question-circle"></i></label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control home_insurance">
                   <div class="overlay-text">/Year</div>
                 </div>
                 <div class="form-group">
                   <label for="">HOA dues <i class="fa fa-question-circle"></i></label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control _hoa">
                   <div class="overlay-text">/Month</div>
                 </div>
               </div>
@@ -266,10 +268,10 @@ ntent -->
               <div class="mortage-result">
                 <div class="price-header">TOTAL PRICE OF HOME</div>
                 <div class="price-text-big">$ 300000</div>
-                <div class="price-text">Base Price        <span class='price_bp'>$ 300000</span></div>
-                <div class="price-text">Designs Selected  <span class='price_ds'>$ 1,519</span></div>
+                <div class="price-text">Base Price<span class='price_bp'>$ 300000</span></div>
+                {{-- <div class="price-text">Designs Selected  <span class='price_ds'>$ 1,519</span></div> --}}
                 <div class="price-header">MONTHLY ESTIMATED PAYMENT</div>
-                <div class="price-text-big">$ 1280</div>
+                <div class="price-text-big" id="installment"></div>
               </div>
           </div>
         </div>
@@ -277,5 +279,6 @@ ntent -->
     </div>
   </div>
 </div>
+
 @endsection
         
