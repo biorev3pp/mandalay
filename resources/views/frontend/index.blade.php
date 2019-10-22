@@ -26,16 +26,18 @@ ntent -->
 
           <!-- Page Heading -->
           <div class="row">
-            <div class="col-xl-3 col-lg-5 col-md-6">
+            <div class="col-xl-3 col-lg-5 col-md-6" id="top_tab">
               <ul
                 class="nav bg-primary d-flex d-block align-items-center justify-content-center border-bottom border-bottom-success">
                 <li class="p-2 col-6 text-center hand customNav active tabDiv" id="home">
-                  <img src="{{asset('frontend/img/home-hover.png')}}" width="30">
+                  <!--<img src="{{asset('frontend/img/home-hover.png')}}" width="30">-->
+				  <i class="fa fa-home"></i>
                   <h5 class="text-success mb-0">Home</h5>
                 </li>
                 <li class="p-2 col-6 text-center hand customNav tabDiv" id="floor">
-                  <img src="{{asset('frontend/img/floor-icon.png')}}" width="30">
-                  <h5 class="text-white-50 mb-0">Floor Plan</h5>
+                  <!--<img src="{{asset('frontend/img/floor-icon.png')}}" width="30">-->
+				  <i class="fa fa-map"></i>
+                  <h5 class="mb-0">Floor Plan</h5>
                 </li>
               </ul>
               <div class="custom-scroll bg-primary col-12 tabDivSection" id="home">
@@ -71,11 +73,11 @@ ntent -->
                     <div class="col-12">
                       <div class="collapse" id="floor{{$i}}{{$j}}" style="">
                         <div class="card card-body">
-                          <div class="sidebar-heading font-weight-bold">Options</div>
-                          <ul class="navbar-nav col-12 pl-2">
+                          <!--<div class="sidebar-heading font-weight-bold">Options</div>-->
+                          <ul class="navbar-nav col-12 " id="left_togg">
                             @forelse($floor->features as $feature)
                             <li class="nav-link text-nowrap hand noSelect">
-                              {{$feature->title}}
+                             <span> {{$feature->title}} </span>
                               <label class="ui-switch ui-switch-success ui-switch-sm mb-0 float-right">
                                 <input type="checkbox" id="{{$feature->id}}" class="featureBtn"><i></i>
                               </label>
@@ -124,43 +126,34 @@ ntent -->
                   </div>
                 </div>
               </div>
-            </div>
-
-          </div>
-          <!-- /.container-fluid -->
-
-        </div>
-        <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <footer class="sticky-footer shadow py-2 bg-white text-white fixed-bottom bottom-up-40">
+			   <!-- Footer -->
+        <footer class="sticky-footer" id="spacer_">
           @php $i=0; @endphp 
           @forelse($homeList as $home)
           @php $i++; @endphp
           <div id="{{$i}}" class="px-3 my-auto d-flex align-items-center home_image_footer @if($i!=1) disp_none @endif">
-            <div class="col-1">
-              <img src="{{asset('frontend/img/footerHome.png')}}" width="100">
+            <div class="col-3">
+              <img src="{{asset('frontend/img/footerHome.png')}}" width="100" class="f_left">
+			  <h5 class="text-primary">{{$home->title}} {{$home->subtitle}}</h5>
             </div>
-            <div class="col-2 border-right border-primary">
-              <h5 class="text-primary">{{$home->title}} {{$home->subtitle}}</h5>
-            </div>
-            <span class="text-center mx-2">
+           
+            <span class="text-center mx-3">
               <img src="{{asset('frontend/img/squar-feet-icon.png')}}" width="40">
               <span class="d-block text-black-50">{{$home->area}}</span>
             </span>
-            <span class="text-center mx-2">
+            <span class="text-center mx-3">
               <img src="{{asset('frontend/img/bedroom-icon2.png')}}" width="40">
               <span class="d-block text-black-50">{{$home->bedrooms}}</span>
             </span>
-            <span class="text-center mx-2">
+            <span class="text-center mx-3">
               <img src="{{asset('frontend/img/bedroom-icon.png')}}" width="40">
               <span class="d-block text-black-50">{{$home->bathrooms}}</span>
             </span>
-            <span class="text-center mx-2 ">
+            <span class="text-center mx-3 ">
               <img src="{{asset('frontend/img/car-icon.png')}}" width="40">
               <span class="d-block text-black-50">{{$home->garage}}</span>
             </span>
-            <div class="border-left ml-3 pl-5 border-primary">
+            <div class="ml-3 pl-5 border-primary">
               <div class="fp-price">
                 <span class="pricetag">
                   <small>Starts From</small>
@@ -187,6 +180,15 @@ ntent -->
           @empty
           @endforelse
         </footer>
+            </div>
+
+          </div>
+          <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+       
         <!-- Button trigger modal -->
 <!-- Modal -->
 <div class="modal fade" id="mortageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

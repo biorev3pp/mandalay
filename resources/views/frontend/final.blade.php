@@ -151,7 +151,7 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <footer class="sticky-footer shadow py-2 bg-dark text-white fixed-bottom">
+     <!--   <footer class="sticky-footer shadow py-2 bg-dark text-white fixed-bottom">
           <div class="px-3 my-auto d-flex justify-content-between align-items-center">
             <div class="copyright text-left">
               <span>© 2018 Biorev All Right Reserved.</span>
@@ -161,7 +161,7 @@
                     width="100"></a></span>
             </div>
           </div>
-        </footer>
+        </footer>-->
         <!-- End of Footer -->
 
       </div>
