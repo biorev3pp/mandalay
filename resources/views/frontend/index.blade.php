@@ -127,7 +127,7 @@ ntent -->
                 </div>
               </div>
 			   <!-- Footer -->
-        <footer class="sticky-footer">
+        <footer class="sticky-footer" id="spacer_">
           @php $i=0; @endphp 
           @forelse($homeList as $home)
           @php $i++; @endphp
