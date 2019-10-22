@@ -337,7 +337,4 @@ $(document).ready(function (){
     //         postData.push(togethernessValue);
     //     }
     // }
-
-
 });
-
