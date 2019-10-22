@@ -72,10 +72,10 @@ ntent -->
                       <div class="collapse" id="floor{{$i}}{{$j}}" style="">
                         <div class="card card-body">
                           <div class="sidebar-heading font-weight-bold">Options</div>
-                          <ul class="navbar-nav col-12 pl-2">
+                          <ul class="navbar-nav col-12 pl-2" id="left_togg">
                             @forelse($floor->features as $feature)
                             <li class="nav-link text-nowrap hand noSelect">
-                              {{$feature->title}}
+                             <span> {{$feature->title}} </span>
                               <label class="ui-switch ui-switch-success ui-switch-sm mb-0 float-right">
                                 <input type="checkbox" id="{{$feature->id}}" class="featureBtn"><i></i>
                               </label>
