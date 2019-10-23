@@ -11510,14 +11510,18 @@ li.customNav.active h5 , li.customNav.active i{color:#99cc00;}
 #final_tab_bar{
 	position: relative;
 	left:10px;display:inline-block;
-	padding-bottom: 250px;
-	width: 340px;
+	width: 20%;
 	}
 	
 	
 	#final_tab_bar_r {
-	padding-left: 350px;
+	padding-left: 0;
 	transition: all ease 0.5s;
-	width: 100%;padding-top:20px;
-	display: inline-block;width:100%;
+	width: 100%;
+	
+	display: inline-block;
+	width: 78%;
+	
+	position: relative;
+	margin-left: 2%;
 }
