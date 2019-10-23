@@ -10,7 +10,7 @@ $(document).ready(function (){
         localStorage.setItem('home_id',homeid);
         let homeEnId = $(this).attr('data-home-id');
         $(document).find('.floor_image_view').addClass('disp_none');
-        // Show Full Home Image 
+        // Show Full Home Image
         $(document).find('.home_image_full').each(function(i,obj){
             if($(obj).attr('id')===homeid){
                 $(obj).removeClass('disp_none');
@@ -61,7 +61,7 @@ $(document).ready(function (){
         });
         $(document).find('.floor_image_view').addClass('disp_none');
     });
-    
+
     // $(document).on('click','.hometab', function(e){
     //     let homeid = localStorage.getItem('home_id');
     //     $(document).find('.home_image_full').each(function(i,obj){
@@ -81,7 +81,7 @@ $(document).ready(function (){
         $(document).find('.featureBtn').each(function(i,obj){
             if($(obj).is(':checked')){
                 $(obj).trigger("click");
-            }        
+            }
         });
         let container = $('div[data-floor-home-id="'+floorid+'"]');
         $.ajax({
@@ -106,7 +106,7 @@ $(document).ready(function (){
                     let currentEle = $(this);
                     let dependency = $(this).attr('data-dependency');
                     let togetherness = $(this).attr('data-togetherness');
-                    
+
 
                     if(dependency) {
                         dependency =  JSON.parse(dependency);
@@ -131,7 +131,7 @@ $(document).ready(function (){
     });
 
     $(document).on('click','.featureBtn', function(e){
-        
+
         let featureId = $(this).attr('id');
         if($(this).is(':checked')){
             let featureInput = '<input name="feature_id[]" type="hidden" value="'+featureId+'">';
@@ -153,7 +153,7 @@ $(document).ready(function (){
                 let featureImage = '<img src="'+response.image+'" id="'+featureId+'" class="img-fluid feature-img">'
                 $(document).find('.floor_image_view').append(featureImage);
             }
-        });    
+        });
         }else{
             $(document).find("input[name='feature_id[]']").each(function(i,obj){
                 if($(obj).val()==featureId){
@@ -184,12 +184,12 @@ $(document).ready(function (){
                 $(obj).remove();
             }
         });
-        if(conficts.length == 0) 
+        if(conficts.length == 0)
         {
             // we need to match data-conficts attribute
-            document.querySelectorAll('label[data-conflicts]').forEach(function (conflicts, index) { 
-            if(conflicts.getAttribute('data-conflicts')) { 
-            
+            document.querySelectorAll('label[data-conflicts]').forEach(function (conflicts, index) {
+            if(conflicts.getAttribute('data-conflicts')) {
+
             let conflictsProp = (conflicts.getAttribute('data-conflicts').trim() != "") ? JSON.parse(conflicts.getAttribute('data-conflicts')) : [];
             let dependencyProp = (conflicts.getAttribute('data-dependency').trim() != "") ? JSON.parse(conflicts.getAttribute('data-dependency')) : [];
             let togethernessProp = (conflicts.getAttribute('data-togetherness').trim() != "" ) ? JSON.parse(conflicts.getAttribute('data-togetherness')) : [];
@@ -214,11 +214,11 @@ $(document).ready(function (){
                 //     $('.self_'+currentEle).prop('checked',true);
                 //     postData.push(data);
                 //     postData.push(currentEle);
-                    
+
                 // }
               }
               else if (dependencyProp.indexOf(currentValue) > -1 ) {
-                if(checked) { 
+                if(checked) {
                     postData.push(currentValue);
                 }
                 // set values for selected options
@@ -231,7 +231,7 @@ $(document).ready(function (){
               }
               else {
                 console.log("error")
-                if(checked) { 
+                if(checked) {
                     postData.push(currentValue);
                 }
                 $(container).find('.manageToggle').each(function($e) {
@@ -258,7 +258,7 @@ $(document).ready(function (){
                 togethernessFlag = true;
 
             }else {
-                
+
                 $(curretContainer).find('.manageToggle').each(function($e) {
                     let currentEle = $(this);
                     let dependency = $(this).attr('data-dependency');
@@ -295,23 +295,23 @@ $(document).ready(function (){
                 let value= dependency[i];
                 $('.dependency_'+value).prop('disabled',false);
                 $('.dependency_'+value).next('i').removeClass('disabled');
-            }    
+            }
         }
-        
+
         for (var i = 0; i < togetherness.length; i++) {
             let togethernessValue= togetherness[i];
             $('.togetherness_'+togethernessValue).prop('disabled',false);
             $('.togetherness_'+togethernessValue).prop('checked',togethernessFlag);
             $('.togetherness_'+togethernessValue).prop('disabled',true);
-            
+
             if(togethernessFlag){
                 postData.push(togethernessValue);
                 $('.togetherness_'+togethernessValue).next('i').removeClass('disabled');
             }
-        }    
-        
+        }
+
         if(postData.length) {
-            
+
             postData = unique(postData);
             $.ajax({
             url         : app_base_url+'/get-feature-data',
@@ -332,16 +332,16 @@ $(document).ready(function (){
                    let featureImage = '<img src="'+value.image+'" id="'+value.id+'" class="img-fluid feature-img">'
                     $(document).find('.floor_image_view').append(featureImage);
                 });
-               
+
             }
         });
         }
-        
-        
+
+
     })
-    
+
     function setupForTogetherness(togetherness,flag) {
-       
+
         var postData = [];
         if(togetherness.length) {
                togetherness.map(function(item){
@@ -350,7 +350,7 @@ $(document).ready(function (){
                 $('.dependency_'+togethernessValue).prop('checked',flag);
                 $('.dependency_'+togethernessValue).prop('disabled',true).next('i').addClass("disabled");
                 postData.push(togethernessValue);
-            }) 
+            })
         }
         return postData;
     }
@@ -364,7 +364,7 @@ $(document).ready(function (){
                 $('.dependency_'+dependencyPropValue).prop('checked',flag);
                 $('.dependency_'+dependencyPropValue).prop('disabled',true).next('i').addClass("disabled");
                 postData.push(dependencyPropValue);
-            }) 
+            })
         }
         return postData;
     }
@@ -384,8 +384,6 @@ $(document).ready(function (){
     //     }
     // }
 });
-<<<<<<< HEAD
-=======
 
 // Mortrage Calculator
 var newprinc;
@@ -409,8 +407,8 @@ $(document).on('keyup', '.downpay_amt', function() {
     var principle = $(".home_price").val();
     var amt = $(this).val();
     if(amt !== '')
-    { 
-        var calculated  = principle/amt;    
+    {
+        var calculated  = principle/amt;
         $('.downpay_rate').val(calculated);
     }
     else{
@@ -423,4 +421,3 @@ $(document).on('keydown', '.downpay_rate', function() {
    var amt = $(this).val();
 });
 // Mortrage Calculator Closed
->>>>>>> af9f9e019911e2c2e3784cde71faa1541f9ca951

@@ -52,7 +52,6 @@
     <!-- Custom scripts for all pages-->
     <script src="{{asset('frontend/js/sb-admin-2.min.js')}}"></script>
     <script src="{{asset('frontend/js/custom.js')}}"></script>
-<<<<<<< HEAD
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="{{asset('frontend/js/jquery.accrue.min.js')}}"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
@@ -81,7 +80,7 @@
               term: "Format: 12m, 36m, 3y, 7y"
             },
             response_output_div: ".results",
-            response_basic: 
+            response_basic:
               '<p><strong>Monthly Payment:</strong><br>$%payment_amount%</p>'+
               '<p><strong>Number of Payments:</strong><br>%num_payments%</p>'+
               '<p><strong>Total Payments:</strong><br>$%total_payments%</p>'+
@@ -90,13 +89,9 @@
             error_text: "Please fill in all fields.",
             callback: function ( elem, data ){}
           });
-        </script>        
-=======
-
+        </script>
     <script src="{{asset('frontend/js/jquery.loan-calculator.js')}}"></script>
-    
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
->>>>>>> af9f9e019911e2c2e3784cde71faa1541f9ca951
     <script>
       var app_base_url = "{{url('/')}}";
 

@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -316,16 +316,7 @@ img {
 	}
 }
 
-<<<<<<< HEAD
-
 /*media quaries*/
 .invalid-feedback{
 	padding: 8px 0;
 }
-=======
-.invalid-feedback{
-	padding:8px 0;
-}
-
-/*media quaries*/
->>>>>>> af9f9e019911e2c2e3784cde71faa1541f9ca951
