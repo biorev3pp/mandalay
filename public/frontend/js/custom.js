@@ -194,12 +194,20 @@ $(document).ready(function (){
             let dependencyProp = (conflicts.getAttribute('data-dependency').trim() != "") ? JSON.parse(conflicts.getAttribute('data-dependency')) : [];
             let togethernessProp = (conflicts.getAttribute('data-togetherness').trim() != "" ) ? JSON.parse(conflicts.getAttribute('data-togetherness')) : [];
 
+            console.log(conflictsProp)
+            console.log(dependencyProp)
+            console.log(togethernessProp)
             const currentEle = conflicts.getAttribute('data-self');
             if(conflictsProp.indexOf(currentValue) > -1 ) {
                 if(checked) {
                     setupForTogetherness(togethernessProp,false);
+                    setupForDependency(dependencyProp,false);
+
                     postData.push(currentValue);
                     $('.self_'+currentEle).prop('checked',false);
+                    // $(container).find('.manageToggle').each(function($e) {
+                    //     $(this).find('input:checked').prop('checked',false);;
+                    // });
                 }
                 // else {
                 //     let data = setupForTogetherness(togethernessProp,true);
@@ -222,6 +230,7 @@ $(document).ready(function (){
                 });
               }
               else {
+                console.log("error")
                 if(checked) { 
                     postData.push(currentValue);
                 }
@@ -252,8 +261,6 @@ $(document).ready(function (){
                 
                 $(curretContainer).find('.manageToggle').each(function($e) {
                     let currentEle = $(this);
-                console.log(currentEle)
-
                     let dependency = $(this).attr('data-dependency');
                     let togetherness = $(this).attr('data-togetherness');
                     if(dependency) {
@@ -274,6 +281,13 @@ $(document).ready(function (){
                     }
                 });
             }
+            // in case any dependncy is on need to show image
+             $(container).find('.manageToggle').each(function($e) {
+                    const id = $(this).find('input:checked').attr('id');
+                        if(id){
+                            postData.push(id);
+                        }
+                    });
         }
 
         if(dependencyFlag) {
@@ -327,13 +341,30 @@ $(document).ready(function (){
     })
     
     function setupForTogetherness(togetherness,flag) {
+       
         var postData = [];
-        for (var i = 0; i < togetherness.length; i++) {
-            let togethernessValue= togetherness[i];
-            $('.togetherness_'+togethernessValue).prop('disabled',false);
-            $('.togetherness_'+togethernessValue).prop('checked',flag);
-            $('.togetherness_'+togethernessValue).prop('disabled',true);
-            postData.push(togethernessValue);
+        if(togetherness.length) {
+               togetherness.map(function(item){
+                let togethernessValue= item;
+                $('.dependency_'+togethernessValue).prop('disabled',false);
+                $('.dependency_'+togethernessValue).prop('checked',flag);
+                $('.dependency_'+togethernessValue).prop('disabled',true).next('i').addClass("disabled");
+                postData.push(togethernessValue);
+            }) 
+        }
+        return postData;
+    }
+
+    function setupForDependency(dependencyProp,flag) {
+        var postData = [];
+        if(dependencyProp.length) {
+               dependencyProp.map(function(item){
+                let dependencyPropValue= item;
+                $('.dependency_'+dependencyPropValue).prop('disabled',false);
+                $('.dependency_'+dependencyPropValue).prop('checked',flag);
+                $('.dependency_'+dependencyPropValue).prop('disabled',true).next('i').addClass("disabled");
+                postData.push(dependencyPropValue);
+            }) 
         }
         return postData;
     }
