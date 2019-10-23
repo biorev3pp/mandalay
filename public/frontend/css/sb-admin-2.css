@@ -11457,3 +11457,11 @@ body.sidebar-toggled footer.sticky-footer {
 .mortage-result .price-text  .price_bp {
   float:right;
 }
+
+/*=================================custom css=========================================
+====================================================================================*/
+
+.spacer_margin{padding-top:70px;}
+li.customNav.active h5 , li.customNav.active i{color:#99cc00;}
+#home i , #floor i, #home h5, #floor h5{color:#fff; font-size:16px;}
+

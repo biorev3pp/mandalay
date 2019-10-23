@@ -25,8 +25,8 @@
   </style>
         <!-- Begin Page Co    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">    
 ntent -->
-        <div class="container-fluid bg-white pt-4 mb-4">
-
+        <div class="container-fluid bg-white">
+<div class="spacer_margin">
           <!-- Page Heading -->
           <div class="row">
             <div class="col-xl-3 col-lg-5 col-md-6" id="top_tab">
@@ -194,6 +194,7 @@ ntent -->
             </div>
 
           </div>
+		  </div>
           <!-- /.container-fluid -->
 
         </div>
