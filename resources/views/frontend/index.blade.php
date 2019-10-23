@@ -93,7 +93,7 @@ ntent -->
                               
                                 class="ui-switch ui-switch-success ui-switch-sm mb-0 float-right 
                                 <?php if(($feature->features_acl->count())) {?> manageToggle <?php } ?>">
-                                <input type="checkbox" class="<?php if(($feature->features_acl->count() == 0)) {?> featureBtn <?php } ?> conflicts_{{$feature->id}} dependency_{{$feature->id}} self_{{$feature->id}} togetherness_{{$feature->id}}" id="{{$feature->id}}"><i></i>
+                                <input type="checkbox" class="featureBtn conflicts_{{$feature->id}} dependency_{{$feature->id}} self_{{$feature->id}} togetherness_{{$feature->id}}" id="{{$feature->id}}"><i></i>
                               </label>
                             </li>
                             @empty
@@ -108,11 +108,13 @@ ntent -->
                 @empty
                 @endforelse
               </div>
-
-</div><!--div scroller-->
-<div class="floor-plan-btn">
-<button type="button" class="btn btn-finish">Finish &amp; Print</button>
-</div>
+              </div><!--div scroller-->
+              <div class="floor-plan-btn">
+                {{Form::open(array('url'=>url('home-final')))}}  
+                {{Form::hidden('home_id',$defaultHome->id)}}
+                <button type="submit" class="btn btn-finish">Finish &amp; Print</button>
+                {{Form::close()}}
+              </div>
             </div>
 			</div>
 			<!--left bar close-->
@@ -192,16 +194,6 @@ ntent -->
               </span>
               <span class="text">Mortrage </span> 
             </button>
-
-            {{Form::open(array('url'=>url('home-final')))}}  
-            {{Form::hidden('home_id',$defaultHome->id)}}
-            <button type="submit" href="#" class="btn btn-primary btn-icon-split btn-lg ml-auto" >
-              <span class="icon text-white-50">
-                <i class="fas fa-chevron-right"></i>
-              </span>
-              <span class="text">Finish </span>
-            </button>
-            {{Form::close()}}
           </div>
           @empty
           @endforelse
