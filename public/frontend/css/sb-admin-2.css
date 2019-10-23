@@ -11461,7 +11461,31 @@ body.sidebar-toggled footer.sticky-footer {
 /*=================================custom css=========================================
 ====================================================================================*/
 
-.spacer_margin{padding-top:70px;}
+.spacer_margin{padding-top:90px;}
 li.customNav.active h5 , li.customNav.active i{color:#99cc00;}
 #home i , #floor i, #home h5, #floor h5{color:#fff; font-size:16px;}
+#top_tab{
+	position: fixed;
+	left: 0;
+	padding-bottom: 250px;
+	width: 350px;
+	height: 100%;
+	top: 100px;
+	background: #297fd5;
+	
+	transition: all ease 0.5s;
+}
 
+#top_tab .accord {
+		overflow-y: auto;
+	max-height: calc(96vh - 15rem);
+	width: 100%;
+	position: absolute;
+	left: 0;
+}
+.right_panel_d {
+	padding-left: 350px;
+	transition: all ease 0.5s;
+	width: 100%;
+	display: inline-block;
+}

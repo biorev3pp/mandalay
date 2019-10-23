@@ -29,7 +29,9 @@ ntent -->
 <div class="spacer_margin">
           <!-- Page Heading -->
           <div class="row">
-            <div class="col-xl-3 col-lg-5 col-md-6" id="top_tab">
+		  <!-- left bar start-->
+		  <div id="top_tab">
+            <div class="c_D_bar">
               <ul
                 class="nav bg-primary d-flex d-block align-items-center justify-content-center border-bottom border-bottom-success">
                 <li class="p-2 col-6 text-center hand customNav active tabDiv" id="home">
@@ -43,6 +45,7 @@ ntent -->
                   <h5 class="mb-0">Floor Plan</h5>
                 </li>
               </ul>
+			  <div class="accord">
               <div class="custom-scroll bg-primary col-12 tabDivSection" id="home">
                 <ul class="navbar-nav">
                   @php $i=0; @endphp 
@@ -106,9 +109,13 @@ ntent -->
                 @endforelse
               </div>
 
-
+</div><!--div scroller-->
             </div>
-            <div class="col-xl-9 col-lg-7 col-md-6">
+			</div>
+			<!--left bar close-->
+			
+			
+            <div class="right_panel_d">
               <div class="card o-hidden shadow-lg mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   @php $i=0; @endphp 
