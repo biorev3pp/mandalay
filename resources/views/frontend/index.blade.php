@@ -149,6 +149,7 @@ ntent -->
               </div>
 			   <!-- Footer -->
         <footer class="sticky-footer" id="spacer_">
+		<div class="all_cen">
           @php $i=0; @endphp 
           @forelse($homeList as $home)
           @php $i++; @endphp
@@ -205,6 +206,7 @@ ntent -->
           @empty
           @endforelse
         </footer>
+	</div>
             </div>
 
           </div>
