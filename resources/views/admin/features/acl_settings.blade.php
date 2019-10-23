@@ -25,8 +25,8 @@
                       <tr class="bg-dark text-white">
                          <th>Options</th>
                          <th>Conflicts</th>
-                         <th>Togetherness</th>
                          <th>Dependency</th>
+                         <th>Togetherness</th>
                       </tr>
                    </thead>
                    <tbody>
