@@ -20,11 +20,14 @@ Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::prefix('admin')->group(function(){
-    Route::get('/login', function(){
-        return view('auth.login');
-    });
+Route::get('admin/login', function(){
+    if(Auth::id()){
+        return redirect('admin/homes');    
+    }
+    return view('auth.login');
+});
 
+Route::group(['prefix'=>'admin','middleware'=>'auth'], function () { 
     Route::get('/logout', 'Auth\LoginController@logout');
     Route::get('/home', 'HomeController@index')->name('home');
 
