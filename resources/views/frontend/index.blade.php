@@ -110,6 +110,9 @@ ntent -->
               </div>
 
 </div><!--div scroller-->
+<div class="floor-plan-btn">
+<button type="button" class="btn btn-finish">Finish &amp; Print</button>
+</div>
             </div>
 			</div>
 			<!--left bar close-->
