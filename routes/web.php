@@ -15,6 +15,7 @@ Route::get('/', 'Frontend\HomeController@index');
 Route::post('/home-final', 'Frontend\HomeController@finalHomePage');
 Route::post('/get-floor-data', 'Frontend\HomeController@getFloorsData');
 Route::post('/get-feature-data', 'Frontend\HomeController@getFeatureData');
+Route::get('/test-pdf', 'Frontend\HomeController@testPDF');
 
 Auth::routes();
 

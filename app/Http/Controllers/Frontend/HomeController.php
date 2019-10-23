@@ -67,4 +67,9 @@ class HomeController extends Controller
         }
         return "Unauthorised Access !!!";
     }
+
+    public function testPDF(){
+        $pdf = \PDF::loadView('frontend.home_pdf');
+        return $pdf->download('mandalay.pdf');
+    }
 }
