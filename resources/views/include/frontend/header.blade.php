@@ -33,7 +33,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light topbar static-top shadow bg-primary sidebar-dark">
+        <nav class="navbar navbar-expand navbar-light topbar static-top shadow bg-primary sidebar-dark fixed-top">
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
