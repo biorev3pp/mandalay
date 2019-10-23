@@ -2,6 +2,7 @@
 <tr class="tr_clone" id="tr_{{$index}}">
    <td class="w-25">
       <select class="form-control main_option" name="feature_id[{{$index}}]" id="main_option{{$index}}">
+         <option>Choose Option</option>
          @forelse($features as $key => $value)
             <option value="{{$key}}">{{$value}}</option>
          @empty

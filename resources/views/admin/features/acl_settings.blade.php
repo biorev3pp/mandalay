@@ -25,8 +25,8 @@
                       <tr class="bg-dark text-white">
                          <th>Options</th>
                          <th>Conflicts</th>
-                         <th>Dependency</th>
                          <th>Togetherness</th>
+                         <th>Dependency</th>
                       </tr>
                    </thead>
                    <tbody>
@@ -36,7 +36,7 @@
                         <tr class="tr_clone" id="tr_{{$i}}">
                           <td class="w-25">
                             {{Form::hidden('feature_id[]',$acl['feature_id'],['class'=>'form-control main_option','id'=>'main_option1'])}}
-                            <select class="form-control main_option" name="main_option[".$i."]">
+                            <select class="form-control main_option" name="main_option[{{$i}}]">
                             <?php foreach ($features as $ky => $opt): ?>
                               <option <?php if(in_array($ky,$acl_settings) && $ky != $acl['feature_id']) {?> disabled <?php } ?> <?php if($ky == $acl['feature_id'] ){ ?> selected <?php } ?> value="{{$ky}}">{{$opt}}</option>
                             <?php endforeach; ?>
@@ -56,7 +56,13 @@
                       @empty
                         <tr class="tr_clone" id="tr_1">
                           <td class="w-25">
-                            {{Form::select('feature_id[1]',$features,null,['class'=>'form-control main_option','id'=>'main_option1'])}}
+                            <select class="form-control main_option" name="feature_id[1]" id="main_option1">
+                               <option>Choose Option</option>
+                               @forelse($features as $key => $value)
+                                  <option value="{{$key}}">{{$value}}</option>
+                               @empty
+                               @endforelse
+                            </select>
                           </td>
                           <td class="w-25">
                              {{Form::select('conflict[1][]',$features,null,['class'=>'form-control  conflict js-example-basic-single','id'=>'conflict1', "multiple"=>"multiple"])}}
