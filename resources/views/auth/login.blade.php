@@ -10,19 +10,28 @@
       <!--font awesome-->
       <link rel="stylesheet" href="{{asset('frontend/font-aweome/css/all.css')}}">
       <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
+<<<<<<< HEAD
       <title>::::</title>
+=======
+      <title>Mandalay Dashboard</title>
+>>>>>>> af9f9e019911e2c2e3784cde71faa1541f9ca951
    </head>
    <body>
       <!--header-->
       <div class="h_bg">
          <!--container-->
          <div class="main_con">
+<<<<<<< HEAD
             <img src="{{asset('frontend/img/login-logo.png')}}" class="logo" />
+=======
+            <img src="{{asset('frontend/img/login- logo.png')}}" class="logo" />
+>>>>>>> af9f9e019911e2c2e3784cde71faa1541f9ca951
             <!--form-->
             <div class="blu_bg">
                <div class="user_ico"> <i class="far fa-user"></i></div>
                <div class="form_data">
                   <form method="POST" class="user" action="{{ route('login') }}">
+<<<<<<< HEAD
                   @csrf
                   <div class="form-group bg_whit">
                      <i class="fa fa-user"></i>
@@ -44,6 +53,32 @@
                   </div>
                   <button type="submit">login</button>
                   </form>
+=======
+                    @csrf
+                    <div class="form-group bg_whit">
+                      <i class="fa fa-user"></i>
+                      <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
+                        @error('email')
+                            <div class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="form-group bg_whit">
+                      <i class="fa fa-lock-open"></i>
+                      <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                        @error('password')
+                            <div class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @enderror
+                    </div>
+                    <button type="submit">login</button>
+                  </form>
+                  <!--form-->
+
+                  <!--form-->
+>>>>>>> af9f9e019911e2c2e3784cde71faa1541f9ca951
                   {{-- <h1><a href="javascript:void(0);">Create Account</a></h1> --}}
                </div>
             </div>

@@ -353,3 +353,43 @@ $(document).ready(function (){
     //     }
     // }
 });
+<<<<<<< HEAD
+=======
+
+// Mortrage Calculator
+var newprinc;
+function calc_initial(){
+    var princ = $(".home_price").val();
+    var minimum_amount = (princ*20)/100;
+    $('.downpay_amt').val(minimum_amount);
+    $('.downpay_rate').val(20);
+    newprinc = princ - minimum_amount;
+    // $('.installment').html(installment);
+    // $('.estimate').html(installment);
+}
+
+calc_initial();
+$("#installment").loanCalculator({
+    loanAmount   : newprinc,
+    loanDuration : 30,
+    creditScore  : 4.1,
+});
+$(document).on('keyup', '.downpay_amt', function() {
+    var principle = $(".home_price").val();
+    var amt = $(this).val();
+    if(amt !== '')
+    { 
+        var calculated  = principle/amt;    
+        $('.downpay_rate').val(calculated);
+    }
+    else{
+        $('.downpay_rate').val(0);
+    }
+
+});
+
+$(document).on('keydown', '.downpay_rate', function() {
+   var amt = $(this).val();
+});
+// Mortrage Calculator Closed
+>>>>>>> af9f9e019911e2c2e3784cde71faa1541f9ca951
