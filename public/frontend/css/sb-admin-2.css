@@ -11490,16 +11490,19 @@ li.customNav.active h5 , li.customNav.active i{color:#99cc00;}
 .floor-plan-btn {
 	position: fixed;
 	bottom: 40px;
-	width: 350px;
+	width: 340px;
 	text-align: center;
-	padding: 25px 0;
+	padding: 25px 0;background:#373737;
 }
-.floor-plan-btn  .btn-finish {
+.floor-plan-btn .btn-finish {
 	background: #297fd5;
-	font-size: 18px;
+	font-size: 16px;
 	color: #fff;
 	text-align: center;
 	width: 100%;
-	max-width: 200px;
-	border-radius: 2px;
+	width: auto;
+	border-radius: 5px;
+	padding: 0.5rem 1rem;
+	transition: background .5s ease-in-out;
 }
+.floor-plan-btn .btn-finish:hover{background:#99CC00;}
