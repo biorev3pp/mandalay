@@ -11366,12 +11366,12 @@ body.sidebar-toggled footer.sticky-footer {
 .customNav.active {
   background: #03537b;
 }
-
+#home i , #floor i , #floor h5 , #home h5{color:#fff;}
 .fixed-bottom.bottom-up-40 {
   bottom: 41px;
 }
 
-
+li.customNav.active h5 , li.customNav.active i{color:#99cc00;}
 /***************custom css *****************************/
 
 #custom_table i {
@@ -11457,3 +11457,5 @@ body.sidebar-toggled footer.sticky-footer {
 .mortage-result .price-text  .price_bp {
   float:right;
 }
+
+
