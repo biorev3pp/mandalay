@@ -11506,3 +11506,10 @@ li.customNav.active h5 , li.customNav.active i{color:#99cc00;}
 	transition: background .5s ease-in-out;
 }
 .floor-plan-btn .btn-finish:hover{background:#99CC00;}
+
+#final_tab_bar{
+	position: relative;
+	left:10px;float:left;
+	padding-bottom: 250px;
+	width: 340px;
+	}
