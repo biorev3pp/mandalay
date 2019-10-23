@@ -10,10 +10,11 @@
   </style>
         <!-- Begin Page Content -->
         <div class="container-fluid bg-white pt-4 mb-4">
-
+<div class="spacer_margin">
           <!-- Page Heading -->
           <div class="row">
-            <div class="col-xl-4 col-lg-5 col-md-6">
+		  <div id="final_tab_bar">
+            <div>
               <h1 class="h3 text-success">Congratulations
                 <a href="#" class="btn btn-primary btn-circle btn-sm float-right mx-2">
                   <i class="fas fa-share"></i>
@@ -87,7 +88,8 @@
               @endforelse
 
             </div>
-            <div class="col-xl-8 col-lg-7 col-md-6">
+			</div>
+            <div id="final_tab_bar_r">
               <div class="card o-hidden shadow-lg mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">
@@ -143,7 +145,7 @@
                   </div> -->
               </div>
             </div>
-
+</div>
           </div>
           <!-- /.container-fluid -->
 
