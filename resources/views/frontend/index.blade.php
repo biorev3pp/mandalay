@@ -153,10 +153,14 @@ ntent -->
           @forelse($homeList as $home)
           @php $i++; @endphp
           <div id="{{$i}}" class="px-3 my-auto d-flex align-items-center home_image_footer @if($i!=1) disp_none @endif">
-            <div class="col-3">
+           <!-- <div class="col-3">
               <img src="{{asset('frontend/img/footerHome.png')}}" width="100" class="f_left">
 			  <h5 class="text-primary">{{$home->title}} {{$home->subtitle}}</h5>
-            </div>
+            </div>-->
+			 <span class="text-center mx-3">
+              <img src="{{asset('frontend/img/hom.png')}}" width="40">
+             <span class="d-block text-black-50">{{$home->title}} {{$home->subtitle}}</span>
+            </span>
            
             <span class="text-center mx-3">
               <img src="{{asset('frontend/img/squar-feet-icon.png')}}" width="40">

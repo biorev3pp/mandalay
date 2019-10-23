@@ -11525,3 +11525,11 @@ li.customNav.active h5 , li.customNav.active i{color:#99cc00;}
 	position: relative;
 	margin-left: 2%;
 }
+
+#left_togg li {
+	border-bottom: 1px solid #ddd;transition:.5s ease-in-out;
+}
+#left_togg li span{font-size:13px;}
+
+#left_togg li:hover{border-color:#297FD5; color:#297FD5;}
+
