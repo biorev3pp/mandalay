@@ -81,7 +81,7 @@ ntent -->
                           <!--<div class="sidebar-heading font-weight-bold">Options</div>-->
                           <ul class="navbar-nav col-12 " id="left_togg">
                             @forelse($floor->features as $feature)
-                            <li class="nav-link text-nowrap hand noSelect_{{$feature->id}}">
+                            <li class="nav-link  hand noSelect_{{$feature->id}}">
                              <span> {{$feature->title}} </span>
                               <label 
                                
