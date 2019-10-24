@@ -172,27 +172,33 @@ ntent -->
               <img src="{{asset('frontend/img/footerHome.png')}}" width="100" class="f_left">
 			  <h5 class="text-primary">{{$home->title}} {{$home->subtitle}}</h5>
             </div>-->
-			 <span class="text-center mx-3">
-              <img src="{{asset('frontend/img/hom.png')}}" width="40">
-             <span class="d-block text-black-50">{{$home->title}} {{$home->subtitle}}</span>
-            </span>
+			 <div class="home_column_">
+              <img src="{{asset('frontend/img/footerHome.png')}}">
+			  <div class="div_co">
+             <p>{{$home->title}} {{$home->subtitle}}</p></div>
+            </div>
+           <div class="data_val">
+            <ul>
+			<li>
+              <img src="{{asset('frontend/img/ico1.png')}}">
+              <span>{{$home->area}}</span>
+           </li>
+		   <li>
+            
+              <img src="{{asset('frontend/img/ico2.png')}}" >
+              <span>{{$home->bedrooms}}</span>
+            </li>
+			<li>
+            
+              <img src="{{asset('frontend/img/ico3.png')}}" >
+              <span>{{$home->bathrooms}}</span>
+           <li>
            
-            <span class="text-center mx-3">
-              <img src="{{asset('frontend/img/squar-feet-icon.png')}}" width="40">
-              <span class="d-block text-black-50">{{$home->area}}</span>
-            </span>
-            <span class="text-center mx-3">
-              <img src="{{asset('frontend/img/bedroom-icon2.png')}}" width="40">
-              <span class="d-block text-black-50">{{$home->bedrooms}}</span>
-            </span>
-            <span class="text-center mx-3">
-              <img src="{{asset('frontend/img/bedroom-icon.png')}}" width="40">
-              <span class="d-block text-black-50">{{$home->bathrooms}}</span>
-            </span>
-            <span class="text-center mx-3 ">
-              <img src="{{asset('frontend/img/car-icon.png')}}" width="40">
-              <span class="d-block text-black-50">{{$home->garage}}</span>
-            </span>
+              <img src="{{asset('frontend/img/car-ico4.png')}}" >
+              <span>{{$home->garage}}</span>
+            </li>
+			</ul>
+			</div>
             <div class="ml-3 pl-5 border-primary">
               <div class="fp-price">
                 <span class="pricetag">
@@ -200,11 +206,9 @@ ntent -->
                   {{$home->cost}}</span>
               </div>
             </div>
-            <button type="button" class="btn btn-success btn-icon-split btn-lg mr-auto ml-3" data-toggle="modal" data-target="#mortageModal">
-              <span class="icon text-white-50">
-                <i class="fas fa-car-alt"></i>
-              </span>
-              <span class="text">Mortrage </span> 
+            <button type="button" class="btn_mortgage" data-toggle="modal" data-target="#mortageModal">
+              
+              Mortrage 
             </button>
           </div>
           @empty
