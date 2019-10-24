@@ -33,15 +33,15 @@ ntent -->
 		  <div id="top_tab">
             <div class="c_D_bar">
               <ul
-                class="nav bg-primary d-flex d-block align-items-center justify-content-center border-bottom border-bottom-success">
-                <li class="p-2 col-6 text-center hand customNav active tabDiv" id="home">
-                  <!--<img src="{{asset('frontend/img/home-hover.png')}}" width="30">-->
-				  <i class="fa fa-home"></i>
+                class="nav bg-primary d-flex d-block align-items-center justify-content-center" id="padd">
+                <li class="col-6 text-center hand customNav active tabDiv" id="home">
+                  <img src="{{asset('frontend/img/ext-icon.png')}}">
+				  
                   <h5 class="text-success mb-0">Home</h5>
                 </li>
                 <li class="p-2 col-6 text-center hand customNav tabDiv" id="floor">
-                  <!--<img src="{{asset('frontend/img/floor-icon.png')}}" width="30">-->
-				  <i class="fa fa-map"></i>
+                  <img src="{{asset('frontend/img/fp-icon.png')}}" width="30">
+				  
                   <h5 class="mb-0">Floor Plan</h5>
                 </li>
               </ul>
@@ -63,7 +63,7 @@ ntent -->
                 </ul>
               </div>
 
-              <div class="custom-scroll bg-primary col-12 tabDivSection disp_none" id="floor">
+              <div class="custom-scroll tabDivSection disp_none" id="floor">
                 @php $i=0; @endphp 
                 @forelse($homeList as $home)
                 @php $i++; @endphp
@@ -72,7 +72,7 @@ ntent -->
                   @php $j++; @endphp
                   <ul class="navbar-nav mr-auto home_floors @if($i!=1) disp_none @endif" data-floor-home-id="{{$i}}">
                     <li class="nav-link with-arrow text-info-white text-nowrap hand noSelect floorList" id="{{$floor->id}}" data-toggle="collapse" data-target="#floor{{$i}}{{$j}}" aria-expanded="true" aria-controls="floor{{$i}}{{$j}}">
-                      <i class="fas fa-bed pr-2 "></i>{{$floor->title}}
+                      <!--<i class="fas fa-bed pr-2 "></i>-->{{$floor->title}}
                     </li>
                   </ul>
                   <div class="row mb-2 home_floors @if($i!=1) disp_none @endif" data-floor-home-id="{{$i}}">
@@ -121,8 +121,8 @@ ntent -->
 			
 			
             <div class="right_panel_d">
-              <div class="card o-hidden shadow-lg mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <div class="card">
+               <!--<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   @php $i=0; @endphp 
                   @forelse($homeList as $home)
                   @php $i++; @endphp
@@ -131,7 +131,7 @@ ntent -->
                   </h6>
                   @empty
                   @endforelse
-                </div>
+                </div>-->
                 <div class="card-body p-0">
                   <!-- Nested Row within Card Body -->
                   <div class="row">

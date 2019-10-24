@@ -38,21 +38,22 @@
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item text-nowrap">
-              <a class="nav-link" href="#"><img src="{{asset('frontend/img/logoRev.png')}}" width="300"></a>
-            </li>
-          </ul>
-
+         <div class="logo">
+              <a href="#"><img src="{{asset('frontend/img/logoRev.png')}}" width="300"></a>
+            </div>
+        
+<div class="plan-name">
+                  Residence 1~ Plan 5411: Deseo
+              </div>
           <!-- Topbar Search -->
 
 
           <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
+         <!-- <ul class="navbar-nav ml-auto">
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
-            <!-- Nav Item - User Information -->
+            
             <li class="nav-item no-arrow d-flex align-items-center justify-content-center">
                     <a href="{{url('admin/login')}}" class="btn btn-success btn-icon-split ">
                 <span class="icon text-white-50">
@@ -61,7 +62,7 @@
                 <span class="text px-4">Login</span>
               </a>
             </li>
-          </ul>
+          </ul>-->
 
         </nav>
         <!-- End of Topbar -->
