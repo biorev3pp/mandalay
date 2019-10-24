@@ -55,7 +55,7 @@ ntent -->
                       <h4 class="h4 m-0 mt-2 text-center text-white">{{$home->title}}</h4>
                     </a>
                   </li>
-                  <hr class="my-1 bg-gradient-success">
+                  <!--<hr class="my-1 bg-gradient-success">-->
                   @empty
                   @endforelse
                 </ul>
