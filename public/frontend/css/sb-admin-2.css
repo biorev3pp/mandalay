@@ -11573,14 +11573,14 @@ font-family: 'HighTowerText-Reg';
 	margin:25px auto 0;
 	/* display: block; */
 	/* float: none; */
-	text-align: center;
+	text-align: center; position:relative;z-index:10;
 }
-.plan-name {
+.plan-name_o {
 	position: absolute;
 	right: 20px;
 	bottom: 10px;
 	color: #fff;
-	font-size: 20px;
+	font-size: 20px;z-index:10;
 	font-family: 'HighTowerText-Reg';
 }
 ul#padd {
@@ -11615,7 +11615,7 @@ ul#padd li h5 {margin-bottom:0;}
 	background: rgba(0,0,0,0.5);
 }
 #content{position:relative;}
-#content .curve_img{position:absolute;top:0;right:0; z-index:1112;}
+#content .curve_img{position:absolute;top:0;right:0; z-index:9;}
  /*.with-arrow::after{
       color: #ffffff;
     }*/

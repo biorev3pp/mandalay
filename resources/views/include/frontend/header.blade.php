@@ -31,9 +31,10 @@
 
       <!-- Main Content -->
       <div id="content">
-<img src="{{asset('frontend/img/header-bg.png')}}" class="curve_img" />
+
         <!-- Topbar -->
         <nav class="fixed-top">
+		<img src="{{asset('frontend/img/header-bg.png')}}" class="curve_img" />
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
@@ -42,7 +43,7 @@
               <a href="#"><img src="{{asset('frontend/img/logoRev.png')}}" width="300"></a>
             </div>
         
-<div class="plan-name">
+<div class="plan-name_o">
                   Residence 1~ Plan 5411: Deseo
               </div>
           <!-- Topbar Search -->
