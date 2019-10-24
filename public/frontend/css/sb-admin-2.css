@@ -11606,7 +11606,7 @@ ul#padd li h5 {margin-bottom:0;}
 #div_pos {position:relative;}
 #div_pos h4 {
 	position: absolute;
-	bottom: 9px;
+	bottom: 0;
 	text-align: center;
 	width: 100%;
 	margin: 0 !important;
