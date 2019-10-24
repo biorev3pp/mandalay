@@ -25,7 +25,7 @@
             $el = $(e.target);
             if ($el.hasClass('toggletag')) {return false;} 
             else if ($el.hasClass('nav-togg')) {
-                $("body").toggleClass('close-menu');
+                $("body").toggleClass('close-men');
 
             } else {
                 $("body").removeClass('close-men');
