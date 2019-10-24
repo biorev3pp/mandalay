@@ -21,6 +21,7 @@
       cursor: not-allowed !important;
     }
   </style>
+    
         <!-- Begin Page Co    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">    
 ntent -->
         <div class="container-fluid bg-white">
@@ -29,6 +30,7 @@ ntent -->
           <div class="row">
 		  <!-- left bar start-->
 		  <div id="top_tab">
+		   <button class="nav-togg">Slide button</button>
             <div class="c_D_bar">
               <ul
                 class="nav bg-primary d-flex d-block align-items-center justify-content-center" id="padd">
