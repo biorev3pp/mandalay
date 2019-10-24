@@ -7,9 +7,7 @@
     .text-info-white{
       color: #ffffff;
     }
-    <!--.with-arrow::after{
-      color: #ffffff;
-    }-->
+   
     .floor_image_view{
       position: relative;
     }
@@ -47,7 +45,7 @@ ntent -->
               </ul>
 			  <div class="accord">
               <div class="custom-scroll bg-primary col-12 tabDivSection" id="home">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav" id="div_pos">
                   @php $i=0; @endphp 
                   @forelse($homeList as $home)
                   @php $i++; @endphp

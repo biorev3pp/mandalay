@@ -10984,7 +10984,7 @@ form.user .btn-user {
 }
 
 footer.sticky-footer {
-  padding: 22px 0 54px;
+  padding: 15px 0;
   flex-shrink: 0;
 }
 
@@ -11023,7 +11023,7 @@ body.sidebar-toggled footer.sticky-footer {
   height: 25px;
   border-radius: 25px;
   background: #fff;
-  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: none;
 }
 
 .ui-switch :checked + i {
@@ -11510,7 +11510,7 @@ font-family: 'HighTowerText-Reg';
 .floor-plan-btn {
 	position: fixed;
 	bottom: 40px;
-	width: 350px;
+	width: 348px;
 	text-align: center;
 	padding: 25px 0;background:#373737;
 }
@@ -11603,3 +11603,17 @@ p.f_de {
 #left_togg{padding-right:0;}
 #padd li img{max-width:29px;margin-bottom:11px;}
 ul#padd li h5 {margin-bottom:0;}
+#div_pos {position:relative;}
+#div_pos h4 {
+	position: absolute;
+	bottom: 9px;
+	text-align: center;
+	width: 100%;
+	margin: 0 !important;
+	padding: 10px;
+	font-size: 18px;
+	background: rgba(0,0,0,0.5);
+}
+ /*.with-arrow::after{
+      color: #ffffff;
+    }*/
