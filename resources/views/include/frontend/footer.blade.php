@@ -56,7 +56,15 @@
     <script src="{{asset('frontend/js/jquery.accrue.js')}}"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script>
-      
+      $(document).on('change','#zoom_input',function() {
+        let zoom_level= $(this).val();
+        let scale_level =  20/zoom_level;
+        if(zoom_level == 0){
+          $(".top_spa").css('transform','scale(1)');
+        }
+        $(".top_spa").css('transform','scale('+scale_level+')');
+      });
+      $(document).on('click','.btn_mortgage',function () {
         $('.calculator').accrue({
             mode: "basic",
             operation: "keyup",
@@ -92,7 +100,10 @@
             error_text: "Please fill in all fields for calculation.",
             callback: function ( elem, data ){}
           });
-        </script>
+          $('.amount').attr('readonly','true');
+      });
+
+    </script>
     <script src="{{asset('frontend/js/jquery.loan-calculator.js')}}"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script>

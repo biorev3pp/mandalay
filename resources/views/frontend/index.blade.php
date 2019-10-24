@@ -147,15 +147,18 @@ ntent -->
                       <img src="" class="img-fluid">
                     </div>
 					<!-- zoom area-->
-					<div class="zoomer_section">
-					<div class="z_bar">
-					<div class="u_d_circle"></div>
-					<div class="r_fresh"> <img src="{{asset('frontend/img/rotat.png')}}"></div>
-					</div>
-					</div>
+				
 					<!--zoom area-->
                   </div>
-				  </div>
+          </div>
+                <div class="zoomer_section">
+                  <table class="z_bar">
+                    <tr>
+                      <td><input type="range" min=0 max=100 id="zoom_input"  class="slider"></td>
+                      <td><div class="r_fresh"> <img src="{{asset('frontend/img/rotat.png')}}"></div></td>
+                    </tr>
+                  </table>
+                </div>
                 </div>
               </div>
 			   <!-- Footer -->
