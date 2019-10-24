@@ -11620,7 +11620,7 @@ ul#padd li h5 {margin-bottom:0;}
       color: #ffffff;
     }*/
 	
-	button.nav-togg {
+	button.nav-toggle {
     background:#297fd5 url(../img/arrow-left.png) no-repeat center center;
     border: none;
     width: 32px;
@@ -11632,7 +11632,7 @@ ul#padd li h5 {margin-bottom:0;}
     font-size: 0px;
     cursor: pointer;
 }
-.close-men button.nav-togg{
+.close-men button.nav-toggle{
     background:#297fd5 url(../img/arrow-right.png) no-repeat center center;
 }
 .close-men #top_tab {

@@ -30,7 +30,7 @@ ntent -->
           <div class="row">
 		  <!-- left bar start-->
 		  <div id="top_tab">
-		   <button class="nav-togg">Slide button</button>
+		   <button class="nav-toggle">Slide button</button>
             <div class="c_D_bar">
               <ul
                 class="nav bg-primary d-flex d-block align-items-center justify-content-center" id="padd">

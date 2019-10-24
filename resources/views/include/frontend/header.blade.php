@@ -25,11 +25,11 @@
       $(document).click(function (e) {
             $el = $(e.target);
             if ($el.hasClass('toggletag')) {return false;} 
-            else if ($el.hasClass('nav-togg')) {
-                $("body").toggleClass('close-men');
+            else if ($el.hasClass('nav-toggle')) {
+                $("body").toggleClass('close-menu');
 
             } else {
-                $("body").removeClass('close-men');
+                $("body").removeClass('close-menu');
             }
         });
       </script> 
