@@ -202,8 +202,9 @@ ntent -->
             <div class="two_button_sp">
              
                 <span class="p_tag">
+				{{$home->cost}}
                   <small>Starts From</small>
-                  {{$home->cost}}</span>
+                  </span>
               
             
             <button type="button" class="btn_mortgage" data-toggle="modal" data-target="#mortageModal">
