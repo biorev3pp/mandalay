@@ -11361,7 +11361,7 @@ left: 4px;
 }
 
 .with-arrow[aria-expanded="true"]::after {
-  content: "\f077";
+  content: "\f077";color:#333;
 }
 
 .grad-row {
@@ -11600,5 +11600,6 @@ p.f_de {
 	padding: 16px 20px;
 	font-weight: normal;display:block;
 }
-
-#padd li img{max-width:29px;margin-bottom:2px;}
+#left_togg{padding-right:0;}
+#padd li img{max-width:29px;margin-bottom:11px;}
+ul#padd li h5 {margin-bottom:0;}

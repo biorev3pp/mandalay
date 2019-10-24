@@ -7,9 +7,9 @@
     .text-info-white{
       color: #ffffff;
     }
-    .with-arrow::after{
+    <!--.with-arrow::after{
       color: #ffffff;
-    }
+    }-->
     .floor_image_view{
       position: relative;
     }
@@ -42,7 +42,7 @@ ntent -->
                 <li class="col-6 text-center hand customNav tabDiv" id="floor">
                   <img src="{{asset('frontend/img/fp-icon.png')}}" width="30">
 				  
-                  <h5>Floor Plan</h5>
+                  <h5>Floor</h5>
                 </li>
               </ul>
 			  <div class="accord">
