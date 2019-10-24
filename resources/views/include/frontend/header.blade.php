@@ -52,20 +52,20 @@
 
 
           <!-- Topbar Navbar -->
-         <ul class="navbar-nav ml-auto">
+         
 
-            <div class="topbar-divider d-none d-sm-block"></div>
+           
 
             
-            <li class="nav-item no-arrow d-flex align-items-center justify-content-center">
+            <div class="log_in_d">
                     <a href="{{url('admin/login')}}" class="btn btn-success btn-icon-split ">
                 <span class="icon text-white-50">
                   <i class="fas fa-sign-out-alt"></i>
                 </span>
                 <span class="text px-4">Login</span>
               </a>
-            </li>
-          </ul>
+           </div>
+         
 
         </nav>
         <!-- End of Topbar -->
