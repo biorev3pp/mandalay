@@ -11276,41 +11276,15 @@ left: 4px;
   transform: scale(1.1);
 }
 
-.pricetag {
-  white-space: nowrap;
-  position: relative;
-  margin: 0;
-  display: inline-block;
-  height: 44px;
-  border-radius: 0 5px 5px 0;
-  padding: 0 15px;
-  background: #99cc00;
-  color: #fff;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1;
-  text-align: right;
+.p_tag {
+  font-size:26px; color:#297fd5;
+margin-right:15px;
 }
 
-.pricetag:before {
-  position: absolute;
-  content: "\25CF";
-  color: #fff;
-  font-size: 12px;
-  line-height: 0px;
-  text-indent: 12px;
-  left: -20px;
-  width: 1px;
-  height: 0px;
-  border-right: 20px solid #99cc00;
-  border-top: 22px solid transparent;
-  border-bottom: 22px solid transparent;
-}
-
-.pricetag small {
+.p_tag small {
   display: block;
-  font-size: 10px;
-  padding: 7px 0 2px;
+  font-size: 16px;color:#313131;
+  margin:7px 0 2px;
 }
 
 .hand {
@@ -11566,10 +11540,11 @@ font-family: 'HighTowerText-Reg';
 	position: fixed;
 	bottom: 34px;
 	border-top: 1px solid #a5b3bc;
-	padding-top:20px;
-	width: 100%;height:100px;
+	padding-top:0px;
+	width: 100%;height:auto;
 	text-align: center;
-	margin: auto;background:#fff;
+	border-bottom: 1px solid #a5b3bc;
+	background:url(../img/bottom-strap.jpg) no-repeat;background-size:cover;
 }
 
 .header-left {
@@ -11652,17 +11627,22 @@ ul#padd li h5 {margin-bottom:0;}
     padding-left: 0;
 }
 	.home_column_{display:inline-block;padding-right:0px;}
-	.home_column_ img{max-width:100px;}
-	.home_column_ .div_co{float:left;margin-left:50px;}
-	.home_column_ .div_co p{color:#000; font-size:20px;}
-	.home_column_ .div_co p span{display:block; margin-top:5px; color:#939393;}
+	.home_column_ img{max-width:100px;float:left;}
+	.home_column_ .div_co {
+	float: left;
+	margin-left: 0;
+	padding: 22px 50px 0;
+}
+	.home_column_ .div_co p{color:#353535; font-size:26px;font-family: 'HighTowerText-Reg';}
+	.home_column_ .div_co p span{display:block; margin-top:5px; color:#939393;font-size:18px;}
 	.data_val {display:inline-block;border-right:1px solid #a5b3bc;border-left:1px solid #a5b3bc; padding:0 15px;}
-	.data_val ul li{display:inline-block;margin:0 20px;padding:0;}
+	.data_val ul li{display:inline-block;margin:0 20px;padding:0;font-size:14px; color:#737373;}
 	.data_val ul{margin:0;padding:0;display:block;}
-	.data_val ul li img{display:block;max-width:30px;}
+	.data_val ul li img{display:block;max-width:40px;margin:auto;}
 	.data_val ul li span{display:block;margin-top:10px;}
-	button.btn_mortgage{border:1px solid #297fd6;text-transform:uppercase; padding:15px 20px;
+	button.btn_mortgage{border:1px solid #297fd5;text-transform:uppercase; padding:15px 20px;color:#297fd5;font-family: 'Comfortaa', cursive;font-weight:700;
 	background:none;box-shadow:none; border-radius:5px 5px 5px 5px; -moz-border-radius:5px 5px 5px 5px; -webkit-border-radius:5px 5px 5px 5px;cursor:pointer; font-size:16px;}
+	.two_button_sp{display:inline-block;
 	
 	
 	

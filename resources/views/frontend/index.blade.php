@@ -173,7 +173,7 @@ ntent -->
 			  <h5 class="text-primary">{{$home->title}} {{$home->subtitle}}</h5>
             </div>-->
 			 <div class="home_column_">
-              <img src="{{asset('frontend/img/footerHome.png')}}">
+              <img src="{{asset('frontend/img/h_ico.png')}}">
 			  <div class="div_co">
              <p>{{$home->title}} {{$home->subtitle}}</p></div>
             </div>
@@ -194,22 +194,23 @@ ntent -->
               <span>{{$home->bathrooms}}</span>
            <li>
            
-              <img src="{{asset('frontend/img/car-ico4.png')}}" >
+              <img src="{{asset('frontend/img/ico4.png')}}" >
               <span>{{$home->garage}}</span>
             </li>
 			</ul>
 			</div>
-            <div class="ml-3 pl-5 border-primary">
-              <div class="fp-price">
-                <span class="pricetag">
+            <div class="two_button_sp">
+             
+                <span class="p_tag">
                   <small>Starts From</small>
                   {{$home->cost}}</span>
-              </div>
-            </div>
+              
+            
             <button type="button" class="btn_mortgage" data-toggle="modal" data-target="#mortageModal">
               
               Mortrage 
             </button>
+			</div>
           </div>
           @empty
           @endforelse
