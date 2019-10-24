@@ -130,30 +130,41 @@ $(document).ready(function (){
         });
     });
 
-    $(document).on('click','.featureBtn', function(e){
+    //get checked features and go to final page
+    $(document).on('click','.finishBtn', function(e){
+        let selectedfeatures = [];
+        $(document).find('.featureBtn:checkbox:checked').each(function(i,obj){
+            // let floorid = $(obj).attr('data-check-floor-id'); 
+            let featureid = $(obj).attr('id');
+            // selectedfeatures.push(featureid);
+            let featureInput = '<input name="feature_id[]" type="hidden" value="'+featureid+'">';
+            $("input[name='home_id']").after(featureInput);
+        });
+        $(document).find('#finishPage_form').submit();
+    });
 
+
+    $(document).on('click','.featureBtn', function(e){
         let featureId = $(this).attr('id');
         if($(this).is(':checked')){
-            let featureInput = '<input name="feature_id[]" type="hidden" value="'+featureId+'">';
-            $("input[name='home_id']").after(featureInput);
             $.ajax({
-            url         : app_base_url+'/get-feature-data',
-            type        : "post",
-            data        : {'featureid':featureId},
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            beforeSend  : function () {
-                $("#preloader").show();
-            },
-            complete: function () {
-                $("#preloader").hide();
-            },
-            success: function (response) {
-                let featureImage = '<img src="'+response.image+'" id="'+featureId+'" class="img-fluid feature-img">'
-                $(document).find('.floor_image_view').append(featureImage);
-            }
-        });
+                url         : app_base_url+'/get-feature-data',
+                type        : "post",
+                data        : {'featureid':featureId},
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                beforeSend  : function () {
+                    $("#preloader").show();
+                },
+                complete: function () {
+                    $("#preloader").hide();
+                },
+                success: function (response) {
+                    let featureImage = '<img src="'+response.image+'" id="'+featureId+'" class="img-fluid feature-img">'
+                    $(document).find('.floor_image_view').append(featureImage);
+                }
+            });
         }else{
             $(document).find("input[name='feature_id[]']").each(function(i,obj){
                 if($(obj).val()==featureId){
@@ -398,11 +409,11 @@ function calc_initial(){
 }
 
 calc_initial();
-$("#installment").loanCalculator({
-    loanAmount   : newprinc,
-    loanDuration : 30,
-    creditScore  : 4.1,
-});
+// $("#installment").loanCalculator({
+//     loanAmount   : newprinc,
+//     loanDuration : 30,
+//     creditScore  : 4.1,
+// });
 $(document).on('keyup', '.downpay_amt', function() {
     var principle = $(".home_price").val();
     var amt = $(this).val();

@@ -93,8 +93,8 @@
             callback: function ( elem, data ){}
           });
         </script>
-    <script src="{{asset('frontend/js/jquery.loan-calculator.js')}}"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <!-- <script src="{{asset('frontend/js/jquery.loan-calculator.js')}}"></script> -->
     <script>
       var app_base_url = "{{url('/')}}";
 

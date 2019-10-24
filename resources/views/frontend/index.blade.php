@@ -1,4 +1,4 @@
-  @extends('layouts.web')
+@extends('layouts.web')
 @section('content')
   <style>
     .disp_none{
@@ -77,7 +77,7 @@ ntent -->
                     <div class="col-12">
                       <div class="collapse" id="floor{{$i}}{{$j}}" style="">
                         <div class="card">
-						<p class="f_de">FlexDesign</p>
+						            <p class="f_de">FlexDesign</p>
                           <!--<div class="sidebar-heading font-weight-bold">Options</div>-->
                           <ul class="navbar-nav col-12 " id="left_togg">
                             @forelse($floor->features as $feature)
@@ -92,7 +92,7 @@ ntent -->
                               
                                 class="ui-switch ui-switch-success ui-switch-sm mb-0 float-right 
                                 <?php if(($feature->features_acl->count())) {?> manageToggle <?php } ?>">
-                                <input type="checkbox" class="featureBtn conflicts_{{$feature->id}} dependency_{{$feature->id}} self_{{$feature->id}} togetherness_{{$feature->id}}" id="{{$feature->id}}"><i></i>
+                                <input data-check-floor-id="{{$floor->id}}" type="checkbox" class="featureBtn conflicts_{{$feature->id}} dependency_{{$feature->id}} self_{{$feature->id}} togetherness_{{$feature->id}}" id="{{$feature->id}}"><i></i>
                               </label>
                             </li>
                             @empty
@@ -109,9 +109,9 @@ ntent -->
               </div>
               </div><!--div scroller-->
               <div class="floor-plan-btn">
-                {{Form::open(array('url'=>url('home-final')))}}  
+                <button type="button" class="btn btn-finish finishBtn">Finish &amp; Print</button>
+                {{Form::open(array('url'=>url('home-final'),'id'=>'finishPage_form'))}}  
                 {{Form::hidden('home_id',$defaultHome->id)}}
-                <button type="submit" class="btn btn-finish">Finish &amp; Print</button>
                 {{Form::close()}}
               </div>
             </div>
