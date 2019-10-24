@@ -37,12 +37,12 @@ ntent -->
                 <li class="col-6 text-center hand customNav active tabDiv" id="home">
                   <img src="{{asset('frontend/img/ext-icon.png')}}">
 				  
-                  <h5 class="text-success mb-0">Home</h5>
+                  <h5>Home</h5>
                 </li>
-                <li class="p-2 col-6 text-center hand customNav tabDiv" id="floor">
+                <li class="col-6 text-center hand customNav tabDiv" id="floor">
                   <img src="{{asset('frontend/img/fp-icon.png')}}" width="30">
 				  
-                  <h5 class="mb-0">Floor Plan</h5>
+                  <h5>Floor Plan</h5>
                 </li>
               </ul>
 			  <div class="accord">
@@ -70,7 +70,7 @@ ntent -->
                   @php $j=0; @endphp 
                   @forelse($home->floors as $floor)
                   @php $j++; @endphp
-                  <ul class="navbar-nav mr-auto home_floors @if($i!=1) disp_none @endif" data-floor-home-id="{{$i}}">
+                  <ul class="home_floors @if($i!=1) disp_none @endif" data-floor-home-id="{{$i}}" id="grey_">
                     <li class="nav-link with-arrow text-info-white text-nowrap hand noSelect floorList" id="{{$floor->id}}" data-toggle="collapse" data-target="#floor{{$i}}{{$j}}" aria-expanded="true" aria-controls="floor{{$i}}{{$j}}">
                       <!--<i class="fas fa-bed pr-2 "></i>-->{{$floor->title}}
                     </li>
@@ -78,7 +78,8 @@ ntent -->
                   <div class="row mb-2 home_floors @if($i!=1) disp_none @endif" data-floor-home-id="{{$i}}">
                     <div class="col-12">
                       <div class="collapse" id="floor{{$i}}{{$j}}" style="">
-                        <div class="card card-body">
+                        <div class="card">
+						<p class="f_de">FlexDesign</p>
                           <!--<div class="sidebar-heading font-weight-bold">Options</div>-->
                           <ul class="navbar-nav col-12 " id="left_togg">
                             @forelse($floor->features as $feature)

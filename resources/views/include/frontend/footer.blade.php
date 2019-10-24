@@ -3,7 +3,7 @@
             <div class="copyright text-left">
               <span>© 2018 Biorev All Right Reserved.</span>
             </div>
-            <div class="text-right">
+            <div class="copyright">
               <span>Designed &amp; Developed by Biorev<!--<a href="#" class="text-success px-2"><img src="{{asset('frontend/img/biorevRev.png')}}"
                     width="100"></a>--></span>
             </div>
