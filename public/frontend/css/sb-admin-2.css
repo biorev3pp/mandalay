@@ -11395,6 +11395,10 @@ margin-right:50px;float:left;
 .mc_field{
   border-right:#cacaca solid 1px;
 }
+.mc_field .form-group label{
+  font-weight:bold;
+  font-size:18px;
+}
 #mortagC .form-group .row .ot_prt1{
   position: absolute;
   left: 70%;

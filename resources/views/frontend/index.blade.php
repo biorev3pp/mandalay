@@ -205,7 +205,6 @@ ntent -->
               
             
             <button type="button" class="btn_mortgage" data-toggle="modal" data-target="#mortageModal">
-              
               Mortrage 
             </button>
 			</div>
@@ -236,10 +235,10 @@ ntent -->
         </button>
       </div>
       <div class="modal-body" id="mortagC">
-        <div class="calculator"></div>
         <div class="row">
           <div class="col-md-6 mc_field">
-              <div class="form-group">
+              <div class="calculator"></div>
+              {{-- <div class="form-group">
                 <label for="">Home price</label>
                 <input type="text" class="form-control home_price" value="300000" readonly placeholder="3000000">
               </div>
@@ -264,7 +263,7 @@ ntent -->
                 <input type="text" class="form-control intrst">
                 <div class="overlay-text">%</div>
               </div>
-             
+              --}}
               <div class="advance_calc hide">
                   <div class="form-group">
                       <label class="ui-switch ui-switch-success ui-switch-sm mb-0">
@@ -300,15 +299,6 @@ ntent -->
               </div>
           </div>
           <div class="col-md-6 mortage-details">
-              <div class="circle-div"><div class="circle"><span class="estimate">$ 1,280</span></div></div>
-              <div class="mortage-result">
-                <div class="price-header">TOTAL PRICE OF HOME</div>
-                <div class="price-text-big">$ 300000</div>
-                <div class="price-text">Base Price<span class='price_bp'>$ 300000</span></div>
-                {{-- <div class="price-text">Designs Selected  <span class='price_ds'>$ 1,519</span></div> --}}
-                <div class="price-header">MONTHLY ESTIMATED PAYMENT</div>
-                <div class="price-text-big" id="installment"></div>
-              </div>
           </div>
         </div>
       </div>

@@ -53,16 +53,17 @@
     <script src="{{asset('frontend/js/sb-admin-2.min.js')}}"></script>
     <script src="{{asset('frontend/js/custom.js')}}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="{{asset('frontend/js/jquery.accrue.min.js')}}"></script>
+    <script src="{{asset('frontend/js/jquery.accrue.js')}}"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script>
+      
         $('.calculator').accrue({
             mode: "basic",
             operation: "keyup",
             currency: "USD",
             default_values: {
-              amount: "$7,500",
-              rate: "7%",
+              amount: "$300000",
+              rate: "4.1",
               rate_compare: "1.49%",
               term: "36m",
             },
@@ -79,14 +80,16 @@
               rate_compare: "",
               term: "Format: 12m, 36m, 3y, 7y"
             },
-            response_output_div: ".results",
+            response_output_div: ".mortage-details",
             response_basic:
-              '<p><strong>Monthly Payment:</strong><br>$%payment_amount%</p>'+
-              '<p><strong>Number of Payments:</strong><br>%num_payments%</p>'+
-              '<p><strong>Total Payments:</strong><br>$%total_payments%</p>'+
-              '<p><strong>Total Interest:</strong><br>$%total_interest%</p>',
+                '<div class="circle-div"><div class="circle"><span class="estimate">%payment_amount%</span></div></div>'+
+                '<div class="mortage-result">'+
+                  '<div class="price-header">TOTAL PRICE OF HOME</div>'+
+                  '<div class="price-text-big">$ 300000</div>'+
+                  '<div class="price-text">Base Price<span class="price_bp">$300000</span></div>'+
+                '</div>',
             response_compare: "Save $%savings% in interest!",
-            error_text: "Please fill in all fields.",
+            error_text: "Please fill in all fields for calculation.",
             callback: function ( elem, data ){}
           });
         </script>
