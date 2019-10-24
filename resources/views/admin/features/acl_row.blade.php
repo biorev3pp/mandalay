@@ -19,7 +19,7 @@
       {{Form::select('togetherness['.$index.'][]',$features,null,['class'=>'form-control  togetherness js-example-basic-single','id'=>'togetherness'.$idstr, "multiple"=>"multiple"])}}
    </td>
    <td class="w-20 delete_acl_row">
-    <a class="btn btn-danger removeACLRowBtn">
-      <span class="fa fa-trash pr-2"></span>Remove</a>
+
+      <a href="#" class="removeACLRowBtn"><i class="fas fa-trash-alt"></i> Delete</a>
    </td>
 </tr>
