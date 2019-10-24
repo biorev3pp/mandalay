@@ -77,7 +77,68 @@ $(document).ready(function (){
       });
       tr.find("select.conflict option[value='"+value+"']").remove();
       tr.find("select.togetherness option[value='"+value+"']").remove();
-      tr.find("select.dependency option[value='"+value+"']").remove();  
+      tr.find("select.dependency option[value='"+value+"']").remove();
+      console.log(value)
+      // now we need to check if current selected option has any conficts and togetherness
+      let optionInConfict = $(this).closest('tbody').find(".conflict option[value='"+value+"']").parent('select').val();
+       let = isArr = Array.isArray(optionInConfict); 
+      if(!isArr) {
+        optionInConfict = new Array(optionInConfict);
+      }
+      
+      listOfConficts = [];
+      if(optionInConfict.includes(value)) {
+        let mainOpt = $(this).closest('tbody').find(".conflict option[value='"+value+"']").closest('tr').find('.main_option').val();
+        // set value to current tr confict slect value
+        //get slected values
+        let preConficts = $(this).closest('tr').find('.conflict').val();
+        if(Array.isArray(preConficts) && preConficts.length) {
+          preConficts = new Array(preConficts);
+        }
+        if(preConficts.length) {
+          $.each(preConficts,function(index, vl) {
+            listOfConficts.push(vl[index]);
+          });
+        }
+        listOfConficts.push(mainOpt);
+
+        // set value to current tr confict slect value
+        //get slected values
+        listOfConficts = unique(listOfConficts);
+        console.log(listOfConficts)
+        $(this).closest('tr').find('.conflict').val(listOfConficts);
+        $(this).closest('tr').find('.conflict').trigger('change');
+      }
+
+      let optionTogetherness = $(this).closest('tbody').find(".togetherness option[value='"+value+"']").parent('select').val();
+      let isTogethernessArr = Array.isArray(optionTogetherness); 
+      if(!isTogethernessArr) {
+        optionTogetherness = new Array(optionTogetherness);
+      }
+      // console.log(optionTogetherness)
+      listOfTogetharness = [];
+      if(optionTogetherness.includes(value)  ) {
+        let mainOpt = $(this).closest('tbody').find(".togetherness option[value='"+value+"']").closest('tr').find('.main_option').val();
+        // set value to current tr confict slect value
+        //get slected values
+        let preTogetherness = $(this).closest('tr').find('.togetherness').val();
+        if(Array.isArray(preTogetherness) && preTogetherness.length) {
+          preTogetherness = new Array(preTogetherness);
+        }
+        if(preTogetherness.length) {
+          $.each(preTogetherness,function(index, vl) {
+            listOfTogetharness.push(vl[index]);
+          });
+        }
+        listOfTogetharness.push(mainOpt);
+        // set value to current tr confict slect value
+        //get slected values
+        listOfTogetharness = unique(listOfTogetharness);
+        console.log(listOfTogetharness)
+        $(this).closest('tr').find('.togetherness').val(listOfTogetharness);
+        $(this).closest('tr').find('.togetherness').trigger('change');
+      }
+
     });
     // Remove option from all dropdowns in current row which is once selected in conflict
     $(document).on('change','.conflict', function(){
@@ -122,6 +183,10 @@ $(document).ready(function (){
       deleteButtonHandle();
     });
 
+    $(document).on('select2:unselect','.togetherness',function(event){
+      let unselectVl = event.params.data.id;
+      
+    })
     // function to show/hide add row button 
     function addACLRowButtonHandle(){
       let optionsLength = $(document).find("select.main_option:last option").length - 1;
@@ -136,7 +201,7 @@ $(document).ready(function (){
     // function to show/hide delete and save button 
     function deleteButtonHandle(){
       var rowCount = $(document).find('.aclTable tbody tr').length;
-      console.log(rowCount);
+      // console.log(rowCount);
       if(rowCount > 0){
         $(document).find('.delete_acl_row').removeClass('d-none');    
         $(document).find('.saveACLBtn').removeClass('d-none');    
@@ -146,7 +211,13 @@ $(document).ready(function (){
       }
     }
     deleteButtonHandle();
-
+  function unique(list) {
+        var result = [];
+        $.each(list, function(i, e) {
+            if ($.inArray(e, result) == -1) result.push(e);
+        });
+        return result;
+    }
     // event to clone tr and setting for acl floor
     // const j = jQuery(document);
 

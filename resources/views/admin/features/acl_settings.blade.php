@@ -18,8 +18,8 @@
                   {{Form::model($acl_settings,array('url'=>url('admin/features/save-acl'), 'id'=>'acl_setting_form'))}}
                 @else
                   {{Form::open(array('url'=>url('admin/features/save-acl'), 'id'=>'acl_setting_form'))}}
-                @endif  
-                  {{Form::hidden('floorid',$floor->id)}}  
+                @endif
+                  {{Form::hidden('floorid',$floor->id)}}
                 <table class="table table-bordered aclTable" width="100%" cellspacing="0">
                    <thead>
                       <tr class="bg-dark text-white">
@@ -39,23 +39,22 @@
                             {{Form::hidden('feature_id[]',$acl['feature_id'],['class'=>'form-control main_option','id'=>'main_option1'])}}
                             <select class="form-control main_option" id="main_option{{$i}}" name="main_option[{{$i}}]">
                             <?php foreach ($features as $ky => $opt): ?>
-                              <option <?php if(in_array($ky,$acl_settings) && $ky != $acl['feature_id']) {?> disabled <?php } ?> <?php if($ky == $acl['feature_id'] ){ ?> selected <?php } ?> value="{{$ky}}">{{$opt}}</option>
-                            <?php endforeach; ?>
+                              <option <?php if (in_array($ky, $acl_settings) && $ky != $acl['feature_id']) {?> disabled <?php }?> <?php if ($ky == $acl['feature_id']) {?> selected <?php }?> value="{{$ky}}">{{$opt}}</option>
+                            <?php endforeach;?>
                           </select>
 
                           </td>
                           <td class="w-20">
-                             {{Form::select('conflict['.$i.'][]',$features,json_decode($acl['conflicts']),['class'=>'form-control  conflict js-example-basic-single','id'=>'conflict'.$idstr, "multiple"=>"multiple"])}}
+                             {{Form::select('conflict['.$i.'][]',$features,json_decode($acl['conflicts']),['class'=>'form-control  conflict js-example-basic-single','id'=>'conflict'.$idstr.$i, "multiple"=>"multiple"])}}
                           </td>
                           <td class="w-20">
-                             {{Form::select('dependency['.$i.'][]',$features,json_decode($acl['dependency']),['class'=>'form-control  dependency js-example-basic-single','id'=>'togetherness'.$idstr, "multiple"=>"multiple"])}}
+                             {{Form::select('dependency['.$i.'][]',$features,json_decode($acl['dependency']),['class'=>'form-control  dependency js-example-basic-single','id'=>'togetherness'.$idstr.$i, "multiple"=>"multiple"])}}
                           </td>
                           <td class="w-20">
-                             {{Form::select('togetherness['.$i.'][]',$features,json_decode($acl['togetherness']),['class'=>'form-control  togetherness js-example-basic-single','id'=>'dependency'.$idstr, "multiple"=>"multiple"])}}
+                             {{Form::select('togetherness['.$i.'][]',$features,json_decode($acl['togetherness']),['class'=>'form-control  togetherness js-example-basic-single','id'=>'dependency'.$idstr.$i, "multiple"=>"multiple"])}}
                           </td>
                           <td class="w-20 delete_acl_row">
-                            <a class="btn btn-danger removeACLRowBtn">
-                              <span class="fa fa-trash pr-2"></span>Remove</a>
+                           <a href="#" class="removeACLRowBtn"><i class="fas fa-trash-alt"></i> Delete</a>
                           </td>
                         </tr>
                       @empty
@@ -66,7 +65,7 @@
                 <div class="col-md-3 float-left">
                   <button type="button" data-floor-id="{{$floor->id}}" class="btn btn-primary float-left clonetrBtn"><span class="fa fa-plus pr-2"></span>Add Row</button>
                 </div>
-                <div class="col-md-3 float-right saveACLBtn">    
+                <div class="col-md-3 float-right saveACLBtn">
                   <button type="submit" class="btn btn-primary float-right "><span class="fa fa-save pr-2"></span>Save</button>
                 </div>
                 {{Form::close()}}
