@@ -10992,7 +10992,7 @@ footer.sticky-footer .copyright {
   line-height: 1;
   font-size: 14px;
 }
-
+footer.sticky-footer .copyright em{font-style:normal; color:#297fd5;}
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
@@ -11284,7 +11284,7 @@ margin-right:50px;float:left;
 .p_tag small {
   display: block;
   font-size: 16px;color:#313131;
-  margin:0;
+  margin-top:-8px;
 }
 
 .hand {
@@ -11542,7 +11542,7 @@ font-family: 'HighTowerText-Reg';
 	border-top: 1px solid #a5b3bc;
 	padding-top:0px;
 	width: 100%;height:96px;
-	text-align: center;z-index:9999;
+	text-align: center;
 	/*border-bottom: 1px solid #a5b3bc;*/
 	background:url(../img/bottom-strap.jpg) no-repeat;background-size:cover;
 }
@@ -11627,7 +11627,7 @@ ul#padd li h5 {margin-bottom:0;}
     padding-left: 0;
 }
 	.home_column_{display:inline-block;padding-right:0px;}
-	.home_column_ img{max-width:100px;float:left;margin-top:15px;}
+	.home_column_ img{max-width:100px;float:left;margin-top:0;}
 	.home_column_ .div_co {
 	display:inline-block;
 	margin-left: 0;
