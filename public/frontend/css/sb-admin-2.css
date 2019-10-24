@@ -11621,7 +11621,7 @@ ul#padd li h5 {margin-bottom:0;}
     }*/
 	
 	button.nav-togg {
-    background:#009fc3 url(../img/arrow-left.png) no-repeat center center;
+    background:#297fd5 url(../img/arrow-left.png) no-repeat center center;
     border: none;
     width: 32px;
     height: 70px;
@@ -11633,7 +11633,7 @@ ul#padd li h5 {margin-bottom:0;}
     cursor: pointer;
 }
 .close-men button.nav-togg{
-    background:#009fc3 url(../img/arrow-right.png) no-repeat center center;
+    background:#297fd5 url(../img/arrow-right.png) no-repeat center center;
 }
 .close-men #top_tab {
     left: -350px;
