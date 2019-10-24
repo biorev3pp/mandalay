@@ -11676,4 +11676,19 @@ ul#padd li h5 {margin-bottom:0;}
 	top: 15px;
 	z-index: 11;
 }
+#left_togg li span {
+	width: 180px;
+	display: inline-block;
+}
+ul#padd li:hover ::after {
+	position: absolute;
+	background: #fff;
+	height: 2px;
+	width: 79px;
+	content: '';
+	bottom: 0;
+	text-align: center;
+	transform: translate(-50%,0);
+	left: 50%;
+}
 	
