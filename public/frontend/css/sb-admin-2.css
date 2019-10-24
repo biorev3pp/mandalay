@@ -11614,6 +11614,8 @@ ul#padd li h5 {margin-bottom:0;}
 	font-size: 18px;
 	background: rgba(0,0,0,0.5);
 }
+#content{position:relative;}
+#content .curve_img{position:absolute;top:0;right:0; z-index:1112;}
  /*.with-arrow::after{
       color: #ffffff;
     }*/

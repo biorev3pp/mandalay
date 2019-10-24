@@ -31,7 +31,7 @@
 
       <!-- Main Content -->
       <div id="content">
-
+<img src="{{asset('frontend/img/header-bg.png')}}" class="curve_img" />
         <!-- Topbar -->
         <nav class="fixed-top">
           <!-- Sidebar Toggle (Topbar) -->
