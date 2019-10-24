@@ -11632,14 +11632,14 @@ ul#padd li h5 {margin-bottom:0;}
     font-size: 0px;
     cursor: pointer;
 }
-.close-men button.nav-toggle{
+.close-menu button.nav-toggle{
     background:#297fd5 url(../img/arrow-right.png) no-repeat center center;
 }
-.close-men #top_tab {
+.close-menu #top_tab {
     left: -350px;
 }
 
-.close-men .right_panel_d {
+.close-menu .right_panel_d {
     padding-left: 0;
 }
 	

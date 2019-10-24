@@ -21,18 +21,7 @@
   <!-- Custom styles for this template-->
   <link href="{{asset('frontend/css/sb-admin-2.css')}}" rel="stylesheet">
    
-  <script>
-      $(document).click(function (e) {
-            $el = $(e.target);
-            if ($el.hasClass('toggletag')) {return false;} 
-            else if ($el.hasClass('nav-toggle')) {
-                $("body").toggleClass('close-menu');
-
-            } else {
-                $("body").removeClass('close-menu');
-            }
-        });
-      </script> 
+   
 </head>
 
 <body id="page-top">

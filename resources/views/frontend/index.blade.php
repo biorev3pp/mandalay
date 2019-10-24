@@ -21,7 +21,18 @@
       cursor: not-allowed !important;
     }
   </style>
-    
+    <script>
+      $(document).click(function (e) {
+            $el = $(e.target);
+            if ($el.hasClass('toggletag')) {return false;} 
+            else if ($el.hasClass('nav-toggle')) {
+                $("body").toggleClass('close-menu');
+
+            } else {
+                $("body").removeClass('close-menu');
+            }
+        });
+      </script>
         <!-- Begin Page Co    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">    
 ntent -->
         <div class="container-fluid bg-white">
