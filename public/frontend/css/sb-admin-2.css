@@ -11611,8 +11611,8 @@ ul#padd li h5 {margin-bottom:0;}
     height: 70px;
     right: -32px;
     position: absolute;
-    top: 40%;
-    transform: translate(0, -60%);
+    top: 50%;
+    transform: translate(0, -50%);
     font-size: 0px;
     cursor: pointer;
 }
