@@ -7,12 +7,8 @@
     .text-info-white{
       color: #ffffff;
     }
-    .with-arrow::after{
-      color: #ffffff;
-    }
-    .floor_image_view{
-      position: relative;
-    }
+   
+   
     .feature-img{
       position: absolute;
       z-index: 111;
@@ -23,6 +19,7 @@
       cursor: not-allowed !important;
     }
   </style>
+    
         <!-- Begin Page Co    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">    
 ntent -->
         <div class="container-fluid bg-white">
@@ -31,23 +28,24 @@ ntent -->
           <div class="row">
 		  <!-- left bar start-->
 		  <div id="top_tab">
+		   <button class="nav-toggle">Slide button</button>
             <div class="c_D_bar">
               <ul
-                class="nav bg-primary d-flex d-block align-items-center justify-content-center border-bottom border-bottom-success">
-                <li class="p-2 col-6 text-center hand customNav active tabDiv" id="home">
-                  <!--<img src="{{asset('frontend/img/home-hover.png')}}" width="30">-->
-				  <i class="fa fa-home"></i>
-                  <h5 class="text-success mb-0">Home</h5>
+                class="nav bg-primary d-flex d-block align-items-center justify-content-center" id="padd">
+                <li class="col-6 text-center hand customNav active tabDiv" id="home">
+                  <img src="{{asset('frontend/img/ext-icon.png')}}">
+				  
+                  <h5>Home</h5>
                 </li>
-                <li class="p-2 col-6 text-center hand customNav tabDiv" id="floor">
-                  <!--<img src="{{asset('frontend/img/floor-icon.png')}}" width="30">-->
-				  <i class="fa fa-map"></i>
-                  <h5 class="mb-0">Floor Plan</h5>
+                <li class="col-6 text-center hand customNav tabDiv" id="floor">
+                  <img src="{{asset('frontend/img/fp-icon.png')}}" width="30">
+				  
+                  <h5>Floor</h5>
                 </li>
               </ul>
 			  <div class="accord">
               <div class="custom-scroll bg-primary col-12 tabDivSection" id="home">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav" id="div_pos">
                   @php $i=0; @endphp 
                   @forelse($homeList as $home)
                   @php $i++; @endphp
@@ -57,32 +55,33 @@ ntent -->
                       <h4 class="h4 m-0 mt-2 text-center text-white">{{$home->title}}</h4>
                     </a>
                   </li>
-                  <hr class="my-1 bg-gradient-success">
+                  <!--<hr class="my-1 bg-gradient-success">-->
                   @empty
                   @endforelse
                 </ul>
               </div>
 
-              <div class="custom-scroll bg-primary col-12 tabDivSection disp_none" id="floor">
+              <div class="custom-scroll tabDivSection disp_none" id="floor">
                 @php $i=0; @endphp 
                 @forelse($homeList as $home)
                 @php $i++; @endphp
                   @php $j=0; @endphp 
                   @forelse($home->floors as $floor)
                   @php $j++; @endphp
-                  <ul class="navbar-nav mr-auto home_floors @if($i!=1) disp_none @endif" data-floor-home-id="{{$i}}">
+                  <ul class="home_floors @if($i!=1) disp_none @endif" data-floor-home-id="{{$i}}" id="grey_">
                     <li class="nav-link with-arrow text-info-white text-nowrap hand noSelect floorList" id="{{$floor->id}}" data-toggle="collapse" data-target="#floor{{$i}}{{$j}}" aria-expanded="true" aria-controls="floor{{$i}}{{$j}}">
-                      <i class="fas fa-bed pr-2 "></i>{{$floor->title}}
+                      <!--<i class="fas fa-bed pr-2 "></i>-->{{$floor->title}}
                     </li>
                   </ul>
-                  <div class="row mb-2 home_floors @if($i!=1) disp_none @endif" data-floor-home-id="{{$i}}">
+                  <div class="row home_floors @if($i!=1) disp_none @endif" data-floor-home-id="{{$i}}">
                     <div class="col-12">
                       <div class="collapse" id="floor{{$i}}{{$j}}" style="">
-                        <div class="card card-body">
+                        <div class="card">
+						<p class="f_de">FlexDesign</p>
                           <!--<div class="sidebar-heading font-weight-bold">Options</div>-->
                           <ul class="navbar-nav col-12 " id="left_togg">
                             @forelse($floor->features as $feature)
-                            <li class="nav-link text-nowrap hand noSelect_{{$feature->id}}">
+                            <li class="nav-link  hand noSelect_{{$feature->id}}">
                              <span> {{$feature->title}} </span>
                               <label 
                                
@@ -121,8 +120,8 @@ ntent -->
 			
 			
             <div class="right_panel_d">
-              <div class="card o-hidden shadow-lg mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <div class="card">
+               <!--<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   @php $i=0; @endphp 
                   @forelse($homeList as $home)
                   @php $i++; @endphp
@@ -131,9 +130,10 @@ ntent -->
                   </h6>
                   @empty
                   @endforelse
-                </div>
+                </div>-->
                 <div class="card-body p-0">
                   <!-- Nested Row within Card Body -->
+				  <div class="top_spa">
                   <div class="row">
                     @php $i=0; @endphp 
                     @forelse($homeList as $home)
@@ -146,7 +146,16 @@ ntent -->
                     <div class="col-lg-9 d-lg-block mx-auto floor_image_view disp_none">
                       <img src="" class="img-fluid">
                     </div>
+					<!-- zoom area-->
+					<div class="zoomer_section">
+					<div class="z_bar">
+					<div class="u_d_circle"></div>
+					<div class="r_fresh"> <img src="{{asset('frontend/img/rotat.png')}}"></div>
+					</div>
+					</div>
+					<!--zoom area-->
                   </div>
+				  </div>
                 </div>
               </div>
 			   <!-- Footer -->
@@ -160,40 +169,46 @@ ntent -->
               <img src="{{asset('frontend/img/footerHome.png')}}" width="100" class="f_left">
 			  <h5 class="text-primary">{{$home->title}} {{$home->subtitle}}</h5>
             </div>-->
-			 <span class="text-center mx-3">
-              <img src="{{asset('frontend/img/hom.png')}}" width="40">
-             <span class="d-block text-black-50">{{$home->title}} {{$home->subtitle}}</span>
-            </span>
-           
-            <span class="text-center mx-3">
-              <img src="{{asset('frontend/img/squar-feet-icon.png')}}" width="40">
-              <span class="d-block text-black-50">{{$home->area}}</span>
-            </span>
-            <span class="text-center mx-3">
-              <img src="{{asset('frontend/img/bedroom-icon2.png')}}" width="40">
-              <span class="d-block text-black-50">{{$home->bedrooms}}</span>
-            </span>
-            <span class="text-center mx-3">
-              <img src="{{asset('frontend/img/bedroom-icon.png')}}" width="40">
-              <span class="d-block text-black-50">{{$home->bathrooms}}</span>
-            </span>
-            <span class="text-center mx-3 ">
-              <img src="{{asset('frontend/img/car-icon.png')}}" width="40">
-              <span class="d-block text-black-50">{{$home->garage}}</span>
-            </span>
-            <div class="ml-3 pl-5 border-primary">
-              <div class="fp-price">
-                <span class="pricetag">
-                  <small>Starts From</small>
-                  {{$home->cost}}</span>
-              </div>
+			 <div class="home_column_">
+              <img src="{{asset('frontend/img/h_ico.png')}}">
+			  <div class="div_co">
+             <p>{{$home->title}} {{$home->subtitle}}</p></div>
             </div>
-            <button type="button" class="btn btn-success btn-icon-split btn-lg mr-auto ml-3" data-toggle="modal" data-target="#mortageModal">
-              <span class="icon text-white-50">
-                <i class="fas fa-car-alt"></i>
-              </span>
-              <span class="text">Mortrage </span> 
+           <div class="data_val">
+            <ul>
+			<li>
+              <img src="{{asset('frontend/img/ico1.png')}}">
+              <span>{{$home->area}}</span>
+           </li>
+		   <li>
+            
+              <img src="{{asset('frontend/img/ico2.png')}}" >
+              <span>{{$home->bedrooms}}</span>
+            </li>
+			<li>
+            
+              <img src="{{asset('frontend/img/ico3.png')}}" >
+              <span>{{$home->bathrooms}}</span>
+           <li>
+           
+              <img src="{{asset('frontend/img/ico4.png')}}" >
+              <span>{{$home->garage}}</span>
+            </li>
+			</ul>
+			</div>
+            <div class="two_button_sp">
+             
+                <span class="p_tag">
+				{{$home->cost}}
+                  <small>Starts From</small>
+                  </span>
+              
+            
+            <button type="button" class="btn_mortgage" data-toggle="modal" data-target="#mortageModal">
+              
+              Mortrage 
             </button>
+			</div>
           </div>
           @empty
           @endforelse

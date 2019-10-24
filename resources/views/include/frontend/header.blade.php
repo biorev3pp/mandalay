@@ -20,6 +20,19 @@
     rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="{{asset('frontend/css/sb-admin-2.css')}}" rel="stylesheet">
+  <!-- <script>
+      $(document).click(function (e) {
+            $el = $(e.target);
+            if ($el.hasClass('toggletag')) {return false;} 
+            else if ($el.hasClass('nav-toggle')) {
+                $("body").toggleClass('close-menu');
+
+            } else {
+                $("body").removeClass('close-menu');
+            }
+        });
+      </script>-->
+   
 </head>
 
 <body id="page-top">
@@ -33,35 +46,37 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light topbar static-top shadow bg-primary sidebar-dark fixed-top">
+        <nav class="fixed-top">
+		<img src="{{asset('frontend/img/header-bg.png')}}" class="curve_img" />
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item text-nowrap">
-              <a class="nav-link" href="#"><img src="{{asset('frontend/img/logoRev.png')}}" width="300"></a>
-            </li>
-          </ul>
-
+         <div class="logo">
+              <a href="#"><img src="{{asset('frontend/img/logoRev.png')}}" width="300"></a>
+            </div>
+        
+<div class="plan-name_o">
+                  Residence 1~ Plan 5411: Deseo
+              </div>
           <!-- Topbar Search -->
 
 
           <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
+         
 
-            <div class="topbar-divider d-none d-sm-block"></div>
+           
 
-            <!-- Nav Item - User Information -->
-            <li class="nav-item no-arrow d-flex align-items-center justify-content-center">
+            
+            <div class="log_in_d">
                     <a href="{{url('admin/login')}}" class="btn btn-success btn-icon-split ">
-                <span class="icon text-white-50">
+                <!--<span class="icon text-white-50">
                   <i class="fas fa-sign-out-alt"></i>
-                </span>
+                </span>-->
                 <span class="text px-4">Login</span>
               </a>
-            </li>
-          </ul>
+           </div>
+         
 
         </nav>
         <!-- End of Topbar -->
