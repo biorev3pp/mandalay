@@ -157,12 +157,14 @@ ntent -->
                     <div class="col-lg-9 d-lg-block mx-auto floor_image_view disp_none">
                       <img src="" class="img-fluid">
                     </div>
+					<!-- zoom area-->
 					<div class="zoomer_section">
 					<div class="z_bar">
 					<div class="u_d_circle"></div>
 					<div class="r_fresh"> <img src="{{asset('frontend/img/rotat.png')}}"></div>
 					</div>
 					</div>
+					<!--zoom area-->
                   </div>
 				  </div>
                 </div>

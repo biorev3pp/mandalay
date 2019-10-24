@@ -52,7 +52,7 @@
 
 
           <!-- Topbar Navbar -->
-         <!-- <ul class="navbar-nav ml-auto">
+         <ul class="navbar-nav ml-auto">
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -65,7 +65,7 @@
                 <span class="text px-4">Login</span>
               </a>
             </li>
-          </ul>-->
+          </ul>
 
         </nav>
         <!-- End of Topbar -->
