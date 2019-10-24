@@ -16,6 +16,8 @@ USE DB;
 use File;
 use Crypt;
 use Auth;
+use Illuminate\Support\Str;
+
 class FeaturesController extends Controller
 {
     use HelperTrait, FeatureValidator;
@@ -154,9 +156,11 @@ class FeaturesController extends Controller
     public function getACLRow(Request $request){
         if($request->ajax()){
             $floorid = $request->floorid;
+            $idString = Str::random(5);
             $features = Features::where('floor_id',$floorid)->pluck('title','id');
             $this->data['features'] = $features;
             $this->data['index'] = $request->index;
+            $this->data['idstr'] = $idString;
             return view('admin.features.acl_row')->with($this->data)->render(); 
         }
         return "Unauthorised Access !!!";
@@ -165,11 +169,13 @@ class FeaturesController extends Controller
     public function setACLOptions($id){
         $floorid = Crypt::decrypt($id);
         $floor = Floor::find($floorid);
+        $idString = Str::random(5);
         $features = Features::where('floor_id',$floorid)->pluck('title','id');
         $aclSettings = FloorAclSetting::where('floor_id',$floorid)->get();
         $this->data['data'] = '';
         $this->data['floor'] = $floor;
         $this->data['features'] = $features;
+        $this->data['idstr'] = $idString;
         $this->data['acl_settings'] = $aclSettings->toArray();
         return view('admin.features.acl_settings')->with($this->data);
     }

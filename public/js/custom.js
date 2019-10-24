@@ -19,46 +19,62 @@ $(document).ready(function (){
     });
 
     $(document).on('click','.clonetrBtn', function(){
-      let floorid = $(this).attr('data-floor-id');
-      var rowCount = $(document).find('.aclTable tr').length;
-      $.ajax({
-        url         : app_base_url+'/admin/features/get_acl_form',
-        type        : "post",
-        data        : {'floorid':floorid,'index':rowCount},
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        beforeSend  : function () {
-            $("#preloader").show();
-        },
-        complete: function () {
-            $("#preloader").hide();
-        },
-        success: function (response) {
-          $(document).find('.aclTable').append(response);
-          $(document).find("select.js-example-basic-single").select2();
-          // remove main option from dropdown list which are already added if already added
-          let main_option_count = $(document).find('select.main_option').length;
-          let x = 1;
-          let main_option_selected = [];
-          $(document).find('select.main_option').each(function(i,obj){
-            if(x < main_option_count){
-              let selected_value = $(obj).children("option:selected").val();
-              main_option_selected.push(selected_value);
-            }
-            x = x+1;
-          });
-          $.each(main_option_selected, function( index, value ) {
-            $(document).find("select.main_option:last option[value='"+value+"']").remove();
-          });
-        }
-      });
+      let lastRowMainVal = $(document).find("select.main_option:last").children("option:selected").val();
+      if(lastRowMainVal!=0){
+        let floorid = $(this).attr('data-floor-id');
+        var rowCount = $(document).find('.aclTable tr').length;
+        $.ajax({
+          url         : app_base_url+'/admin/features/get_acl_form',
+          type        : "post",
+          data        : {'floorid':floorid,'index':rowCount},
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          beforeSend  : function () {
+              $("#preloader").show();
+          },
+          complete: function () {
+              $("#preloader").hide();
+          },
+          success: function (response) {
+            $(document).find('.aclTable').append(response);
+            $(document).find("select.js-example-basic-single").select2();
+            // remove main option from dropdown list which are already added if already added
+            let main_option_count = $(document).find('select.main_option').length;
+            let x = 1;
+            let main_option_selected = [];
+            $(document).find('select.main_option').each(function(i,obj){
+              if(x < main_option_count){
+                let selected_value = $(obj).children("option:selected").val();
+                main_option_selected.push(selected_value);
+              }
+              x = x+1;
+            });
+            $.each(main_option_selected, function( index, value ) {
+              if(value!=0){
+                $(document).find("select.main_option:last option[value='"+value+"']").remove();
+              }
+            });
+            addACLRowButtonHandle();
+            deleteButtonHandle();
+          }
+        });
+      }else{
+        $(document).find("select.main_option:last").addClass('is-invalid');
+        toastr.error('Please choose a valid option.',2000)
+      }
     });
     
     // Remove option from all dropdowns in current row which is once selected in main option
     $(document).on('change','.main_option', function(){
       let tr = $(this).closest('tr');
       let value = $(this).children("option:selected").val();
+      let select_id = $(this).attr('id');
+      $(document).find("select.main_option").each(function(i,obj){
+        if($(obj).attr('id')!=select_id){
+          $(this).find("option[value='"+value+"']").remove();
+        }
+      });
       tr.find("select.conflict option[value='"+value+"']").remove();
       tr.find("select.togetherness option[value='"+value+"']").remove();
       tr.find("select.dependency option[value='"+value+"']").remove();  
@@ -90,8 +106,46 @@ $(document).ready(function (){
         tr.find("select.togetherness option[value='"+value+"']").remove();  
       });
     });
+    //remove acl row and append its selected main option to other available main option dropdowns 
+    $(document).on('click','.removeACLRowBtn', function(){
+      let tr = $(this).closest('tr');
+      let main_opt_text = tr.find('select.main_option').children("option:selected").text();
+      let main_opt_value = tr.find('select.main_option').children("option:selected").val();
+      let opt = document.createElement('option');
+      opt.value = main_opt_value;
+      opt.text = main_opt_text; 
+      if(main_opt_value != 0){
+        $(document).find('select.main_option').append(opt);
+      }
+      addACLRowButtonHandle();
+      tr.remove();
+      deleteButtonHandle();
+    });
 
+    // function to show/hide add row button 
+    function addACLRowButtonHandle(){
+      let optionsLength = $(document).find("select.main_option:last option").length - 1;
+      // console.log(optionsLength);
+      if(optionsLength < 2){
+        $(document).find('.clonetrBtn').addClass('d-none');
+      }else{
+        $(document).find('.clonetrBtn').removeClass('d-none');
+      }
+    }
 
+    // function to show/hide delete and save button 
+    function deleteButtonHandle(){
+      var rowCount = $(document).find('.aclTable tbody tr').length;
+      console.log(rowCount);
+      if(rowCount > 0){
+        $(document).find('.delete_acl_row').removeClass('d-none');    
+        $(document).find('.saveACLBtn').removeClass('d-none');    
+      }else{
+        $(document).find('.delete_acl_row').addClass('d-none');
+        $(document).find('.saveACLBtn').addClass('d-none');
+      }
+    }
+    deleteButtonHandle();
 
     // event to clone tr and setting for acl floor
     // const j = jQuery(document);

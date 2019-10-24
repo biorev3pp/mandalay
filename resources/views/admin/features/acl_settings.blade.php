@@ -27,6 +27,7 @@
                          <th>Conflicts</th>
                          <th>Dependency</th>
                          <th>Togetherness</th>
+                         <th class="delete_acl_row"></th>
                       </tr>
                    </thead>
                    <tbody>
@@ -34,53 +35,38 @@
                       @forelse($acl_settings as $acl)
                         @php $i++; @endphp
                         <tr class="tr_clone" id="tr_{{$i}}">
-                          <td class="w-25">
+                          <td class="w-20">
                             {{Form::hidden('feature_id[]',$acl['feature_id'],['class'=>'form-control main_option','id'=>'main_option1'])}}
-                            <select class="form-control main_option" name="main_option[{{$i}}]">
+                            <select class="form-control main_option" id="main_option{{$i}}" name="main_option[{{$i}}]">
                             <?php foreach ($features as $ky => $opt): ?>
                               <option <?php if(in_array($ky,$acl_settings) && $ky != $acl['feature_id']) {?> disabled <?php } ?> <?php if($ky == $acl['feature_id'] ){ ?> selected <?php } ?> value="{{$ky}}">{{$opt}}</option>
                             <?php endforeach; ?>
                           </select>
 
                           </td>
-                          <td class="w-25">
-                             {{Form::select('conflict['.$i.'][]',$features,json_decode($acl['conflicts']),['class'=>'form-control  conflict js-example-basic-single','id'=>'conflict'.$i, "multiple"=>"multiple"])}}
+                          <td class="w-20">
+                             {{Form::select('conflict['.$i.'][]',$features,json_decode($acl['conflicts']),['class'=>'form-control  conflict js-example-basic-single','id'=>'conflict'.$idstr, "multiple"=>"multiple"])}}
                           </td>
-                          <td class="w-25">
-                             {{Form::select('dependency['.$i.'][]',$features,json_decode($acl['dependency']),['class'=>'form-control  dependency js-example-basic-single','id'=>'togetherness'.$i, "multiple"=>"multiple"])}}
+                          <td class="w-20">
+                             {{Form::select('dependency['.$i.'][]',$features,json_decode($acl['dependency']),['class'=>'form-control  dependency js-example-basic-single','id'=>'togetherness'.$idstr, "multiple"=>"multiple"])}}
                           </td>
-                          <td class="w-25">
-                             {{Form::select('togetherness['.$i.'][]',$features,json_decode($acl['togetherness']),['class'=>'form-control  togetherness js-example-basic-single','id'=>'dependency'.$i, "multiple"=>"multiple"])}}
+                          <td class="w-20">
+                             {{Form::select('togetherness['.$i.'][]',$features,json_decode($acl['togetherness']),['class'=>'form-control  togetherness js-example-basic-single','id'=>'dependency'.$idstr, "multiple"=>"multiple"])}}
+                          </td>
+                          <td class="w-20 delete_acl_row">
+                            <a class="btn btn-danger removeACLRowBtn">
+                              <span class="fa fa-trash pr-2"></span>Remove</a>
                           </td>
                         </tr>
                       @empty
-                        <tr class="tr_clone" id="tr_1">
-                          <td class="w-25">
-                            <select class="form-control main_option" name="feature_id[1]" id="main_option1">
-                               <option>Choose Option</option>
-                               @forelse($features as $key => $value)
-                                  <option value="{{$key}}">{{$value}}</option>
-                               @empty
-                               @endforelse
-                            </select>
-                          </td>
-                          <td class="w-25">
-                             {{Form::select('conflict[1][]',$features,null,['class'=>'form-control  conflict js-example-basic-single','id'=>'conflict1', "multiple"=>"multiple"])}}
-                          </td>
-                          <td class="w-25">
-                             {{Form::select('dependency[1][]',$features,null,['class'=>'form-control  dependency js-example-basic-single','id'=>'togetherness1', "multiple"=>"multiple"])}}
-                          </td>
-                          <td class="w-25">
-                             {{Form::select('togetherness[1][]',$features,null,['class'=>'form-control  togetherness js-example-basic-single','id'=>'dependency1', "multiple"=>"multiple"])}}
-                          </td>
-                        </tr>
+                        <!-- <tr><td colspan="5">No data available yet</td></tr> -->
                       @endforelse
                    </tbody>
                 </table>
                 <div class="col-md-3 float-left">
                   <button type="button" data-floor-id="{{$floor->id}}" class="btn btn-primary float-left clonetrBtn"><span class="fa fa-plus pr-2"></span>Add Row</button>
                 </div>
-                <div class="col-md-3 float-right">    
+                <div class="col-md-3 float-right saveACLBtn">    
                   <button type="submit" class="btn btn-primary float-right "><span class="fa fa-save pr-2"></span>Save</button>
                 </div>
                 {{Form::close()}}
