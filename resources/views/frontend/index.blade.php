@@ -35,12 +35,12 @@ ntent -->
               <ul
                 class="nav bg-primary d-flex d-block align-items-center justify-content-center" id="padd">
                 <li class="col-6 text-center hand customNav active tabDiv" id="home">
-                  <img src="{{asset('frontend/img/ext-icon.png')}}">
+                  <img src="{{asset('frontend/img/fp-icon.png')}}">
 				  
                   <h5>Home</h5>
                 </li>
                 <li class="col-6 text-center hand customNav tabDiv" id="floor">
-                  <img src="{{asset('frontend/img/fp-icon.png')}}" width="30">
+                  <img src="{{asset('frontend/img/ext-icon.png')}}" width="30">
 				  
                   <h5>Floor Plan</h5>
                 </li>
@@ -75,7 +75,7 @@ ntent -->
                       <!--<i class="fas fa-bed pr-2 "></i>-->{{$floor->title}}
                     </li>
                   </ul>
-                  <div class="row mb-2 home_floors @if($i!=1) disp_none @endif" data-floor-home-id="{{$i}}">
+                  <div class="row home_floors @if($i!=1) disp_none @endif" data-floor-home-id="{{$i}}">
                     <div class="col-12">
                       <div class="collapse" id="floor{{$i}}{{$j}}" style="">
                         <div class="card">
