@@ -11626,7 +11626,7 @@ ul#padd li h5 {margin-bottom:0;}
 .close-menu .right_panel_d {
     padding-left: 0;
 }
-	.home_column_{display:inline-block;padding-right:0px;}
+	.home_column_{display:inline-block;padding-right:0px;margin:0 30px;}
 	.home_column_ img{max-width:100px;float:left;margin-top:0;}
 	.home_column_ .div_co {
 	display:inline-block;
@@ -11642,8 +11642,17 @@ ul#padd li h5 {margin-bottom:0;}
 	.data_val ul li span{display:block;margin-top:10px;}
 	button.btn_mortgage{border:1px solid #297fd5;text-transform:uppercase; padding:15px 30px;color:#297fd5;font-family: 'Comfortaa', cursive;font-weight:700;margin-left:50px;
 	background:none;box-shadow:none; border-radius:5px 5px 5px 5px; -moz-border-radius:5px 5px 5px 5px; -webkit-border-radius:5px 5px 5px 5px;cursor:pointer; font-size:16px;}
-	.two_button_sp{display:inline-block;
+	.two_button_sp{display:inline-block;}
+	.top_spa{margin-top:20px;}
+	 .floor_image_view{
+      position: relative;max-width:520px;
+    }
+	
+	.zoomer_section{float:right;}
+	.zoomer_section .z_bar{background:#dddddd;height:200px; width:16px; position:relative;}
+	.zoomer_section .z_bar .u_d_circle{background:#297fd5; position:absolute;bottom:10px; width:24px; height:22px;}
 	
 	
-	
+	.zoomer_section .r_fresh{display:inline-block;margin-top:10px;background:#297fd5;border-radius:3px; color:#fff; padding:8px 16px; text-align:center;}
+	.zoomer_section .r_fresh img{margin:auto;}
 	
