@@ -59,9 +59,9 @@
             
             <div class="log_in_d">
                     <a href="{{url('admin/login')}}" class="btn btn-success btn-icon-split ">
-                <span class="icon text-white-50">
+                <!--<span class="icon text-white-50">
                   <i class="fas fa-sign-out-alt"></i>
-                </span>
+                </span>-->
                 <span class="text px-4">Login</span>
               </a>
            </div>
