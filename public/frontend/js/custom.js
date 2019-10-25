@@ -161,7 +161,7 @@ $(document).ready(function (){
                     $("#preloader").hide();
                 },
                 success: function (response) {
-                    let featureImage = '<img src="'+response.image+'" id="'+featureId+'" class="img-fluid feature-img">'
+                    let featureImage = '<div class="position-relative"><img src="'+response.image+'" id="'+featureId+'" class="img-fluid position-absolute"></div>'
                     $(document).find('.floor_image_view').append(featureImage);
                 }
             });
@@ -340,7 +340,7 @@ $(document).ready(function (){
             success: function (response) {
                 $.each(response, function( index, value )
                 {
-                   let featureImage = '<img src="'+value.image+'" id="'+value.id+'" class="img-fluid feature-img">'
+                   let featureImage = '<div class="position-relative"><img src="'+value.image+'" id="'+value.id+'" class="img-fluid position-absolute"></div>'
                     $(document).find('.floor_image_view').append(featureImage);
                 });
 

@@ -137,18 +137,22 @@ ntent -->
                 </div>-->
                 <div class="card-body p-0">
                   <!-- Nested Row within Card Body -->
-				  <div class="top_spa">
+				  <div class="top_spa" style="min-height: 700px;">
                   <div class="row">
                     @php $i=0; @endphp 
                     @forelse($homeList as $home)
                     @php $i++; @endphp
                     <div id="{{$i}}" class="col-lg-9 d-lg-block mx-auto position-relative home_image_full @if($i!=1) disp_none @endif">
-                      <img src="{{asset('images/homes/'.$home->image)}}" class="img-fluid">
+                      <div class="position-relative">
+                        <img src="{{asset('images/homes/'.$home->image)}}" class="img-fluid">
+                      </div>
                     </div>
                     @empty
                     @endforelse 
                     <div class="col-lg-9 d-lg-block mx-auto floor_image_view disp_none">
-                      <img src="" class="img-fluid">
+                      <div class="position-relative">
+                        <img src="" class="img-fluid position-absolute">
+                      </div>
                     </div>
 					<!-- zoom area-->
 				
