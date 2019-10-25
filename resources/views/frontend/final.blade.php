@@ -212,7 +212,7 @@
               <div class="row mb-5">
                 @forelse($home->floors as $floor)
                 <div class="card col p-0 mx-2 shadow">
-                  <div class="custom-heading">
+                  <div class="custom-heading_1">
                    {{$floor->title}}
                   </div>
                   <div class="card-body">
