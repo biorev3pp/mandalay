@@ -45,14 +45,16 @@ ntent -->
               </ul>
 			  <div class="accord">
               <div class="custom-scroll bg-primary col-12 tabDivSection" id="home">
+			  <h6>Elevation</h6>
                 <ul class="navbar-nav" id="div_pos">
+				
                   @php $i=0; @endphp 
                   @forelse($homeList as $home)
                   @php $i++; @endphp
                   <li id="{{$i}}" data-home-id="{{Crypt::encrypt($home->id)}}" class="nav-item home_list">
                     <a class="nav-link" href="javascript:void(0)">
                       <img src="{{asset('images/homes/'.$home->image)}}" alt="{{$home->title}}" class="img-thumbnail">
-                      <h4 class="h4 m-0 mt-2 text-center text-white">{{$home->title}}</h4>
+                      <h4>{{$home->title}}</h4>
                     </a>
                   </li>
                   <!--<hr class="my-1 bg-gradient-success">-->
