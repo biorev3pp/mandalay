@@ -64,6 +64,7 @@ ntent -->
               </div>
 
               <div class="custom-scroll tabDivSection disp_none" id="floor">
+			  <p class="f_de">Floor</p>
                 @php $i=0; @endphp 
                 @forelse($homeList as $home)
                 @php $i++; @endphp
@@ -77,10 +78,10 @@ ntent -->
                   </ul>
                   <div class="row home_floors @if($i!=1) disp_none @endif" data-floor-home-id="{{$i}}">
                     <div class="col-12">
-					<p class="f_de">Floor</p>
+					
                       <div class="collapse" id="floor{{$i}}{{$j}}" style="">
                         <div class="card">
-						            <p class="f_de">FlexDesign</p>
+						            <!--<p class="f_de">FlexDesign</p>-->
                           <!--<div class="sidebar-heading font-weight-bold">Options</div>-->
                           <ul class="navbar-nav col-12 " id="left_togg">
                             @forelse($floor->features as $feature)
