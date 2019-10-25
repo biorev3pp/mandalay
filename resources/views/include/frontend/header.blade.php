@@ -51,7 +51,7 @@
             <i class="fa fa-bars"></i>
           </button>
          <div class="logo">
-              <a href="#"><img src="{{asset('frontend/img/logoRev.png')}}" width="300"></a>
+              <a href="#"><img src="{{asset('frontend/img/logoRev.png')}}" width="400"></a>
             </div>
         
 <div class="plan-name_o">
