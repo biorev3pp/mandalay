@@ -46,6 +46,10 @@
                               </div>
                            </div>
                         </div>
+                        <div class="form-group col-md-6">
+                           <label for="inputPice">Price</label>
+                           {{Form::text('price',null,['class'=>'form-control','id'=>'price','placeholder'=>'Enter Price'])}}
+                        </div>
                         <div class="col-lg-12">
                            <button type="submit" class="btn btn-primary float-left"><i class="fas fa-save fa-sm text-white-50 pr-2"></i>Save</button>
                         </div>

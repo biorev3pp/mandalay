@@ -25,6 +25,7 @@
                         <tr>
                            <th>#</th>
                            <th>Title</th>
+                           <th>Price</th>
                            <th>Action</th>
                         </tr>
                      </thead>
@@ -35,6 +36,7 @@
                         <tr>
                         <td>{{$i}}.</td>
                           <td>{{$record->title}}</td>
+                          <td>{{$record->price}}</td>
                           <td>
                             <a href="{{url('admin/features/edit/'.Crypt::encrypt($record->id))}}"><i class="fas fa-edit"></i> Edit</a>
                             <a href="#" class="delete_record_btn" id="{{Crypt::encrypt($record->id)}}" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt"></i> Delete</a>

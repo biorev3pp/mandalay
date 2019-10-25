@@ -22,6 +22,7 @@ trait FeatureValidator
         try{
             $validations = array(
                 'title'         => 'required',
+                'price'         => 'required',
             );
             if(!isset($request->image_update) || $request->image_update==""){
                 $validations['image'] = 'required|mimes:jpeg,jpg,png';                         

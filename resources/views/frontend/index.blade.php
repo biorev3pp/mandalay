@@ -142,7 +142,7 @@ ntent -->
                     @php $i=0; @endphp 
                     @forelse($homeList as $home)
                     @php $i++; @endphp
-                    <div id="{{$i}}" class="col-lg-9 d-lg-block mx-auto home_image_full @if($i!=1) disp_none @endif">
+                    <div id="{{$i}}" class="col-lg-9 d-lg-block mx-auto position-relative home_image_full @if($i!=1) disp_none @endif">
                       <img src="{{asset('images/homes/'.$home->image)}}" class="img-fluid">
                     </div>
                     @empty

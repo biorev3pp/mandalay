@@ -18,6 +18,7 @@ class CreateFeaturesTable extends Migration
             $table->integer('floor_id');
             $table->string('title');
             $table->string('image');
+            $table->string('price')->nullable();
             $table->tinyInteger('status')->default(1)->comment('0:Inactive,1:Active');
             $table->timestamps();
         });
