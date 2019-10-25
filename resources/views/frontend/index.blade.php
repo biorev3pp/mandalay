@@ -44,7 +44,7 @@ ntent -->
                 </li>
               </ul>
 			  <div class="accord">
-              <div class="custom-scroll bg-primary col-12 tabDivSection" id="home">
+              <div class="custom-scroll col-12 tabDivSection" id="home">
 			  <h6>Elevation</h6>
                 <ul class="navbar-nav" id="div_pos">
 				
@@ -77,6 +77,7 @@ ntent -->
                   </ul>
                   <div class="row home_floors @if($i!=1) disp_none @endif" data-floor-home-id="{{$i}}">
                     <div class="col-12">
+					<p class="f_de">Floor</p>
                       <div class="collapse" id="floor{{$i}}{{$j}}" style="">
                         <div class="card">
 						            <p class="f_de">FlexDesign</p>
