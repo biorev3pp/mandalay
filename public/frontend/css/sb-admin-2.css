@@ -11050,14 +11050,14 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 .ui-switch.ui-switch-sm i {
-	padding-right: 20px;
+	padding-right: 30px;
 	border-radius: 34px;
-	height: 16px;
+	height: 20px;
 	padding-left:2px;background:#BEC6CB;
 }
 .ui-switch.ui-switch-sm i:before {
-  width: 10px;
-height: 10px;
+  width: 14px;
+height: 14px;
 border-radius: 50%;
 position: relative;
 top: 3px;
@@ -11068,7 +11068,7 @@ left: 4px;
    
   padding-right: 0px;
 	border-radius: 34px;
-	height: 16px;
+	height: 20px;
 	padding-left: 30px;
 }
 
@@ -11534,7 +11534,7 @@ font-family: 'Open Sans', sans-serif;
 	width: 100%;
 	border-bottom: 1px solid #bec6cb;
 	background: url(../img/li-bg.png) no-repeat 20px 17px / 15px auto;
-	font-size: 14px;
+	font-size: 13px;
 	color: #737373;
 }
 /*#left_togg li span{font-size:13px;} */
@@ -11590,11 +11590,11 @@ ul#grey_ {background: #dbdbdb;padding:8px 20px;margin:0; font-size:13px; font-we
 p.f_de {
 	font-size: 16px;
 	color: #fff;
-	padding: 16px 0px 0;
+	margin:20px 0 16px;
 	font-weight: normal;
 	display: block;
 	text-align: center;
-	font-weight: 600;
+	font-weight: 600;padding:0;
 }
 #left_togg{padding-right:0;}
 #padd li img{max-width:29px;margin-bottom:11px;}
@@ -11686,8 +11686,8 @@ ul#padd li:hover ::after {
 	
 .zoomer_section {
 	position: fixed;
-	right: 0;
-	bottom: 40%;
+	right: -2%;
+	bottom: 27%;
 }
 	.zoomer_section .z_bar {
     transform: rotate(270deg); 

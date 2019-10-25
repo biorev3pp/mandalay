@@ -35,7 +35,7 @@ ntent -->
                 <li class="col-6 text-center hand customNav active tabDiv" id="home">
                   <img src="{{asset('frontend/img/ext-icon.png')}}">
 				  
-                  <h5>Home</h5>
+                  <h5>Plan</h5>
                 </li>
                 <li class="col-6 text-center hand customNav tabDiv" id="floor">
                   <img src="{{asset('frontend/img/fp-icon.png')}}" width="30">
