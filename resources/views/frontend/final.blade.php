@@ -18,13 +18,13 @@
                           <div class="status-box">
                               <ul class="share-options">
                                   <li>
-                                      <a href="#"><img src="{{asset('frontend/img/icon-share.png')}}"/></a>
+                                      <a href="#"><img src="{{asset('img/icon-share.png')}}"/></a>
                                   </li>
                                   <li>
-                                      <a href="#"><img src="{{asset('frontend/img/icon-download.png')}}"/></a>
+                                      <a href="#"><img src="{{asset('img/icon-download.png')}}"/></a>
                                   </li>
                                   <li>
-                                      <a href="#"><img src="{{asset('frontend/img/icon-new.png')}}"/></a>
+                                      <a href="#"><img src="{{asset('img/icon-new.png')}}"/></a>
                                   </li>
                               </ul>
                               <h2>Congratulations!</h2>
@@ -108,8 +108,8 @@
                           </div>
                           <div class="cont-box">
                               <ul class="contact-info">
-                                  <li><img class="float-left" src="{{asset('frontend/img/icon-building.png')}}"><span>Lorem Zirrolli ,Sales Manager<br>Ipsum at North Branch</span></li>
-                                  <li><img class="float-left" src="{{asset('frontend/img/icon-phone.png')}}" /> +1234-567-8901</li>
+                                  <li><img class="float-left" src="{{asset('img/icon-building.png')}}"><span>Lorem Zirrolli ,Sales Manager<br>Ipsum at North Branch</span></li>
+                                  <li><img class="float-left" src="{{asset('img/icon-phone.png')}}" /> +1234-567-8901</li>
                               </ul>
                           </div>
                           <div class="note-txt">
