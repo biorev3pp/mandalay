@@ -11801,7 +11801,7 @@ ul.share-options li a {
     font-size: 20px;
     padding: 10px 20px;
     border-bottom: 1px solid #c0c8cd;
-    font-family: 'HighTowerText-Reg';
+    
 }
 .info-table{
     padding: 0 20px;
@@ -11882,4 +11882,5 @@ ul.contact-info li span {
     background: rgba(0,0,0,0.5);
     padding: 10px;
 }
+.img_s{max-width:500px;margin:auto;}
 /* second page css */

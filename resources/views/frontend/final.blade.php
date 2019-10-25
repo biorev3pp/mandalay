@@ -212,10 +212,11 @@
               <div class="row mb-5">
                 @forelse($home->floors as $floor)
                 <div class="card col p-0 mx-2 shadow">
-                  <div class="card-header">
-                    <h6 class="m-0 font-weight-bold text-primary">{{$floor->title}}</h6>
+                  <div class="custom-heading">
+                   {{$floor->title}}
                   </div>
                   <div class="card-body">
+				  <div class="img_s">
                     <img src="{{asset('images/floors/'.$floor->image)}}" class="img-fluid">
                     @forelse($floor->features as $feature)
                       @if(in_array($feature->id,$features))
@@ -223,6 +224,7 @@
                       @endif
                     @empty
                     @endforelse
+						</div>
                   </div>
                 </div>
                 @empty
