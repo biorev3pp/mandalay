@@ -218,31 +218,5 @@ $(document).ready(function (){
         });
         return result;
     }
-    // event to clone tr and setting for acl floor
-    // const j = jQuery(document);
-
-    // j.on('click','.clonetr',function() {
-
-      // var $tr =   $(this).closest('tr').prev();
-      // $tr.find(".js-example-basic-single").select2("destroy");
-      // var $clone = $tr.clone();
-      // $clone.find(':text').val('');
-      // $clone.find('.conflict').attr('id','conflict'+parseInt(j.find('.tr_clone').length)+1);
-      // $clone.find('.togetherness').attr('id','togetherness'+parseInt(j.find('.tr_clone').length)+1);
-      // $clone.find('.dependency').attr('id','dependency'+parseInt(j.find('.tr_clone').length)+1);
-      // $tr.after($clone);
-      // $("select.js-example-basic-single").select2();
-    // });
-
-    // function inputDataIndex() {
-    //   j.find('.tr_clone').each(function(index) {
-    //     $(this).find('.main_option').attr('name','main_option['+index+']');
-    //     $(this).find('.conflict').attr('name','conflict['+index+'][]');
-    //     $(this).find('.togetherness').attr('name','togetherness['+index+'][]');
-    //     $(this).find('.dependency').attr('name','dependency['+index+'][]');
-    //   });
-
-    // }
-    // inputDataIndex();
 
 });

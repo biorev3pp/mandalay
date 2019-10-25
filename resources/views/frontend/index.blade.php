@@ -150,15 +150,6 @@ ntent -->
 				
 					<!--zoom area-->
                   </div>
-          </div>
-                <div class="zoomer_section">
-                  <table class="z_bar">
-                    <tr>
-                      <td><input type="range" min=0 max=100 id="zoom_input"  class="slider"></td>
-                      <td><div class="r_fresh"> <img src="{{asset('frontend/img/rotat.png')}}"></div></td>
-                    </tr>
-                  </table>
-                </div>
                 </div>
               </div>
 			   <!-- Footer -->
@@ -305,6 +296,14 @@ ntent -->
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<div class="zoomer_section">
+  <div class="z_bar">
+    <div class="r_fresh float-left"> <img src="{{asset('frontend/img/rotat.png')}}"></div>
+    <div class="float-left">
+      <input type="range" min="0" max="5" value="0" id="zoom_input"  class="slider">
     </div>
   </div>
 </div>

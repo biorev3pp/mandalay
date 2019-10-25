@@ -56,14 +56,14 @@
     <script src="{{asset('frontend/js/jquery.accrue.js')}}"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script>
-      $(document).on('change','#zoom_input',function() {
-        let zoom_level= $(this).val();
-        let scale_level =  20/zoom_level;
-        if(zoom_level == 0){
-          $(".top_spa").css('transform','scale(1)');
-        }
-        $(".top_spa").css('transform','scale('+scale_level+')');
+      $(document).on('mousemove','#zoom_input',function() {
+        let scale_level=1;
+        let range= $(this).val();
+        let added_zoom =  range/5;
+        let zoom_level = scale_level+added_zoom;
+        $(".top_spa").css('transform','scale('+zoom_level+')');
       });
+
       $(document).on('click','.btn_mortgage',function () {
         $('.calculator').accrue({
             mode: "basic",
