@@ -13,7 +13,7 @@
 <div class="sp_marg_">
           <!-- Page Heading -->
           <div class="row">
-		  <div id="final_tab_bar">
+		  <div class="col-lg-4">
                       <div class="info-area">
                           <div class="status-box">
                               <ul class="share-options">
@@ -192,17 +192,17 @@
 
             </div>
 			</div>-->
-            <div id="final_tab_bar_r">
+            <div class="col-lg-8">
               <div class="card o-hidden  mb-4">
                <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">
                     <span class="text-success">{{$home->title}} </span>{{$home->subtitle}}
                   </h6>
                 </div>-->
-                <div class="card-body p-0">
+                <div class="top_spa">
                   <!-- Nested Row within Card Body -->
                   <div class="row">
-                    <div class="col-lg-9 d-lg-block mx-auto">
+                    <div class="col-lg-11 d-lg-block mx-auto">
                       <img src="{{asset('images/homes/'.$home->image)}}" class="img-fluid">
                     </div>
 
