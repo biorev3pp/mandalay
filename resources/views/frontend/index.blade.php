@@ -203,7 +203,7 @@ ntent -->
               
             
             <button type="button" class="btn_mortgage" data-toggle="modal" data-target="#mortageModal">
-              Mortrage 
+              Mortgage 
             </button>
 			</div>
           </div>
