@@ -11488,7 +11488,7 @@ font-family: 'Open Sans', sans-serif;
 }
 .floor-plan-btn {
 	position: fixed;
-	bottom: 55px;
+	bottom: 49px;
 	width: 348px;
 	text-align: center;
 	padding: 25px 0;
@@ -11547,10 +11547,10 @@ font-family: 'Open Sans', sans-serif;
 .all_cen {
 	
 	position: fixed;
-	bottom: 60px;
+	bottom: 44px;
 	border-top: 1px solid #a5b3bc;
 	padding-top:0px;
-	width: 100%;height:96px;
+	width: 100%;height:105px;
 	text-align: center;
 	/*border-bottom: 1px solid #a5b3bc;*/
 	background:url(../img/bottom-strap.jpg) no-repeat;background-size:cover;
