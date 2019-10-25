@@ -10,9 +10,114 @@
   </style>
         <!-- Begin Page Content -->
         <div class="container-fluid bg-white pt-4 mb-4">
-<div class="spacer_margin">
+<div class="sp_marg_">
           <!-- Page Heading -->
           <div class="row">
+		  <div id="final_tab_bar">
+                      <div class="info-area">
+                          <div class="status-box">
+                              <ul class="share-options">
+                                  <li>
+                                      <a href="#"><img src="{{asset('frontend/img/icon-share.png')}}"/></a>
+                                  </li>
+                                  <li>
+                                      <a href="#"><img src="{{asset('frontend/img/icon-download.png')}}"/></a>
+                                  </li>
+                                  <li>
+                                      <a href="#"><img src="{{asset('frontend/img/icon-new.png')}}"/></a>
+                                  </li>
+                              </ul>
+                              <h2>Congratulations!</h2>
+                              <p>You've designed your new House</p>
+                          </div>
+                          <div class="custom-heading">
+                              Your Selection
+                          </div>
+                          <div class="cont-box">
+                              <label>Elevation Name:</label> Annefield Farmhouse
+                          </div>
+                          <div class="custom-heading">
+                              Lorem Ipsum
+                          </div>
+                          <div class="info-table">
+                              <div class="table-responsive">
+                              <table class="table table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th>Option</th>
+                                    <th>Price</th>
+                                   
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Door</td>
+                                    <td>$16.5</td>
+                                    
+                                  </tr>
+                                  <tr>
+                                    <td>Door</td>
+                                    <td>$16.5</td>
+                                  </tr>
+                                  <tr>
+                                     <td>Door</td>
+                                    <td>$16.5</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Door</td>
+                                    <td>$16.5</td>
+                                  </tr>
+                                  <tr>
+                                     <td>Door</td>
+                                    <td>$16.5</td>
+                                  </tr>
+                                  <tr>
+                                     <td>Door</td>
+                                    <td>$16.5</td>
+                                  </tr>
+                                  <tr>
+                                     <td>Door</td>
+                                    <td>$16.5</td>
+                                  </tr>
+                                  <tr>
+                                     <td>Door</td>
+                                    <td>$16.5</td>
+                                  </tr>
+                                  <tr>
+                                     <td>Door</td>
+                                    <td>$16.5</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Door</td>
+                                    <td>$16.5</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                          </div>
+                          </div>  
+                          
+                          <div class="custom-heading">
+                              Disclaimer
+                          </div>
+                          <div class="cont-box">
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                          </div>
+                          
+                          <div class="custom-heading">
+                              Contact Detail
+                          </div>
+                          <div class="cont-box">
+                              <ul class="contact-info">
+                                  <li><img class="float-left" src="{{asset('frontend/img/icon-building.png')}}"><span>Lorem Zirrolli ,Sales Manager<br>Ipsum at North Branch</span></li>
+                                  <li><img class="float-left" src="{{asset('frontend/img/icon-phone.png')}}" /> +1234-567-8901</li>
+                              </ul>
+                          </div>
+                          <div class="note-txt">
+                              Note: When selecting the upgrade for the siding or accent siding, this upgrade comes as a combo and cannot be upgraded per individual selection.
+                          </div>
+                      </div>
+                  </div>
+		  <!--
 		  <div id="final_tab_bar">
             <div>
               <h1 class="h3 text-success">Congratulations
@@ -72,9 +177,7 @@
                           @if(in_array($feature->id,$features))
                           <li class="nav-link text-nowrap hand noSelect">
                             {{$feature->title}}
-                            <!-- <label class="ui-switch ui-switch-success ui-switch-sm mb-0 float-right">
-                              <input type="checkbox" id="{{$feature->id}}" class="featureBtn"><i></i>
-                            </label> -->
+                            
                           </li>
                           @endif
                         @empty
@@ -88,9 +191,9 @@
               @endforelse
 
             </div>
-			</div>
+			</div>-->
             <div id="final_tab_bar_r">
-              <div class="card o-hidden shadow-lg mb-4">
+              <div class="card o-hidden  mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">
                     <span class="text-success">{{$home->title}} </span>{{$home->subtitle}}
