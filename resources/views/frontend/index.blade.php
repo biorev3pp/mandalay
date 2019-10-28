@@ -7,8 +7,8 @@
     .text-info-white{
       color: #ffffff;
     }
-   
-   
+
+
     .feature-img{
       position: absolute;
       z-index: 111;
@@ -18,9 +18,12 @@
     i.disabled{
       cursor: not-allowed !important;
     }
+    #image-graggble {
+      cursor: pointer;
+    }
   </style>
-    
-        <!-- Begin Page Co    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">    
+
+        <!-- Begin Page Co    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">
 ntent -->
         <div class="container-fluid bg-white">
 <div class="spacer_margin">
@@ -34,12 +37,12 @@ ntent -->
                 class="nav bg-primary d-flex d-block align-items-center justify-content-center" id="padd">
                 <li class="col-6 text-center hand customNav active tabDiv" id="home">
                   <img src="{{asset('frontend/img/ext-icon.png')}}">
-				  
+
                   <h5>Plan</h5>
                 </li>
                 <li class="col-6 text-center hand customNav tabDiv" id="floor">
                   <img src="{{asset('frontend/img/fp-icon.png')}}" width="30">
-				  
+
                   <h5>Floor</h5>
                 </li>
               </ul>
@@ -47,8 +50,8 @@ ntent -->
               <div class="custom-scroll col-12 tabDivSection" id="home">
 			  <h6>Elevation</h6>
                 <ul class="navbar-nav" id="div_pos">
-				
-                  @php $i=0; @endphp 
+
+                  @php $i=0; @endphp
                   @forelse($homeList as $home)
                   @php $i++; @endphp
                   <li id="{{$i}}" data-home-id="{{Crypt::encrypt($home->id)}}" class="nav-item home_list">
@@ -65,10 +68,10 @@ ntent -->
 
               <div class="custom-scroll tabDivSection disp_none" id="floor">
 			  <p class="f_de">Floor</p>
-                @php $i=0; @endphp 
+                @php $i=0; @endphp
                 @forelse($homeList as $home)
                 @php $i++; @endphp
-                  @php $j=0; @endphp 
+                  @php $j=0; @endphp
                   @forelse($home->floors as $floor)
                   @php $j++; @endphp
                   <ul class="home_floors @if($i!=1) disp_none @endif" data-floor-home-id="{{$i}}" id="grey_">
@@ -78,7 +81,7 @@ ntent -->
                   </ul>
                   <div class="row home_floors @if($i!=1) disp_none @endif" data-floor-home-id="{{$i}}">
                     <div class="col-12">
-					
+
                       <div class="collapse" id="floor{{$i}}{{$j}}" style="">
                         <div class="card">
 						            <!--<p class="f_de">FlexDesign</p>-->
@@ -87,15 +90,15 @@ ntent -->
                             @forelse($floor->features as $feature)
                             <li class="nav-link  hand noSelect_{{$feature->id}}">
                              <span> {{$feature->title}} </span>
-                              <label 
-                               
-                                data-conflicts="{{$feature->features_acl->conflicts}}"  
-                                data-dependency="{{$feature->features_acl->dependency}}"  
-                                data-togetherness="{{$feature->features_acl->togetherness}}" 
-                                data-self="{{$feature->id}}" 
-                              
-                                class="ui-switch ui-switch-success ui-switch-sm mb-0 float-right 
-                                <?php if(($feature->features_acl->count())) {?> manageToggle <?php } ?>">
+                              <label
+
+                                data-conflicts="{{$feature->features_acl->conflicts}}"
+                                data-dependency="{{$feature->features_acl->dependency}}"
+                                data-togetherness="{{$feature->features_acl->togetherness}}"
+                                data-self="{{$feature->id}}"
+
+                                class="ui-switch ui-switch-success ui-switch-sm mb-0 float-right
+                                <?php if (($feature->features_acl->count())) {?> manageToggle <?php }?>">
                                 <input data-check-floor-id="{{$floor->id}}" type="checkbox" class="featureBtn conflicts_{{$feature->id}} dependency_{{$feature->id}} self_{{$feature->id}} togetherness_{{$feature->id}}" id="{{$feature->id}}"><i></i>
                               </label>
                             </li>
@@ -114,19 +117,19 @@ ntent -->
               </div><!--div scroller-->
               <div class="floor-plan-btn">
                 <button type="button" class="btn btn-finish finishBtn">Finish &amp; Print</button>
-                {{Form::open(array('url'=>url('home-final'),'id'=>'finishPage_form'))}}  
+                {{Form::open(array('url'=>url('home-final'),'id'=>'finishPage_form'))}}
                 {{Form::hidden('home_id',$defaultHome->id)}}
                 {{Form::close()}}
               </div>
             </div>
 			</div>
 			<!--left bar close-->
-			
-			
+
+
             <div class="right_panel_d">
               <div class="card">
                <!--<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  @php $i=0; @endphp 
+                  @php $i=0; @endphp
                   @forelse($homeList as $home)
                   @php $i++; @endphp
                   <h6 id="{{$i}}" class="m-0 font-weight-bold text-primary home_image_title @if($i!=1) disp_none @endif">
@@ -137,9 +140,9 @@ ntent -->
                 </div>-->
                 <div class="card-body p-0">
                   <!-- Nested Row within Card Body -->
-				  <div class="top_spa" style="min-height: 700px;">
+				  <div class="top_spa position-relative" style="min-height: 700px; position: relative;">
                   <div class="row">
-                    @php $i=0; @endphp 
+                    @php $i=0; @endphp
                     @forelse($homeList as $home)
                     @php $i++; @endphp
                     <div id="{{$i}}" class="col-lg-9 d-lg-block mx-auto position-relative home_image_full @if($i!=1) disp_none @endif">
@@ -148,14 +151,14 @@ ntent -->
                       </div>
                     </div>
                     @empty
-                    @endforelse 
-                    <div class="col-lg-9 d-lg-block mx-auto floor_image_view disp_none">
+                    @endforelse
+                    <div class="col-lg-9 d-lg-block mx-auto floor_image_view disp_none position-absolute" id="image-graggble" >
                       <div class="position-relative">
                         <img src="" class="img-fluid position-absolute">
                       </div>
                     </div>
 					<!-- zoom area-->
-				
+
 					<!--zoom area-->
                   </div>
                 </div>
@@ -163,7 +166,7 @@ ntent -->
 			   <!-- Footer -->
         <footer class="sticky-footer" id="spacer_">
 		<div class="all_cen">
-          @php $i=0; @endphp 
+          @php $i=0; @endphp
           @forelse($homeList as $home)
           @php $i++; @endphp
           <div id="{{$i}}" class="px-3 my-auto d-flex align-items-center home_image_footer @if($i!=1) disp_none @endif">
@@ -183,31 +186,31 @@ ntent -->
               <span>{{$home->area}}</span>
            </li>
 		   <li>
-            
+
               <img src="{{asset('frontend/img/ico2.png')}}" >
               <span>{{$home->bedrooms}}</span>
             </li>
 			<li>
-            
+
               <img src="{{asset('frontend/img/ico3.png')}}" >
               <span>{{$home->bathrooms}}</span>
            <li>
-           
+
               <img src="{{asset('frontend/img/ico4.png')}}" >
               <span>{{$home->garage}}</span>
             </li>
 			</ul>
 			</div>
             <div class="two_button_sp">
-             
+
                 <span class="p_tag">
 				{{$home->cost}}
                   <small>Starts From</small>
                   </span>
-              
-            
+
+
             <button type="button" class="btn_mortgage" data-toggle="modal" data-target="#mortageModal">
-              Mortgage 
+              Mortgage
             </button>
 			</div>
           </div>
@@ -224,7 +227,7 @@ ntent -->
         </div>
         <!-- End of Main Content -->
 
-       
+
         <!-- Button trigger modal -->
 <!-- Modal -->
 <div class="modal fade" id="mortageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -317,4 +320,3 @@ ntent -->
 </div>
 
 @endsection
-        
