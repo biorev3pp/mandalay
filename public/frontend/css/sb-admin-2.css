@@ -5589,7 +5589,7 @@ a.close.disabled {
 	border: 2px solid #333;
 	font-size: 2rem;
 }
-.modal-header .close {font-size:2rem;}
+.modal-header .close {font-size:2rem;outline:none;}
 .modal-title {
   margin-bottom: 0;
   line-height: 1.5;
