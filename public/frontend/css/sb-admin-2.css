@@ -11918,7 +11918,7 @@ ul.contact-info li span {
 .img_s{max-width:700px;margin:auto;}
 /* second page css */
 /*================================================Media Quaries================================*/
-@media (min-width:1366px) and (max-width:1440px) {
+@media (min-width:1366px) and (max-width:1540px) {
 	
 	.home_column_{margin:0;}
 	.data_val , .p_tag{margin-right:10px;}
