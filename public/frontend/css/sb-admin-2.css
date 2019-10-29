@@ -1719,8 +1719,8 @@ pre code {
   color: #6e707e;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #d1d3e2;
-  border-radius: 0.35rem;
+  border: 1px solid #cacaca;
+  border-radius:0;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -1769,7 +1769,7 @@ pre code {
 }
 
 .form-control:disabled, .form-control[readonly] {
-  background-color: #eaecf4;
+  background-color: #e9ecef;
   opacity: 1;
 }
 
@@ -5572,8 +5572,8 @@ a.close.disabled {
   justify-content: space-between;
   padding: 1rem 1rem;
   border-bottom: 1px solid #e3e6f0;
-  border-top-left-radius: 0.3rem;
-  border-top-right-radius: 0.3rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .modal-header .close {
@@ -11397,8 +11397,8 @@ margin-right:50px;float:left;
   border-right:#cacaca solid 1px;
 }
 .mc_field .form-group label{
-  font-weight:bold;
-  font-size:18px;
+  font-weight:400;color:#333;
+  font-size:14px;
 }
 #mortagC .form-group .row .ot_prt1{
   position: absolute;
@@ -11425,27 +11425,31 @@ margin-right:50px;float:left;
   width: 175px;
   text-align: center;
   border-radius: 50%;
-  border:#0079e1 solid 8px;
+  border:#0079e1 solid 8px;margin:auto;
 }
-.mortage-result .price-header{
-  margin:8px 0;
-  font-size: 16px;
-  font-weight: bold;
+.mortage-result .price-header {
+	margin: 8px 0;
+	font-size: 14px;
+	font-weight: bold;
+	color: #333;
+	font-weight: 600;
 }
-
 .mortage-result .price-text-big{
     margin: 8px 0;
     padding: 0;
     font-family: 'Open Sans', sans-serif;
     font-size: 22px;
-    color: #7cc035;
+    color: #7cc035;font-weight:600;
 }
 .mortage-result .price-text {
-  font-size:14px;
+ font-size: 14px;
+line-height: 24px;
+color:#707070;
+font-weight: 400;
 }
 .mortage-result .price-text  .price_ds,
 .mortage-result .price-text  .price_bp {
-  float:right;
+  float:right;color:#333;
 }
 
 /*=================================custom css=========================================
@@ -11904,3 +11908,13 @@ ul.contact-info li span {
 }
 .img_s{max-width:700px;margin:auto;}
 /* second page css */
+/*================================================Media Quaries================================*/
+@media (min-width:1366px) and (max-width:1440px) {
+	
+	.home_column_{margin:0;}
+	.data_val , .p_tag{margin-right:10px;}
+	button.btn_mortgage{margin-left:10px;}
+	.zoomer_section{bottom:40%;}
+	.data_val{margin-right:20px;}
+	.data_val ul li{margin:0 18px;}
+}
