@@ -18,13 +18,13 @@
             <div class="status-box">
               <ul class="share-options">
                   <li>
-                      <a href="#"><img src="{{asset('asset/img/icon-share.png')}}"/></a>
+                      <a href="#"><img src="{{asset('asset/img/icon-share.png')}}" title="Share"/></a>
                   </li>
                   <li>
-                      <a href="#"><img src="{{asset('asset/img/icon-download.png')}}"/></a>
+                      <a href="#"><img src="{{asset('asset/img/icon-download.png')}}" title="Download PDF"/></a>
                   </li>
                   <li>
-                      <a href="#"><img src="{{asset('asset/img/icon-new.png')}}"/></a>
+                      <a href="#"><img src="{{asset('asset/img/icon-new.png')}}" title="New Home"/></a>
                   </li>
               </ul>
               <h2>Congratulations!</h2>

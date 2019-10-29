@@ -19,7 +19,7 @@
       cursor: not-allowed !important;
     }
     #image-graggble {
-      cursor: pointer;
+      cursor: all-scroll;
     }
   </style>
 
