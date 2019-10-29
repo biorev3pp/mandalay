@@ -147,7 +147,7 @@ ntent -->
                     @php $i++; @endphp
                     <div id="{{$i}}" class="col-lg-9 d-lg-block mx-auto position-relative home_image_full @if($i!=1) disp_none @endif">
                       <div class="position-relative">
-                        <img src="{{asset('images/homes/'.$home->image)}}" class="img-fluid">
+                        <img src="{{asset('images/homes/'.$home->image)}}" class="img-fluid" id="v_h">
                       </div>
                     </div>
                     @empty
