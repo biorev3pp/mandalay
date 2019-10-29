@@ -201,12 +201,11 @@ $(document).ready(function (){
 
         // if(!checked) {
         $(document).find('.floor_image_view img').each(function(i,obj){
-            // if($(obj).attr('id') == currentValue){
+            if($(obj).attr('id') != undefined){
                 $(obj).remove();
-            // }
+            }
         });    
         // }
-        
         if(conficts.length == 0)
         {
             // we need to match data-conficts attribute
