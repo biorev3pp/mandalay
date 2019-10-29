@@ -95,6 +95,9 @@
                   '<div class="price-header">TOTAL PRICE OF HOME</div>'+
                   '<div class="price-text-big">$ 300000</div>'+
                   '<div class="price-text">Base Price<span class="price_bp">$300000</span></div>'+
+				  '<div class="price-text">Designs Selected<span class="price_bp">$1,519</span></div>'+
+				  '<div class="price-header">Monthly Estimated Payment</div>'+
+                  '<div class="price-text-big">$ 1280</div>'+
                 '</div>',
             response_compare: "Save $%savings% in interest!",
             error_text: "Please fill in all fields for calculation.",
