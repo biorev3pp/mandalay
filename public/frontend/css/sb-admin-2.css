@@ -11674,9 +11674,15 @@ ul#padd li h5 {margin-bottom:0;}
 	color: #333;
 	font-size: 18px;
 	font-family: 'Open Sans', sans-serif;
-	font-weight: 700;
+	font-weight: 700;margin-bottom:0;
 }
-	.home_column_ .div_co p span{display:block; margin-top:5px; color:#333;font-size:18px;}
+.home_column_ .div_co p span {
+	display: block;
+	margin-top: 0;
+	color: #333;
+	font-size: 14px;
+	font-weight: 400;
+}
 	.data_val {display:inline-block;border-right:1px solid #a5b3bc;border-left:1px solid #a5b3bc; padding:0 15px;height:111px; margin-right:30px;}
 	.data_val ul li{display:inline-block;margin:0 25px;padding:22px 0 0;font-size:14px; color:#737373;}
 	.data_val ul{margin:0;padding:0;display:block;}
