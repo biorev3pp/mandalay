@@ -11675,7 +11675,7 @@ ul#padd li h5 {margin-bottom:0;}
 	.two_button_sp{display:inline-block;}
 	.top_spa{margin-top:20px;}
 	 .floor_image_view{
-      position: relative;max-width:750px;
+      position: relative;max-width:750px;text-align:center;
     }
 
 #left_togg li span {
