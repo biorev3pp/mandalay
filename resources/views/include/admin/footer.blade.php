@@ -5,7 +5,7 @@
             <span>&copy; 2018 Biorev All Right Reserved.</span>
           </div>
           <div class="copyright text-right">
-            <span>Designed & Developed by  <em>Biorev LLC</em> <!--<a href="javascript:void(0);" class="text-success px-2"> <img src="{{asset('asset/img/biorevRev.png')}}" width="100"></a>--></span>
+           <span>Designed &amp; Developed by <em> <a href="http://www.biorev.com/" target="_blank">Biorev LLC</a></em> <!--<a href="javascript:void(0);" class="text-success px-2"> <img src="{{asset('asset/img/biorevRev.png')}}" width="100"></a>--></span>
           </div>
         </div>
       </footer>
