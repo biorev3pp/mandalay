@@ -1,13 +1,14 @@
 <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex" href="{{url('admin/homes')}}">
+      
          <!-- <div class="sidebar-brand-icon">
          <i class="fab fa-adn"></i>
           <i class="fab fa-adversal"></i>
         </div> -->
+		<!--<a class="sidebar-brand d-flex" href="{{url('admin/homes')}}">
         <div class="sidebar-brand-text mx-1">MANDALAY HOMES</div>
-      </a>
+      </a>-->
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
       <!-- Nav Item - Dashboard -->

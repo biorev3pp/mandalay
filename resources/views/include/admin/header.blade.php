@@ -12,7 +12,7 @@
             <i class="fa fa-bars"></i>
           </button>
           <div class="logo">
-              <a class="nav-link" href="#"><img src="{{asset('asset/img/logoRev.png')}}" width="300"></a>
+              <a class="nav-link" href="#"><img src="{{asset('asset/img/logoRev.png')}}" width="400"></a>
             
           </div>
           <!-- Topbar Navbar -->
