@@ -314,7 +314,7 @@ img {
 }
 }
 
-@media (max-width:767px) and (orientation:landscape) {
+@media (max-width:900px) and (orientation:landscape) {
 	.h_bg {
 		height: auto;
 		padding-bottom: 10px;
