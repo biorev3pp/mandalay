@@ -307,6 +307,11 @@ img {
 		line-height: 100px;
 		font-size: 40px;
 	}
+	.form_data .bg_whit input[type="text"],
+.form_data .bg_whit input[type="email"],
+.form_data .bg_whit input[type="password"] {
+	width:220px;
+}
 }
 
 @media (max-width:767px) and (orientation:landscape) {
