@@ -11715,7 +11715,7 @@ ul#padd li:hover ::after {
 	
 .zoomer_section {
 	position: fixed;
-	right: 10px;
+	right: 0px;
 	bottom: 27%;
 }
 	.zoomer_section .z_bar {
