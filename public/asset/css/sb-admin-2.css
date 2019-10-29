@@ -9935,7 +9935,7 @@ a:focus {
 }
 
 .topbar {
-  height: 4.375rem;
+  height: 100px;
 }
 
 .topbar #sidebarToggleTop {
@@ -10076,7 +10076,7 @@ a:focus {
 
 .sidebar {
   width: 6.5rem;
-  min-height: 100vh;
+  min-height: 100vh;padding-top:100px;
 }
 
 .sidebar .nav-item {
@@ -10123,7 +10123,7 @@ a:focus {
 .sidebar .nav-item .collapsing .collapse-inner {
   padding: .5rem 0;
   min-width: 10rem;
-  font-size: 0.85rem;
+  font-size: 13px;font-weight:600;
   margin: 0 0 1rem 0;
 }
 
@@ -10134,7 +10134,7 @@ a:focus {
   padding: .5rem 1.5rem;
   text-transform: uppercase;
   font-weight: 800;
-  font-size: 0.65rem;
+  font-size: 0.70rem;
   color: #b7b9cc;
 }
 
@@ -10227,7 +10227,7 @@ a:focus {
   text-align: center;
   padding: 0 1rem;
   font-weight: 800;
-  font-size: 0.65rem;
+  font-size: 13px;
 }
 
 @media (min-width: 768px) {
@@ -10266,8 +10266,8 @@ a:focus {
     margin-right: 0.25rem;
   }
   .sidebar .nav-item .nav-link span {
-    font-size: 0.85rem;
-    display: inline;
+    font-size: 14px;
+    display: inline;font-weight:600;
   }
   .sidebar .nav-item .nav-link[data-toggle="collapse"]::after {
     width: 1rem;
@@ -10984,7 +10984,7 @@ form.user .btn-user {
 }
 
 footer.sticky-footer {
-  padding: 2rem 0;
+  padding: 15px 0;
   flex-shrink: 0;
 }
 
@@ -11392,3 +11392,18 @@ body.sidebar-toggled footer.sticky-footer {
  #two-buttons {margin-bottom:1rem;}
  .modal-header h4{margin-bottom:0;}
  
+ .logo {
+	display: block;
+	text-align: center;
+	margin: auto;
+	width: 100%;position:relative;z-index:2;
+}
+.curve_img_1 {
+	position: absolute;
+	top: 0;
+	right: 0;
+	
+}
+.bg-white.py-2.collapse-inner.rounded i {
+	margin-right: 10px;
+}
