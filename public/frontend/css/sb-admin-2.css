@@ -5577,10 +5577,19 @@ a.close.disabled {
 }
 
 .modal-header .close {
-  padding: 1rem 1rem;
-  margin: -1rem -1rem -1rem auto;
+	padding: 0;
+	margin: -2rem -2rem 0rem auto;
+	background: #fff;
+	opacity: 1;
+	border-radius: 100%;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	float: right;
+	border: 2px solid #333;
+	font-size: 2rem;
 }
-
+.modal-header .close {font-size:2rem;}
 .modal-title {
   margin-bottom: 0;
   line-height: 1.5;
@@ -11418,7 +11427,7 @@ margin-right:50px;float:left;
   position: relative;
   top:40%;
   font-size: 28px;
-  font-weight: bold;
+  font-weight: bold;color:#297FD5;
 }
 .mortage-details .circle-div .circle{
   height:175px;
