@@ -1,5 +1,5 @@
 <!-- Footer -->
-      <footer class="sticky-footer bg-dark shadow text-white py-2">
+      <footer class="sticky-footer bg-dark shadow text-white">
         <div class="container-fluid my-auto d-flex justify-content-between align-items-center">
           <div class="copyright text-left">
             <span>&copy; 2018 Biorev All Right Reserved.</span>
