@@ -44,6 +44,7 @@ $(document).ready(function (){
 
     $(document).on('click','.tabDiv', function(e){
         let tab = $(this).attr('id');
+        // To show div content of current tab
         $(document).find('.tabDivSection').each(function(i,obj){
             if($(obj).attr('id')===tab){
                 $(obj).removeClass('disp_none');
@@ -51,16 +52,21 @@ $(document).ready(function (){
                 $(obj).addClass('disp_none');
             }
         });
-        let homeid = localStorage.getItem('home_id');
-        $(document).find('.home_image_full').each(function(i,obj){
-            if($(obj).attr('id')===homeid){
-                $(obj).removeClass('disp_none');
-            }else{
-                $(obj).addClass('disp_none');
-            }
-        });
-        $(document).find('.floor_image_view').addClass('disp_none');
-        $('.floorList:first').click()
+        if(tab=='floor'){
+            $('.floorList:first').click();
+        }else{
+            $(document).find('.floor_image_view').addClass('disp_none');
+            let homeid = localStorage.getItem('home_id');
+            $(document).find('.home_image_full').each(function(i,obj){
+                if($(obj).attr('id')===homeid){
+                    $(obj).removeClass('disp_none');
+                }else{
+                    $(obj).addClass('disp_none');
+                }
+            });
+        }
+        
+        
         // $(document).find('.floor_image_view').addClass('disp_none');
     });
 
