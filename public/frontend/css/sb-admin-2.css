@@ -11930,7 +11930,7 @@ ul.contact-info li span {
 	.home_column_{margin:0;}
 	.data_val , .p_tag{margin-right:10px;}
 	button.btn_mortgage{margin-left:10px;}
-	.zoomer_section{bottom:40%;}
+	.zoomer_section{bottom:40%;right:-30px;}
 	.data_val{margin-right:20px;}
 	.data_val ul li{margin:0 18px;}
 	.floor_image_view{max-width:550px;}
