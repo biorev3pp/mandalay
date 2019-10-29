@@ -11477,7 +11477,7 @@ font-family: 'Open Sans', sans-serif;
 }
 #top_tab {
 	position: fixed;
-	left: 0;top:0; z-index:1111;
+	left: 0;top:0; z-index:1049;
 	padding-bottom: 250px;
 	width: 350px;
 	height: 100%;
