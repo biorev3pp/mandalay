@@ -24,7 +24,7 @@
                       <a href="#"><img src="{{asset('asset/img/icon-download.png')}}" title="Download PDF"/></a>
                   </li>
                   <li>
-                      <a href="#"><img src="{{asset('asset/img/icon-new.png')}}" title="New Home"/></a>
+                      <a href="{{url('/')}}"><img src="{{asset('asset/img/icon-new.png')}}" title="New Home"/></a>
                   </li>
               </ul>
               <h2>Congratulations!</h2>
