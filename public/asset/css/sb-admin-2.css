@@ -10996,6 +10996,7 @@ footer.sticky-footer .copyright em {
 	font-style: normal;
 	color: #297fd5;
 }
+footer.sticky-footer .copyright em a:hover{color:#99CC00;text-decoration:underline;}
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
