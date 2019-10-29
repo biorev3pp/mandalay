@@ -7276,9 +7276,7 @@ button.bg-dark:focus {
 
 .position-relative {
 	position: relative !important;
-	margin: 10px auto 0;
-	display: block;
-	text-align: center;
+	
 }
 .position-absolute {
   position: absolute !important;
