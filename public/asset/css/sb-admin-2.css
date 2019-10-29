@@ -10123,7 +10123,7 @@ a:focus {
 .sidebar .nav-item .collapsing .collapse-inner {
   padding: .5rem 0;
   min-width: 10rem;
-  font-size: 0.85rem;
+  font-size: 13px;font-weight:600;
   margin: 0 0 1rem 0;
 }
 
@@ -10134,7 +10134,7 @@ a:focus {
   padding: .5rem 1.5rem;
   text-transform: uppercase;
   font-weight: 800;
-  font-size: 0.65rem;
+  font-size: 0.70rem;
   color: #b7b9cc;
 }
 
@@ -10267,7 +10267,7 @@ a:focus {
   }
   .sidebar .nav-item .nav-link span {
     font-size: 14px;
-    display: inline;
+    display: inline;font-weight:600;
   }
   .sidebar .nav-item .nav-link[data-toggle="collapse"]::after {
     width: 1rem;
@@ -11403,4 +11403,7 @@ body.sidebar-toggled footer.sticky-footer {
 	top: 0;
 	right: 0;
 	
+}
+.bg-white.py-2.collapse-inner.rounded i {
+	margin-right: 10px;
 }
