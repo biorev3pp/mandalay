@@ -5,7 +5,7 @@
       <div id="content">
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-primary topbar mb-4 static-top shadow">
-		 <img class="img-profile rounded-circle" src="{{asset('images/header-bg.png')}}" class="curve_img_1">
+		 <img class="img-profile rounded-circle" src="{{asset('asset/img/header-bg.png')}}" class="curve_img_1">
 		
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
