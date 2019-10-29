@@ -5,15 +5,16 @@
       <div id="content">
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-primary topbar mb-4 static-top shadow">
+		 <img class="img-profile rounded-circle" src="{{asset('images/header-bg.png')}}" class="curve_img_1">
+		
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item text-nowrap">
+          <div class="logo">
               <a class="nav-link" href="#"><img src="{{asset('asset/img/logoRev.png')}}" width="300"></a>
-            </li>
-          </ul>
+            
+          </div>
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
             <div class="topbar-divider d-none d-sm-block"></div>

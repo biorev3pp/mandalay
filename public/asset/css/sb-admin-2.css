@@ -9935,7 +9935,7 @@ a:focus {
 }
 
 .topbar {
-  height: 4.375rem;
+  height: 100px;
 }
 
 .topbar #sidebarToggleTop {
@@ -11392,3 +11392,15 @@ body.sidebar-toggled footer.sticky-footer {
  #two-buttons {margin-bottom:1rem;}
  .modal-header h4{margin-bottom:0;}
  
+ .logo {
+	display: block;
+	text-align: center;
+	margin: auto;
+	width: 100%;position:relative;z-index:2;
+}
+.curve_img_1 {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+}
