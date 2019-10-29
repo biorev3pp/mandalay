@@ -31,19 +31,19 @@ ntent -->
           <div class="row">
 		  <!-- left bar start-->
 		  <div id="top_tab">
-		   <button class="nav-toggle">Slide button</button>
+		  <!-- <button class="nav-toggle">Slide button</button>-->
             <div class="c_D_bar">
               <ul
                 class="nav bg-primary d-flex d-block align-items-center justify-content-center" id="padd">
                 <li class="col-6 text-center hand customNav active tabDiv" id="home">
                   <img src="{{asset('frontend/img/ext-icon.png')}}">
 
-                  <h5>Plan</h5>
+                  <!--<h5>Plan</h5>-->
                 </li>
                 <li class="col-6 text-center hand customNav tabDiv" id="floor">
                   <img src="{{asset('frontend/img/fp-icon.png')}}" width="30">
 
-                  <h5>Floor</h5>
+                 <!-- <h5>Floor</h5>-->
                 </li>
               </ul>
 			  <div class="accord">
@@ -204,8 +204,9 @@ ntent -->
             <div class="two_button_sp">
 
                 <span class="p_tag">
+				 <small>Starts From</small>
 				{{$home->cost}}
-                  <small>Starts From</small>
+                 
                   </span>
 
 

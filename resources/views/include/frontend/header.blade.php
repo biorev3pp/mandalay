@@ -54,9 +54,9 @@
               <a href="#"><img src="{{asset('frontend/img/logoRev.png')}}" width="400"></a>
             </div>
         
-<div class="plan-name_o">
+<!--<div class="plan-name_o">
                   Residence 1~ Plan 5411: Deseo
-              </div>
+              </div>-->
           <!-- Topbar Search -->
 
 

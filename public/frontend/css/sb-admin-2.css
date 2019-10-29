@@ -11475,7 +11475,7 @@ font-family: 'Open Sans', sans-serif;
 }
 #top_tab .accord {
 		overflow-y: auto;
-	max-height: calc(96vh - 15rem);
+	max-height: calc(99vh - 15rem);
 	width: 100%;
 	position: absolute;
 	left: 0;background:#373737;overflow-x:hidden;
@@ -11493,7 +11493,7 @@ font-family: 'Open Sans', sans-serif;
 	text-align: center;
 	padding: 25px 0;
 	background: #373737;
-	border-top: solid 1px #47494d;
+	/*border-top: solid 1px #47494d;*/
 }
 .floor-plan-btn .btn-finish {
 	background: #297fd5;
@@ -11660,8 +11660,9 @@ ul#padd li h5 {margin-bottom:0;}
 	.data_val ul{margin:0;padding:0;display:block;}
 	.data_val ul li img{display:block;margin:auto;}
 	.data_val ul li span{display:block;margin-top:10px;}
-	button.btn_mortgage{border:1px solid #297fd5;text-transform:uppercase; padding:15px 30px;color:#297fd5;font-family: 'Open Sans', sans-serif;font-weight:700;margin-left:50px;
-	background:none;box-shadow:none; border-radius:5px 5px 5px 5px; -moz-border-radius:5px 5px 5px 5px; -webkit-border-radius:5px 5px 5px 5px;cursor:pointer; font-size:16px;}
+	button.btn_mortgage{border:0;text-transform:uppercase; padding:15px 30px;color:#fff;background:#99CC00;font-family: 'Open Sans', sans-serif;font-weight:700;margin-left:50px;
+	background:none;box-shadow:none; border-radius:5px 5px 5px 5px; -moz-border-radius:5px 5px 5px 5px; -webkit-border-radius:5px 5px 5px 5px;cursor:pointer; font-size:16px;transition:.5s ease-in-out;}
+	button.btn_mortgage:hover{background:#7ca600;}
 	.two_button_sp{display:inline-block;}
 	.top_spa{margin-top:20px;}
 	 .floor_image_view{
