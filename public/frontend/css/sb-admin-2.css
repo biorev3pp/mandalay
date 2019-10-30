@@ -5584,7 +5584,7 @@ a.close.disabled {
 	border-radius: 100%;
 	width: 40px;
 	height: 40px;
-	line-height: 40px;
+	/*line-height: 40px;*/
 	float: right;
 	border: 2px solid #333;
 	font-size: 2rem;
@@ -11511,15 +11511,15 @@ font-family: 'Open Sans', sans-serif;
 }
 .floor-plan-btn .btn-finish {
 	background: #297fd5;
-	font-size: 16px;
+	font-size: 15px;
 	color: #fff;
 	text-align: center;
 	width: 100%;
 	max-width: 200px;
 	border-radius: 0;
 	transition: background .5s ease-in-out;
-	font-weight: 600;
-	padding: 12px 0;
+	font-weight: 700;
+	padding: 15px 30px;
 }
 .floor-plan-btn .btn-finish:hover{background:#99CC00;}
 
@@ -11622,7 +11622,11 @@ p.f_de {
 }
 #padd li img{margin-bottom:0;}
 ul#padd li h5 {margin-bottom:0;}
-#div_pos {position:relative; padding:1rem;background:#373737;border-bottom:1px solid #47494d;}
+#div_pos {position:relative; padding:0;background:#373737;border-bottom:1px solid #47494d;}
+.custom-scroll ul#div_pos li {
+	border-bottom: 1px solid #47494d;
+}
+ul#div_pos li a img.img-thumbnail {padding:1rem;}
 #div_pos h4 {
 	position: relative;
 	bottom: 0;
@@ -11632,8 +11636,8 @@ ul#padd li h5 {margin-bottom:0;}
 	font-size: 14px;
 	/* background: rgba(0,0,0,0.5); */
 	margin-top: 15px !important;
-	/* display: inline-block;
-	margin-bottom: 0 !important; */
+	/* display: inline-block;*/
+	margin-top: 0 !important; 
 	color: #fff;
 }
 #content{position:relative;}
@@ -11689,8 +11693,21 @@ ul#padd li h5 {margin-bottom:0;}
 	.data_val ul{margin:0;padding:0;display:block;}
 	.data_val ul li img{display:block;margin:auto;max-width:50px;}
 	.data_val ul li span{display:block;margin:2px 0 0; font-weight:600;}
-	button.btn_mortgage{border:0;text-transform:uppercase; padding:15px 30px;color:#fff;background:#99CC00;font-family: 'Open Sans', sans-serif;font-weight:700;margin-left:50px;
-	box-shadow:none; border-radius:5px 5px 5px 5px; -moz-border-radius:5px 5px 5px 5px; -webkit-border-radius:5px 5px 5px 5px;cursor:pointer; font-size:16px;transition:.5s ease-in-out;}
+	button.btn_mortgage {
+	border: 0;
+	text-transform: uppercase;
+	padding: 16px 30px;
+	color: #fff;
+	background: #99CC00;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	margin-left: 50px;
+	box-shadow: none;
+	border-radius: 0;
+	cursor: pointer;
+	font-size: 15px;
+	transition: .5s ease-in-out;
+}
 	button.btn_mortgage:hover{background:#7ca600;}
 	.two_button_sp{display:inline-block;}
 	.top_spa{margin-top:20px;}
@@ -11745,7 +11762,17 @@ ul#padd li:hover ::after {
 	top: 30px;
 	z-index: 11;
 }
-
+.log_in_d .btn.btn-success.btn-icon-split {
+	padding: 15px 30px;
+	font-size: 15px;
+	font-weight: 700;
+	text-transform: uppercase;
+	border-radius: 0;
+	line-height: initial;
+	margin: 0;
+	border: 0;
+	display: inline;
+}
 /* The slider itself */
 .slider {
   -webkit-appearance: none;  /* Override default CSS styles */

@@ -1,7 +1,7 @@
 <footer class="sticky-footer shadow bg-dark text-white fixed-bottom">
           <div class="px-3 my-auto d-flex justify-content-between align-items-center">
             <div class="copyright text-left">
-              <span>© 2018 Biorev All Right Reserved.</span>
+              <span>© 2019 Biorev All Right Reserved.</span>
             </div>
             <div class="copyright">
               <span>Designed &amp; Developed by <em> <a href="http://www.biorev.com/" target="_blank">Biorev LLC</a></em><!--<a href="#" class="text-success px-2"><img src="{{asset('frontend/img/biorevRev.png')}}"

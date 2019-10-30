@@ -71,7 +71,7 @@
                 <!--<span class="icon text-white-50">
                   <i class="fas fa-sign-out-alt"></i>
                 </span>-->
-                <span class="text px-4">Login</span>
+                <span class="text">Login</span>
               </a>
            </div>
          
