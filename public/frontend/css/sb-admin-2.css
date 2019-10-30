@@ -11632,8 +11632,8 @@ ul#padd li h5 {margin-bottom:0;}
 	font-size: 14px;
 	/* background: rgba(0,0,0,0.5); */
 	margin-top: 15px !important;
-	/* display: inline-block; */
-	margin-bottom: 0 !important;
+	/* display: inline-block;
+	margin-bottom: 0 !important; */
 	color: #fff;
 }
 #content{position:relative;}
@@ -11929,9 +11929,12 @@ ul.contact-info li span {
 	
 	.home_column_{margin:0;}
 	.data_val , .p_tag{margin-right:10px;}
-	button.btn_mortgage{margin-left:10px;}
+	button.btn_mortgage{margin-left:10px;font-size:14px;padding:15px 10px;}
 	.zoomer_section{bottom:40%;right:-30px;}
-	.data_val{margin-right:20px;}
-	.data_val ul li{margin:0 18px;}
+	.data_val{margin-right:20px;padding:0;}
+	.data_val ul li{margin:0 10px;padding-top:30px;}
 	.floor_image_view{max-width:550px;}
+	.data_val ul li img{max-width:30px;}
+	.home_column_ .div_co p{font-size:15px; max-width:130px;}
+	.home_column_ .div_co{padding:0 15px 0;}
 }
