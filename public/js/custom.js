@@ -64,7 +64,19 @@ $(document).ready(function (){
         toastr.error('Please choose a valid option.',2000)
       }
     });
-    
+    var oldOption;
+    $(document).on('focus','.main_option', function(){
+      oldOption = '';
+      let old_opt_text = $(this).children("option:selected").text();
+      let old_opt_value = $(this).children("option:selected").val();
+      if(old_opt_value!=0){
+        oldOption = {
+          id:old_opt_value,
+          text:old_opt_text
+        };
+      }
+      $(this).blur();
+    });
     // Remove option from all dropdowns in current row which is once selected in main option
     $(document).on('change','.main_option', function(){
       let tr = $(this).closest('tr');
@@ -78,7 +90,16 @@ $(document).ready(function (){
       tr.find("select.conflict option[value='"+value+"']").remove();
       tr.find("select.togetherness option[value='"+value+"']").remove();
       tr.find("select.dependency option[value='"+value+"']").remove();
-      console.log(value)
+      // append old option
+      if(oldOption.hasOwnProperty('id')) {
+        var newConflictOption = new Option(oldOption.text, oldOption.id, false, false);
+        var newTogetherOption = new Option(oldOption.text, oldOption.id, false, false);
+        var newDependencyOption = new Option(oldOption.text, oldOption.id, false, false);
+        tr.find('select.conflict').append(newConflictOption).trigger('change');
+        tr.find('select.togetherness').append(newTogetherOption).trigger('change');
+        tr.find('select.dependency').append(newDependencyOption).trigger('change');  
+      }
+      
       // now we need to check if current selected option has any conficts and togetherness
       let optionInConfict = $(this).closest('tbody').find(".conflict option[value='"+value+"']").parent('select').val();
        let = isArr = Array.isArray(optionInConfict); 
@@ -89,7 +110,7 @@ $(document).ready(function (){
       listOfConficts = [];
       if(optionInConfict.includes(value)) {
         let mainOpt = $(this).closest('tbody').find(".conflict option[value='"+value+"']").closest('tr').find('.main_option').val();
-        // set value to current tr confict slect value
+        // set value to current tr confict select value
         //get slected values
         let preConficts = $(this).closest('tr').find('.conflict').val();
         if(Array.isArray(preConficts) && preConficts.length) {
@@ -102,7 +123,7 @@ $(document).ready(function (){
         }
         listOfConficts.push(mainOpt);
 
-        // set value to current tr confict slect value
+        // set value to current tr confict select value
         //get slected values
         listOfConficts = unique(listOfConficts);
         console.log(listOfConficts)
