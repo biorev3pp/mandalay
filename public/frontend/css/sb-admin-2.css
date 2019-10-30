@@ -2324,7 +2324,7 @@ fieldset:disabled a.btn {
 .btn-success {
   color: #fff;
   background-color: #99cc00;
-  border-color: #99cc00;
+  border-color: #99cc00;transition:.5s ease-in-out;
 }
 
 .btn-success:hover {
@@ -11580,7 +11580,7 @@ font-family: 'Open Sans', sans-serif;
 	margin:10px auto 0;
 	/* display: block; */
 	/* float: none; */
-	text-align: center; position:relative;z-index:10;max-width:50px;
+	text-align: center; position:relative;z-index:10;max-width:200px;
 }
 .plan-name_o {
 	position: absolute;
@@ -11622,7 +11622,7 @@ p.f_de {
 }
 #padd li img{margin-bottom:0;}
 ul#padd li h5 {margin-bottom:0;}
-#div_pos {position:relative; padding:0;background:#373737;border-bottom:1px solid #47494d;}
+#div_pos {position:relative; padding:0;background:#373737;/*border-bottom:1px solid #47494d;*/}
 .custom-scroll ul#div_pos li {
 	border-bottom: 1px solid #47494d;
 }
