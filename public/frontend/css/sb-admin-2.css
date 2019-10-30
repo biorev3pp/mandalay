@@ -11580,7 +11580,7 @@ font-family: 'Open Sans', sans-serif;
 	margin:10px auto 0;
 	/* display: block; */
 	/* float: none; */
-	text-align: center; position:relative;z-index:10;max-width:50px;
+	text-align: center; position:relative;z-index:10;max-width:200px;
 }
 .plan-name_o {
 	position: absolute;
