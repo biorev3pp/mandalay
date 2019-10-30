@@ -41,7 +41,7 @@ ntent -->
                   <!--<h5>Plan</h5>-->
                 </li>
                 <li class="col-6 text-center hand customNav tabDiv" id="floor">
-                  <img src="{{asset('frontend/img/fp-icon.png')}}" width="30">
+                  <img src="{{asset('frontend/img/fp-icon.png')}}">
 
                  <!-- <h5>Floor</h5>-->
                 </li>
