@@ -11519,7 +11519,7 @@ font-family: 'Open Sans', sans-serif;
 	border-radius: 0;
 	transition: background .5s ease-in-out;
 	font-weight: 700;
-	padding: 15px 30px;
+	padding: 15px 30px;text-transform:uppercase;
 }
 .floor-plan-btn .btn-finish:hover{background:#99CC00;}
 
