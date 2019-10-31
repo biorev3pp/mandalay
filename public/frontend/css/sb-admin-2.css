@@ -11508,7 +11508,7 @@ font-family: 'Open Sans', sans-serif;
 	text-align: center;
 	padding: 25px 0;
 	background: #373737;
-	/*border-top: solid 1px #47494d;*/
+	border-right: solid 1px #373737;
 }
 .floor-plan-btn .btn-finish {
 	background: #297fd5;
@@ -11592,7 +11592,7 @@ font-family: 'Open Sans', sans-serif;
 	font-family: 'Open Sans', sans-serif;
 }
 ul#padd {
-	border-right: 1px solid #b7c5cb;
+	/*border-right: 1px solid #b7c5cb;*/
 }
 ul#padd li {
 	padding: 29px 20px;border-bottom:2px solid transparent;transition:.5s ease-in-out;
@@ -11956,7 +11956,7 @@ ul.contact-info li span {
 }
 /* second page css */
 /*================================================Media Quaries================================*/
-@media (min-width:1366px) and (max-width:1540px) {
+@media (min-width:1220px) and (max-width:1770px) {
 	
 	.home_column_{margin:0;}
 	.data_val , .p_tag{margin-right:10px;}
@@ -11973,6 +11973,7 @@ ul.contact-info li span {
 	
 }
 }
+
 
 @media (max-width:992px){
 	.data_val{display:none;}
@@ -11997,4 +11998,5 @@ ul.contact-info li span {
 #left_togg {
 max-height: calc(86vh - 14.9rem);
 }
+.floor-plan-btn{width:349px;}
 }
