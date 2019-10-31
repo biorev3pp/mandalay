@@ -12809,7 +12809,12 @@ left:0;top:0;
 footer.sticky-footer .copyright {font-size:10px;}
 .floor-plan-btn .btn-finish{padding:15px 0; font-size:14px;max-width:150px;}
 .container-fluid.bg-white{padding:0;}
-.all_cen{top:-95px;}
+.all_cen {
+	top: -198px;
+	position: relative;
+	bottom: 0;
+	display: inline-block;
+}
 button.btn_mortgage {
 	padding: 14px 20px;
 	font-size: 14px;
