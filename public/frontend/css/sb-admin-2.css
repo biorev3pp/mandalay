@@ -12000,7 +12000,7 @@ ul.contact-info li span {
 @media (max-width:1024px){
 	
 	#div_pos{overflow-y:auto;height:calc(90vh - 15rem);}
-	.home_column_ img{max-width:50px;}
+	
 	.data_val{display:none;}
 	.home_column_{margin:0;}
 		.home_column_ .div_co p {
