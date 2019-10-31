@@ -140,7 +140,7 @@ ntent -->
                 </div>-->
                 <div class="card-body p-0">
                   <!-- Nested Row within Card Body -->
-				  <div class="top_spa position-relative" style="min-height: 700px; position: relative;">
+				  <div class="top_spa position-relative" style="min-height: 700px; position: relative;" id="height_width">
                   <div class="row">
                     @php $i=0; @endphp
                     @forelse($homeList as $home)
