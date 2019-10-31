@@ -2322,11 +2322,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-success {
-  color: #fff;
-  background-color: #99cc00;
-  border-color: #99cc00;
+	color: #fff;
+	background-color: #99cc00;
+	border-color: #99cc00;
+	padding: 16px 30px;
+	font-size: 15px;
+	font-weight: 700;
+	border-radius: 0;line-height:initial;text-transform:uppercase;
 }
-
 .btn-success:hover {
   color: #fff;
   background-color: #7ca600;
@@ -2803,10 +2806,10 @@ fieldset:disabled a.btn {
 }
 
 .btn-lg, .btn-group-lg > .btn {
-  padding: 0.5rem 1rem;
+  /*padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
-  border-radius: 0.3rem;
+  border-radius: 0.3rem;*/
 }
 
 .btn-sm, .btn-group-sm > .btn {
@@ -4629,7 +4632,7 @@ input[type="button"].btn-block {
   z-index: 1;
   color: #fff;
   background-color: #297fd5;
-  border-color: #006699;
+ /* border-color: #006699; */ border:0;
 }
 
 .page-item.disabled .page-link {
@@ -4637,7 +4640,7 @@ input[type="button"].btn-block {
   pointer-events: none;
   cursor: auto;
   background-color: #fff;
-  border-color: #dddfeb;
+  border-color: #dddfeb;font-size:15px; font-weight:600;
 }
 
 .pagination-lg .page-link {
@@ -10266,7 +10269,7 @@ a:focus {
     margin-right: 0.25rem;
   }
   .sidebar .nav-item .nav-link span {
-    font-size: 14px;
+    font-size: 15px;
     display: inline;font-weight:600;
   }
   .sidebar .nav-item .nav-link[data-toggle="collapse"]::after {
@@ -11407,4 +11410,29 @@ body.sidebar-toggled footer.sticky-footer {
 }
 .bg-white.py-2.collapse-inner.rounded i {
 	margin-right: 10px;
+}
+
+#dataTable tr th {
+	font-size: 15px;
+	color: #fff;
+	background: #313131;
+}
+table#dataTable td {
+	font-size: 0.90rem;
+	text-transform: ;
+	font-weight: 600;
+}
+
+#userDropdown {
+	background: #99CC00;
+	padding: 14px 20px;
+	font-size: 15px;
+	font-weight: 700;
+	height: auto;
+	color: #fff;
+	text-transform: uppercase;
+}
+#userDropdown span i {
+	font-size: 13px;
+	padding-right: 10px;
 }
