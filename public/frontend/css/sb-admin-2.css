@@ -11956,7 +11956,7 @@ ul.contact-info li span {
 }
 /* second page css */
 /*================================================Media Quaries================================*/
-@media (min-width:1220px) and (max-width:1770px) {
+@media (min-width:1366px) and (max-width:1770px) {
 	
 	.home_column_{margin:0;}
 	.data_val , .p_tag{margin-right:10px;}
@@ -11974,6 +11974,15 @@ ul.contact-info li span {
 }
 }
 
+@media(min-width:1220px) and (max-width:1365px;) {
+	button.btn_mortgage {padding:16px 20px; margin-left:20px;}
+	.p_tag{margin-right:0; font-size:20px;}
+	.data_val{padding:0 15px; margin-right:10px;}
+	.data_val ul li{margin:0 10px; font-size:14px;}
+	.data_val ul li img{max-width:30px;}
+	.home_column_{margin:0;padding-right:0;}
+	.home_column_ img{display:none;}
+}
 
 @media (max-width:992px){
 	.data_val{display:none;}
