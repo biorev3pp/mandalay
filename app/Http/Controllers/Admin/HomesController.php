@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Traits\HelperTrait;
 use App\Admin\Homes;
+use App\Admin\Floor;
+use App\Admin\Features;
+use App\Admin\FloorAclSetting;
 use Validator;
 use App\Validators\HomesValidator;
 USE DB;
@@ -111,7 +114,25 @@ class HomesController extends Controller
     public function delete(Request $request){
         try{
             $id = $this->decrypt($request->delete_id);
-            $home = Homes::whereId($id)->first();
+            $home = Homes::with('floors.features.features_acl')->whereId($id)->first();
+            foreach($home->floors as $floor){
+                foreach($floor->features as $feature){
+                    // Delete feature image file
+                    if($feature->image!='' || $feature->image!=null || !empty($feature->image)){
+                        $filePath = public_path().'/images/features/'.$feature->image;
+                        File::delete($filePath);
+                    }
+                    if($feature->features_acl->id){
+                        FloorAclSetting::where('id',$feature->features_acl->id)->delete();
+                    }
+                    Features::where('id',$feature->id)->delete();
+                }
+                if($floor->image!='' || $floor->image!=null || !empty($floor->image)){
+                    $filePath = public_path().'/images/floors/'.$floor->image;
+                    File::delete($filePath);
+                }
+                Floor::whereId($floor->id)->delete();
+            }
             // Delete image file
             if($home->image!='' || $home->image!=null || !empty($home->image)){
                 $filePath = public_path().'/images/homes/'.$home->image;

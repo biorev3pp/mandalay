@@ -135,6 +135,7 @@ class FeaturesController extends Controller
                 $filePath = public_path().'/images/features/'.$features->image;
                 File::delete($filePath);
             }
+            FloorAclSetting::where('feature_id',$id)->delete();
             $result = Features::whereId($id)->delete();
             if($result){
                 DB::commit();

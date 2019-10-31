@@ -8,6 +8,7 @@ use App\Traits\HelperTrait;
 use App\Admin\Homes;
 use App\Admin\Floor;
 use App\Admin\Features;
+use App\Admin\FloorAclSetting;
 use Validator;
 use App\Validators\FloorValidator;
 USE DB;
@@ -125,7 +126,18 @@ class FloorController extends Controller
     public function delete(Request $request){
         try{
             $id = $this->decrypt($request->delete_id);
-            $floor = Floor::whereId($id)->first();
+            $floor = Floor::with('features.features_acl')->whereId($id)->first();
+            foreach($floor->features as $feature){
+                // Delete feature image file
+                if($feature->image!='' || $feature->image!=null || !empty($feature->image)){
+                    $filePath = public_path().'/images/features/'.$feature->image;
+                    File::delete($filePath);
+                }
+                if($feature->features_acl->id){
+                    FloorAclSetting::where('id',$feature->features_acl->id)->delete();
+                }
+                Features::where('id',$feature->id)->delete();
+            }
             // Delete image file
             if($floor->image!='' || $floor->image!=null || !empty($floor->image)){
                 $filePath = public_path().'/images/floors/'.$floor->image;

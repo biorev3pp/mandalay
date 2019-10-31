@@ -32,16 +32,6 @@ class HomeController extends Controller
         if(!isset($features)){
             $features = array();
         }
-        // $features = Features::whereIn('id',$features)->get();
-        
-        // foreach($features as $feature){
-        //     $fl = $feature->floor->toArray();
-        //     array_push($fl,$feature->toArray());
-        //     // $fl['features'][] = $feature->toArray();
-        //     $floors[$fl['id']]=$fl;
-        //     // $floors[]['floor'] = $feature->toArray();
-        // }
-        // $this->print($floors);
         $home = Homes::with(['floors'=>function($q) use ($features){
             $q->with('features')->whereHas('features',function($w) use ($features){
                 $w->whereIn('id',$features);
@@ -80,7 +70,7 @@ class HomeController extends Controller
     }
 
     public function testPDF(){
-        $pdf = \PDF::loadView('frontend.home_pdf');
-        return $pdf->download('mandalay.pdf');
+        $pdf = \PDF::loadView('frontend.home_pdf')->setPaper('a4', 'portrait');
+        return $pdf->stream('mandalay.pdf');
     }
 }
