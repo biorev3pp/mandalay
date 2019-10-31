@@ -11502,12 +11502,12 @@ font-family: 'Open Sans', sans-serif;
 }
 .floor-plan-btn {
 	position: fixed;
-	bottom: 49px;
-	width: 348px;
+	bottom: 34px;
+	width: 350px;
 	text-align: center;
 	padding: 25px 0;
-	background: #373737;
-	/*border-top: solid 1px #47494d;*/
+	/*background: #373737;
+	border-top: solid 1px #47494d;*/
 }
 .floor-plan-btn .btn-finish {
 	background: #297fd5;
@@ -11615,7 +11615,7 @@ p.f_de {
 #left_togg {
 	padding-right: 0;
 	position: absolute;
-	max-height: calc(89vh - 15rem);
+	max-height: calc(89vh - 14.9rem);
 	width: 100%;
 	overflow-y: auto;
 	background: #fff;overflow-x:hidden;
@@ -11950,6 +11950,9 @@ ul.contact-info li span {
     padding: 10px;
 }
 .img_s{max-width:700px;margin:auto;}
+#v_h {
+	width: 100%;
+}
 /* second page css */
 /*================================================Media Quaries================================*/
 @media (min-width:1366px) and (max-width:1540px) {
