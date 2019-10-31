@@ -12798,11 +12798,7 @@ left:0;top:0;
 .log_in_d .btn.btn-success.btn-icon-split {padding:5px 11px; font-size:13px;}
 
 .right_panel_d{padding-left:0;}
-.floor-plan-btn {
-	width: 100%;
-	position: relative;
-	display: inline-block;
-}
+
 #top_tab{padding-bottom:0;}
 .floor-plan-btn{width:100%;height:auto;bottom:40px;padding:0.5rem 0;left:0;}
 #v_h {
@@ -12818,5 +12814,12 @@ button.btn_mortgage {
 	padding: 14px 20px;
 	font-size: 14px;
 	margin-left: 10px;
+}
+#left_togg {
+	max-height: calc(70vh - 14.9rem);
+}
+.p_tag {
+	font-size: 15px;
+	padding: 0px 10px;
 }
 }
