@@ -11992,4 +11992,9 @@ ul.contact-info li span {
 	transform: translateX(-40%);
 	width: 100%;
 }
+.zoomer_section {bottom:40%;}
+
+#left_togg {
+max-height: calc(86vh - 14.9rem);
+}
 }
