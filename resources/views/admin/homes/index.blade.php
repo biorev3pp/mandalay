@@ -11,7 +11,7 @@
           <h6 class="m-0 font-weight-bold text-primary">Manage Your <span class="text-success">Homes</span>
             Easily</h6>
             <a href="{{url('admin/homes/create')}}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
-              <i class="fas fa-plus fa-sm text-white-50 pr-2"></i>Add A New Home</a>
+              <i class="fas fa-plus fa-sm pr-2"></i>Add A New Home</a>
         </div>
         <!-- Card Body -->
         <div class="card-body" id="custom_table">

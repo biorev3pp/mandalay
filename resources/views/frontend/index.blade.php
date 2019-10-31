@@ -140,7 +140,7 @@ ntent -->
                 </div>-->
                 <div class="card-body p-0">
                   <!-- Nested Row within Card Body -->
-				  <div class="top_spa position-relative" style="min-height: 700px; position: relative;">
+				  <div class="top_spa position-relative" style="min-height: 700px; position: relative;" id="height_width">
                   <div class="row">
                     @php $i=0; @endphp
                     @forelse($homeList as $home)
@@ -152,7 +152,7 @@ ntent -->
                     </div>
                     @empty
                     @endforelse
-                    <div class="col-lg-9 d-lg-block mx-auto floor_image_view disp_none position-absolute" id="image-graggble" >
+                    <div class="col-lg-12 d-lg-block mx-auto floor_image_view disp_none position-absolute" id="image-graggble" >
                       <div class="position-relative">
                         <img src="" class="img-fluid position-absolute">
                       </div>

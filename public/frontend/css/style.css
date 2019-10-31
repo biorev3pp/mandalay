@@ -242,7 +242,7 @@ img {
 	font-size: 15px;
 	color: #5e5e5e;
 	margin-top: 5px;
-	text-align: center;
+	text-align: center;background:transparent;
 }
 
 .form_data button {
