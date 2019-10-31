@@ -11982,6 +11982,7 @@ ul.contact-info li span {
 	.data_val ul li img{max-width:30px;}
 	.home_column_{margin:0;padding-right:0;}
 	.home_column_ img{display:none;}
+	.home_column_ .div_co p{font-size:15px;max-width:120px;}
 }
 
 @media (max-width:992px){
