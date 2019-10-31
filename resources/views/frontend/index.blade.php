@@ -152,7 +152,7 @@ ntent -->
                     </div>
                     @empty
                     @endforelse
-                    <div class="col-lg-9 d-lg-block mx-auto floor_image_view disp_none position-absolute" id="image-graggble" >
+                    <div class="col-lg-12 d-lg-block mx-auto floor_image_view disp_none position-absolute" id="image-graggble" >
                       <div class="position-relative">
                         <img src="" class="img-fluid position-absolute">
                       </div>

@@ -11502,12 +11502,12 @@ font-family: 'Open Sans', sans-serif;
 }
 .floor-plan-btn {
 	position: fixed;
-	bottom: 34px;
-	width: 350px;
+	bottom: 0;height:149px;
+	width: 349px;
 	text-align: center;
 	padding: 25px 0;
-	/*background: #373737;
-	border-top: solid 1px #47494d;*/
+	background: #373737;
+	/*border-top: solid 1px #47494d;*/
 }
 .floor-plan-btn .btn-finish {
 	background: #297fd5;
@@ -11615,7 +11615,7 @@ p.f_de {
 #left_togg {
 	padding-right: 0;
 	position: absolute;
-	max-height: calc(89vh - 14.9rem);
+	max-height: calc(89.6vh - 14.9rem);
 	width: 100%;
 	overflow-y: auto;
 	background: #fff;overflow-x:hidden;
@@ -11967,4 +11967,28 @@ ul.contact-info li span {
 	.data_val ul li img{max-width:30px;}
 	.home_column_ .div_co p{font-size:15px; max-width:130px;}
 	.home_column_ .div_co{padding:0 15px 0;}
+	#left_togg {
+     max-height: calc(89.6vh - 14.9rem);
+	
+}
+}
+
+@media (max-width:992px){
+	.data_val{display:none;}
+	.home_column_{margin:0;}
+	.home_column_ .div_co p{max-width:150px;}
+	.p_tag{margin-right:0;}
+	button.btn_mortgage{margin-left:20px;}
+	.p_tag {
+	
+	margin-right: 0;
+	
+	border-left: 1px solid #a5b3bc;
+	padding: 10px 20px;
+}
+.all_cen{padding:20px 0;}	
+	.floor_image_view img {
+	transform: translateX(-40%);
+	width: 100%;
+}
 }
