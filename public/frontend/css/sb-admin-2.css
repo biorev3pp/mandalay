@@ -11974,7 +11974,7 @@ ul.contact-info li span {
 }
 }
 
-@media(min-width:1220px) and (max-width:1365px;) {
+@media(min-width:1220px) and (max-width:1365px) {
 	button.btn_mortgage {padding:16px 20px; margin-left:20px;}
 	.p_tag{margin-right:0; font-size:20px;}
 	.data_val{padding:0 15px; margin-right:10px;}
