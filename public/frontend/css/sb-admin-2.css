@@ -12263,7 +12263,7 @@ button.btn_mortgage:hover {
 }
 
 .top_spa {
-	margin-top: 0px;
+	margin-top: 20px;
 }
 
 .floor_image_view {
@@ -12679,7 +12679,7 @@ ul.contact-info li span {
 	}
 }
 
-@media (max-width:1024px) {
+@media (max-width:1219px) {
 	#div_pos {
 		overflow-y: auto;
 		height: calc(90vh - 15rem);
