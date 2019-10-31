@@ -12026,3 +12026,35 @@ max-height: calc(86vh - 14.9rem);
 }
 .floor-plan-btn{width:349px;}
 }
+
+@media(max-width:768px){
+	#v_h {
+	width: 97%;
+	margin: 0 1rem;
+}
+.home_column_ img{display:none;}
+.home_column_ .div_co {
+		padding: 0 10px 0 0;
+}	
+.home_column_ .div_co p{font-size:12px;}
+button.btn_mortgage{padding:14px 20px;}
+#top_tab{width:300px;}
+#left_togg li{font-size:13px;}
+.logo img {
+	max-width: 300px;
+	position: relative;
+	left: 15px;
+	top: 6px;
+}
+.logo {
+	margin: 10px auto 0;
+	text-align: center;
+	position: relative;
+	
+	max-width: 200px;
+}
+.p_tag {
+	font-size:20px;
+	padding: 0px 20px;
+}
+}
