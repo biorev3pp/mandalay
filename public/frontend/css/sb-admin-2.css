@@ -7610,7 +7610,7 @@ button.bg-dark:focus {
 	top: 0;
 	right: 0;
 	left: 0;
-	z-index: 1030;
+	z-index: 1050;
 	background: #297FD5;
 	height: 100px;
 }
@@ -12774,4 +12774,49 @@ ul.contact-info li span {
 	#left_togg {
 		max-height: calc(90vh - 14.9rem);
 	}
+}
+
+@media (max-width:767px) {
+	
+	#sidebarToggleTop{display:none;}
+	#top_tab {
+	width: 100%;
+	position: relative;
+	display: inline-block;
+}
+.spacer_margin{padding-top:100px;}
+	.logo {
+	margin: 0;
+	
+}
+.logo img {
+	max-width: 100%;
+	position: relative;
+left:0;top:0;
+	width: 100%;
+}
+.log_in_d .btn.btn-success.btn-icon-split {padding:5px 11px; font-size:13px;}
+
+.right_panel_d{padding-left:0;}
+.floor-plan-btn {
+	width: 100%;
+	position: relative;
+	display: inline-block;
+}
+#top_tab{padding-bottom:0;}
+.floor-plan-btn{width:100%;height:auto;bottom:40px;padding:0.5rem 0;left:0;}
+#v_h {
+	width: 100%;
+	margin: 0;
+}
+
+footer.sticky-footer .copyright {font-size:10px;}
+.floor-plan-btn .btn-finish{padding:15px 0; font-size:14px;max-width:150px;}
+.container-fluid.bg-white{padding:0;}
+.all_cen{top:-95px;}
+button.btn_mortgage {
+	padding: 14px 20px;
+	font-size: 14px;
+	margin-left: 10px;
+}
 }
