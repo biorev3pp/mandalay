@@ -45,7 +45,7 @@
 
         <!-- Topbar -->
         <nav class="fixed-top">
-		<img src="{{asset('frontend/img/header-bg.png')}}" class="curve_img" />
+		      <img src="{{asset('frontend/img/header-bg.png')}}" class="curve_img" />
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>

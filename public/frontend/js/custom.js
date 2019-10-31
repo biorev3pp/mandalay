@@ -151,6 +151,10 @@ $(document).ready(function (){
         $(document).find('#finishPage_form').submit();
     });
 
+    $(document).on('click','.downloadPDFBtn', function(e){
+        $(document).find('#pdf_form').submit();
+    });
+
 
     $(document).on('click','.featureBtn', function(e){
         let featureId = $(this).attr('id');

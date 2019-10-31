@@ -21,7 +21,14 @@
                       <a href="#"><img src="{{asset('asset/img/icon-share.png')}}" title="Share"/></a>
                   </li>
                   <li>
-                      <a href="#"><img src="{{asset('asset/img/icon-download.png')}}" title="Download PDF"/></a>
+                      {{Form::open(array('url'=>url('download-pdf'),'id'=>'pdf_form'))}}
+                      {{Form::hidden('home_id',$home->id)}}
+                      @forelse($features as $feature)
+                      {{Form::hidden('feature_id[]',$feature)}}
+                      @empty
+                      @endforelse
+                        <a href="#" class="downloadPDFBtn"><img src="{{asset('asset/img/icon-download.png')}}" title="Download PDF"/></a>
+                      {{Form::close()}}
                   </li>
                   <li>
                       <a href="{{url('/')}}"><img src="{{asset('asset/img/icon-new.png')}}" title="New Home"/></a>

@@ -70,7 +70,28 @@ class HomeController extends Controller
     }
 
     public function testPDF(){
-        $pdf = \PDF::loadView('frontend.home_pdf')->setPaper('a4', 'portrait');
+        $data = array('name'=>'Ranjan');
+        $pdf = \PDF::loadView('frontend.home_pdf',$data)->setPaper('a4', 'portrait');
         return $pdf->stream('mandalay.pdf');
+    }
+
+    public function downloadPDF(Request $request){
+        ini_set('memory_limit', '-1');
+        $features = $request->feature_id;
+        $home = Homes::with(['floors'=>function($q) use ($features){
+            $q->with('features')->whereHas('features',function($w) use ($features){
+                $w->whereIn('id',$features);
+            });
+        }])->where('id',$request->home_id)->first();
+        foreach($home->floors as $floor){
+            foreach ($floor->features as $key => $value) {
+                if(!in_array($value->id, $features)){
+                    unset($floor->features[$key]);
+                }
+            }
+        }
+        $data['home'] = $home;
+        $pdf = \PDF::loadView('frontend.home_pdf',$data)->setPaper('a4', 'portrait');
+        return $pdf->download('mandalay.pdf');
     }
 }

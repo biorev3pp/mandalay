@@ -53,12 +53,12 @@
                                                 </td>
                                              </tr>
                                              <tr>
-                                                <td style="padding:1rem 0;"><img src="{{asset('images/pdf/home.jpg')}}" width="100%"></td>
+                                                <td style="padding:1rem 0;"><img src="{{asset('images/homes/'.$home->image )}}" width="100%"></td>
                                              </tr>
                                              <tr>
                                                 <td style="font-size: 18px;
                                                    color: #333;
-                                                   text-transform: uppercase;font-weight:bold;"> ELEVATION A</td>
+                                                   text-transform: uppercase;font-weight:bold;">{{$home->title}}</td>
                                              </tr>
                                              <tr>
                                                 <td style="font-style: italic;
@@ -147,25 +147,26 @@
                                                                   </td>
                                                                </tr>
                                                                <tr>
-                                                                  <td style="color:#03AAD1;font-size:15px; text-transform:uppercase;">LIVABLE SPACE <span style="display:block;color:#333;font-size:14px;padding:5px 0;font-weight:bold;">1,341 sf</span></td>
+                                                                  <td style="color:#03AAD1;font-size:15px; text-transform:uppercase;">LIVABLE SPACE <span style="display:block;color:#333;font-size:14px;padding:5px 0;font-weight:bold;">{{$home->area}}</span></td>
                                                                </tr>
-                                                               <tr>
+                                                               <!-- <tr>
                                                                   <td style="color:#03AAD1;font-size:15px; text-transform:uppercase;">STORIES <span style="display:block;color:#333;font-size:14px;padding:5px 0 ;font-weight:bold;">1</span></td>
+                                                               </tr> -->
+                                                               <tr>
+                                                                  <td style="color:#03AAD1;font-size:15px; text-transform:uppercase;">Bedrooms <span style="display:block;color:#333;font-size:14px;padding:5px ;font-weight:bold;">{{$home->bedrooms}}</span></td>
                                                                </tr>
                                                                <tr>
-                                                                  <td style="color:#03AAD1;font-size:15px; text-transform:uppercase;">Bedrooms <span style="display:block;color:#333;font-size:14px;padding:5px ;font-weight:bold;">3</span></td>
+                                                                  <td style="color:#03AAD1;font-size:15px; text-transform:uppercase;">Bathrooms <span style="display:block;color:#333;font-size:14px;padding:5px 0;font-weight:bold;">{{$home->bathrooms}}</span></td>
                                                                </tr>
                                                                <tr>
-                                                                  <td style="color:#03AAD1;font-size:15px; text-transform:uppercase;">Bathrooms <span style="display:block;color:#333;font-size:14px;padding:5px 0;font-weight:bold;">2</span></td>
+                                                                  <td style="color:#03AAD1;font-size:15px; text-transform:uppercase;">GARAGE <span style="display:block;color:#333;font-size:14px;padding:5px 0 ;font-weight:bold;">{{$home->garage}}</span></td>
                                                                </tr>
                                                                <tr>
-                                                                  <td style="color:#03AAD1;font-size:15px; text-transform:uppercase;">GARAGE <span style="display:block;color:#333;font-size:14px;padding:5px 0 ;font-weight:bold;">2-Car</span></td>
-                                                               </tr>
-                                                               <tr>
-                                                                  <td style="color:#03AAD1;font-size:15px; text-transform:uppercase;">OPTIONS <span style="display:block;color:#333;font-size:14px;padding:5px 0 ;text-transform:none;">Extended Patio Option</span>
-                                                                     <span style="display:block;color:#333;font-size:14px;padding-bottom:7px;text-transform:none;">Den ILO 3rd Bedroom</span>
-                                                                     <span style="display:block;color:#333;font-size:14px;padding-bottom:7px;text-transform:none;">Dining Room Bay Windows</span>
-                                                                     <span style="display:block;color:#333;font-size:14px;padding-bottom:7px;text-transform:none;">Garage Extensions</span>
+                                                                  <td style="color:#03AAD1;font-size:15px; text-transform:uppercase;">OPTIONS 
+                                                                     @forelse($home->floors[0]->features as $feature)
+                                                                     <span style="display:block;color:#333;font-size:14px;padding:5px 0 ;text-transform:none;">{{$feature->title}}</span>
+                                                                     @empty
+                                                                     @endforelse   
                                                                      <em style="font-style:normal;font-size:13px;padding-top:20px;color:#333;display:block;text-transform:none;">Consult a Sales Executive for all
                                                                      of the available options.</em>
                                                                   </td>
@@ -173,7 +174,7 @@
                                                             </table>
                                                          </td>
                                                          <td valign="top">
-                                                            <img src="{{asset('images/pdf/plan.jpg')}}" width="334" />
+                                                            <img src="{{asset('images/floors/'.$home->floors[0]->image)}}" width="334" />
                                                          </td>
                                                       </tr>
                                                    </table>
