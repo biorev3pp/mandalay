@@ -12084,7 +12084,7 @@ p.f_de {
 #left_togg {
 	padding-right: 0;
 	position: absolute;
-	max-height: calc(89.6vh - 14.9rem);
+	max-height: calc(89vh - 14.9rem);
 	width: 100%;
 	overflow-y: auto;
 	background: #fff;
