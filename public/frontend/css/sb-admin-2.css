@@ -12057,4 +12057,9 @@ button.btn_mortgage{padding:14px 20px;}
 	font-size:20px;
 	padding: 0px 20px;
 }
+.floor-plan-btn{width:299px;}
+.right_panel_d{padding-left:287px;}
+#left_togg {
+	max-height: calc(90vh - 14.9rem);
+}
 }
