@@ -83,14 +83,25 @@ class HomeController extends Controller
                 $w->whereIn('id',$features);
             });
         }])->where('id',$request->home_id)->first();
+        $floorImage = public_path('/images/floors/'.$home->floors[0]->image);
+        // Create Image Instance
+        $img = \Image::make($floorImage);
         foreach($home->floors as $floor){
             foreach ($floor->features as $key => $value) {
                 if(!in_array($value->id, $features)){
                     unset($floor->features[$key]);
+                }else{
+                    $featureImage = public_path('/images/features/'.$value->image);
+                    // Insert all images to combine together
+                    $img->insert($featureImage);
                 }
             }
         }
+        //save combined image 
+        $imageName = time().'.png';
+        $img->save(public_path('/images/pdf_floor_plans/'.$imageName),100);
         $data['home'] = $home;
+        $data['planImage'] = public_path('/images/pdf_floor_plans/'.$imageName);
         $pdf = \PDF::loadView('frontend.home_pdf',$data)->setPaper('a4', 'portrait');
         return $pdf->download('mandalay.pdf');
     }
