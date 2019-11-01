@@ -12838,7 +12838,7 @@ ul#padd li{padding:15px 20px;}
 	right: auto;
 	z-index: 9999;
 	/* position: absolute; */
-	left: 10px;
+	left: -60px;
 }
 
 }
