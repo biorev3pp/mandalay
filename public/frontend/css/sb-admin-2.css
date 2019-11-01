@@ -12834,7 +12834,7 @@ button.btn_mortgage {
 .fixed-bottom , .all_cen{display:none;}
 .scroll-to-top{z-index:9999;}
 .zoomer_section {
-	bottom: 150px;
+	bottom: 200px;
 	right: auto;
 	z-index: 9999;
 	/* position: absolute; */
