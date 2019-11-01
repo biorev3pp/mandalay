@@ -12605,9 +12605,9 @@ ul.contact-info li span {
 		margin-right: 10px;
 	}
 	button.btn_mortgage {
-		margin-left: 10px;
-		font-size: 14px;
-		padding: 15px 10px;
+		margin-left: 0;
+		/*font-size: 14px;
+		padding: 15px 10px;*/
 	}
 	.zoomer_section {
 		bottom: 40%;
@@ -12702,7 +12702,7 @@ ul.contact-info li span {
 	}
 	button.btn_mortgage {
 		margin-left: 20px;
-		padding: 16px 15px;
+		/*padding: 16px 15px;*/
 	}
 	.all_cen {
 		padding: 20px 0;
@@ -12741,7 +12741,7 @@ ul.contact-info li span {
 		font-size: 12px;
 	}
 	button.btn_mortgage {
-		padding: 14px 20px;
+		/*padding: 14px 20px;*/
 	}
 	#top_tab {
 		width: 300px;
@@ -12807,7 +12807,7 @@ left:0;top:0;
 
 footer.sticky-footer .copyright {font-size:10px;}
 .floor-plan-btn .btn-finish{padding:14px 0; font-size:14px;max-width:150px;}
-.container-fluid.bg-white{padding:0;}
+/*.container-fluid.bg-white{padding:0;}*/
 .all_cen {
 	top: -97px;
 	position: relative;
@@ -12821,7 +12821,7 @@ button.btn_mortgage {
 	margin-left: 5px;
 }
 #left_togg {
-	max-height: calc(70vh - 14.9rem);
+	max-height: 300px;
 }
 .p_tag {
 	font-size: 15px;
@@ -12834,8 +12834,11 @@ ul#padd li{padding:15px 20px;}
 .fixed-bottom , .all_cen{display:none;}
 .scroll-to-top{z-index:9999;}
 .zoomer_section {
-	bottom: 200px;
-	right: 0;
+	bottom: 150px;
+	right: auto;
 	z-index: 9999;
+	/* position: absolute; */
+	left: 10px;
 }
+#height_width{min-height:inherit!important;}
 }
