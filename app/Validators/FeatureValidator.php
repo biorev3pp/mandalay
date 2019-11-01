@@ -22,9 +22,8 @@ trait FeatureValidator
         try{
             $validations = array(
                 'title'         => 'required',
-                'price'         => 'required',
             );
-            if(!isset($request->image_update) || $request->image_update==""){
+            if((!isset($request->image_update) || $request->image_update=="") && isset($request->image)){
                 $validations['image'] = 'required|mimes:jpeg,jpg,png';                         
             }
             $validator = Validator::make($request->all(),$validations);

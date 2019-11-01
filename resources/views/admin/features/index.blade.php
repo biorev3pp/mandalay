@@ -20,7 +20,7 @@
             <!-- Card Body -->
             <div class="card-body" id="custom_table">
                <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <table class="table table-bordered table-normal" id="dataTable_Not" width="100%" cellspacing="0">
                      <thead>
                         <tr>
                            <th>#</th>
@@ -33,16 +33,30 @@
                         @php $i=0; @endphp
                         @forelse($features as $record)
                         @php $i++; @endphp
-                        <tr>
-                        <td>{{$i}}.</td>
-                          <td>{{$record->title}}</td>
-                          <td>{{$record->price}}</td>
-                          <td>
-                            <a href="{{url('admin/features/edit/'.Crypt::encrypt($record->id))}}"><i class="fas fa-edit"></i> Edit</a>
-                            <a href="#" class="delete_record_btn" id="{{Crypt::encrypt($record->id)}}" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt"></i> Delete</a>
-                          </td>
-                        </tr>
-                        @empty
+                          <tr style="background: #e8e8e8; font-weight: 600;">
+                            <td>{{$i}}.</td>
+                            <td>{{$record->title}}</td>
+                            <td>{{$record->price}}</td>
+                            <td>
+                              <a href="{{url('admin/features/edit/'.Crypt::encrypt($record->id))}}"><i class="fas fa-edit"></i> Edit</a>
+                              <a href="#" class="delete_record_btn" id="{{Crypt::encrypt($record->id)}}" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt"></i> Delete</a>
+                            </td>
+                          </tr>
+                          @php $j=0; @endphp
+                            @forelse($record->feature_groups as $feat)
+                            @php $j++; @endphp
+                              <tr>
+                                <td></td>
+                                <td>{{$feat->title}}</td>
+                                <td>{{$feat->price}}</td>
+                                <td>
+                                  <a href="{{url('admin/features/edit/'.Crypt::encrypt($feat->id))}}"><i class="fas fa-edit"></i> Edit</a>
+                                  <a href="#" class="delete_record_btn" id="{{Crypt::encrypt($feat->id)}}" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt"></i> Delete</a>
+                                </td>
+                              </tr>
+                            @empty
+                            @endforelse
+                          @empty
                         <tr>
                           <td colspan="3">No Features added yet</td>
                         </tr>
@@ -66,7 +80,9 @@
           <span aria-hidden="true">×</span>
         </button>
       </div>
-      <div class="modal-body">Are you sure, you want to delete this record ?</div>
+      <div class="modal-body">Are you sure, you want to delete this record ?<br>
+        <span class="text-danger">Note: If you delete the main group section, all its related features will also be deleted.</span>
+      </div>
       <div class="modal-footer ">
           {{Form::open(array('id'=>'delete_form','url'=>url('admin/features/delete')))}}
           {{Form::hidden('delete_id',null,['id'=>'delete_id'])}}

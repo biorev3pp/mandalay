@@ -29,15 +29,15 @@
                         @php $i=0; @endphp
                         @forelse($floors as $record)
                         @php $i++; @endphp
-                        <tr>
-                        <td>{{$i}}.</td>
-                          <td>{{$record->title}}</td>
-                          <td>
-                            <a href="{{url('admin/floors/edit/'.Crypt::encrypt($record->id))}}"><i class="fas fa-edit"></i> Edit</a> 
-                            <a href="#" class="delete_record_btn" id="{{Crypt::encrypt($record->id)}}" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt"></i> Delete</a> 
-                            <a href="{{url('admin/features/list/'.Crypt::encrypt($record->id))}}"><i class="fas fa-check-square"></i> Features</a>
-                          </td>
-                        </tr>
+                          <tr>
+                            <td>{{$i}}.</td>
+                            <td>{{$record->title}}</td>
+                            <td>
+                              <a href="{{url('admin/floors/edit/'.Crypt::encrypt($record->id))}}"><i class="fas fa-edit"></i> Edit</a> 
+                              <a href="#" class="delete_record_btn" id="{{Crypt::encrypt($record->id)}}" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt"></i> Delete</a> 
+                              <a href="{{url('admin/features/list/'.Crypt::encrypt($record->id))}}"><i class="fas fa-check-square"></i> Features</a>
+                            </td>
+                          </tr>
                         @empty
                         <tr>
                           <td colspan="3">No floors added yet</td>

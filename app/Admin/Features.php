@@ -16,4 +16,9 @@ class Features extends Model
     {
     	return $this->belongsTo('App\Admin\FloorAclSetting', 'id','feature_id')->withDefault();
     }
+
+    public function feature_groups()
+    {
+    	return $this->hasMany('App\Admin\Features','parent_id');
+    }
 }

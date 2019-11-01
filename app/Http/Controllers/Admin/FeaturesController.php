@@ -9,6 +9,7 @@ use App\Admin\Homes;
 use App\Admin\FloorAclSetting;
 use App\Admin\Floor;
 use App\Admin\Features;
+use App\Admin\FeatureGroup;
 use Validator;
 use App\Validators\FloorValidator;
 use App\Validators\FeatureValidator;
@@ -33,7 +34,7 @@ class FeaturesController extends Controller
     public function index($id){
         $floorid = Crypt::decrypt($id);
         $floor = Floor::where('id',$floorid)->first();
-        $features = Features::where('floor_id',$floorid)->get();
+        $features = Features::with('feature_groups')->where('floor_id',$floorid)->where('parent_id',0)->get();
         $this->data['floor'] = $floor;
         $this->data['features'] = $features;
         return view('admin.features.index')->with($this->data);
@@ -43,8 +44,10 @@ class FeaturesController extends Controller
     {
         $floorid = Crypt::decrypt($id);
         $floor = Floor::find($floorid);
+        $features = Features::where('parent_id',0)->pluck('title','id')->prepend('None','0');
         $this->data['data'] = '';
         $this->data['floor'] = $floor;
+        $this->data['features'] = $features;
         return view('admin.features.add_update')->with($this->data);
     }
 
@@ -52,8 +55,10 @@ class FeaturesController extends Controller
         $id = $this->decrypt($id);
         $data = Features::with('floor')->whereId($id)->first();
         $floor = Floor::where('id',$data->floor_id)->first();
+        $features = Features::where('parent_id',0)->pluck('title','id')->prepend('None','0');
         $this->data['floor'] = $floor;
         $this->data['data'] = $data;
+        $this->data['features'] = $features;
         return view('admin.features.add_update')->with($this->data);
     }
 
@@ -136,6 +141,10 @@ class FeaturesController extends Controller
                 File::delete($filePath);
             }
             FloorAclSetting::where('feature_id',$id)->delete();
+            if($features->parent_id == 0){
+                $childFeatures = Features::where('parent_id',$features->id)->pluck('id');
+                Features::whereIn('id',$childFeatures)->delete();   
+            }
             $result = Features::whereId($id)->delete();
             if($result){
                 DB::commit();
@@ -182,7 +191,7 @@ class FeaturesController extends Controller
         if($request->ajax()){
             $floorid = $request->floorid;
             $idString = Str::random(5);
-            $features = Features::where('floor_id',$floorid)->pluck('title','id');
+            $features = Features::where('floor_id',$floorid)->where('parent_id','!=',0)->pluck('title','id');
             $this->data['features'] = $features;
             $this->data['index'] = $request->index;
             $this->data['idstr'] = $idString;
@@ -195,7 +204,7 @@ class FeaturesController extends Controller
         $floorid = Crypt::decrypt($id);
         $floor = Floor::find($floorid);
         $idString = Str::random(5);
-        $features = Features::where('floor_id',$floorid)->pluck('title','id');
+        $features = Features::where('floor_id',$floorid)->where('parent_id','!=',0)->pluck('title','id');
         $aclSettings = FloorAclSetting::where('floor_id',$floorid)->get();
         $this->data['data'] = '';
         $this->data['floor'] = $floor;

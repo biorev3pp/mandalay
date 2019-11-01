@@ -11412,7 +11412,8 @@ body.sidebar-toggled footer.sticky-footer {
 	margin-right: 10px;
 }
 
-#dataTable tr th {
+#dataTable tr th, 
+.table-normal tr th{
 	font-size: 15px;
 	color: #fff;
 	background: #313131;

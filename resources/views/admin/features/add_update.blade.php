@@ -29,22 +29,22 @@
                            {{Form::text('title',null,['class'=>'form-control','id'=>'title','placeholder'=>'Enter Title'])}}
                         </div>
                         <div class="form-group col-md-9">
-                           <div class="form-row">
-                              <div class="form-group">
-                                 <label for="inputEmail4">Upload Picture</label>
-                                 <div class="custom-file">
-                                  {{Form::file('image',['class'=>'custom-file-input image-file', 'id'=>'portfolioimage'])}}
-                                    <label class="custom-file-label" for="validatedCustomFile">@if(!isset($data->image)) Choose file @else {{$data->image}} @endif</label>
-                                 </div>
-                                 @if(isset($data->image))
-                                  @if($data->image!='' || $data->image!=null)
-                                  <div class="col-lg-12 mx-auto p-0 o-hidden">
-                                    <img src="{{asset('images/features/'.$data->image)}}" class="img-thumbnail">
-                                  </div>
-                                  @endif
-                                @endif
+                           <label for="inputEmail4">Group Section</label>
+                           {{Form::select('parent_id',$features,null,['class'=>'form-control','id'=>'parent_id'])}}
+                        </div>
+                        <div class="form-group col-md-9">
+                          <label for="inputEmail4">Upload Picture</label>
+                            <div class="custom-file">
+                              {{Form::file('image',['class'=>'custom-file-input image-file', 'id'=>'portfolioimage'])}}
+                              <label class="custom-file-label" for="validatedCustomFile">@if(!isset($data->image)) Choose file @else {{$data->image}} @endif</label>
+                            </div>
+                            @if(isset($data->image))
+                              @if($data->image!='' || $data->image!=null)
+                              <div class="col-lg-12 mx-auto p-0 o-hidden">
+                                <img src="{{asset('images/features/'.$data->image)}}" class="img-thumbnail">
                               </div>
-                           </div>
+                              @endif
+                            @endif
                         </div>
                         <div class="form-group col-md-6">
                            <label for="inputPice">Price</label>

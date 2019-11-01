@@ -15,7 +15,9 @@ class HomeController extends Controller
 
     public function index(){
         \DB::enableQueryLog();
-    	$homes = Homes::with('floors.features.features_acl')->where('status',1)->get();
+    	$homes = Homes::with(['floors.features'=>function($q){
+            $q->with('feature_groups.features_acl')->where('parent_id',0);
+        }])->where('status',1)->get();
         // dd(\DB::getQueryLog());
     	$defaultHome = Homes::where('status',1)->first();
         // echo "<pre>";

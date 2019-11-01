@@ -231,9 +231,12 @@ $(document).ready(function (){
 
                     postData.push(currentValue);
                     $('.self_'+currentEle).prop('checked',false);
-                    // $(container).find('.manageToggle').each(function($e) {
-                    //     $(this).find('input:checked').prop('checked',false);;
-                    // });
+                    $(container).find('.manageToggle').each(function($e) {
+                        const id = $(this).find('input:checked').attr('id');
+                        if(id){
+                            postData.push(id);
+                        }
+                    });
                 }
                 // else {
                 //     let data = setupForTogetherness(togethernessProp,true);
@@ -242,6 +245,12 @@ $(document).ready(function (){
                 //     postData.push(currentEle);
 
                 // }
+                $(container).find('.manageToggle').each(function($e) {
+                        const id = $(this).find('input:checked').attr('id');
+                        if(id){
+                            postData.push(id);
+                        }
+                    });
               }
               else if (dependencyProp.indexOf(currentValue) > -1 ) {
                 if(checked) {
