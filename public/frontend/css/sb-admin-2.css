@@ -12319,8 +12319,8 @@ ul#padd li:hover ::after {
 
 .log_in_d {
 	position: absolute;
-	right: 20px;
-	top: 0px;
+	right: 16px;
+	top: -2px;
 	z-index: 11;
 }
 
@@ -12799,7 +12799,7 @@ left:0;top:0;
 .right_panel_d{padding-left:0;}
 
 #top_tab{padding-bottom:0;}
-.floor-plan-btn{width:100%;height:auto;bottom:40px;padding:0.5rem 0;left:0;}
+.floor-plan-btn{width:100%;height:auto;bottom:0px;padding:0.5rem 0;left:0;}
 #v_h {
 	width: 100%;
 	margin: 0;
@@ -12831,4 +12831,11 @@ button.btn_mortgage {
 ul#padd li{padding:15px 20px;}
 .home_column_ .div_co{padding:0;}
 .home_column_ .div_co p{max-width:110px;}
+.fixed-bottom , .all_cen{display:none;}
+.scroll-to-top{z-index:9999;}
+.zoomer_section {
+	bottom: 200px;
+	right: 0;
+	z-index: 9999;
+}
 }
