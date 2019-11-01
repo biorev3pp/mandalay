@@ -57,6 +57,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'], function () {
     Route::get('features/set-acl/{id}', 'Admin\FeaturesController@setACLOptions');
     Route::post('/features/get_acl_form', 'Admin\FeaturesController@getACLRow');
     Route::post('features/save-acl', 'Admin\FeaturesController@saveAclSettings')->name('saveAclSettings');
+    Route::post('features/delete-acl', 'Admin\FeaturesController@deleteAclSettings')->name('deleteAclSettings');
 
     //Settings Routes
     Route::resource('settings', 'Admin\SettingController');

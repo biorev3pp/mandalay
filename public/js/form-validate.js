@@ -389,7 +389,7 @@ function formSubmit(form)
                     if (response.delay)
                         setTimeout(function (){ $(response.modelhide).modal('hide') },response.delay);
                     else
-                        $(response.modelhide).modal('hide')
+                        $(response.modelhide).modal('hide');
                 }
                 if(response.showElement)
                 {
@@ -400,6 +400,25 @@ function formSubmit(form)
                 {
                     var hideIDs = response.hideElement.split(",");
                     $.each(hideIDs, function(i, val){ $(val).addClass('d-none'); });
+                }
+                if(response.delete_id)
+                {
+                    var option = '';
+                    $(document).find('.delete_record_btn').each(function(i,obj){
+                        if($(obj).attr('id') == response.delete_id){
+                            let tr = $(obj).closest('tr');
+                            let optText = tr.find('select.main_option').children("option:selected").text();
+                            let optVal  = tr.find('select.main_option').children("option:selected").val();
+                            if(optVal!=0){
+                                option = {
+                                    id:optVal,
+                                    text:optText
+                                };
+                            }
+                            $(obj).closest('tr').remove();
+                        } 
+                    });
+                    setMainOptionList(option);
                 }
 
                 // if(response.acl_settings) {

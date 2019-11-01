@@ -38,11 +38,11 @@
                           <td class="w-20">
                             {{Form::hidden('feature_id[]',$acl['feature_id'],['class'=>'form-control main_option','id'=>'main_option1'])}}
                             <select class="form-control main_option" id="main_option{{$i}}" name="main_option[{{$i}}]">
-                            <?php foreach ($features as $ky => $opt): ?>
-                              <option <?php if (in_array($ky, $acl_settings) && $ky != $acl['feature_id']) {?> disabled <?php }?> <?php if ($ky == $acl['feature_id']) {?> selected <?php }?> value="{{$ky}}">{{$opt}}</option>
-                            <?php endforeach;?>
-                          </select>
-
+                              <option value="0">Choose Option</option>
+                              <?php foreach ($features as $ky => $opt): ?>
+                                <option <?php if (in_array($ky, $acl_settings) && $ky != $acl['feature_id']) {?> disabled <?php }?> <?php if ($ky == $acl['feature_id']) {?> selected <?php }?> value="{{$ky}}">{{$opt}}</option>
+                              <?php endforeach;?>
+                            </select>
                           </td>
                           <td class="w-20">
                              {{Form::select('conflict['.$i.'][]',$features,json_decode($acl['conflicts']),['class'=>'form-control  conflict js-example-basic-single','id'=>'conflict'.$idstr.$i, "multiple"=>"multiple"])}}
@@ -54,7 +54,7 @@
                              {{Form::select('togetherness['.$i.'][]',$features,json_decode($acl['togetherness']),['class'=>'form-control  togetherness js-example-basic-single','id'=>'dependency'.$idstr.$i, "multiple"=>"multiple"])}}
                           </td>
                           <td class="w-20 delete_acl_row">
-                           <a href="#" class="removeACLRowBtn"><i class="fas fa-trash-alt"></i> Delete</a>
+                           <a href="#" id="{{$acl['id']}}" class="delete_record_btn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt"></i> Delete</a>
                           </td>
                         </tr>
                       @empty
@@ -75,5 +75,26 @@
       </div>
    </div>
 </div>
+</div>
+<!-- Delete Model -->
+<div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm Action</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Are you sure, you want to delete this record ?</div>
+      <div class="modal-footer ">
+          {{Form::open(array('id'=>'delete_form','url'=>url('admin/features/delete-acl')))}}
+          {{Form::hidden('delete_id',null,['id'=>'delete_id'])}}
+          <button type="submit" class="btn btn-secondary">Yes</button>
+          {{Form::close()}}
+          <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+        </div>
+    </div>
+  </div>
 </div>
 @endsection

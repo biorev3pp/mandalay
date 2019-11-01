@@ -56,9 +56,9 @@
   <!-- Page level custom scripts -->
   <script src="{{asset('asset/js/demo/datatables-demo.js')}}"></script>
   <script src="{{asset('js/jquery.toast.js')}}"></script>
+  <script src="{{asset('js/custom.js')}}"></script>
   <script src="{{asset('js/form-validate.js')}}"></script>
   <script src="{{asset('js/jquery.validate.js')}}"></script>
-  <script src="{{asset('js/custom.js')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.0.11/dist/js/select2.min.js"></script>
   <script type="text/javascript">
   // In your Javascript (external .js resource or <script> tag)

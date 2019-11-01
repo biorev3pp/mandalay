@@ -154,6 +154,30 @@ class FeaturesController extends Controller
         }
     }
 
+
+    public function deleteAclSettings(Request $request){
+        try{
+            $id = $request->delete_id;
+            // $result  = FloorAclSetting::where('id',$id)->delete();
+            $result = 1;    
+            if($result){
+                DB::commit();
+                $response = [
+                    'delete_id' => $id,
+                    'modelhide' => '#modal-delete',
+                    'message' => trans('response.removed'),
+                    'delayTime' => 1000
+                ];
+                return response($this->getSuccessResponse($response));
+            }else{
+                DB::rollBack();
+                return response($this->getErrorResponse(trans('response.failure')));
+            }
+        }catch(\Exception $e){
+            return response($this->getErrorResponse($e->getMessage()));
+        }
+    }
+
     public function getACLRow(Request $request){
         if($request->ajax()){
             $floorid = $request->floorid;

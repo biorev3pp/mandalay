@@ -85,6 +85,9 @@ $(document).ready(function (){
       $(document).find("select.main_option").each(function(i,obj){
         if($(obj).attr('id')!=select_id){
           $(this).find("option[value='"+value+"']").remove();
+          if(oldOption.hasOwnProperty('id')) { 
+            $(obj).append('<option value="'+oldOption.id+'">'+oldOption.text+'</option>');
+          }
         }
       });
       tr.find("select.conflict option[value='"+value+"']").remove();
@@ -97,7 +100,7 @@ $(document).ready(function (){
         var newDependencyOption = new Option(oldOption.text, oldOption.id, false, false);
         tr.find('select.conflict').append(newConflictOption).trigger('change');
         tr.find('select.togetherness').append(newTogetherOption).trigger('change');
-        tr.find('select.dependency').append(newDependencyOption).trigger('change');  
+        tr.find('select.dependency').append(newDependencyOption).trigger('change');
       }
       
       // now we need to check if current selected option has any conficts and togetherness
@@ -208,17 +211,7 @@ $(document).ready(function (){
       let unselectVl = event.params.data.id;
       
     })
-    // function to show/hide add row button 
-    function addACLRowButtonHandle(){
-      let optionsLength = $(document).find("select.main_option:last option").length - 1;
-      // console.log(optionsLength);
-      if(optionsLength < 2){
-        $(document).find('.clonetrBtn').addClass('d-none');
-      }else{
-        $(document).find('.clonetrBtn').removeClass('d-none');
-      }
-    }
-
+    
     // function to show/hide delete and save button 
     function deleteButtonHandle(){
       var rowCount = $(document).find('.aclTable tbody tr').length;
@@ -232,12 +225,55 @@ $(document).ready(function (){
       }
     }
     deleteButtonHandle();
-  function unique(list) {
+    function unique(list) {
         var result = [];
         $.each(list, function(i, e) {
             if ($.inArray(e, result) == -1) result.push(e);
         });
         return result;
     }
+    setMainOptionList();
+    addACLRowButtonHandle();
 
 });
+// function to show/hide add row button 
+function addACLRowButtonHandle(){
+
+  let optionsLength = $(document).find("select.main_option:last option").length;
+  if(optionsLength==0){
+    $(document).find('.clonetrBtn').removeClass('d-none');
+  }else{
+    optionsLength = optionsLength-1;
+    if(optionsLength < 2){
+      $(document).find('.clonetrBtn').addClass('d-none');
+    }else{
+      $(document).find('.clonetrBtn').removeClass('d-none');
+    }
+
+  }
+
+}
+
+
+function setMainOptionList(option=''){
+  var mainFeatureList = new Array();
+  $(document).find("select.main_option").each(function(i,obj){
+    mainFeatureList.push($(obj).children("option:selected").val());
+  });
+  $(document).find("select.main_option").each(function(i,obj){
+    let selected = $(obj).children("option:selected").val();
+    $(obj).find('option').each(function(index,element){
+      let optionVal = $(element).val();
+      if(optionVal!=selected && mainFeatureList.includes(optionVal)){
+        $(element).remove();
+      }
+    });
+    $(obj).closest('tr').find("select.conflict option[value='"+selected+"']").remove();
+    $(obj).closest('tr').find("select.dependency option[value='"+selected+"']").remove();
+    $(obj).closest('tr').find("select.togetherness option[value='"+selected+"']").remove();
+  });
+  if(option.hasOwnProperty('id')) {
+    $(document).find("select.main_option").append('<option value='+option.id+'>'+option.text+'</option>');  
+  }
+  addACLRowButtonHandle();
+}
