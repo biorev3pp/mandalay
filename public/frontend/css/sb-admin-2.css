@@ -12605,9 +12605,9 @@ ul.contact-info li span {
 		margin-right: 10px;
 	}
 	button.btn_mortgage {
-		margin-left: 10px;
-		font-size: 14px;
-		padding: 15px 10px;
+		margin-left: 0;
+		/*font-size: 14px;
+		padding: 15px 10px;*/
 	}
 	.zoomer_section {
 		bottom: 40%;
@@ -12834,10 +12834,11 @@ ul#padd li{padding:15px 20px;}
 .fixed-bottom , .all_cen{display:none;}
 .scroll-to-top{z-index:9999;}
 .zoomer_section {
-	bottom: 20px;
+	bottom: 150px;
 	right: auto;
-	/* z-index: 9999; */
-	position: absolute;
+	z-index: 9999;
+	/* position: absolute; */
 	left: -100px;
 }
+#height_width{min-height:inherit;}
 }
