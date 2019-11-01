@@ -12840,5 +12840,7 @@ ul#padd li{padding:15px 20px;}
 	/* position: absolute; */
 	left: -60px;
 }
-
+.container-fluid.bg-white {
+	padding: 0;
+	}
 }
