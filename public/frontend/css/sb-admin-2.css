@@ -12702,7 +12702,7 @@ ul.contact-info li span {
 	}
 	button.btn_mortgage {
 		margin-left: 20px;
-		padding: 16px 15px;
+		/*padding: 16px 15px;*/
 	}
 	.all_cen {
 		padding: 20px 0;
@@ -12741,7 +12741,7 @@ ul.contact-info li span {
 		font-size: 12px;
 	}
 	button.btn_mortgage {
-		padding: 14px 20px;
+		/*padding: 14px 20px;*/
 	}
 	#top_tab {
 		width: 300px;
