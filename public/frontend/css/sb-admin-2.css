@@ -12821,7 +12821,7 @@ button.btn_mortgage {
 	margin-left: 5px;
 }
 #left_togg {
-	max-height: calc(70vh - 14.9rem);
+	max-height: 300px;
 }
 .p_tag {
 	font-size: 15px;
@@ -12834,8 +12834,10 @@ ul#padd li{padding:15px 20px;}
 .fixed-bottom , .all_cen{display:none;}
 .scroll-to-top{z-index:9999;}
 .zoomer_section {
-	bottom: 200px;
-	right: 0;
-	z-index: 9999;
+	bottom: 20px;
+	right: auto;
+	/* z-index: 9999; */
+	position: absolute;
+	left: -100px;
 }
 }
