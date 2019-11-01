@@ -12250,7 +12250,7 @@ button.btn_mortgage {
 	box-shadow: none;
 	border-radius: 0;
 	cursor: pointer;
-	font-size: 15px;
+	font-size: 15px;line-height:20px;
 	transition: .5s ease-in-out;
 }
 
@@ -12325,12 +12325,12 @@ ul#padd li:hover ::after {
 }
 
 .log_in_d .btn.btn-success.btn-icon-split {
-	padding: 8px 30px;
+	padding: 16px 30px;
 	font-size: 15px;
 	font-weight: 700;
 	text-transform: uppercase;
 	border-radius: 0;
-	line-height: initial;
+	line-height: 20px;
 	margin: 26px 0 0;
 	border: 0;
 	display: inline-block;
