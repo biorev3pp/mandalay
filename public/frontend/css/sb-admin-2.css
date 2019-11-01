@@ -12799,7 +12799,7 @@ left:0;top:0;
 .right_panel_d{padding-left:0;}
 
 #top_tab{padding-bottom:0;}
-.floor-plan-btn{width:100%;height:auto;bottom:0px;padding:0.5rem 0;left:0;}
+
 #v_h {
 	width: 100%;
 	margin: 0;
@@ -12828,7 +12828,7 @@ button.btn_mortgage {
 	padding: 0px 10px;
 }
 .fixed-top{z-index:1050;}
-ul#padd li{padding:15px 20px;}
+
 .home_column_ .div_co{padding:0;}
 .home_column_ .div_co p{max-width:110px;}
 .fixed-bottom , .all_cen{display:none;}
@@ -12843,4 +12843,30 @@ ul#padd li{padding:15px 20px;}
 .container-fluid.bg-white {
 	padding: 0;
 	}
+	
+	ul#padd {
+	/* border-right: 1px solid #b7c5cb; */
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	left: 0;
+}
+	ul#padd li {
+	padding: 10px 20px;
+}
+#padd li img {
+	margin-bottom: 0;
+	max-width: 30px;
+}
+.floor-plan-btn {
+	width: 100%;
+	height: auto;
+	bottom: 52px;
+	padding: 0.5rem 0;
+	left: 0;
+}
+#div_pos {
+	
+	height: calc(79vh - 15rem);
+}
 }
