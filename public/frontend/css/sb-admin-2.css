@@ -12807,7 +12807,7 @@ left:0;top:0;
 
 footer.sticky-footer .copyright {font-size:10px;}
 .floor-plan-btn .btn-finish{padding:14px 0; font-size:14px;max-width:150px;}
-.container-fluid.bg-white{padding:0;}
+/*.container-fluid.bg-white{padding:0;}*/
 .all_cen {
 	top: -97px;
 	position: relative;
@@ -12838,7 +12838,7 @@ ul#padd li{padding:15px 20px;}
 	right: auto;
 	z-index: 9999;
 	/* position: absolute; */
-	left: -100px;
+	left: 10px;
 }
-#height_width{min-height:inherit;}
+#height_width{min-height:inherit!important;}
 }
