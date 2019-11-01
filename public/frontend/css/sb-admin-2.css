@@ -11945,11 +11945,11 @@ border-radius: 0;*/
 	color: #fff;
 	text-align: center;
 	width: 100%;
-	max-width: 200px;
+	max-width: 180px;
 	border-radius: 0;
 	transition: background .5s ease-in-out;
 	font-weight: 700;
-	padding: 15px 30px;
+	padding: 16px 30px;border:0;line-height:20px;
 	text-transform: uppercase;
 }
 
