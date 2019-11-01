@@ -72,7 +72,7 @@
                   
                 </span>-->
 				<i class="fas fa-sign-in-alt pr-2"></i>
-                <span class="text">Login</span>
+                <span>Login</span>
               </a>
            </div>
          
