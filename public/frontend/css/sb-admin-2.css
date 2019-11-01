@@ -12821,7 +12821,7 @@ button.btn_mortgage {
 	margin-left: 5px;
 }
 #left_togg {
-	max-height: 300px;
+	max-height: 250px;
 }
 .p_tag {
 	font-size: 15px;
@@ -12868,5 +12868,8 @@ button.btn_mortgage {
 #div_pos {
 	
 	height: calc(70vh - 15rem);
+}
+ul#padd li:hover {
+	border-bottom: 0;
 }
 }
