@@ -174,7 +174,7 @@
                                                             </table>
                                                          </td>
                                                          <td valign="top">
-                                                            <img src="{{asset('images/floors/'.$home->floors[0]->image)}}" width="334" />
+                                                            <img src="{{$planImage}}" width="334" />
                                                          </td>
                                                       </tr>
                                                    </table>
