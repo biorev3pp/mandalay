@@ -12785,9 +12785,8 @@ ul.contact-info li span {
 	display: inline-block;
 }
 .spacer_margin{padding-top:100px;}
-	.logo {
-	margin: 0;
-	
+.logo {
+	margin: 25px 0 0;max-width:240px;
 }
 .logo img {
 	max-width: 100%;
@@ -12795,7 +12794,7 @@ ul.contact-info li span {
 left:0;top:0;
 	width: 100%;
 }
-.log_in_d .btn.btn-success.btn-icon-split {padding:5px 11px; font-size:13px;}
+.log_in_d .btn.btn-success.btn-icon-split {padding:14px 18px; font-size:14px;}
 
 .right_panel_d{padding-left:0;}
 
@@ -12807,18 +12806,19 @@ left:0;top:0;
 }
 
 footer.sticky-footer .copyright {font-size:10px;}
-.floor-plan-btn .btn-finish{padding:15px 0; font-size:14px;max-width:150px;}
+.floor-plan-btn .btn-finish{padding:14px 0; font-size:14px;max-width:150px;}
 .container-fluid.bg-white{padding:0;}
 .all_cen {
-	top: -198px;
+	top: -97px;
 	position: relative;
 	bottom: 0;
 	display: inline-block;
+	height: auto;
 }
 button.btn_mortgage {
-	padding: 14px 20px;
+	padding: 14px 18px;
 	font-size: 14px;
-	margin-left: 10px;
+	margin-left: 5px;
 }
 #left_togg {
 	max-height: calc(70vh - 14.9rem);
@@ -12827,4 +12827,8 @@ button.btn_mortgage {
 	font-size: 15px;
 	padding: 0px 10px;
 }
+.fixed-top{z-index:1050;}
+ul#padd li{padding:15px 20px;}
+.home_column_ .div_co{padding:0;}
+.home_column_ .div_co p{max-width:110px;}
 }
