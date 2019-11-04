@@ -33,3 +33,4 @@
 <body id="page-top">
   <!-- Page Wrapper -->
   <div id="wrapper">
+	 <img src="{{asset('asset/img/header-bg.png')}}" class="curve_img_1">
