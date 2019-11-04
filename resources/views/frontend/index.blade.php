@@ -75,14 +75,16 @@ ntent -->
                   @forelse($home->floors as $floor)
                   @php $j++; @endphp
                   <ul class="home_floors @if($i!=1) disp_none @endif" data-floor-home-id="{{$i}}" id="grey_">
-                    <li class="nav-link with-arrow text-info-white text-nowrap hand noSelect floorList" id="{{$floor->id}}" data-toggle="collapse" data-target="#floor{{$i}}{{$j}}" aria-expanded="true" aria-controls="floor{{$i}}{{$j}}">
+                    <!-- <li class="nav-link with-arrow text-info-white text-nowrap hand noSelect floorList" id="{{$floor->id}}" data-toggle="collapse" data-target="#floor{{$i}}{{$j}}" aria-expanded="true" aria-controls="floor{{$i}}{{$j}}"> -->
+
+                    <li class="nav-link text-info-white text-nowrap hand noSelect floorList" id="{{$floor->id}}" data-target="#floor{{$i}}{{$j}}" aria-expanded="true" aria-controls="floor{{$i}}{{$j}}">
                       <!--<i class="fas fa-bed pr-2 "></i>-->{{$floor->title}}
                     </li>
                   </ul>
                   <div class="row home_floors @if($i!=1) disp_none @endif" data-floor-home-id="{{$i}}">
                     <div class="col-12">
 
-                      <div class="collapse" id="floor{{$i}}{{$j}}" style="">
+                      <div class="collapsed" id="floor{{$i}}{{$j}}" style="">
                         <div class="card">
 						            <!--<p class="f_de">FlexDesign</p>-->
                           <!--<div class="sidebar-heading font-weight-bold">Options</div>-->
@@ -181,7 +183,7 @@ ntent -->
 			 <div class="home_column_">
               <img src="{{asset('frontend/img/h_ico.png')}}">
 			  <div class="div_co">
-             <p>{{$home->title}} {{$home->subtitle}}</p></div>
+             <p>{{$home->title}}<br>{{$home->subtitle}}</p></div>
             </div>
            <div class="data_val">
             <ul>

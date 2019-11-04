@@ -25,9 +25,11 @@
                       {{Form::hidden('home_id',$home->id)}}
                       @forelse($features as $feature)
                       {{Form::hidden('feature_id[]',$feature)}}
+                      @php $i = 1; @endphp
                       @empty
+                      @php $i = 0; @endphp
                       @endforelse
-                        <a href="#" class="downloadPDFBtn"><img src="{{asset('asset/img/icon-download.png')}}" title="Download PDF"/></a>
+                        <a href="#"  class="@if($i==1) downloadPDFBtn @endif"><img src="{{asset('asset/img/icon-download.png')}}" title="Download PDF"/></a>
                       {{Form::close()}}
                   </li>
                   <li>
