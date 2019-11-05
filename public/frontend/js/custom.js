@@ -210,75 +210,73 @@ $(document).ready(function (){
             }
         });    
         // }
+        // Check Conflicts
         if(conficts.length == 0)
         {
             // we need to match data-conficts attribute
             document.querySelectorAll('label[data-conflicts]').forEach(function (conflicts, index) {
-            if(conflicts.getAttribute('data-conflicts')) {
+                if(conflicts.getAttribute('data-conflicts')) {
+                    let conflictsProp = (conflicts.getAttribute('data-conflicts').trim() != "") ? JSON.parse(conflicts.getAttribute('data-conflicts')) : [];
+                    let dependencyProp = (conflicts.getAttribute('data-dependency').trim() != "") ? JSON.parse(conflicts.getAttribute('data-dependency')) : [];
+                    let togethernessProp = (conflicts.getAttribute('data-togetherness').trim() != "" ) ? JSON.parse(conflicts.getAttribute('data-togetherness')) : [];
+                    // console.log(conflictsProp)
+                    // console.log(dependencyProp)
+                    // console.log(togethernessProp)
+                    const currentEle = conflicts.getAttribute('data-self');
+                    if(conflictsProp.indexOf(currentValue) > -1 ) {
+                        if(checked) {
+                            // setupForTogetherness(togethernessProp,false);
+                            // setupForDependency(dependencyProp,false);
 
-            let conflictsProp = (conflicts.getAttribute('data-conflicts').trim() != "") ? JSON.parse(conflicts.getAttribute('data-conflicts')) : [];
-            let dependencyProp = (conflicts.getAttribute('data-dependency').trim() != "") ? JSON.parse(conflicts.getAttribute('data-dependency')) : [];
-            let togethernessProp = (conflicts.getAttribute('data-togetherness').trim() != "" ) ? JSON.parse(conflicts.getAttribute('data-togetherness')) : [];
-
-            console.log(conflictsProp)
-            console.log(dependencyProp)
-            console.log(togethernessProp)
-            const currentEle = conflicts.getAttribute('data-self');
-            if(conflictsProp.indexOf(currentValue) > -1 ) {
-                if(checked) {
-                    // setupForTogetherness(togethernessProp,false);
-                    // setupForDependency(dependencyProp,false);
-
-                    postData.push(currentValue);
-                    $('.self_'+currentEle).prop('checked',false);
-                    $(container).find('.manageToggle').each(function($e) {
-                        const id = $(this).find('input:checked').attr('id');
-                        if(id){
-                            postData.push(id);
+                            postData.push(currentValue);
+                            $('.self_'+currentEle).prop('checked',false);
+                            $('.self_'+currentEle).parents('li').hide();
+                            $(container).find('.manageToggle').each(function($e) {
+                                const id = $(this).find('input:checked').attr('id');
+                                if(id){
+                                    postData.push(id);
+                                }
+                            });
+                        }else{
+                            $('.self_'+currentEle).parents('li').show();
                         }
-                    });
-                }
-                // else {
-                //     let data = setupForTogetherness(togethernessProp,true);
-                //     $('.self_'+currentEle).prop('checked',true);
-                //     postData.push(data);
-                //     postData.push(currentEle);
+                        // else {
+                        //     let data = setupForTogetherness(togethernessProp,true);
+                        //     $('.self_'+currentEle).prop('checked',true);
+                        //     postData.push(data);
+                        //     postData.push(currentEle);
 
-                // }
-                $(container).find('.manageToggle').each(function($e) {
-                        const id = $(this).find('input:checked').attr('id');
-                        if(id){
-                            postData.push(id);
+                        // }
+                        $(container).find('.manageToggle').each(function($e) {
+                            const id = $(this).find('input:checked').attr('id');
+                            if(id){
+                                postData.push(id);
+                            }
+                        });
+                    }else if (dependencyProp.indexOf(currentValue) > -1 ) {
+                        if(checked) {
+                            postData.push(currentValue);
                         }
-                    });
-              }
-              else if (dependencyProp.indexOf(currentValue) > -1 ) {
-                if(checked) {
-                    postData.push(currentValue);
-                }
-                // set values for selected options
-                $(container).find('.manageToggle').each(function($e) {
-                    const id = $(this).find('input:checked').attr('id');
-                    if(id){
-                        postData.push(id);
+                        // set values for selected options
+                        $(container).find('.manageToggle').each(function($e) {
+                            const id = $(this).find('input:checked').attr('id');
+                            if(id){
+                                postData.push(id);
+                            }
+                        });
+                    }else {
+                        console.log("error")
+                        if(checked) {
+                            postData.push(currentValue);
+                        }
+                        $(container).find('.manageToggle').each(function($e) {
+                            const id = $(this).find('input:checked').attr('id');
+                            if(id){
+                                postData.push(id);
+                            }
+                        });
                     }
-                });
-              }
-              else {
-                console.log("error")
-                if(checked) {
-                    postData.push(currentValue);
                 }
-                $(container).find('.manageToggle').each(function($e) {
-                    const id = $(this).find('input:checked').attr('id');
-                    if(id){
-                        postData.push(id);
-                    }
-                });
-              }
-
-
-            }
             });
         }
         else
@@ -288,12 +286,15 @@ $(document).ready(function (){
                 for (var i = 0; i < conficts.length; i++) {
                     let values= conficts[i];
                     $('.conflicts_'+values).prop('checked',false);
+                    $('.conflicts_'+values).parents('li').hide();
                 }
                 dependencyFlag = true;
                 togethernessFlag = true;
-
             }else {
-
+                for (var i = 0; i < conficts.length; i++) {
+                    let values= conficts[i];
+                    $('.conflicts_'+values).parents('li').show();
+                }
                 $(curretContainer).find('.manageToggle').each(function($e) {
                     let currentEle = $(this);
                     let dependency = $(this).attr('data-dependency');
