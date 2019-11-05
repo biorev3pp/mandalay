@@ -54,8 +54,8 @@ class FeaturesController extends Controller
     public function edit(Request $request, $id){
         $id = $this->decrypt($id);
         $data = Features::with('floor')->whereId($id)->first();
-        $floor = Floor::where('floor_id',$data->floor_id)->first();
-        $features = Features::where('id',$data->floor_id)->where('parent_id',0)->pluck('title','id')->prepend('None','0');
+        $floor = Floor::where('id',$data->floor_id)->first();
+        $features = Features::where('floor_id',$data->floor_id)->where('parent_id',0)->pluck('title','id')->prepend('None','0');
         $this->data['floor'] = $floor;
         $this->data['data'] = $data;
         $this->data['features'] = $features;
