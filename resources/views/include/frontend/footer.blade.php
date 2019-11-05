@@ -63,6 +63,10 @@
         let zoom_level = scale_level+added_zoom;
         $(".top_spa").css('transform','scale('+zoom_level+')');
       });
+      $(document).on('click','.refreshZoom',function() {
+        $("#zoom_input").prop('value',0);
+        $(".top_spa").css('transform','scale(1)');
+      });
 
       $(document).on('click','.btn_mortgage',function () {
         $('.calculator').accrue({

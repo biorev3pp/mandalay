@@ -55,7 +55,7 @@ class FeaturesController extends Controller
         $id = $this->decrypt($id);
         $data = Features::with('floor')->whereId($id)->first();
         $floor = Floor::where('id',$data->floor_id)->first();
-        $features = Features::where('floor_id',$data->floor_id)->where('parent_id',0)->pluck('title','id')->prepend('None','0');
+        $features = Features::where('floor_id',$data->floor_id)->where('parent_id',0)->where('id','!=',$id)->pluck('title','id')->prepend('None','0');
         $this->data['floor'] = $floor;
         $this->data['data'] = $data;
         $this->data['features'] = $features;

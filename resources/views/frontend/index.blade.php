@@ -319,7 +319,7 @@ ntent -->
 </div>
 <div class="zoomer_section">
   <div class="z_bar">
-    <div class="r_fresh float-left"> <img src="{{asset('frontend/img/rotat.png')}}"></div>
+    <div class="r_fresh float-left hand refreshZoom"> <img src="{{asset('frontend/img/rotat.png')}}"></div>
     <div class="float-left">
       <input type="range" min="0" max="5" value="0" id="zoom_input"  class="slider">
     </div>
