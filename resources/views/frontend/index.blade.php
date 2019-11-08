@@ -159,6 +159,8 @@ ntent -->
                     @empty
                     @endforelse
                     <div class="col-lg-12 d-lg-block mx-auto floor_image_view disp_none position-absolute" id="image-graggble" style="min-height:700px;">
+				
+				<img src="{{asset('frontend/img/thumb-img.png')}}" class="img_hom">
                       <div class="position-relative">
                         <img src="" class="img-fluid position-absolute">
                       </div>
