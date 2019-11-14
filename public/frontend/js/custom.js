@@ -213,17 +213,20 @@ $(document).ready(function (){
         // Check Conflicts
         if(conficts.length == 0)
         {
+
             // we need to match data-conficts attribute
             document.querySelectorAll('label[data-conflicts]').forEach(function (conflicts, index) {
+              console.log(conflicts);
                 if(conflicts.getAttribute('data-conflicts')) {
                     let conflictsProp = (conflicts.getAttribute('data-conflicts').trim() != "") ? JSON.parse(conflicts.getAttribute('data-conflicts')) : [];
                     let dependencyProp = (conflicts.getAttribute('data-dependency').trim() != "") ? JSON.parse(conflicts.getAttribute('data-dependency')) : [];
                     let togethernessProp = (conflicts.getAttribute('data-togetherness').trim() != "" ) ? JSON.parse(conflicts.getAttribute('data-togetherness')) : [];
                     // console.log(conflictsProp)
-                    // console.log(dependencyProp)
+                    console.log(dependencyProp)
                     // console.log(togethernessProp)
                     const currentEle = conflicts.getAttribute('data-self');
                     if(conflictsProp.indexOf(currentValue) > -1 ) {
+
                         if(checked) {
                             // setupForTogetherness(togethernessProp,false);
                             // setupForDependency(dependencyProp,false);
@@ -279,8 +282,7 @@ $(document).ready(function (){
                 }
             });
         }
-        else
-        {
+        
             if(checked) {
                 postData.push(currentValue);
                 for (var i = 0; i < conficts.length; i++) {
@@ -318,9 +320,10 @@ $(document).ready(function (){
                 });
             }
 
-        }
+
 
         if(dependencyFlag) {
+          console.log("dependencyFlag" , dependencyFlag);
             for (var i = 0; i < dependency.length; i++) {
                 let value= dependency[i];
                 $('.dependency_'+value).prop('disabled',false);
