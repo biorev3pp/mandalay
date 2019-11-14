@@ -216,7 +216,7 @@ $(document).ready(function (){
             // we need to match data-conficts attribute
             document.querySelectorAll('label[data-conflicts]').forEach(function (conflicts, index) {
               console.log("e");
-                
+
                     let conflictsProp = (conflicts.getAttribute('data-conflicts').trim() != "") ? JSON.parse(conflicts.getAttribute('data-conflicts')) : [];
                     let dependencyProp = (conflicts.getAttribute('data-dependency').trim() != "") ? JSON.parse(conflicts.getAttribute('data-dependency')) : [];
                     let togethernessProp = (conflicts.getAttribute('data-togetherness').trim() != "" ) ? JSON.parse(conflicts.getAttribute('data-togetherness')) : [];
@@ -233,12 +233,7 @@ $(document).ready(function (){
                             postData.push(currentValue);
                             $('.self_'+currentEle).prop('checked',false);
                             $('.self_'+currentEle).parents('li').hide();
-                            $(container).find('.manageToggle').each(function($e) {
-                                const id = $(this).find('input:checked').attr('id');
-                                if(id){
-                                    postData.push(id);
-                                }
-                            });
+
                         }else{
                             $('.self_'+currentEle).parents('li').show();
                         }
@@ -249,12 +244,7 @@ $(document).ready(function (){
                         //     postData.push(currentEle);
 
                         // }
-                        $(container).find('.manageToggle').each(function($e) {
-                            const id = $(this).find('input:checked').attr('id');
-                            if(id){
-                                postData.push(id);
-                            }
-                        });
+
                     }else if (dependencyProp.indexOf(currentValue) > -1 ) {
                         if(checked) {
                             postData.push(currentValue);
@@ -263,23 +253,13 @@ $(document).ready(function (){
                         byPassDependacy = conflicts.getElementsByTagName('input')[0].checked;
 
                         // set values for selected options
-                        $(container).find('.manageToggle').each(function($e) {
-                            const id = $(this).find('input:checked').attr('id');
-                            if(id){
-                                postData.push(id);
-                            }
-                        });
+
                     }else {
                         console.log("error")
                         if(checked) {
                             postData.push(currentValue);
                         }
-                        $(container).find('.manageToggle').each(function($e) {
-                            const id = $(this).find('input:checked').attr('id');
-                            if(id){
-                                postData.push(id);
-                            }
-                        });
+
                     }
 
             });
@@ -341,6 +321,7 @@ $(document).ready(function (){
                 $('.dependency_'+value).next('i').addClass('disabled');
               }else{
                 $('.dependency_'+value).prop('disabled',false);
+                $('.dependency_'+value).prop('checked',false);
                 $('.dependency_'+value).next('i').removeClass('disabled');
               }
           }
