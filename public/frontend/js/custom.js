@@ -65,8 +65,8 @@ $(document).ready(function (){
                 }
             });
         }
-        
-        
+
+
         // $(document).find('.floor_image_view').addClass('disp_none');
     });
 
@@ -142,7 +142,7 @@ $(document).ready(function (){
     $(document).on('click','.finishBtn', function(e){
         let selectedfeatures = [];
         $(document).find('.featureBtn:checkbox:checked').each(function(i,obj){
-            // let floorid = $(obj).attr('data-check-floor-id'); 
+            // let floorid = $(obj).attr('data-check-floor-id');
             let featureid = $(obj).attr('id');
             // selectedfeatures.push(featureid);
             let featureInput = '<input name="feature_id[]" type="hidden" value="'+featureid+'">';
@@ -208,7 +208,7 @@ $(document).ready(function (){
             if($(obj).attr('id') != undefined){
                 $(obj).remove();
             }
-        });    
+        });
         // }
         // Check Conflicts
         if(conficts.length == 0)
@@ -317,13 +317,7 @@ $(document).ready(function (){
                     }
                 });
             }
-            // in case any dependncy is on need to show image
-             $(container).find('.manageToggle').each(function($e) {
-                    const id = $(this).find('input:checked').attr('id');
-                        if(id){
-                            postData.push(id);
-                        }
-                    });
+
         }
 
         if(dependencyFlag) {
@@ -332,8 +326,14 @@ $(document).ready(function (){
                 $('.dependency_'+value).prop('disabled',false);
                 $('.dependency_'+value).next('i').removeClass('disabled');
             }
+        }else{
+          for (var i = 0; i < dependency.length; i++) {
+              let value= dependency[i];
+              $('.dependency_'+value).prop('checked',false);
+              $('.dependency_'+value).prop('disabled',true);
+              $('.dependency_'+value).next('i').addClass('disabled');
+          }
         }
-
         for (var i = 0; i < togetherness.length; i++) {
             let togethernessValue= togetherness[i];
             $('.togetherness_'+togethernessValue).prop('disabled',false);
@@ -345,7 +345,13 @@ $(document).ready(function (){
                 $('.togetherness_'+togethernessValue).next('i').removeClass('disabled');
             }
         }
-
+        // in case any dependncy is on need to show image
+         $(container).find('.manageToggle').each(function($e) {
+          const id = $(this).find('input:checked').attr('id');
+              if(id){
+                  postData.push(id);
+              }
+          });
         if(postData.length) {
 
             postData = unique(postData);
@@ -467,4 +473,3 @@ dragElement(document.getElementById("image-graggble"));
     //     }
     // }
 });
-
