@@ -202,7 +202,7 @@ $(document).ready(function (){
         let dependencyFlag = false;
         let togethernessFlag = false;
         let container = $(this).parents('ul');
-
+        var byPassDependacy = false;
         // if(!checked) {
         $(document).find('.floor_image_view img').each(function(i,obj){
             if($(obj).attr('id') != undefined){
@@ -216,7 +216,7 @@ $(document).ready(function (){
 
             // we need to match data-conficts attribute
             document.querySelectorAll('label[data-conflicts]').forEach(function (conflicts, index) {
-              console.log(conflicts);
+
                 if(conflicts.getAttribute('data-conflicts')) {
                     let conflictsProp = (conflicts.getAttribute('data-conflicts').trim() != "") ? JSON.parse(conflicts.getAttribute('data-conflicts')) : [];
                     let dependencyProp = (conflicts.getAttribute('data-dependency').trim() != "") ? JSON.parse(conflicts.getAttribute('data-dependency')) : [];
@@ -260,6 +260,9 @@ $(document).ready(function (){
                         if(checked) {
                             postData.push(currentValue);
                         }
+                        console.log(conflicts.getElementsByTagName('input'));
+                        byPassDependacy = conflicts.getElementsByTagName('input')[0].checked;
+
                         // set values for selected options
                         $(container).find('.manageToggle').each(function($e) {
                             const id = $(this).find('input:checked').attr('id');
@@ -282,7 +285,7 @@ $(document).ready(function (){
                 }
             });
         }
-        
+
             if(checked) {
                 postData.push(currentValue);
                 for (var i = 0; i < conficts.length; i++) {
@@ -305,8 +308,15 @@ $(document).ready(function (){
                         dependency =  JSON.parse(dependency);
                         for (var i = 0; i < dependency.length; i++) {
                             let value= dependency[i];
-                            $('.dependency_'+value).prop('disabled',true);
-                            $('.dependency_'+value).next('i').addClass('disabled');
+                            if(!byPassDependacy){
+                              $('.dependency_'+value).prop('disabled',true);
+                              $('.dependency_'+value).next('i').addClass('disabled');
+                            }else{                            
+                              $('.dependency_'+value).prop('disabled',false);
+                              $('.dependency_'+value).next('i').removeClass('disabled');
+                            }
+
+
                         }
                     }
                     if(togetherness) {
