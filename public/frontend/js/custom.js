@@ -213,11 +213,10 @@ $(document).ready(function (){
         // Check Conflicts
         if(conficts.length == 0)
         {
-
             // we need to match data-conficts attribute
             document.querySelectorAll('label[data-conflicts]').forEach(function (conflicts, index) {
-
-                if(conflicts.getAttribute('data-conflicts')) {
+              console.log("e");
+                
                     let conflictsProp = (conflicts.getAttribute('data-conflicts').trim() != "") ? JSON.parse(conflicts.getAttribute('data-conflicts')) : [];
                     let dependencyProp = (conflicts.getAttribute('data-dependency').trim() != "") ? JSON.parse(conflicts.getAttribute('data-dependency')) : [];
                     let togethernessProp = (conflicts.getAttribute('data-togetherness').trim() != "" ) ? JSON.parse(conflicts.getAttribute('data-togetherness')) : [];
@@ -282,56 +281,50 @@ $(document).ready(function (){
                             }
                         });
                     }
-                }
+
             });
         }
 
-            if(checked) {
-                postData.push(currentValue);
-                for (var i = 0; i < conficts.length; i++) {
-                    let values= conficts[i];
-                    $('.conflicts_'+values).prop('checked',false);
-                    $('.conflicts_'+values).parents('li').hide();
-                }
-                dependencyFlag = true;
-                togethernessFlag = true;
-            }else {
-                for (var i = 0; i < conficts.length; i++) {
-                    let values= conficts[i];
-                    $('.conflicts_'+values).parents('li').show();
-                }
-                $(curretContainer).find('.manageToggle').each(function($e) {
-                    let currentEle = $(this);
-                    let dependency = $(this).attr('data-dependency');
-                    let togetherness = $(this).attr('data-togetherness');
-                    if(dependency) {
-                        dependency =  JSON.parse(dependency);
-                        for (var i = 0; i < dependency.length; i++) {
-                            let value= dependency[i];
-                            if(!byPassDependacy){
-                              $('.dependency_'+value).prop('disabled',true);
-                              $('.dependency_'+value).next('i').addClass('disabled');
-                            }else{                            
-                              $('.dependency_'+value).prop('disabled',false);
-                              $('.dependency_'+value).next('i').removeClass('disabled');
-                            }
-
-
-                        }
-                    }
-                    if(togetherness) {
-                        togetherness =  JSON.parse(togetherness);
-
-                        for (var i = 0; i < togetherness.length; i++) {
-                            let value= togetherness[i];
-                            $('.togetherness_'+value).prop('disabled',true);
-                        }
-                    }
-                });
+        if(checked) {
+            postData.push(currentValue);
+            for (var i = 0; i < conficts.length; i++) {
+                let values= conficts[i];
+                $('.conflicts_'+values).prop('checked',false);
+                $('.conflicts_'+values).parents('li').hide();
             }
-
-
-
+            dependencyFlag = true;
+            togethernessFlag = true;
+        }else {
+            for (var i = 0; i < conficts.length; i++) {
+                let values= conficts[i];
+                $('.conflicts_'+values).parents('li').show();
+            }
+            $(curretContainer).find('.manageToggle').each(function($e) {
+                let currentEle = $(this);
+                let dependency = $(this).attr('data-dependency');
+                let togetherness = $(this).attr('data-togetherness');
+                if(dependency) {
+                    dependency =  JSON.parse(dependency);
+                    for (var i = 0; i < dependency.length; i++) {
+                        let value= dependency[i];
+                        if(!byPassDependacy){
+                          $('.dependency_'+value).prop('disabled',true);
+                          $('.dependency_'+value).next('i').addClass('disabled');
+                        }else{
+                          $('.dependency_'+value).prop('disabled',false);
+                          $('.dependency_'+value).next('i').removeClass('disabled');
+                        }
+                    }
+                }
+                if(togetherness) {
+                    togetherness =  JSON.parse(togetherness);
+                    for (var i = 0; i < togetherness.length; i++) {
+                        let value= togetherness[i];
+                        $('.togetherness_'+value).prop('disabled',true);
+                    }
+                }
+            });
+        }
         if(dependencyFlag) {
           console.log("dependencyFlag" , dependencyFlag);
             for (var i = 0; i < dependency.length; i++) {
@@ -342,9 +335,14 @@ $(document).ready(function (){
         }else{
           for (var i = 0; i < dependency.length; i++) {
               let value= dependency[i];
-              $('.dependency_'+value).prop('checked',false);
-              $('.dependency_'+value).prop('disabled',true);
-              $('.dependency_'+value).next('i').addClass('disabled');
+              if(!byPassDependacy){
+                $('.dependency_'+value).prop('checked',false);
+                $('.dependency_'+value).prop('disabled',true);
+                $('.dependency_'+value).next('i').addClass('disabled');
+              }else{
+                $('.dependency_'+value).prop('disabled',false);
+                $('.dependency_'+value).next('i').removeClass('disabled');
+              }
           }
         }
         for (var i = 0; i < togetherness.length; i++) {
@@ -352,7 +350,6 @@ $(document).ready(function (){
             $('.togetherness_'+togethernessValue).prop('disabled',false);
             $('.togetherness_'+togethernessValue).prop('checked',togethernessFlag);
             $('.togetherness_'+togethernessValue).prop('disabled',true);
-
             if(togethernessFlag){
                 postData.push(togethernessValue);
                 $('.togetherness_'+togethernessValue).next('i').removeClass('disabled');
