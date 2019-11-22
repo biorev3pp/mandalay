@@ -214,7 +214,7 @@ $(document).ready(function (){
         {
             // we need to match data-conficts attribute
             document.querySelectorAll('label[data-conflicts]').forEach(function (conflicts, index) {
-              console.log("e");
+              // console.log("e");
 
                     let conflictsProp = (conflicts.getAttribute('data-conflicts').trim() != "") ? JSON.parse(conflicts.getAttribute('data-conflicts')) : [];
                     let dependencyProp = (conflicts.getAttribute('data-dependency').trim() != "") ? JSON.parse(conflicts.getAttribute('data-dependency')) : [];
@@ -228,31 +228,20 @@ $(document).ready(function (){
                         if(checked) {
                             // setupForTogetherness(togethernessProp,false);
                             // setupForDependency(dependencyProp,false);
-
                             postData.push(currentValue);
                             $('.self_'+currentEle).prop('checked',false);
                             $('.self_'+currentEle).parents('li').hide();
 
                         }else{
-                            $('.self_'+currentEle).parents('li').show();
+                            // $('.self_'+currentEle).parents('li').show();
                         }
-                        // else {
-                        //     let data = setupForTogetherness(togethernessProp,true);
-                        //     $('.self_'+currentEle).prop('checked',true);
-                        //     postData.push(data);
-                        //     postData.push(currentEle);
-
-                        // }
-
                     }else if (dependencyProp.indexOf(currentValue) > -1 ) {
                         if(checked) {
                             postData.push(currentValue);
                         }
                         console.log(conflicts.getElementsByTagName('input'));
                         byPassDependacy = conflicts.getElementsByTagName('input')[0].checked;
-
                         // set values for selected options
-
                     }else {
                         console.log("error")
                         if(checked) {
@@ -263,8 +252,8 @@ $(document).ready(function (){
 
             });
         }
-
-        if(checked) {
+        else {
+            if(checked) {
             postData.push(currentValue);
             for (var i = 0; i < conficts.length; i++) {
                 let values= conficts[i];
@@ -346,6 +335,8 @@ $(document).ready(function (){
                   postData.push(id);
               }
           });
+        }
+        
         if(postData.length) {
 
             postData = unique(postData);
