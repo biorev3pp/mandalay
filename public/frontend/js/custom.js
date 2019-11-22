@@ -328,6 +328,8 @@ $(document).ready(function (){
                 $('.togetherness_'+togethernessValue).next('i').removeClass('disabled');
             }
         }
+        
+        }
         // in case any dependncy is on need to show image
          $(container).find('.manageToggle').each(function($e) {
           const id = $(this).find('input:checked').attr('id');
@@ -335,8 +337,6 @@ $(document).ready(function (){
                   postData.push(id);
               }
           });
-        }
-        
         if(postData.length) {
 
             postData = unique(postData);
