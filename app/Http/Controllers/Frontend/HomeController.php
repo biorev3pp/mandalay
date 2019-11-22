@@ -15,17 +15,119 @@ class HomeController extends Controller
 
     public function index(){
         \DB::enableQueryLog();
-    	$homes = Homes::with(['floors.features'=>function($q){
-            $q->with('feature_groups.features_acl')->where('parent_id',0);
-        }])->where('status',1)->get();
+        $homes = Homes::where('status',1)->get();
+        // $this->print($homes->toArray());
+        $featureData = [];
+        foreach($homes as $home){
+            foreach($home->floors as $floor){
+                foreach($floor->featureList as $feature){
+                    $featureID = $feature->id;
+                    $conflicts = [];
+                    $together = [];
+                    $dependency = [];
+                    if($feature->features_acl->conflicts){
+                        $conflicts = json_decode($feature->features_acl->conflicts);
+                    }
+                    if($feature->features_acl->togetherness){
+                        $together = json_decode($feature->features_acl->togetherness);
+                    }
+                    if($feature->features_acl->dependency){
+                        $dependency = json_decode($feature->features_acl->dependency);
+                    }
+                    // Loop through all features added 
+                    foreach($floor->featureList as $featureArr){
+                        // add conflicts value to current feature
+                        if($featureArr->id == $featureID){
+                            if(isset($conflicts) && !empty($conflicts)){
+                                $featureArr->conflicts = json_encode($conflicts);
+                            }
+                        }
+                        // set current feature as conflict
+                        if(in_array($featureArr->id, $conflicts)){
+                            if(isset($featureArr->conflicts) && !empty($featureArr->conflicts)){
+                                $addedConf = json_decode($featureArr->conflicts);
+                                array_push($addedConf, $featureID);    
+                                $featureArr->conflicts = json_encode($addedConf);
+                            }else{
+                                $newConf = array((string)$featureID);
+                                $featureArr->conflicts = json_encode($newConf);
+                            }
+                        }
+                        // add togetherness value to current feature
+                        if($featureArr->id == $featureID){
+                            if(isset($together) && !empty($together)){
+                                $featureArr->togetherness = json_encode($together);
+                            }
+                        }
+                        // set current feature as togetherness
+                        if(in_array($featureArr->id, $together)){
+                            if(isset($featureArr->togetherness)){
+                                $addedTog = json_decode($featureArr->together);
+                                array_push($addedTog, $featureID);    
+                                $featureArr->togetherness = json_encode($addedTog);
+                            }else{
+                                $newTog = array((string)$featureID);
+                                $featureArr->togetherness = json_encode($newTog);
+                            }
+                        }
+                        // add dependency value to current feature
+                        if($featureArr->id == $featureID){
+                            if(isset($dependency) && !empty($dependency)){
+                                $featureArr->dependency = json_encode($dependency);
+                            }
+                        }
+                    }
+                    unset($feature->features_acl);
+                    $featureData[$feature->id] = $feature->toArray();
+                }
+                $ft = [];
+                foreach($featureData as $data){
+                    if($data['parent_id']==0){
+                        $ft[$data['id']] = $data;
+                    }else{
+                        if(!isset($data['conflicts'])){
+                            $data['conflicts'] = '';
+                        }
+                        if(!isset($data['togetherness'])){
+                            $data['togetherness'] = '';
+                        }
+                        if(!isset($data['dependency'])){
+                            $data['dependency'] = '';
+                        }
+                        $ft[$data['parent_id']]['child_feature'][] = $data;
+                    }
+                }
+                $floor->features_data = $ft;
+                unset($floor->features);
+            }
+            
+        }
+        // $this->print($homes->toArray());
+        // die;
         // dd(\DB::getQueryLog());
-    	$defaultHome = Homes::where('status',1)->first();
+        $defaultHome = Homes::where('status',1)->first();
         // echo "<pre>";
         // print_r($homes[0]['floors'][0]['features'][0]['features_acl']->toArray());
-    	$this->data['homeList'] = $homes;
-    	$this->data['defaultHome'] = $defaultHome;
+        $this->data['homeList'] = $homes;
+        $this->data['defaultHome'] = $defaultHome;
 
-    	return view('frontend.index')->with($this->data);
+        return view('frontend.index')->with($this->data);
+
+
+
+
+     //    \DB::enableQueryLog();
+    	// $homes = Homes::with(['floors.features'=>function($q){
+     //        $q->with('feature_groups.features_acl')->where('parent_id',0);
+     //    }])->where('status',1)->get();
+     //    // dd(\DB::getQueryLog());
+    	// $defaultHome = Homes::where('status',1)->first();
+     //    // echo "<pre>";
+     //    // print_r($homes[0]['floors'][0]['features'][0]['features_acl']->toArray());
+    	// $this->data['homeList'] = $homes;
+    	// $this->data['defaultHome'] = $defaultHome;
+
+    	// return view('frontend.index')->with($this->data);
     }
 
     public function finalHomePage(Request $request){
@@ -55,16 +157,13 @@ class HomeController extends Controller
 
     public function getFeatureData(Request $request){
         if($request->ajax()){
-
-            if(is_string($request->featureid)) {
-                $data = Features::where('id',$request->featureid)->first();  
-                $data->image =  asset('/images/features/'.$data->image);
-            }else {
-                $where = $request->featureid;
-                $data = Features::whereIn('id',$where)->get();
+            $features = $request->featureid;
+            $data = array();
+            if(!empty($features)){
+                $data = Features::whereIn('id',$features)->get();
                 foreach ($data as $key => $value) {
                     $data[$key]->image =  asset('/images/features/'.$value->image);
-                }  
+                }    
             }
             return response()->json($data);
         }

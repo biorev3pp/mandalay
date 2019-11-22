@@ -89,18 +89,21 @@ ntent -->
 						            <!--<p class="f_de">FlexDesign</p>-->
                           <!--<div class="sidebar-heading font-weight-bold">Options</div>-->
                           <ul class="navbar-nav col-12 " id="left_togg">
-                            @forelse($floor->features_data as $group)
-                              <li style="background: #297fd5; color: #fff;">{{$group['title']}}</li>
-                              @forelse($group['child_feature'] as $feature)
-                                <li class="nav-link  hand noSelect_{{$feature['id']}}">
-                                  <span> {{$feature['title']}} </span>
-                                  <label 
-                                    data-conflicts="{{$feature['conflicts']}}" 
-                                    data-dependency="{{$feature['dependency']}}" 
-                                    data-togetherness="{{$feature['togetherness']}}" 
-                                    data-self="{{$feature['id'] }}" 
-                                    class="ui-switch ui-switch-success ui-switch-sm mb-0 float-right manageToggle">
-                                    <input data-check-floor-id="{{$floor->id}}" type="checkbox" class="conflicts_{{$feature['id']}} dependency_{{$feature['id']}} self_{{$feature['id']}} togetherness_{{$feature['id']}}" id="{{$feature['id']}}"><i></i>
+                            @forelse($floor->features as $group)
+                              <li style="background: #297fd5; color: #fff;">{{$group->title}}</li>
+                              @forelse($group->feature_groups as $feature)
+                                <li class="nav-link  hand noSelect_{{$feature->id}}">
+                                 <span> {{$feature->title}} </span>
+                                  <label
+
+                                    data-conflicts="{{$feature->features_acl->conflicts}}"
+                                    data-dependency="{{$feature->features_acl->dependency}}"
+                                    data-togetherness="{{$feature->features_acl->togetherness}}"
+                                    data-self="{{$feature->id}}"
+
+                                    class="ui-switch ui-switch-success ui-switch-sm mb-0 float-right
+                                    <?php if (($feature->features_acl->count())) {?> manageToggle <?php }?>">
+                                    <input data-check-floor-id="{{$floor->id}}" type="checkbox" class="featureBtn conflicts_{{$feature->id}} dependency_{{$feature->id}} self_{{$feature->id}} togetherness_{{$feature->id}}" id="{{$feature->id}}"><i></i>
                                   </label>
                                 </li>
                               @empty
