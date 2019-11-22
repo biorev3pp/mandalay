@@ -253,6 +253,8 @@ $(document).ready(function (){
             });
         }
         else {
+
+            console.log("else");
             if(checked) {
             postData.push(currentValue);
             for (var i = 0; i < conficts.length; i++) {
@@ -262,37 +264,40 @@ $(document).ready(function (){
             }
             dependencyFlag = true;
             togethernessFlag = true;
+            console.log("else asdasd");
         }else {
+            
             for (var i = 0; i < conficts.length; i++) {
                 let values= conficts[i];
+                console.log(values , "values");
                 $('.conflicts_'+values).parents('li').show();
             }
+
+            
             $(curretContainer).find('.manageToggle').each(function($e) {
                 let currentEle = $(this);
+                console.log(currentEle);
                 let dependency = $(this).attr('data-dependency');
                 let togetherness = $(this).attr('data-togetherness');
                 if(dependency) {
                     dependency =  JSON.parse(dependency);
                     for (var i = 0; i < dependency.length; i++) {
                         let value= dependency[i];
-                        if(!byPassDependacy){
-                          $('.dependency_'+value).prop('disabled',true);
-                          $('.dependency_'+value).next('i').addClass('disabled');
-                          $('.dependency_'+value).parents('li').hide();
-                        }else{
-                          $('.dependency_'+value).prop('disabled',false);
-                          $('.dependency_'+value).next('i').removeClass('disabled');
-                          $('.dependency_'+value).parents('li').show();
+                        console.log(currentValue , value);
+                        if(currentValue != value) {
+                            if(!byPassDependacy){
+                              $('.dependency_'+value).prop('disabled',true);
+                              $('.dependency_'+value).next('i').addClass('disabled');
+                              $('.dependency_'+value).parents('li').hide();
+                            }else{
+                              $('.dependency_'+value).prop('disabled',false);
+                              $('.dependency_'+value).next('i').removeClass('disabled');
+                              $('.dependency_'+value).parents('li').show();
+                            }    
                         }
+                        
                     }
                 }
-                // if(togetherness) {
-                //     togetherness =  JSON.parse(togetherness);
-                //     for (var i = 0; i < togetherness.length; i++) {
-                //         let value= togetherness[i];
-                //         $('.togetherness_'+value).prop('disabled',true);
-                //     }
-                // }
             });
         }
         if(dependencyFlag) {
