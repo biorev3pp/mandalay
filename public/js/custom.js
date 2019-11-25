@@ -276,4 +276,39 @@ function setMainOptionList(option=''){
     $(document).find("select.main_option").append('<option value='+option.id+'>'+option.text+'</option>');  
   }
   addACLRowButtonHandle();
+
+  //Inialize sortable for re-ordering list
+  $( function() {
+    $( ".sortable" ).sortable({
+      // items: "tr:not(.non-dragable)"
+      cancel: ".non-dragable"
+    });
+    // $( ".selector" ).sortable( "refreshPositions" );
+    $( ".sortable tr" ).disableSelection();
+  });
+
+  function setFeaturesOrder(){
+    var orderListObj={};
+    var i=1;
+    $(document).find('.sortable tr').each(function(){
+      let row_id = $(this).attr('id');
+      let parent_id = $(this).attr('data-parent_id');
+      
+      if(parent_id==0){
+        parent_id == parent_id;
+        parent = row_id;  
+      }else{
+        parent_id = parent;
+      }
+      let orderData = {
+          id:row_id,
+          parent_id:parent_id,
+          order:i
+      };
+      orderListObj[row_id] = orderData;
+      i=i+1;
+    });
+    console.log(orderListObj);
+  }
+  setFeaturesOrder();
 }

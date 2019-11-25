@@ -29,11 +29,11 @@
                            <th>Action</th>
                         </tr>
                      </thead>
-                     <tbody>
+                     <tbody class="sortable">
                         @php $i=0; @endphp
                         @forelse($features as $record)
                         @php $i++; @endphp
-                          <tr style="background: #e8e8e8; font-weight: 600;">
+                          <tr id="{{$record->id}}" data-parent_id="{{$record->parent_id}}" class="non-dragable" style="background: #e8e8e8; font-weight: 600;">
                             <td>{{$i}}.</td>
                             <td>{{$record->title}}</td>
                             <td>{{$record->price}}</td>
@@ -45,7 +45,7 @@
                           @php $j=0; @endphp
                             @forelse($record->feature_groups as $feat)
                             @php $j++; @endphp
-                              <tr>
+                              <tr id="{{$feat->id}}" data-parent_id="{{$feat->parent_id}}">
                                 <td></td>
                                 <td>{{$feat->title}}</td>
                                 <td>{{$feat->price}}</td>
