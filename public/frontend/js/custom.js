@@ -209,6 +209,7 @@ $(document).ready(function (){
         let dependency = ($(this).attr('data-dependency').trim() != "") ? JSON.parse($(this).attr('data-dependency')) : [];
         let togetherness = ($(this).attr('data-togetherness').trim() != "" ) ? JSON.parse($(this).attr('data-togetherness')) : [];
         let checked = $(this).find('input').is(':checked');
+
         // When toggle gets on
         if(checked){ 
             // Manage Conflicts
@@ -219,17 +220,21 @@ $(document).ready(function (){
                 // Turn related togetherness off
                 let conflictElement = $('.conflicts_'+values).parent('label');
                 let conflictTogetherness = (conflictElement.attr('data-togetherness').trim() != "" ) ? JSON.parse(conflictElement.attr('data-togetherness')) : [];
-                for (var i = 0; i < conflictTogetherness.length; i++) {
-                    let togetherId = conflictTogetherness[i];
-                    $('.togetherness_'+togetherId).prop('checked',false);
-                    $('.togetherness_'+togetherId).parents('li').hide();
+                if(conflictTogetherness.length > 0){
+                    for (var i = 0; i < conflictTogetherness.length; i++) {
+                        let togetherId = conflictTogetherness[i];
+                        $('.togetherness_'+togetherId).prop('checked',false);
+                        $('.togetherness_'+togetherId).parents('li').hide();
+                    }
                 }
-                // Turn related dependent off
+                // // Turn related dependent off
                 let conflictDependent = (conflictElement.attr('data-dependency').trim() != "" ) ? JSON.parse(conflictElement.attr('data-dependency')) : [];
-                for (var i = 0; i < conflictDependent.length; i++) {
-                    let dependentId = conflictDependent[i];
-                    $('.dependency_'+dependentId).prop('checked',false).prop('disabled',true).next('i').addClass('disabled');
-                    $('.dependency_'+dependentId).parents('li').hide();
+                if(conflictDependent.length > 0){
+                    for (var i = 0; i < conflictDependent.length; i++) {
+                        let dependentId = conflictDependent[i];
+                        $('.dependency_'+dependentId).prop('checked',false).prop('disabled',true).next('i').addClass('disabled');
+                        $('.dependency_'+dependentId).parents('li').hide();
+                    }
                 }
             }
             // Manage Togetherness
@@ -238,19 +243,23 @@ $(document).ready(function (){
                 $('.togetherness_'+values).prop('checked',true);
                 // Remove disable from related dependent
                 let togetherElement = $('.togetherness_'+values).parent('label');
-                // Remove disable from dependency from together elements
+                // // Remove disable from dependency from together elements
                 let togetherDependent = (togetherElement.attr('data-dependency').trim() != "" ) ? JSON.parse(togetherElement.attr('data-dependency')) : [];
-                for (var i = 0; i < togetherDependent.length; i++) {
-                    let dependentId = togetherDependent[i];
-                    $('.dependency_'+dependentId).parents('li').show();
-                    $('.dependency_'+dependentId).prop('disabled',false).next('i').removeClass('disabled');
+                if(togetherDependent.length > 0){
+                    for (var i = 0; i < togetherDependent.length; i++) {
+                        let dependentId = togetherDependent[i];
+                        $('.dependency_'+dependentId).parents('li').show();
+                        $('.dependency_'+dependentId).prop('disabled',false).next('i').removeClass('disabled');
+                    }
                 }
             }
             // Manage Dependency
-            for (var i = 0; i < dependency.length; i++) {
-                let value = dependency[i];
-                $('.dependency_'+value).parents('li').show();
-                $('.dependency_'+value).prop('disabled',false).next('i').removeClass('disabled');
+            if(dependency.length > 0){
+                for (var i = 0; i < dependency.length; i++) {
+                    let value = dependency[i];
+                    $('.dependency_'+value).parents('li').show();
+                    $('.dependency_'+value).prop('disabled',false).next('i').removeClass('disabled');
+                }
             }
         // When toggle gets off 
         }else{
@@ -262,16 +271,20 @@ $(document).ready(function (){
                 // Show related togetherness off
                 let conflictElement = $('.conflicts_'+values).parent('label');
                 let conflictTogetherness = (conflictElement.attr('data-togetherness').trim() != "" ) ? JSON.parse(conflictElement.attr('data-togetherness')) : [];
-                for (var i = 0; i < conflictTogetherness.length; i++) {
-                    let togetherId = conflictTogetherness[i];
-                    $('.togetherness_'+togetherId).parents('li').show();
+                if(conflictTogetherness.length > 0){
+                    for (var i = 0; i < conflictTogetherness.length; i++) {
+                        let togetherId = conflictTogetherness[i];
+                        $('.togetherness_'+togetherId).parents('li').show();
+                    }
                 }
                 // Turn conflict related dependent visible
-                // let conflictDependent = (conflictElement.attr('data-dependency').trim() != "" ) ? JSON.parse(conflictElement.attr('data-dependency')) : [];
-                // for (var i = 0; i < conflictDependent.length; i++) {
-                //     let dependentId = conflictDependent[i];
-                //     $('.dependency_'+dependentId).parents('li').show();
-                // }
+                let conflictDependent = (conflictElement.attr('data-dependency').trim() != "" ) ? JSON.parse(conflictElement.attr('data-dependency')) : [];
+                if(conflictDependent.length > 0){
+                    for (var i = 0; i < conflictDependent.length; i++) {
+                        let dependentId = conflictDependent[i];
+                        $('.dependency_'+dependentId).parents('li').show();
+                    }
+                }
             }
 
             // Manage Togetherness
@@ -280,25 +293,31 @@ $(document).ready(function (){
                 $('.togetherness_'+values).prop('checked',false);
                 // Disable related dependent toggles
                 let togetherElement = $('.togetherness_'+values).parent('label');
-                // Add disable on dependency from together elements
+                // // Add disable on dependency from together elements
                 let togetherDependent = (togetherElement.attr('data-dependency').trim() != "" ) ? JSON.parse(togetherElement.attr('data-dependency')) : [];
-                for (var i = 0; i < togetherDependent.length; i++) {
-                    let dependentId = togetherDependent[i];
-                    $('.dependency_'+dependentId).parents('li').hide();
-                    $('.dependency_'+dependentId).prop('checked',false).prop('disabled',true).next('i').addClass('disabled');
+                if(togetherDependent.length > 0){
+                    for (var i = 0; i < togetherDependent.length; i++) {
+                        let dependentId = togetherDependent[i];
+                        $('.dependency_'+dependentId).parents('li').hide();
+                        $('.dependency_'+dependentId).prop('checked',false).prop('disabled',true).next('i').addClass('disabled');
+                    }
                 }
                 // Show together conflict
                 let togetherConflict = (togetherElement.attr('data-conflicts').trim() != "" ) ? JSON.parse(togetherElement.attr('data-conflicts')) : [];
-                for (var i = 0; i < togetherConflict.length; i++) {
-                    let conflictId = togetherConflict[i];
-                    $('.conflicts_'+conflictId).parents('li').show();
+                if(togetherConflict.length > 0){
+                    for (var i = 0; i < togetherConflict.length; i++) {
+                        let conflictId = togetherConflict[i];
+                        $('.conflicts_'+conflictId).parents('li').show();
+                    }
                 }
             }
             // Manage Dependency
-            for (var i = 0; i < dependency.length; i++) {
-                let value = dependency[i];
-                $('.dependency_'+value).parents('li').hide();
-                $('.dependency_'+value).prop('disabled',true).prop('checked',false).next('i').addClass('disabled');
+            if(dependency.length > 0){
+                for (var i = 0; i < dependency.length; i++) {
+                    let value = dependency[i];
+                    $('.dependency_'+value).parents('li').hide();
+                    $('.dependency_'+value).prop('disabled',true).prop('checked',false).next('i').addClass('disabled');
+                }
             }
         }
 
