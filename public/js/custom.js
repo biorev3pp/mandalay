@@ -276,4 +276,59 @@ function setMainOptionList(option=''){
     $(document).find("select.main_option").append('<option value='+option.id+'>'+option.text+'</option>');  
   }
   addACLRowButtonHandle();
+
+  //Inialize sortable for re-ordering list
+  $( function() {
+    $( ".sortable" ).sortable({
+      // items: "tr:not(.non-dragable)"
+      cancel: ".non-dragable"
+    });
+    $( ".selector" ).sortable( "refreshPositions" );
+    $( ".sortable tr" ).disableSelection();
+  });
+  $(document).on('mouseup','.sortable tr',function(){
+    setTimeout(function(){ 
+      setFeaturesOrder();
+      $.ajax({
+          url         : app_base_url+'/admin/features/re_order_list',
+          type        : "post",
+          data        : {'order':orderListObj},
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          beforeSend  : function () {
+              $("#preloader").show();
+          },
+          complete: function () {
+              $("#preloader").hide();
+          },
+          success: function (response) {
+            console.log(response);
+          }
+        });
+    }, 100);
+
+  });
+  var orderListObj={};
+  function setFeaturesOrder(){
+    var i=1;
+    $(document).find('.sortable tr').each(function(){
+      let row_id = $(this).attr('id');
+      let parent_id = $(this).attr('data-parent_id');
+      if(parent_id==0){
+        parent_id == parent_id;
+        parent = row_id;  
+      }else{
+        parent_id = parent;
+      }
+      let orderData = {
+          id:row_id,
+          parent_id:parent_id,
+          order:i
+      };
+      orderListObj[row_id] = orderData;
+      i=i+1;
+    });
+  }
+  setFeaturesOrder();
 }

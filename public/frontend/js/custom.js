@@ -211,7 +211,7 @@ $(document).ready(function (){
         let checked = $(this).find('input').is(':checked');
 
         // When toggle gets on
-        if(checked){ 
+        if(checked){
             // Manage Conflicts
             for (var i = 0; i < conficts.length; i++) {
                 let values = conficts[i];
@@ -261,7 +261,7 @@ $(document).ready(function (){
                     $('.dependency_'+value).prop('disabled',false).next('i').removeClass('disabled');
                 }
             }
-        // When toggle gets off 
+        // When toggle gets off
         }else{
             // Manage Conflicts
             for (var i = 0; i < conficts.length; i++) {
@@ -356,7 +356,7 @@ $(document).ready(function (){
                 // $(document).find('.floor_image_view').append(featureImage);
             }
         });
-        
+
 
 
 

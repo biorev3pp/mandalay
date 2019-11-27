@@ -110,6 +110,8 @@ class FeaturesController extends Controller
                     $uploadStatus = $image->move($destinationImagePath,$imageName);
                     $input['image'] = $imageName;
                 }
+                $rowCount = Features::count();
+                $input['order_no'] = $rowCount+1;
                 $result = Features::insert($input);
                 if($result){
                     DB::commit();
@@ -252,5 +254,12 @@ class FeaturesController extends Controller
         }catch(\Exception $e){
             return response($this->getErrorResponse($e->getMessage()));
         }
+    }
+    public function reOrderList(Request $request){
+        $orderData = $request->order;
+        foreach($orderData as $order){
+            Features::where('id',$order['id'])->update(['parent_id'=>$order['parent_id'],'order_no'=>$order['order']]);
+        }
+        return response(['success'=>true,'message'=>'Reordering Done!']);
     }
 }

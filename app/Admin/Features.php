@@ -19,6 +19,6 @@ class Features extends Model
 
     public function feature_groups()
     {
-    	return $this->hasMany('App\Admin\Features','parent_id');
+    	return $this->hasMany('App\Admin\Features','parent_id')->orderBy('order_no');
     }
 }
