@@ -60,6 +60,13 @@ class HomeController extends Controller
                         $ft[$data['parent_id']]['child_feature'][] = $data;
                     }
                 }
+                // sort array order_no wise
+                array_multisort(array_column($ft, 'order_no'), SORT_ASC, $ft);
+                foreach($ft as $k=>$f){
+                    $arr = $f['child_feature'];
+                    array_multisort(array_column($arr, 'order_no'), SORT_ASC, $arr);
+                    $ft[$k]['child_feature'] = $arr;
+                }
                 $floor->features_data = $ft;
                 unset($floor->features);
             }
