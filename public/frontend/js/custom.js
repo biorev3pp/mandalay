@@ -106,7 +106,7 @@ $(document).ready(function (){
     //     });
     // }
 
-    // function to set depandent toggle off on load
+    // function to set depandent and together toggle off on load
     function checkDependencyToggle(){
         $(document).find('.manageToggle').each(function(){
             let dependency = ($(this).attr('data-dependency').trim() != "") ? JSON.parse($(this).attr('data-dependency')) : [];
@@ -114,6 +114,11 @@ $(document).ready(function (){
                 let value = dependency[i];
                 $('.dependency_'+value).prop('disabled',true).next('i').addClass('disabled');
                 $('.dependency_'+value).parents('li').hide();
+            }
+            let togetherness = ($(this).attr('data-togetherness').trim() != "") ? JSON.parse($(this).attr('data-togetherness')) : [];
+            for (var i = 0; i < togetherness.length; i++) {
+                let value = togetherness[i];
+                $('.togetherness_'+value).parents('li').hide();
             }
         });
     }
@@ -203,122 +208,114 @@ $(document).ready(function (){
         }
     });
 
+    function hideConflicts(toggleId){
+        let currentElement = $(document).find('input#'+toggleId).parent('label');
+        let conficts = (currentElement.attr('data-conflicts').trim() != "") ? JSON.parse(currentElement.attr('data-conflicts')) : [];
+        for (var i = 0; i < conficts.length; i++) {
+            let values = conficts[i];
+            // Turn conflicts off
+            $('.conflicts_'+values).prop('checked',false).parents('li').hide();
+            // Turn related togetherness off
+            hideTogetherness(values);
+            // Turn related dependent off
+            hideDependency(values);
+        }
+    }
+    function showConflicts(toggleId){
+        let currentElement = $(document).find('input#'+toggleId).parent('label');
+        let conficts = (currentElement.attr('data-conflicts').trim() != "") ? JSON.parse(currentElement.attr('data-conflicts')) : [];
+        for (var i = 0; i < conficts.length; i++) {
+            let values = conficts[i];
+            // Turn conflicts off and show
+            $('.conflicts_'+values).prop('checked',false).parents('li').show();
+            hideTogetherness(values);
+            hideDependency(values);
+
+            // Show related togetherness off
+            // let conflictElement = $('.conflicts_'+values).parent('label');
+            // let conflictTogetherness = (conflictElement.attr('data-togetherness').trim() != "" ) ? JSON.parse(conflictElement.attr('data-togetherness')) : [];
+            // if(conflictTogetherness.length > 0){
+            //     for (var i = 0; i < conflictTogetherness.length; i++) {
+            //         let togetherId = conflictTogetherness[i];
+            //         $('.togetherness_'+togetherId).parents('li').show();
+            //     }
+            // }
+            // Turn conflict related dependent visible
+            // let conflictDependent = (conflictElement.attr('data-dependency').trim() != "" ) ? JSON.parse(conflictElement.attr('data-dependency')) : [];
+            // if(conflictDependent.length > 0){
+            //     for (var i = 0; i < conflictDependent.length; i++) {
+            //         let dependentId = conflictDependent[i];
+            //         $('.dependency_'+dependentId).parents('li').show();
+            //     }
+            // }
+        }
+    }
+
+    function showTogetherness(toggleId){
+        let currentElement = $(document).find('input#'+toggleId).parent('label');
+        let togetherness = (currentElement.attr('data-togetherness').trim() != "" ) ? JSON.parse(currentElement.attr('data-togetherness')) : [];
+        for (var i = 0; i < togetherness.length; i++) {
+            let values = togetherness[i];
+            $('.togetherness_'+values).parents('li').show();
+            $('.togetherness_'+values).prop('checked',true);
+            //Manage Conflicts
+            hideConflicts(values);
+            //Manage Dependency
+            showDependency(values);
+        }   
+    }
+    function hideTogetherness(toggleId){
+        let currentElement = $(document).find('input#'+toggleId).parent('label');
+        let togetherness = (currentElement.attr('data-togetherness').trim() != "" ) ? JSON.parse(currentElement.attr('data-togetherness')) : [];
+        for (var i = 0; i < togetherness.length; i++) {
+            let values = togetherness[i];
+            $('.togetherness_'+values).prop('checked',false);
+            $('.togetherness_'+values).parents('li').hide();
+            //Manage Conflicts
+            showConflicts(values);
+            //Manage Dependency
+            hideDependency(values);
+        }   
+    }
+    function showDependency(toggleId){
+        let currentElement = $(document).find('input#'+toggleId).parent('label');
+        let dependency = (currentElement.attr('data-dependency').trim() != "") ? JSON.parse(currentElement.attr('data-dependency')) : [];
+        if(dependency.length > 0){
+            for (var i = 0; i < dependency.length; i++) {
+                let value = dependency[i];
+                $('.dependency_'+value).parents('li').show();
+                $('.dependency_'+value).prop('disabled',false).next('i').removeClass('disabled');
+            }
+        }
+    }
+
+    function hideDependency(toggleId){
+        let currentElement = $(document).find('input#'+toggleId).parent('label');
+        let dependency = (currentElement.attr('data-dependency').trim() != "") ? JSON.parse(currentElement.attr('data-dependency')) : [];
+        if(dependency.length > 0){
+            for (var i = 0; i < dependency.length; i++) {
+                let value = dependency[i];
+                $('.dependency_'+value).prop('checked',false).prop('disabled',true).next('i').addClass('disabled');
+                $('.dependency_'+value).parents('li').hide();
+            }
+        }
+    }
+
+
     $(document).on('change','.manageToggle',function(event) {
         //Ranjan's Code
-        let conficts = ($(this).attr('data-conflicts').trim() != "") ? JSON.parse($(this).attr('data-conflicts')) : [];
-        let dependency = ($(this).attr('data-dependency').trim() != "") ? JSON.parse($(this).attr('data-dependency')) : [];
-        let togetherness = ($(this).attr('data-togetherness').trim() != "" ) ? JSON.parse($(this).attr('data-togetherness')) : [];
+        let toggleId = $(this).attr('data-self');
         let checked = $(this).find('input').is(':checked');
-
         // When toggle gets on
         if(checked){
-            // Manage Conflicts
-            for (var i = 0; i < conficts.length; i++) {
-                let values = conficts[i];
-                // Turn conflicts off
-                $('.conflicts_'+values).prop('checked',false).parents('li').hide();
-                // Turn related togetherness off
-                let conflictElement = $('.conflicts_'+values).parent('label');
-                let conflictTogetherness = (conflictElement.attr('data-togetherness').trim() != "" ) ? JSON.parse(conflictElement.attr('data-togetherness')) : [];
-                if(conflictTogetherness.length > 0){
-                    for (var i = 0; i < conflictTogetherness.length; i++) {
-                        let togetherId = conflictTogetherness[i];
-                        $('.togetherness_'+togetherId).prop('checked',false);
-                        $('.togetherness_'+togetherId).parents('li').hide();
-                    }
-                }
-                // // Turn related dependent off
-                let conflictDependent = (conflictElement.attr('data-dependency').trim() != "" ) ? JSON.parse(conflictElement.attr('data-dependency')) : [];
-                if(conflictDependent.length > 0){
-                    for (var i = 0; i < conflictDependent.length; i++) {
-                        let dependentId = conflictDependent[i];
-                        $('.dependency_'+dependentId).prop('checked',false).prop('disabled',true).next('i').addClass('disabled');
-                        $('.dependency_'+dependentId).parents('li').hide();
-                    }
-                }
-            }
-            // Manage Togetherness
-            for (var i = 0; i < togetherness.length; i++) {
-                let values = togetherness[i];
-                $('.togetherness_'+values).prop('checked',true);
-                // Remove disable from related dependent
-                let togetherElement = $('.togetherness_'+values).parent('label');
-                // // Remove disable from dependency from together elements
-                let togetherDependent = (togetherElement.attr('data-dependency').trim() != "" ) ? JSON.parse(togetherElement.attr('data-dependency')) : [];
-                if(togetherDependent.length > 0){
-                    for (var i = 0; i < togetherDependent.length; i++) {
-                        let dependentId = togetherDependent[i];
-                        $('.dependency_'+dependentId).parents('li').show();
-                        $('.dependency_'+dependentId).prop('disabled',false).next('i').removeClass('disabled');
-                    }
-                }
-            }
-            // Manage Dependency
-            if(dependency.length > 0){
-                for (var i = 0; i < dependency.length; i++) {
-                    let value = dependency[i];
-                    $('.dependency_'+value).parents('li').show();
-                    $('.dependency_'+value).prop('disabled',false).next('i').removeClass('disabled');
-                }
-            }
-        // When toggle gets off
+            hideConflicts(toggleId);
+            showTogetherness(toggleId);
+            showDependency(toggleId);
         }else{
             // Manage Conflicts
-            for (var i = 0; i < conficts.length; i++) {
-                let values = conficts[i];
-                // Turn conflicts off
-                $('.conflicts_'+values).prop('checked',false).parents('li').show();
-                // Show related togetherness off
-                let conflictElement = $('.conflicts_'+values).parent('label');
-                let conflictTogetherness = (conflictElement.attr('data-togetherness').trim() != "" ) ? JSON.parse(conflictElement.attr('data-togetherness')) : [];
-                if(conflictTogetherness.length > 0){
-                    for (var i = 0; i < conflictTogetherness.length; i++) {
-                        let togetherId = conflictTogetherness[i];
-                        $('.togetherness_'+togetherId).parents('li').show();
-                    }
-                }
-                // Turn conflict related dependent visible
-                let conflictDependent = (conflictElement.attr('data-dependency').trim() != "" ) ? JSON.parse(conflictElement.attr('data-dependency')) : [];
-                if(conflictDependent.length > 0){
-                    for (var i = 0; i < conflictDependent.length; i++) {
-                        let dependentId = conflictDependent[i];
-                        $('.dependency_'+dependentId).parents('li').show();
-                    }
-                }
-            }
-
-            // Manage Togetherness
-            for (var i = 0; i < togetherness.length; i++) {
-                let values = togetherness[i];
-                $('.togetherness_'+values).prop('checked',false);
-                // Disable related dependent toggles
-                let togetherElement = $('.togetherness_'+values).parent('label');
-                // // Add disable on dependency from together elements
-                let togetherDependent = (togetherElement.attr('data-dependency').trim() != "" ) ? JSON.parse(togetherElement.attr('data-dependency')) : [];
-                if(togetherDependent.length > 0){
-                    for (var i = 0; i < togetherDependent.length; i++) {
-                        let dependentId = togetherDependent[i];
-                        $('.dependency_'+dependentId).parents('li').hide();
-                        $('.dependency_'+dependentId).prop('checked',false).prop('disabled',true).next('i').addClass('disabled');
-                    }
-                }
-                // Show together conflict
-                let togetherConflict = (togetherElement.attr('data-conflicts').trim() != "" ) ? JSON.parse(togetherElement.attr('data-conflicts')) : [];
-                if(togetherConflict.length > 0){
-                    for (var i = 0; i < togetherConflict.length; i++) {
-                        let conflictId = togetherConflict[i];
-                        $('.conflicts_'+conflictId).parents('li').show();
-                    }
-                }
-            }
-            // Manage Dependency
-            if(dependency.length > 0){
-                for (var i = 0; i < dependency.length; i++) {
-                    let value = dependency[i];
-                    $('.dependency_'+value).parents('li').hide();
-                    $('.dependency_'+value).prop('disabled',true).prop('checked',false).next('i').addClass('disabled');
-                }
-            }
+            showConflicts(toggleId);
+            hideTogetherness(toggleId);
+            hideDependency(toggleId);
         }
 
         // Get all on toggles
