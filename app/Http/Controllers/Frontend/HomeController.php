@@ -20,8 +20,8 @@ class HomeController extends Controller
         $featureData = [];
         foreach($homes as $home){
             foreach($home->floors as $floor){
+                $featArr = [];
                 foreach($floor->featureList as $feature){
-                    $featureID = $feature->id;
                     $conflicts = [];
                     $together = [];
                     $dependency = [];
@@ -33,67 +33,30 @@ class HomeController extends Controller
                     }
                     if($feature->features_acl->dependency){
                         $dependency = json_decode($feature->features_acl->dependency);
-                    }
-                    // Loop through all features added 
-                    foreach($floor->featureList as $featureArr){
-                        // add conflicts value to current feature
-                        if($featureArr->id == $featureID){
-                            if(isset($conflicts) && !empty($conflicts)){
-                                $featureArr->conflicts = json_encode($conflicts);
-                            }
-                        }
-                        // set current feature as conflict
-                        if(in_array($featureArr->id, $conflicts)){
-                            if(isset($featureArr->conflicts) && !empty($featureArr->conflicts)){
-                                $addedConf = json_decode($featureArr->conflicts);
-                                array_push($addedConf, $featureID);    
-                                $featureArr->conflicts = json_encode($addedConf);
-                            }else{
-                                $newConf = array((string)$featureID);
-                                $featureArr->conflicts = json_encode($newConf);
-                            }
-                        }
-                        // add togetherness value to current feature
-                        if($featureArr->id == $featureID){
-                            if(isset($together) && !empty($together)){
-                                $featureArr->togetherness = json_encode($together);
-                            }
-                        }
-                        // set current feature as togetherness
-                        if(in_array($featureArr->id, $together)){
-                            if(isset($featureArr->togetherness)){
-                                $addedTog = json_decode($featureArr->together);
-                                array_push($addedTog, $featureID);    
-                                $featureArr->togetherness = json_encode($addedTog);
-                            }else{
-                                $newTog = array((string)$featureID);
-                                $featureArr->togetherness = json_encode($newTog);
-                            }
-                        }
-                        // add dependency value to current feature
-                        if($featureArr->id == $featureID){
-                            if(isset($dependency) && !empty($dependency)){
-                                $featureArr->dependency = json_encode($dependency);
+                    }              
+                    $featArr[$feature->id] = $feature->toArray();
+                    $featArr[$feature->id]['conflicts'] = $conflicts;
+                    $featArr[$feature->id]['togetherness'] = $together;
+                    $featArr[$feature->id]['dependency'] = $dependency;
+                    unset($featArr[$feature->id]['features_acl']);
+                }
+                foreach($featArr as $k=>$feature){
+                    if(!empty($feature['conflicts'])){
+                        foreach ($feature['conflicts'] as $conf) {
+                            if(!in_array($k, $featArr[$conf]['conflicts'])){
+                                $featArr[$conf]['conflicts'][] = (string)$k;
                             }
                         }
                     }
-                    unset($feature->features_acl);
-                    $featureData[$feature->id] = $feature->toArray();
                 }
                 $ft = [];
-                foreach($featureData as $data){
+                foreach($featArr as $data){
+                    $data['conflicts'] = json_encode($data['conflicts']);
+                    $data['togetherness'] = json_encode($data['togetherness']);
+                    $data['dependency'] = json_encode($data['dependency']);
                     if($data['parent_id']==0){
                         $ft[$data['id']] = $data;
                     }else{
-                        if(!isset($data['conflicts'])){
-                            $data['conflicts'] = '';
-                        }
-                        if(!isset($data['togetherness'])){
-                            $data['togetherness'] = '';
-                        }
-                        if(!isset($data['dependency'])){
-                            $data['dependency'] = '';
-                        }
                         $ft[$data['parent_id']]['child_feature'][] = $data;
                     }
                 }
@@ -102,7 +65,6 @@ class HomeController extends Controller
             }
             
         }
-        // $this->print($homes->toArray());
         // die;
         // dd(\DB::getQueryLog());
         $defaultHome = Homes::where('status',1)->first();
