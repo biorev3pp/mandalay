@@ -39,7 +39,7 @@ $(document).ready(function (){
           success: function (response) {
             $(document).find('.aclTable').append(response);
             $(document).find("select.js-example-basic-single").select2();
-            // remove main option from dropdown list which are already added if already added
+            // remove main option from dropdown list which are already added 
             let main_option_count = $(document).find('select.main_option').length;
             let x = 1;
             let main_option_selected = [];
@@ -103,67 +103,77 @@ $(document).ready(function (){
         tr.find('select.dependency').append(newDependencyOption).trigger('change');
       }
       
-      // now we need to check if current selected option has any conficts and togetherness
-      let optionInConfict = $(this).closest('tbody').find(".conflict option[value='"+value+"']").parent('select').val();
-       let = isArr = Array.isArray(optionInConfict); 
-      if(!isArr) {
-        optionInConfict = new Array(optionInConfict);
-      }
-      
+      // auto select related conflicts
       listOfConficts = [];
-      if(optionInConfict.includes(value)) {
-        let mainOpt = $(this).closest('tbody').find(".conflict option[value='"+value+"']").closest('tr').find('.main_option').val();
-        // set value to current tr confict select value
-        //get slected values
-        let preConficts = $(this).closest('tr').find('.conflict').val();
-        if(Array.isArray(preConficts) && preConficts.length) {
-          preConficts = new Array(preConficts);
+      $(document).find(".conflict").children("option:selected").each(function(i,val){
+        if($(this).val()==value){
+          let mainOpt = $(this).closest('tr').find('.main_option').children('option:selected').val();
+          listOfConficts.push(mainOpt);
         }
-        if(preConficts.length) {
-          $.each(preConficts,function(index, vl) {
-            listOfConficts.push(vl[index]);
-          });
-        }
-        listOfConficts.push(mainOpt);
+      });
+      $(this).closest('tr').find('.conflict').val(listOfConficts);
+      $(this).closest('tr').find('.conflict').trigger('change');
+      // let optionInConfict = $(this).closest('tbody').find(".conflict option[value='"+value+"']").parent('select').val();
+      //  let = isArr = Array.isArray(optionInConfict); 
+      // if(!isArr) {
+      //   optionInConfict = new Array(optionInConfict);
+      // }
+      // listOfConficts = [];
+      // if(optionInConfict.includes(value)) {
+      //   let mainOpt = $(this).closest('tbody').find(".conflict option[value='"+value+"']").closest('tr').find('.main_option').val();
+        
+      //   // set value to current tr confict select value
+      //   //get slected values
+      //   let preConficts = $(this).closest('tr').find('.conflict').val();
+      //   if(Array.isArray(preConficts) && preConficts.length) {
+      //     preConficts = new Array(preConficts);
+      //   }
+      //   if(preConficts.length) {
+      //     $.each(preConficts,function(index, vl) {
+      //       listOfConficts.push(vl[index]);
+      //     });
+      //   }
+      //   listOfConficts.push(mainOpt);
 
-        // set value to current tr confict select value
-        //get slected values
-        listOfConficts = unique(listOfConficts);
-        console.log(listOfConficts)
-        $(this).closest('tr').find('.conflict').val(listOfConficts);
-        $(this).closest('tr').find('.conflict').trigger('change');
-      }
+      //   // set value to current tr confict select value
+      //   //get slected values
+      //   listOfConficts = unique(listOfConficts);
+      //   console.log(listOfConficts)
+      //   $(this).closest('tr').find('.conflict').val(listOfConficts);
+      //   $(this).closest('tr').find('.conflict').trigger('change');
+      // }
 
-      let optionTogetherness = $(this).closest('tbody').find(".togetherness option[value='"+value+"']").parent('select').val();
-      let isTogethernessArr = Array.isArray(optionTogetherness); 
-      if(!isTogethernessArr) {
-        optionTogetherness = new Array(optionTogetherness);
-      }
-      // console.log(optionTogetherness)
-      listOfTogetharness = [];
-      if(optionTogetherness.includes(value)  ) {
-        let mainOpt = $(this).closest('tbody').find(".togetherness option[value='"+value+"']").closest('tr').find('.main_option').val();
-        // set value to current tr confict slect value
-        //get slected values
-        let preTogetherness = $(this).closest('tr').find('.togetherness').val();
-        if(Array.isArray(preTogetherness) && preTogetherness.length) {
-          preTogetherness = new Array(preTogetherness);
-        }
-        if(preTogetherness.length) {
-          $.each(preTogetherness,function(index, vl) {
-            listOfTogetharness.push(vl[index]);
-          });
-        }
-        listOfTogetharness.push(mainOpt);
-        // set value to current tr confict slect value
-        //get slected values
-        listOfTogetharness = unique(listOfTogetharness);
-        console.log(listOfTogetharness)
-        $(this).closest('tr').find('.togetherness').val(listOfTogetharness);
-        $(this).closest('tr').find('.togetherness').trigger('change');
-      }
+      // let optionTogetherness = $(this).closest('tbody').find(".togetherness option[value='"+value+"']").parent('select').val();
+      // let isTogethernessArr = Array.isArray(optionTogetherness); 
+      // if(!isTogethernessArr) {
+      //   optionTogetherness = new Array(optionTogetherness);
+      // }
+      // // console.log(optionTogetherness)
+      // listOfTogetharness = [];
+      // if(optionTogetherness.includes(value)  ) {
+      //   let mainOpt = $(this).closest('tbody').find(".togetherness option[value='"+value+"']").closest('tr').find('.main_option').val();
+      //   // set value to current tr confict slect value
+      //   //get slected values
+      //   let preTogetherness = $(this).closest('tr').find('.togetherness').val();
+      //   if(Array.isArray(preTogetherness) && preTogetherness.length) {
+      //     preTogetherness = new Array(preTogetherness);
+      //   }
+      //   if(preTogetherness.length) {
+      //     $.each(preTogetherness,function(index, vl) {
+      //       listOfTogetharness.push(vl[index]);
+      //     });
+      //   }
+      //   listOfTogetharness.push(mainOpt);
+      //   // set value to current tr confict slect value
+      //   //get slected values
+      //   listOfTogetharness = unique(listOfTogetharness);
+      //   // console.log(listOfTogetharness)
+      //   $(this).closest('tr').find('.togetherness').val(listOfTogetharness);
+      //   $(this).closest('tr').find('.togetherness').trigger('change');
+      // }
 
     });
+
     // Remove option from all dropdowns in current row which is once selected in conflict
     $(document).on('change','.conflict', function(){
       let tr = $(this).closest('tr');
