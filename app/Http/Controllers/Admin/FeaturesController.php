@@ -224,15 +224,15 @@ class FeaturesController extends Controller
         try{
             DB::beginTransaction();
             $i = 0;
-            foreach($post['feature_id'] as $featureid){
+            foreach($post['main_option'] as $key=>$featureid){
                 $i++;
                 $prepareData[] = [
                     'user_id'       => Auth::id(),
                     'feature_id'    => $featureid,
                     'floor_id'      => $floorid,
-                    'conflicts'     => (isset($post['conflict'][$i])) ? json_encode($post['conflict'][$i]) : null,
-                    'dependency'    => (isset($post['dependency'][$i])) ? json_encode($post['dependency'][$i]) : null,
-                    'togetherness'  => (isset($post['togetherness'][$i])) ? json_encode($post['togetherness'][$i]) : null,
+                    'conflicts'     => (isset($post['conflict'][$key])) ? json_encode($post['conflict'][$key]) : null,
+                    'dependency'    => (isset($post['dependency'][$key])) ? json_encode($post['dependency'][$key]) : null,
+                    'togetherness'  => (isset($post['togetherness'][$key])) ? json_encode($post['togetherness'][$key]) : null,
                 ];
             }
             //In case of update 

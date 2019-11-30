@@ -218,7 +218,7 @@ $(document).ready(function (){
             // Turn related togetherness off
             hideTogetherness(values);
             // Turn related dependent off
-            hideDependency(values);
+            // hideDependency(values);
         }
     }
     function showConflicts(toggleId){
@@ -301,6 +301,37 @@ $(document).ready(function (){
         }
     }
 
+    function checkFinalAclSettings(){
+        // checkDependencyToggle();
+        var onOptions = [];
+        $(document).find('.manageToggle').each(function(){
+            let checked = $(this).find('input').is(':checked');
+            if(checked){
+                let toggleId = $(this).attr('data-self');
+                onOptions.push(toggleId);
+            }
+        });
+        console.log(onOptions);
+        if(onOptions.length > 0){
+            for(var i = 0; i < onOptions.length; i++){
+                let toggleId = onOptions[i];
+                showDependency(toggleId);
+            }
+        }
+        if(onOptions.length > 0){
+            for(var i = 0; i < onOptions.length; i++){
+                let toggleId = onOptions[i];
+                showTogetherness(toggleId);
+            }
+        }
+        if(onOptions.length > 0){
+            for(var i = 0; i < onOptions.length; i++){
+                let toggleId = onOptions[i];
+                hideConflicts(toggleId);
+            }
+        }
+    }
+
 
     $(document).on('change','.manageToggle',function(event) {
         //Ranjan's Code
@@ -311,11 +342,13 @@ $(document).ready(function (){
             hideConflicts(toggleId);
             showTogetherness(toggleId);
             showDependency(toggleId);
+            checkFinalAclSettings();
         }else{
             // Manage Conflicts
             showConflicts(toggleId);
             hideTogetherness(toggleId);
             hideDependency(toggleId);
+            checkFinalAclSettings();
         }
 
         // Get all on toggles
