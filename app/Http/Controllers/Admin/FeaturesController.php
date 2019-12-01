@@ -218,21 +218,22 @@ class FeaturesController extends Controller
 
     public function saveAclSettings(Request $request)
     {
+        $aclData = json_decode($request->acl_data,TRUE);
         $floorid = $request->floorid;
         $post = \Arr::except($request->all(),['_token']);
         $prepareData = [];
         try{
             DB::beginTransaction();
             $i = 0;
-            foreach($post['main_option'] as $key=>$featureid){
+            foreach($aclData as $key=>$value){
                 $i++;
                 $prepareData[] = [
                     'user_id'       => Auth::id(),
-                    'feature_id'    => $featureid,
+                    'feature_id'    => $key,
                     'floor_id'      => $floorid,
-                    'conflicts'     => (isset($post['conflict'][$key])) ? json_encode($post['conflict'][$key]) : null,
-                    'dependency'    => (isset($post['dependency'][$key])) ? json_encode($post['dependency'][$key]) : null,
-                    'togetherness'  => (isset($post['togetherness'][$key])) ? json_encode($post['togetherness'][$key]) : null,
+                    'conflicts'     => $value['conflicts'],
+                    'dependency'    => $value['dependency'],
+                    'togetherness'  => $value['togetherness'],
                 ];
             }
             //In case of update 

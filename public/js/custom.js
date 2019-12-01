@@ -245,6 +245,33 @@ $(document).ready(function (){
     setMainOptionList();
     addACLRowButtonHandle();
 
+    // Create all options object to save in database
+    var optionArr = {};
+    $(document).on('click','#save_acl_btn', function(){
+      $(document).find('.aclTable tbody tr').each(function(){
+        let conflictArr = [];
+        let dependencyArr = [];
+        let togetherArr = [];
+        let main_feature = $(this).find('select.main_option').children("option:selected").val();
+        let conflicts = $(this).find('select.conflict').children("option:selected").each(function(){
+          conflictArr.push($(this).val());
+        });
+        let dependency = $(this).find('select.dependency').children("option:selected").each(function(){
+          dependencyArr.push($(this).val());
+        });
+        let together = $(this).find('select.togetherness').children("option:selected").each(function(){
+          togetherArr.push($(this).val());
+        });
+        optionArr[main_feature]={
+          conflicts:JSON.stringify(conflictArr),
+          dependency:JSON.stringify(dependencyArr),
+          togetherness:JSON.stringify(togetherArr)        
+        }
+      });
+      $(document).find('#acl_data_field').val(JSON.stringify(optionArr));
+      $(document).find('#acl_setting_form').trigger('submit');
+    });
+
 });
 // function to show/hide add row button 
 function addACLRowButtonHandle(){
@@ -263,8 +290,6 @@ function addACLRowButtonHandle(){
   }
 
 }
-
-
 function setMainOptionList(option=''){
   var mainFeatureList = new Array();
   $(document).find("select.main_option").each(function(i,obj){

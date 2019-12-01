@@ -302,7 +302,7 @@ $(document).ready(function (){
     }
 
     function checkFinalAclSettings(){
-        // checkDependencyToggle();
+        checkDependencyToggle();
         var onOptions = [];
         $(document).find('.manageToggle').each(function(){
             let checked = $(this).find('input').is(':checked');
@@ -311,7 +311,6 @@ $(document).ready(function (){
                 onOptions.push(toggleId);
             }
         });
-        console.log(onOptions);
         if(onOptions.length > 0){
             for(var i = 0; i < onOptions.length; i++){
                 let toggleId = onOptions[i];
@@ -332,7 +331,7 @@ $(document).ready(function (){
         }
     }
 
-
+    // set acl toggles when a toggle is clicked
     $(document).on('change','.manageToggle',function(event) {
         //Ranjan's Code
         let toggleId = $(this).attr('data-self');

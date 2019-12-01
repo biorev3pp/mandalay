@@ -66,8 +66,9 @@
                   <button type="button" data-floor-id="{{$floor->id}}" class="btn btn-primary float-left clonetrBtn"><span class="fa fa-plus pr-2"></span>Add Row</button>
                 </div>
                 <div class="col-md-3 float-right saveACLBtn">
-                  <button type="submit" class="btn btn-primary float-right "><span class="fa fa-save pr-2"></span>Save</button>
+                  <button id="save_acl_btn" type="button" class="btn btn-primary float-right"><span class="fa fa-save pr-2"></span>Save</button>
                 </div>
+                {{Form::hidden('acl_data',null,['id'=>'acl_data_field'])}}
                 {{Form::close()}}
              </div>
           </div>
