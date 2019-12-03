@@ -158,12 +158,13 @@ $(document).ready(function (){
     //get checked features and go to final page
     $(document).on('click','.finishBtn', function(e){
         let selectedfeatures = [];
-        $(document).find('.featureBtn:checkbox:checked').each(function(i,obj){
-            // let floorid = $(obj).attr('data-check-floor-id');
-            let featureid = $(obj).attr('id');
-            // selectedfeatures.push(featureid);
-            let featureInput = '<input name="feature_id[]" type="hidden" value="'+featureid+'">';
-            $("input[name='home_id']").after(featureInput);
+        $(document).find('.manageToggle').each(function(){
+            let checked = $(this).find('input').is(':checked');
+            if(checked){
+                let featureid = $(this).attr('data-self');
+                let featureInput = '<input name="feature_id[]" type="hidden" value="'+featureid+'">';
+                $(document).find("input[name='home_id']").after(featureInput);
+            }
         });
         $(document).find('#finishPage_form').submit();
     });
