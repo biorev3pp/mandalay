@@ -209,12 +209,11 @@ ntent -->
             <div class="two_button_sp">
 
                 <span class="p_tag">
-				 <small>Starts From</small>
-				{{$home->cost}}
-                 
-                  </span>
-
-
+                  <small>Starts From</small>
+                  <div id="h_price">{{$home->cost}}</div>
+                  <div id="installments" class="text-muted" style="font-size:16px">$14,784.25
+                      /Month</div>
+                 </span>
             <button type="button" class="btn_mortgage" data-toggle="modal" data-target="#mortageModal">
               <i class="fa fa-calculator  pr-2"></i> Mortgage
             </button>

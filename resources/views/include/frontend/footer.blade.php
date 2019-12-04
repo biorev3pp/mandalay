@@ -69,12 +69,13 @@
       });
 
       $(document).on('click','.btn_mortgage',function () {
+        const price = $('#h_price').text();
         $('.calculator').accrue({
             mode: "basic",
             operation: "keyup",
             currency: "USD",
             default_values: {
-              amount: "$300000",
+              amount: price,
               rate: "4.1",
               rate_compare: "1.49%",
               term: "36m",
@@ -99,13 +100,15 @@
                   '<div class="price-header">TOTAL PRICE OF HOME</div>'+
                   '<div class="price-text-big">$ 300000</div>'+
                   '<div class="price-text">Base Price<span class="price_bp">$300000</span></div>'+
-				  '<div class="price-text">Floor option Selected<span class="price_bp"></span></div>'+
 				  '<div class="price-header">Monthly Estimated Payment</div>'+
-                  '<div class="price-text-big">$ 1280</div>'+
+                  '<div class="price-text-big"></div>'+
                 '</div>',
             response_compare: "Save $%savings% in interest!",
             error_text: "Please fill in all fields for calculation.",
-            callback: function ( elem, data ){}
+            callback: function ( elem, data ){
+              $('.price-text-big').html($('.estimate').text());
+              $("#installments").html($('.estimate').text()+'/Month');
+            }
           });
           $('.amount').attr('readonly','true');
       });
