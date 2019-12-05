@@ -350,6 +350,15 @@ $(document).ready(function (){
             hideDependency(toggleId);
             checkFinalAclSettings();
         }
+        //custom checks
+        let expansionOn = $(document).find('.manageToggle').find('input#55').is(':checked');
+        let ceiling10On = $(document).find('.manageToggle').find('input#56').is(':checked');
+        let ceiling11On = $(document).find('.manageToggle').find('input#58').is(':checked');
+        if(expansionOn && (ceiling10On || ceiling11On)){
+            $(document).find('.manageToggle').find('input#132').parents('li').show();
+        }else{
+            $(document).find('.manageToggle').find('input#132').parents('li').hide();
+        }
 
         // Get all on toggles
         var checkedOptions = [];
