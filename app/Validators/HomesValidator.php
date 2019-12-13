@@ -26,7 +26,8 @@ trait HomesValidator
                 'bedrooms'     => 'required',
                 'bathrooms'    => 'required',
                 'cost'         => 'required',
-                'garage'       => 'required'
+                'garage'       => 'required',
+                'communities'  => 'required'
             );
             if(!isset($request->image_update) || $request->image_update==""){
                 $validations['image'] = 'required|mimes:jpeg,jpg,png';                         

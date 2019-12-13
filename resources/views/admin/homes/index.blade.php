@@ -10,8 +10,10 @@
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
           <h6 class="m-0 font-weight-bold text-primary">Manage Your <span class="text-success">Homes</span>
             Easily</h6>
-            <a href="{{url('admin/homes/create')}}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
-              <i class="fas fa-plus fa-sm pr-2"></i>Add A New Home</a>
+            <div class="two_btn_DIV">
+                <a href="{{url('admin/homes/create')}}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
+                  <i class="fas fa-plus fa-sm pr-2"></i>Add A New Home</a>
+             </div>
         </div>
         <!-- Card Body -->
         <div class="card-body" id="custom_table">
@@ -30,13 +32,16 @@
                 @forelse($data as $record)
                 @php $i++; @endphp
                 <tr>
-                <td>{{$i}}.</td>
-                  <td>{{$record->title}}</td>
-                  <td>{{$statusArray[$record->status]}}</td>
+                  <td>{{ $i }}.</td>
+                  <td>{{ $record->title }}</td>
+                  <td>{{ $statusArray[$record->status] }}</td>
                   <td>
-                    <a href="{{url('admin/floors/list/'.Crypt::encrypt($record->id))}}"><i class="fas fa-map"></i> Floors</a>
-                    <a href="{{url('admin/homes/edit/'.Crypt::encrypt($record->id))}}"><i class="fas fa-edit"></i> Edit</a>
-                    <a href="#" class="delete_record_btn" id="{{Crypt::encrypt($record->id)}}" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt"></i> Delete</a>
+                      <a class="mr-2 font-weight-normal" href="{{url('admin/home-communities/'.Crypt::encrypt($record->id))}}">
+                        <i class="fas fa-edit"></i>Communities
+                    </a>
+                    <a class="mr-2" href="{{url('admin/floors/list/'.Crypt::encrypt($record->id))}}"><i class="fas fa-map"></i>Floors</a>
+                    <a class="mr-2" href="{{url('admin/homes/edit/'.Crypt::encrypt($record->id))}}"><i class="fas fa-edit"></i>Edit</a>
+                    <a class="mr-2" href="#" class="delete_record_btn" id="{{Crypt::encrypt($record->id)}}" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt"></i>Delete</a>
                   </td>
                 </tr>
                 @empty
@@ -53,7 +58,8 @@
   </div>
 </div>
 </div>
-<!-- Logout Modal-->
+
+<!-- Delete Modal-->
 <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

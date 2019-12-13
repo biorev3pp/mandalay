@@ -6,13 +6,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Traits\HelperTrait;
 use App\Admin\Homes;
+use App\Admin\HomeCommunitySettings;
 use App\Admin\Floor;
 use App\Admin\Features;
 use App\Admin\FloorAclSetting;
+use App\Admin\Communities;
 use Validator;
 use App\Validators\HomesValidator;
 USE DB;
 use File;
+use Auth;
 
 class HomesController extends Controller
 {
@@ -28,18 +31,41 @@ class HomesController extends Controller
 
     public function index(){
         $result = Homes::all();
+        $communities = Communities::all();
         $this->data['data'] = $result;
+        $this->data['communities'] = $communities;
         return view('admin.homes.index')->with($this->data);
     }
 
+    public function communities($id = null){
+        $fixed_communities = [];
+        $id = $this->decrypt($id);
+        $home = Homes::whereId($id)->first();
+        $records = HomeCommunitySettings::where('home_id', $id)->get();
+        foreach ($records as $key => $value) {
+            $fixed_communities[] = $value->community_id;
+        }
+        
+        $this->data['home'] = $home;
+        $this->data['data'] = $records;
+        $this->data['communities'] = Communities::whereNotIn('id', $fixed_communities)->get();
+
+        return view('admin.homes.communities')->with($this->data);
+    }
+
     public function create(){
+        $communities = Communities::all();
+        $this->data['communities']  = $communities;
         $this->data['data'] = '';
         return view('admin.homes.add_update')->with($this->data);
     } 
 
     public function edit(Request $request, $id){
+        $communities = Communities::all();
+        $this->data['communities']  = $communities;
         $id = $this->decrypt($id);
         $data = Homes::whereId($id)->first();
+        $data->communities = explode(',', $data->communities);
         $this->data['data'] = $data;
         return view('admin.homes.add_update')->with($this->data);
     }
@@ -55,6 +81,7 @@ class HomesController extends Controller
                 $home = Homes::whereId($id)->first();
                 DB::beginTransaction();
                 $input = $request->except(['_token','record_id','image_update']);
+                $input['communities'] = implode(',', $input['communities']);                                        
                 if($request->image){
                     // Delete old image file
                     if($home->image!='' || $home->image!=null || !empty($home->image)){
@@ -92,6 +119,7 @@ class HomesController extends Controller
                     $uploadStatus = $image->move($destinationImagePath,$imageName);
                     $input['image'] = $imageName;
                 }
+                                            
                 $result = Homes::insert($input);
                 if($result){
                     DB::commit();
@@ -151,6 +179,28 @@ class HomesController extends Controller
                 DB::rollBack();
                 return response($this->getErrorResponse(trans('response.failure')));
             }
+        }catch(\Exception $e){
+            return response($this->getErrorResponse($e->getMessage()));
+        }
+    }
+
+    public function addcommunity(Request $request){
+        try{
+                DB::beginTransaction();
+                $input = $request->except('_token');
+                $result = HomeCommunitySettings::insert($input);
+                if($result){
+                    DB::commit();
+                    $response = [
+                        'url' => url('admin/home-communities/'.$this->encrypt($request['home_id'])),
+                        'message' => trans('response.inserted'),
+                        'delayTime' => 2000
+                    ];
+                    return response($this->getSuccessResponse($response));
+                }else{
+                    DB::rollBack();
+                    return response($this->getErrorResponse(trans('response.failure')));
+                }
         }catch(\Exception $e){
             return response($this->getErrorResponse($e->getMessage()));
         }

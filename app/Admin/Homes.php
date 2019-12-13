@@ -11,4 +11,5 @@ class Homes extends Model
     public function floors(){
         return $this->hasMany('App\Admin\Floor', 'home_id');
     }
+
 }

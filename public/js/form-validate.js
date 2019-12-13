@@ -1,5 +1,5 @@
 var toastr = {
-  success : function(success_message,delayTime = 3000) {
+  success : function(success_message,delayTime = 5000) {
     $.toast({
           heading             : 'Success',
           text                : success_message,
@@ -11,7 +11,7 @@ var toastr = {
           position            : 'top-right'
       });
   },
-  error : function(error_message,delayTime = 3000) {
+  error : function(error_message,delayTime = 8000) {
     $.toast({
           heading             : 'Error',
           text                : error_message,
@@ -326,11 +326,6 @@ $(document).ready(function ()
         }
     });
 });
-
-
-
-
-
 
 function formSubmit(form)
 {

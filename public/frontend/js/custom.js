@@ -157,19 +157,53 @@ $(document).ready(function (){
 
     //get checked features and go to final page
     $(document).on('click','.finishBtn', function(e){
-        let selectedfeatures = [];
-        $(document).find('.manageToggle').each(function(){
-            let checked = $(this).find('input').is(':checked');
-            if(checked){
-                let featureid = $(this).attr('data-self');
-                let featureInput = '<input name="feature_id[]" type="hidden" value="'+featureid+'">';
-                $(document).find("input[name='home_id']").after(featureInput);
+
+        // Customer Login check After submit
+        $.ajax({
+            url : app_base_url+'/api/user-check',
+            type : "POST",
+            data : {},
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            beforeSend  : function () {
+                $("#preloader").show();
+            },
+            complete: function (response) {
+                if(response.responseJSON.status == 'fail') {
+                    $('#loginModal').modal('show');
+                } else {
+                    let selectedfeatures = [];
+                    $(document).find('.manageToggle').each(function(){
+                        let checked = $(this).find('input').is(':checked');
+                        if(checked){
+                            let featureid = $(this).attr('data-self');
+                            let featureInput = '<input name="feature_id[]" type="hidden" value="'+featureid+'">';
+                            $(document).find("input[name='home_id']").after(featureInput);
+                        }
+                    });
+                    $(document).find('#finishPage_form').submit();
+                }
+                //$(document).find('#finishPage_form').submit();
+            },
+            success: function (response) {
+                
             }
         });
-        $(document).find('#finishPage_form').submit();
+
+       
+        
     });
 
+    
+
     $(document).on('click','.downloadPDFBtn', function(e){
+        Swal.fire({
+            title:'Good job!',
+            text:'Please Keep Patience. Your Home design is downloading.',
+            icon:'success',
+            backdrop: false
+        });
         $(document).find('#pdf_form').submit();
     });
 

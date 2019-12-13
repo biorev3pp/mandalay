@@ -42,12 +42,15 @@
       </div>
     </div>
 
+
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('frontend/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
+      
     <!-- Core plugin JavaScript-->
     <script src="{{asset('frontend/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="{{asset('frontend/js/sb-admin-2.min.js')}}"></script>
@@ -98,7 +101,7 @@
                 '<div class="circle-div"><div class="circle"><span class="estimate">%payment_amount%</span></div></div>'+
                 '<div class="mortage-result">'+
                   '<div class="price-header">TOTAL PRICE OF HOME</div>'+
-                  '<div class="price-text-big">$ 300000</div>'+
+                  '<div class="price-text-small">%total_payments%</div>'+
                   '<div class="price-text">Base Price<span class="price_bp">$300000</span></div>'+
 				  '<div class="price-header">Monthly Estimated Payment</div>'+
                   '<div class="price-text-big"></div>'+
@@ -134,6 +137,8 @@
         })
       });
     </script>
+
+@include('include.frontend.overlay') 
 </body>
 
 </html>

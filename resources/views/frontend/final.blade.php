@@ -33,17 +33,29 @@
                       {{Form::close()}}
                   </li>
                   <li>
+                    {{Form::open(array('url'=>url('save-floorplan'),'id'=>'pdf_form'))}}
+                    {{Form::hidden('home_id',$home->id)}}
+                    @forelse($features as $feature)
+                    {{Form::hidden('feature_id[]',$feature)}}
+                    @php $i = 1; @endphp
+                    @empty
+                    @php $i = 0; @endphp
+                    @endforelse
+                      <a href="#" style="font-size: 20px; position: relative; top: 3px;" class="@if($i==1) favFloorBtn @endif"><i class="fa fa-heart"></i></a>
+                    {{Form::close()}}
+                  </li>
+                  <li>
                       <a href="{{url('/')}}"><img src="{{asset('asset/img/icon-new.png')}}" title="New Home"/></a>
                   </li>
               </ul>
               <h2>Congratulations!</h2>
-              <p>You've designed your new House</p>
+              <p>You've designed your new Home</p>
             </div>
             <div class="custom-heading">
-                Your Selection
+                Your Home
             </div>
             <div class="cont-box">
-              <label>Elevation Name:</label> {{$home->title}}
+              <!-- <label>Elevation Name:</label> --> {{$home->title}}
             </div>
             @php $j=0; @endphp
             @forelse($home->floors as $floor)
@@ -79,21 +91,22 @@
             <div class="custom-heading">
                 Disclaimer
             </div>
-            <div class="cont-box">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+            <div class="cont-box text-justify">
+                <p>Available home plans, pricing, features, and community information is subject to change at any time prior to sale without notice or obligation. In the continuing effort to improve our homes, builder reserves the right to modify the interior and exterior design, specifications, locations, sizes, design features and prices of the homes. Modifications may vary by home and are subject to change without notice. All dimensions and square footages are approximate and can vary in production. No representations of any type are made by this floor plan. Colors shown are approximate representations of actual materials and are not intended to be an exact color match. Please consult our sales representative for details. We at Mandalay Homes want to be of further assistance to you, if you have questions please feel free to contact the Sales Department at 855-955-6466 ext. 1 �2020 Mandalay Homes
+</p>
             </div>
             <div class="custom-heading">
-                Contact Detail
+                Contact Mandalay Homes
             </div>
             <div class="cont-box">
               <ul class="contact-info">
-                  <li><img class="float-left" src="{{asset('asset/img/icon-building.png')}}"><span>Lorem Zirrolli ,Sales Manager<br>Ipsum at North Branch</span></li>
-                  <li><img class="float-left" src="{{asset('asset/img/icon-phone.png')}}" /> +1234-567-8901</li>
+                  <li><img class="float-left" src="{{asset('asset/img/icon-building.png')}}"><span>{{ $settings->email }}</span></li>
+                  <li><img class="float-left" src="{{asset('asset/img/icon-phone.png')}}" />{{ $settings->phone }}</li>
               </ul>
             </div>
-            <div class="note-txt">
+            {{-- <div class="note-txt">
                 Note: When selecting the upgrade for the siding or accent siding, this upgrade comes as a combo and cannot be upgraded per individual selection.
-            </div>
+            </div> --}}
           </div>
         </div>
         <div class="col-lg-8">

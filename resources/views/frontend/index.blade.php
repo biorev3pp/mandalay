@@ -21,6 +21,18 @@
     #image-graggble {
       cursor: all-scroll;
     }
+	.mortage-result .price-text-small {
+	    margin: 8px 0;
+	    padding: 0;
+	    font-family: 'Open Sans', sans-serif;
+	    font-size: 22px;
+	    color: #7cc035;
+	    font-weight: 600;
+	}
+  .modal{z-index: 11111;}
+.div_co{
+  vertical-align: top;
+}
   </style>
 
         <!-- Begin Page Co    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">
@@ -37,18 +49,17 @@ ntent -->
                 class="nav bg-primary d-flex d-block align-items-center justify-content-center" id="padd">
                 <li class="col-6 text-center hand customNav active tabDiv" id="home">
                   <img src="{{asset('frontend/img/ext-icon.png')}}">
-
-                  <!--<h5>Plan</h5>-->
+                  <br>Street View
                 </li>
                 <li class="col-6 text-center hand customNav tabDiv" id="floor">
                   <img src="{{asset('frontend/img/fp-icon.png')}}">
-
-                 <!-- <h5>Floor</h5>-->
+                  <br>Plan View
                 </li>
               </ul>
-			  <div class="accord">
+			        <div class="accord">
               <div class="custom-scroll col-12 tabDivSection" id="home">
-			  <h6>Elevation</h6>
+                <!-- <h6>Elevation</h6> -->
+                <h6>Available Floor Plans</h6>
                 <ul class="navbar-nav" id="div_pos">
 
                   @php $i=0; @endphp
@@ -119,10 +130,12 @@ ntent -->
               </div>
               </div><!--div scroller-->
               <div class="floor-plan-btn">
-                <button type="button" class="btn btn-finish finishBtn">Finish &amp; Print</button>
-                {{Form::open(array('url'=>url('home-final'),'id'=>'finishPage_form'))}}
-                {{Form::hidden('home_id',$defaultHome->id)}}
-                {{Form::close()}}
+                {{-- overlay for forced login --}}
+                  <button type="button" class="btn btn-finish finishBtn">Finish &amp; Print</button>
+                  {{Form::open(array('url'=>url('home-final'),'id'=>'finishPage_form'))}}
+                  {{Form::hidden('home_id',$defaultHome->id)}}
+                  {{Form::close()}}
+                               
               </div>
             </div>
 			</div>
@@ -180,7 +193,9 @@ ntent -->
 			  <h5 class="text-primary">{{$home->title}} {{$home->subtitle}}</h5>
             </div>-->
 			 <div class="home_column_">
-              <img src="{{asset('frontend/img/h_ico.png')}}">
+
+        <img src="{{asset('frontend/img/h_ico.png')}}">
+              
 			  <div class="div_co">
              <p>{{$home->title}}<br>{{$home->subtitle}}</p></div>
             </div>
@@ -323,5 +338,6 @@ ntent -->
     </div>
   </div>
 </div>
+
 
 @endsection

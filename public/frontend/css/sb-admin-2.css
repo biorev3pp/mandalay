@@ -12042,9 +12042,14 @@ ul#padd {
 }
 
 ul#padd li {
-	padding: 29px 20px;
-	border-bottom: 2px solid transparent;
-	transition: .5s ease-in-out;
+	/* padding: 29px 20px; */
+	padding: 18px 20px 19px;
+    border-bottom: 2px solid transparent;
+    transition: .5s ease-in-out;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: capitalize;
 }
 
 ul#padd li:hover {

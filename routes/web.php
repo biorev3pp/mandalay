@@ -40,6 +40,31 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'], function () {
     Route::get('homes/edit/{id}', 'Admin\HomesController@edit');
     Route::post('homes/save', 'Admin\HomesController@save');
     Route::post('homes/delete', 'Admin\HomesController@delete');
+    Route::get('home-communities/{id}', 'Admin\HomesController@communities');
+    Route::post('homes/addcommunity', 'Admin\HomesController@addcommunity');
+
+    // User Routes
+    Route::get('users', 'Admin\UsersController@index');
+    Route::get('users/create', 'Admin\UsersController@create');
+    Route::get('users/edit/{id}', 'Admin\UsersController@edit');
+    Route::get('users/communities/{id}', 'Admin\UsersController@communities');
+    Route::post('users/addcommunity', 'Admin\UsersController@addcommunity');
+    Route::post('users/delete-community', 'Admin\UsersController@deleteCommunity');
+    Route::post('users/save', 'Admin\UsersController@save');
+    Route::post('users/delete', 'Admin\UsersController@delete');
+
+    // User Role management Routes
+    Route::get('users/roles', 'Admin\UsersController@roles');
+    Route::get('users/edit-permissions/{id}', 'Admin\UsersController@editPermissions');
+    Route::post('users/save-permissions', 'Admin\UsersController@savePermissions');
+
+    
+    //Communities Routes
+    Route::resource('communities', 'Admin\CommunitiesController');
+    Route::get('communities/create', 'Admin\CommunitiesController@create');
+    Route::get('communities/edit/{id}', 'Admin\CommunitiesController@edit');
+    Route::post('communities/save', 'Admin\CommunitiesController@save');
+    Route::post('communities/delete', 'Admin\CommunitiesController@delete');
 
     //Floor Routes
     Route::get('floors/list/{id}', 'Admin\FloorController@index');
@@ -47,6 +72,9 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'], function () {
     Route::get('floors/edit/{id}', 'Admin\FloorController@edit');
     Route::post('floors/save', 'Admin\FloorController@save');
     Route::post('floors/delete', 'Admin\FloorController@delete');
+
+    //User Floor Routes
+    Route::get('floor_plans', 'Admin\FloorPlansController@index');
 
     //Features Routes
     Route::get('features/list/{id}', 'Admin\FeaturesController@index');

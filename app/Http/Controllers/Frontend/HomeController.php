@@ -7,7 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Admin\Homes;
 use App\Admin\Floor;
 use App\Admin\Features;
+use App\Admin\Setting;
+use App\Admin\FloorPlans;
 use Crypt;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -112,6 +115,8 @@ class HomeController extends Controller
         }])->where('id',$request->home_id)->first();
         $this->data['home'] = $home;
         $this->data['features'] = $features;
+        $settings = Setting::where('id', 1)->get()->first();
+        $this->data['settings'] = $settings;
         return view('frontend.final')->with($this->data);
     }
 
@@ -147,6 +152,7 @@ class HomeController extends Controller
 
     public function downloadPDF(Request $request){
         ini_set('memory_limit', '-1');
+        
         $features = $request->feature_id;
         $home = Homes::with(['floors'=>function($q) use ($features){
             $q->with('features')->whereHas('features',function($w) use ($features){
@@ -167,12 +173,21 @@ class HomeController extends Controller
                 }
             }
         }
-        //save combined image 
         $imageName = time().'.png';
         $img->save(public_path('/images/pdf_floor_plans/'.$imageName),100);
         $data['home'] = $home;
         $data['planImage'] = public_path('/images/pdf_floor_plans/'.$imageName);
+
+        // $plans = FloorPlans::create(['user_id' => Auth::user()->id,
+        //                                 'floor_id' => $home->floors[0]->id,
+        //                                 'home_id' => $request->home_id,
+        //                                 'features' => json_encode($features),
+        //                                 'image' => 'images/pdf_floor_plans/'.$imageName,
+        //                                 'type' => 1,
+        //                                 'status' => 1 ]);
+
         $pdf = \PDF::loadView('frontend.home_pdf',$data)->setPaper('a4', 'portrait');
         return $pdf->download('mandalay.pdf');
     }
+
 }
