@@ -54,18 +54,53 @@ class LoginController extends Controller
         endif;
     }
 
-    public function forgotPassword(Request $data)
+    public function forgotPassword(Request $request)
     {
-       // return $data;
+       // return $request;
        
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'mobile' => $data['mobile'],
-            'password' => Hash::make($data['password']),
-        ]);
-        return ['status' => 'success'];
+        $user = User::where('email', $request['email'])->get()->first();
+        if(!$user):
+            return ['status' => 'failed', 'message' => 'Your email does not exist. Please register to continue.'];
+        elseif($user->status != 1):
+            return ['status' => 'failed', 'message' => 'You account has been deactivated. Please contact administrator.'];
+        else:
+            $code = rand(1000000, 9999999);
+            User::where('id', $user->id)->update(['vcode' => $code]);
+            return ['status' => 'success', 'message' =>  'Your verification code has been sent on your email. Please verify your email.'];
+        endif;
 
+    }
+
+    public function verifyCode(Request $request)
+    {
+       // return $request;
+       
+        $user = User::where(['email' => $request['email']])->get()->first();
+        if(!$user):
+            return ['status' => 'failed', 'message' => 'Your email does not exist. Please register to continue.'];
+        elseif($user->status != 1):
+            return ['status' => 'failed', 'message' => 'You account has been deactivated. Please contact administrator.'];
+        else:
+            $ucheck = User::where(['email' => $request['email'], 'vcode' => $request['vcode']])->get()->first();
+            if($ucheck) {return ['status' => 'success', 'message' => 'Your email has been verified. Please update your password now.']; }
+            else { return ['status' => 'failed', 'message' => 'Incorrect Verification Code. Please try again.']; }
+        endif;
+
+    }
+
+    public function updatePassword(Request $request)
+    {
+       // return $request;
+       
+        $user = User::where(['email' => $request['email'], 'vcode' => $request['vcode']])->get()->first();
+        if(!$user):
+            return ['status' => 'failed', 'message' => 'Your Details can not be updated. Please do the process properly or contact administrator.'];
+        else:
+            $code = $request['passcode'];
+            User::where('id', $user->id)->update(['password' => Hash::make($code), 'vcode' => '']);
+            Auth::login($user);
+            return ['status' => 'success'];
+        endif;
     }
 
     public function check()

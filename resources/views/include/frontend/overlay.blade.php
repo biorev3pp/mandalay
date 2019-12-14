@@ -29,11 +29,11 @@
                         <form action="javascript:void(0)" id="signInForm" method="post">
                             <div id="lerr-msg"></div>
                             <div class="form-group">
-                                <label for="email">Email Address <span class="text-danger">*</span> </label>
+                                <label for="lemail">Email Address <span class="text-danger">*</span> </label>
                                 <input type="email" class="form-control" id="lemail" required placeholder="Enter Email">
                             </div>
                             <div class="form-group">
-                                <label for="last_name">Password<span class="text-danger">*</span> </label>
+                                <label for="lpassword">Password<span class="text-danger">*</span> </label>
                                 <input type="password" class="form-control" id="lpassword" required placeholder="Enter Password">
                             </div>  
                             <div class="form-group text-center" id="logindiv">
@@ -45,19 +45,19 @@
                         <form action="javascript:void(0)" id="signupForm" method="post">
                             <div id="rerr-msg"></div>
                             <div class="form-group">
-                                <label for="name">Full Name <span class="text-danger">*</span> </label>
+                                <label for="nname">Full Name <span class="text-danger">*</span> </label>
                                 <input type="text" class="form-control" id="nname" required placeholder="Enter Full Name">
                             </div>
                             <div class="form-group">
-                                <label for="email">Email Address <span class="text-danger">*</span> </label>
+                                <label for="nemail">Email Address <span class="text-danger">*</span> </label>
                                 <input type="email" class="form-control" id="nemail" required placeholder="Enter Email">
                             </div>
                             <div class="form-group">
-                                <label for="mobile">Contact Number</label>
+                                <label for="nmobile">Contact Number</label>
                                 <input type="mobile" class="form-control" id="nmobile" required placeholder="Enter Contact Number">
                             </div>
                             <div class="form-group">
-                                <label for="last_name">Password<span class="text-danger">*</span> </label>
+                                <label for="npassword">Password<span class="text-danger">*</span> </label>
                                 <input type="password" class="form-control" id="npassword" required placeholder="Enter Password">
                             </div> 
                             <div class="form-group" id="regdiv">
@@ -66,12 +66,34 @@
                         </form>
                     </div>
                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                        <form action="javascript:void(0)" id="forgotPasswordForm" method="post">
-                            <div class="form-group">
-                                <label for="email">Email Address <span class="text-danger">*</span> </label>
-                                <input type="email" class="form-control" id="email" required placeholder="Enter Email">
+                        <form action="javascript:void(0)" id="forgotPasswordPopForm" method="post">
+                            <div id="ferr-msg"></div>
+                            <div class="form-group" id="ediv">
+                                <label for="femail">Email Address <span class="text-danger">*</span> </label>
+                                <input type="email" class="form-control" id="femail" name="femail" placeholder="Enter Email">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="display:none" id="vcodeDiv">
+                                <label for="fvcode">Verification Code<span class="text-danger">*</span> </label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="fvcode" placeholder="Enter Verification Code">
+                                    <div class="input-group-append no-verify">
+                                        <button class="input-group-text" id="verifyCode" type="button"> Verify </button>
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="form-group" style="display:none" id="npassDiv">
+                                <label for="fpassword">New Password<span class="text-danger">*</span> </label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="fpassword" placeholder="Enter Password">
+                                    <div class="input-group-append">
+                                        <button class="input-group-text" id="showPass" type="button"> <i class="fa fa-eye"></i> </button>
+                                      </div>
+                                </div>
+                                <div class="form-group mt-3" id="cpPassBtnDiv">
+                                    <button type="button" id="cpPassBtn" class="btn btn-block btn-primary">Change Password</button>
+                                </div> 
+                            </div>
+                            <div class="form-group" id="forgdiv">
                                 <button type="submit" class="btn btn-block btn-primary">Proceed</button>
                             </div>  
                         </form>
@@ -83,6 +105,8 @@
 </div>
 <script>
 $(document).ready(function (){
+
+    // Sign up Form Action
     $('#signupForm').submit(function() {
         $.ajax({
             url : app_base_url+'/api/user-register',
@@ -119,6 +143,8 @@ $(document).ready(function (){
             }
         });
     });
+
+    // Sign in Form Action
 
     $('#signInForm').submit(function() {
         $('#logindiv').html('<img src="'+app_base_url+'/images/spinner.gif">');
@@ -158,7 +184,10 @@ $(document).ready(function (){
         });
     });
 
-    $('#forgotPasswordForm').submit(function() {
+    // Forgot password Form Actions - send code on email
+
+    $('#forgotPasswordPopForm').submit(function() {
+        $('#forgdiv').html('<img src="'+app_base_url+'/images/spinner.gif">');
         $.ajax({
             url : app_base_url+'/api/forgot-password',
             type : "POST",
@@ -169,11 +198,19 @@ $(document).ready(function (){
             },
             beforeSend  : function () 
             {
-                $("#preloader").show();
+                //$("#preloader").show();
             },
-            complete: function () 
+            complete: function (response) 
             {
-                //$(document).find('#finishPage_form').submit();
+                if(response.responseJSON.status == 'success') {
+                    $('#ferr-msg').html(response.responseJSON.message).addClass('alert alert-success').removeClass('alert-danger');
+                    $('#femail').attr('readonly', 'readonly');
+                    $('#vcodeDiv').show();
+                    $('#forgdiv').html('').hide();
+                } else {
+                    $('#ferr-msg').html(response.responseJSON.message).addClass('alert alert-danger').removeClass('alert-success');
+                    $('#forgdiv').html('<button type="submit" class="btn btn-block btn-primary">Proceed</button>');
+                }
             },
             success: function (response) 
             {
@@ -181,5 +218,87 @@ $(document).ready(function (){
             }
         });
     });
+
+    // verify code sent on email
+
+    $('#verifyCode').click(function() {
+        $.ajax({
+            url : app_base_url+'/api/verify-code',
+            type : "POST",
+            data : {'email':$('#femail').val(), 'vcode':$('#fvcode').val()},
+            headers: 
+            {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            beforeSend  : function () 
+            {
+                //$("#preloader").show();
+            },
+            complete: function (response) 
+            {
+                if(response.responseJSON.status == 'success') {
+                    $('#ferr-msg').html(response.responseJSON.message).addClass('alert alert-info').removeClass('alert-danger alert-success');
+                    $('#femail').attr('readonly', 'readonly');
+                    $('#vcodeDiv').hide();
+                    $('.no-verify').html('').hide();
+                    $('#npassDiv').show();
+                } else {
+                    $('#ferr-msg').html(response.responseJSON.message).addClass('alert alert-danger').removeClass('alert-success  alert-info');
+                }
+            },
+            success: function (response) 
+            {
+                
+            }
+        });
+    });
+
+    // update password
+    $('#cpPassBtn').click(function() {
+        $('cpPassBtnDiv').html('<img src="'+app_base_url+'/images/spinner.gif">');
+        $.ajax({
+            url : app_base_url+'/api/update-password',
+            type : "POST",
+            data : {'email':$('#femail').val(), 'vcode':$('#fvcode').val(), 'passcode': $('#fpassword').val()},
+            headers: 
+            {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            beforeSend  : function () 
+            {
+                //$("#preloader").show();
+            },
+            complete: function (response) 
+            {
+                if(response.responseJSON.status == 'success') {
+                    $(document).find('.manageToggle').each(function(){
+                        let checked = $(this).find('input').is(':checked');
+                        if(checked){
+                            let featureid = $(this).attr('data-self');
+                            let featureInput = '<input name="feature_id[]" type="hidden" value="'+featureid+'">';
+                            $(document).find("input[name='home_id']").after(featureInput);
+                        }
+                    });
+                    $(document).find('#finishPage_form').submit();
+                } else {
+                    $('cpPassBtnDiv').html('<button type="button" id="cpPassBtn" class="btn btn-block btn-primary">Change Password</button>');
+                    $('#ferr-msg').html(response.responseJSON.message).addClass('alert alert-danger').removeClass('alert-success  alert-info');
+                }
+            },
+            success: function (response) 
+            {
+                
+            }
+        });
+        
+    });
+
+    // Show/hide password in forgot password box
+    $('#showPass').mouseover(function() {
+        $('#fpassword').attr('type', 'text');
+    }).mouseout(function() {
+        $('#fpassword').attr('type', 'password');
+    });
+
 });
 </script>
