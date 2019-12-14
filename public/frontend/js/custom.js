@@ -171,7 +171,10 @@ $(document).ready(function (){
             },
             complete: function (response) {
                 if(response.responseJSON.status == 'fail') {
-                    $('#loginModal').modal('show');
+                    $('#loginModal').modal({
+                        backdrop: 'static',
+                        keyboard: false
+                    });
                 } else {
                     let selectedfeatures = [];
                     $(document).find('.manageToggle').each(function(){
