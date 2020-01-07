@@ -150,7 +150,8 @@ class HomeController extends Controller
         return $pdf->stream('mandalay.pdf');
     }
 
-    public function downloadPDF(Request $request){
+    public function downloadPDF(Request $request)
+    {
         ini_set('memory_limit', '-1');
         
         $features = $request->feature_id;

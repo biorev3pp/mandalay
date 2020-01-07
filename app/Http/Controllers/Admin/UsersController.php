@@ -28,13 +28,15 @@ class UsersController extends Controller
         $this->data['statusArray'] = $this->getStatusArray();
     }
 
-    public function index(){
+    public function index()
+	{
         $result = User::where('user_role_id', '!=', 1)->get();
         $this->data['data'] = $result;
         return view('admin.users.index')->with($this->data);
     }
 
-    public function communities($id = null){
+    public function communities($id = null)
+	{
         $fixed_communities = [];
         $id = $this->decrypt($id);
         $user = User::whereId($id)->first();
@@ -49,7 +51,8 @@ class UsersController extends Controller
         return view('admin.users.communities')->with($this->data);
     }
 
-    public function create(){
+    public function create()
+	{
         $this->data['data'] = '';
         $all_roles = UserRoles::all();
         foreach ($all_roles as $key => $value) {
@@ -59,7 +62,8 @@ class UsersController extends Controller
         return view('admin.users.create')->with($this->data);
     } 
 
-    public function addcommunity(Request $request){
+    public function addcommunity(Request $request)
+	{
         try{
                 DB::beginTransaction();
                 $input = $request->except('_token');

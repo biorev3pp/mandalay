@@ -15,7 +15,6 @@
 
   <!-- Custom fonts for this template-->
   <link href="{{asset('asset/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-  <link
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
 
   <!-- Custom styles for this template-->

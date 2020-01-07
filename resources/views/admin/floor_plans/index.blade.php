@@ -64,7 +64,7 @@
       </div>
       <div class="modal-body">Are you sure, you want to delete this record ?</div>
       <div class="modal-footer ">
-          {{Form::open(array('id'=>'delete_form','url'=>url('admin/floor_plans  /delete')))}}
+          {{Form::open(array('id'=>'delete_form','url'=>url('admin/floor_plans/delete')))}}
           {{Form::hidden('delete_id',null,['id'=>'delete_id'])}}
           <button type="submit" class="btn btn-secondary">Yes</button>
           {{Form::close()}}
